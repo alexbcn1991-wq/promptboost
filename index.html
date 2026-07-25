@@ -451,77 +451,86 @@
   .copy-btn:hover{ background:var(--ghost); }
   .copy-btn.copied{ background:var(--plasma); }
 
-  /* ---------- transform scene: transformación al copiar el prompt ---------- */
+  /* ---------- orbit scene: círculos con las IA alrededor del contador ---------- */
   .hero{ display:flex; flex-direction:row; align-items:center; justify-content:space-between; gap:4vw; }
   .hero-content{ position:relative; z-index:2; flex:1 1 auto; }
   .launch-scene{
     position:relative; z-index:1; flex:0 0 auto;
-    width:min(40vw, 460px); height:min(22.2vw, 256px);
+    width:min(34vw, 380px); height:min(34vw, 380px);
     pointer-events:none; overflow:visible;
   }
-  .desk-scene{
-    position:absolute; top:50%; left:50%;
-    width:100%;
-    transform:translate(-50%,-50%);
-    animation:sceneBreathe 4.5s ease-in-out infinite;
-  }
-  @keyframes sceneBreathe{ 0%,100%{ transform:translate(-50%,-50%) translateY(0); } 50%{ transform:translate(-50%,-50%) translateY(-3px); } }
-  .desk-svg{ width:100%; display:block; overflow:visible; }
-
-  .scribble{ animation:scribbleDrift 6s ease-in-out infinite; transform-origin:center; }
-  @keyframes scribbleDrift{ 0%,100%{ transform:translate(0,0); } 50%{ transform:translate(-2px,2px); } }
-
-  .copy-btn-scene{ animation:btnPulse 3.4s ease-in-out infinite; transform-origin:185px 120px; }
-  @keyframes btnPulse{
-    0%,50%{ transform:scale(1); }
-    58%{ transform:scale(0.9); }
-    66%{ transform:scale(1.06); }
-    75%,100%{ transform:scale(1); }
-  }
-  .click-ripple{ transform-origin:185px 120px; }
-  .click-ripple.active{ animation:rippleGo 0.6s ease-out; }
-  @keyframes rippleGo{ 0%{ r:10; opacity:0.85; } 100%{ r:32; opacity:0; } }
-
-  .cursor-icon{ animation:cursorMove 3.4s ease-in-out infinite; }
-  @keyframes cursorMove{
-    0%{ transform:translate(202px,84px); }
-    50%{ transform:translate(185px,110px); }
-    58%{ transform:translate(185px,114px) scale(0.92); }
-    66%{ transform:translate(185px,110px); }
-    100%{ transform:translate(202px,84px); }
+  .orbit-wrap{
+    position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+    width:300px; height:300px;
   }
 
-  .out-card{ animation:outFloat 4s ease-in-out infinite; transform-origin:center; }
-  .out-card-1{ animation-delay:0s; }
-  .out-card-2{ animation-delay:0.3s; }
-  .out-card-3{ animation-delay:0.6s; }
-  @keyframes outFloat{ 0%,100%{ transform:translateY(0); } 50%{ transform:translateY(-3px); } }
-  .out-card.pop{ animation:outPop 0.55s ease-out !important; }
-  @keyframes outPop{
-    0%{ transform:scale(0.88); opacity:0.55; }
-    60%{ transform:scale(1.08); opacity:1; }
-    100%{ transform:scale(1); opacity:1; }
+  .orbit-ring{ position:absolute; top:50%; left:50%; border-radius:50%; }
+  .orbit-ring::before{
+    content:''; position:absolute; inset:0; border-radius:50%;
+    background:conic-gradient(from 0deg, transparent 0%, var(--ring-color) 14%, transparent 32%, transparent 100%);
+    opacity:0.85;
   }
+  .orbit-ring::after{
+    content:''; position:absolute; inset:1.5px; border-radius:50%; background:var(--void);
+  }
+  .ring-1{ width:130px; height:130px; --ring-color:#4ee6cb; animation:ringSpin1 16s linear infinite; }
+  .ring-2{ width:210px; height:210px; --ring-color:#8b7fff; animation:ringSpin2 24s linear infinite; }
+  .ring-3{ width:290px; height:290px; --ring-color:#ff7a52; animation:ringSpin1 32s linear infinite; }
+  @keyframes ringSpin1{ from{ transform:translate(-50%,-50%) rotate(0deg); } to{ transform:translate(-50%,-50%) rotate(360deg); } }
+  @keyframes ringSpin2{ from{ transform:translate(-50%,-50%) rotate(360deg); } to{ transform:translate(-50%,-50%) rotate(0deg); } }
 
-  .mote{
-    position:absolute; border-radius:50%; pointer-events:none; z-index:0;
-    animation:moteLife 1.4s ease-out forwards;
+  .orbit-center{
+    position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+    width:104px; height:104px; border-radius:50%; z-index:2;
+    background:var(--depth); border:1px solid var(--line);
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
   }
-  .mote-in{ background:radial-gradient(circle, rgba(124,131,159,0.75), transparent 70%); }
-  .mote-out{ background:radial-gradient(circle, rgba(78,230,203,0.9), rgba(139,127,255,0.35) 55%, transparent 75%); }
-  @keyframes moteLife{
-    0%{ opacity:0.8; transform:translate(0,0) scale(0.5); }
-    100%{ opacity:0; transform:translate(var(--dx), var(--dy)) scale(1.5); }
+  .orbit-count{ font-family:'Unbounded', sans-serif; font-weight:800; font-size:1.6rem; color:var(--ghost); }
+  .orbit-label{ font-family:'JetBrains Mono', monospace; font-size:9.5px; letter-spacing:0.14em; color:var(--mist); margin-top:2px; }
+
+  .ai-badge{
+    position:absolute; top:50%; left:50%; z-index:3;
+    display:flex; flex-direction:column; align-items:center; gap:6px;
+  }
+  .ai-badge-letter{
+    width:42px; height:42px; border-radius:50%;
+    background:var(--depth); border:2px solid var(--badge-color); color:var(--badge-color);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'JetBrains Mono', monospace; font-weight:700; font-size:14px;
+    box-shadow:0 0 16px color-mix(in srgb, var(--badge-color) 45%, transparent);
+  }
+  .ai-badge-name{ font-family:'JetBrains Mono', monospace; font-size:9px; letter-spacing:0.06em; color:var(--mist); }
+
+  /* órbita exterior (radio 145px, sobre ring-3) */
+  @keyframes orbitOuter{
+    from{ transform:translate(-50%,-50%) rotate(0deg) translateX(145px) rotate(0deg); }
+    to{ transform:translate(-50%,-50%) rotate(360deg) translateX(145px) rotate(-360deg); }
+  }
+  /* órbita interior (radio 105px, sobre ring-2, sentido contrario) */
+  @keyframes orbitInner{
+    from{ transform:translate(-50%,-50%) rotate(0deg) translateX(105px) rotate(0deg); }
+    to{ transform:translate(-50%,-50%) rotate(360deg) translateX(105px) rotate(-360deg); }
+  }
+  .badge-orbit-outer-a{ animation:orbitOuter 22s linear infinite; }
+  .badge-orbit-outer-b{ animation:orbitOuter 22s linear infinite; animation-delay:-11s; }
+  .badge-orbit-inner-a{ animation:orbitInner 16s linear infinite reverse; }
+  .badge-orbit-inner-b{ animation:orbitInner 16s linear infinite reverse; animation-delay:-8s; }
+  @media (prefers-reduced-motion: reduce){
+    .ai-badge{ animation:none !important; }
+    .badge-orbit-outer-a{ transform:translate(-50%,-50%) translateX(145px); }
+    .badge-orbit-outer-b{ transform:translate(-50%,-50%) translateX(-145px); }
+    .badge-orbit-inner-a{ transform:translate(-50%,-50%) translateY(-105px); }
+    .badge-orbit-inner-b{ transform:translate(-50%,-50%) translateY(105px); }
   }
 
   @media (max-width:900px){
     .hero{ flex-direction:column; justify-content:center; }
-    .launch-scene{ width:min(78vw, 420px); height:min(43.3vw, 233px); margin-top:36px; opacity:0.92; }
+    .launch-scene{ width:min(70vw, 320px); height:min(70vw, 320px); margin-top:36px; opacity:0.95; }
   }
   @media (max-width:640px){
     .specimen-grid{ grid-template-columns:1fr; }
     section{ padding:96px 6vw; }
-    .launch-scene{ width:min(86vw, 340px); height:min(47.8vw, 189px); }
+    .launch-scene{ width:min(80vw, 280px); height:min(80vw, 280px); }
   }
 </style>
 </head>
@@ -590,61 +599,32 @@
     </div>
 
     <div class="launch-scene" aria-hidden="true">
-      <div class="desk-scene" id="deskScene">
-        <svg class="desk-svg" viewBox="0 0 360 200">
+      <div class="orbit-wrap">
+        <div class="orbit-ring ring-1"></div>
+        <div class="orbit-ring ring-2"></div>
+        <div class="orbit-ring ring-3"></div>
 
-          <!-- resplandor de la tarjeta central -->
-          <g class="screen-glow">
-            <circle cx="185" cy="75" r="42" fill="#4ee6cb" opacity="0.05"/>
-            <circle cx="185" cy="75" r="30" fill="#4ee6cb" opacity="0.09"/>
-            <circle cx="185" cy="75" r="18" fill="#4ee6cb" opacity="0.14"/>
-          </g>
+        <div class="orbit-center">
+          <div class="orbit-count" id="orbitCount">0</div>
+          <div class="orbit-label">PROMPTS</div>
+        </div>
 
-          <!-- zona caótica (antes) -->
-          <g class="scribble">
-            <path d="M28 68 Q38 54 48 68 T68 66" stroke="#7c839f" stroke-width="2" fill="none" opacity="0.55" stroke-linecap="round"/>
-            <path d="M32 92 Q46 82 58 96 T88 90" stroke="#7c839f" stroke-width="2" fill="none" opacity="0.5" stroke-linecap="round"/>
-            <path d="M40 118 Q52 108 66 120" stroke="#7c839f" stroke-width="2" fill="none" opacity="0.45" stroke-linecap="round"/>
-            <g transform="translate(76,52) rotate(-10)"><rect width="26" height="18" rx="2" fill="#5f5e5a" opacity="0.5"/></g>
-            <g transform="translate(88,96) rotate(9)"><rect width="22" height="16" rx="2" fill="#5f5e5a" opacity="0.45"/></g>
-          </g>
-
-          <!-- tarjeta central del prompt -->
-          <rect x="140" y="45" width="90" height="60" rx="6" fill="#10142a" stroke="#4ee6cb" stroke-width="0.75"/>
-          <rect x="150" y="55" width="60" height="4" rx="2" fill="#4ee6cb" opacity="0.85"/>
-          <rect x="150" y="64" width="45" height="4" rx="2" fill="#4ee6cb" opacity="0.6"/>
-          <rect x="150" y="73" width="52" height="4" rx="2" fill="#4ee6cb" opacity="0.45"/>
-          <rect x="150" y="82" width="38" height="4" rx="2" fill="#4ee6cb" opacity="0.35"/>
-
-          <!-- botón copiar + onda de clic -->
-          <circle class="click-ripple" id="clickRipple" cx="185" cy="120" r="10" fill="none" stroke="#4ee6cb" stroke-width="2" opacity="0"/>
-          <g class="copy-btn-scene">
-            <rect x="163" y="112" width="44" height="16" rx="8" fill="#4ee6cb"/>
-            <text x="185" y="123" font-family="'JetBrains Mono', monospace" font-size="7.5" font-weight="700" fill="#0b0e1c" text-anchor="middle">COPIAR</text>
-          </g>
-
-          <!-- cursor animado -->
-          <g class="cursor-icon" id="cursorIcon">
-            <path d="M0 0 L0 14 L4 10.5 L7 16 L9 15 L6 9.5 L11 9 Z" fill="#e8ecf7" stroke="#0b0e1c" stroke-width="0.5"/>
-          </g>
-
-          <!-- tarjetas ordenadas (después) -->
-          <g class="out-card out-card-1" id="outCard1">
-            <rect x="255" y="38" width="82" height="24" rx="4" fill="#10142a" stroke="#8b7fff" stroke-width="0.75"/>
-            <path d="M263 51 L267 55 L273 47" stroke="#8b7fff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-            <rect x="280" y="47" width="50" height="3" rx="1.5" fill="#8b7fff" opacity="0.85"/>
-          </g>
-          <g class="out-card out-card-2" id="outCard2">
-            <rect x="255" y="70" width="82" height="24" rx="4" fill="#10142a" stroke="#4ee6cb" stroke-width="0.75"/>
-            <path d="M263 83 L267 87 L273 79" stroke="#4ee6cb" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-            <rect x="280" y="79" width="50" height="3" rx="1.5" fill="#4ee6cb" opacity="0.85"/>
-          </g>
-          <g class="out-card out-card-3" id="outCard3">
-            <rect x="255" y="102" width="82" height="24" rx="4" fill="#10142a" stroke="#8b7fff" stroke-width="0.75"/>
-            <path d="M263 115 L267 119 L273 111" stroke="#8b7fff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-            <rect x="280" y="111" width="50" height="3" rx="1.5" fill="#8b7fff" opacity="0.85"/>
-          </g>
-        </svg>
+        <div class="ai-badge badge-orbit-outer-a" style="--badge-color:#4ee6cb">
+          <span class="ai-badge-letter">C</span>
+          <span class="ai-badge-name">Claude</span>
+        </div>
+        <div class="ai-badge badge-orbit-outer-b" style="--badge-color:#8b7fff">
+          <span class="ai-badge-letter">G</span>
+          <span class="ai-badge-name">Gemini</span>
+        </div>
+        <div class="ai-badge badge-orbit-inner-a" style="--badge-color:#e8ecf7">
+          <span class="ai-badge-letter">P</span>
+          <span class="ai-badge-name">ChatGPT</span>
+        </div>
+        <div class="ai-badge badge-orbit-inner-b" style="--badge-color:#ff7a52">
+          <span class="ai-badge-letter">X</span>
+          <span class="ai-badge-name">Grok</span>
+        </div>
       </div>
     </div>
   </section>
@@ -1539,74 +1519,28 @@ if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){
   canvas.style.display = 'none';
 }
 
-/* ============ transform scene: ciclo de clic en "copiar" ============ */
-const deskScene = document.getElementById('deskScene');
-const launchScene = document.querySelector('.launch-scene');
-const clickRipple = document.getElementById('clickRipple');
-const outCards = [document.getElementById('outCard1'), document.getElementById('outCard2'), document.getElementById('outCard3')];
-const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+/* ============ orbit scene: contador animado en el centro ============ */
+const orbitCount = document.getElementById('orbitCount');
+const reduceMotionOrbit = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-if(deskScene && launchScene && !reduceMotion){
-  const CYCLE_MS = 3400;
-  const CLICK_AT = CYCLE_MS * 0.58; // sincronizado con el keyframe cursorMove/btnPulse
-
-  let lastAmbient = 0;
-  let lastCycleFired = -1;
-
-  function spawnMote(originXRatio, originYRatio, dx, dy, spread, colorClass){
-    const sceneRect = launchScene.getBoundingClientRect();
-    const originX = sceneRect.width * originXRatio;
-    const originY = sceneRect.height * originYRatio;
-    const size = 3 + Math.random()*4;
-
-    const mote = document.createElement('div');
-    mote.className = 'mote ' + colorClass;
-    mote.style.width = size+'px';
-    mote.style.height = size+'px';
-    mote.style.left = (originX + (Math.random()*spread - spread/2) - size/2) + 'px';
-    mote.style.top = (originY + (Math.random()*spread*0.4 - spread*0.2) - size/2) + 'px';
-    mote.style.setProperty('--dx', dx.toFixed(0)+'px');
-    mote.style.setProperty('--dy', dy.toFixed(0)+'px');
-    mote.addEventListener('animationend', () => mote.remove());
-    launchScene.appendChild(mote);
-  }
-
-  function triggerTransform(){
-    clickRipple.classList.add('active');
-    setTimeout(() => clickRipple.classList.remove('active'), 650);
-
-    for(let i=0;i<7;i++){
-      const dx = 90 + Math.random()*40;
-      const dy = (Math.random()*70 - 35);
-      spawnMote(0.51, 0.6, dx, dy, 14, 'mote-out');
+if(orbitCount){
+  const target = specimens.length;
+  if(reduceMotionOrbit){
+    orbitCount.textContent = target + '+';
+  } else {
+    const DURATION = 1600;
+    let start = null;
+    function tickCount(ts){
+      if(start === null) start = ts;
+      const progress = Math.min(1, (ts - start) / DURATION);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      orbitCount.textContent = Math.round(eased * target) + (progress >= 1 ? '+' : '');
+      if(progress < 1) requestAnimationFrame(tickCount);
     }
-
-    outCards.forEach((card, i) => {
-      setTimeout(() => {
-        card.classList.add('pop');
-        setTimeout(() => card.classList.remove('pop'), 560);
-      }, i*140);
-    });
+    setTimeout(() => requestAnimationFrame(tickCount), 400);
   }
-
-  function tick(ts){
-    const elapsed = ts % CYCLE_MS;
-    const cycleIndex = Math.floor(ts / CYCLE_MS);
-
-    if(elapsed >= CLICK_AT && cycleIndex !== lastCycleFired){
-      lastCycleFired = cycleIndex;
-      triggerTransform();
-    }
-
-    if(ts - lastAmbient > 420){
-      spawnMote(0.2, 0.5, 55 + Math.random()*25, (Math.random()*30-15), 20, 'mote-in');
-      lastAmbient = ts;
-    }
-
-    requestAnimationFrame(tick);
-  }
-  requestAnimationFrame(tick);
 }
+
 
 
 
