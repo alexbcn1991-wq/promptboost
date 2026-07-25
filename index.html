@@ -251,35 +251,43 @@
   .no-results.show{ display:block; }
 
   /* ---------- prompt grid ---------- */
-  /* ---------- catalog map (vista general) ---------- */
+  /* ---------- catalog map: glowing gradient cards ---------- */
   .catalog-grid{
-    display:grid; grid-template-columns:repeat(auto-fill, minmax(200px, 1fr));
-    gap:1px; background:var(--line); border:1px solid var(--line);
+    display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));
+    gap:32px 24px; background:none; border:none;
   }
-  .catalog-card{
-    background:var(--depth); padding:24px 22px; cursor:pointer;
-    display:flex; flex-direction:column; gap:14px;
-    transition:background .25s ease, transform .3s cubic-bezier(.2,.8,.2,1);
-    position:relative;
+  .glow-card-wrap{
+    position:relative; width:100%; max-width:300px; margin:0 auto; cursor:pointer;
   }
-  .catalog-card:hover{ background:var(--surface); transform:translateY(-3px); }
-  .catalog-icon{
-    width:34px; height:34px; display:flex; align-items:center; justify-content:center;
-    color:var(--accent, var(--teal));
+  .glow-bg{
+    position:absolute; inset:0; height:280px; border-radius:40px;
+    opacity:0.55; filter:blur(45px); pointer-events:none;
+    transition:opacity .3s ease;
   }
-  .catalog-icon svg{ width:100%; height:100%; }
-  .catalog-name{
-    font-family:'Unbounded', sans-serif; font-weight:600; font-size:0.98rem; color:var(--ghost);
+  .glow-card-wrap:hover .glow-bg{ opacity:0.8; }
+  .glow-card{
+    position:relative; z-index:1; height:280px; border-radius:40px;
+    overflow:hidden; border:7px solid transparent;
+    transition:transform .35s cubic-bezier(.2,.8,.2,1);
   }
-  .catalog-count{
-    font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.06em;
-    color:var(--accent, var(--mist)); text-transform:uppercase;
+  .glow-card-wrap:hover .glow-card{ transform:translateY(-4px); }
+  .glow-card-inner{
+    width:100%; height:100%; padding:26px;
+    display:flex; flex-direction:column; justify-content:space-between;
   }
-  .catalog-card::after{
-    content:''; position:absolute; left:0; top:0; bottom:0; width:2px;
-    background:var(--accent, var(--teal)); opacity:0; transition:opacity .25s ease;
+  .glow-icon{ color:rgba(255,255,255,0.92); width:32px; height:32px; }
+  .glow-icon svg{ width:100%; height:100%; }
+  .glow-title{
+    font-family:'Unbounded', sans-serif; font-weight:600; font-size:1.15rem;
+    color:#fff; letter-spacing:-0.01em; margin-top:16px; margin-bottom:8px;
   }
-  .catalog-card:hover::after{ opacity:1; }
+  .glow-desc{
+    color:#a1a1aa; font-size:0.85rem; line-height:1.55; font-family:'Inter',sans-serif;
+  }
+  .glow-count{
+    font-family:'JetBrains Mono', monospace; font-size:10.5px; letter-spacing:0.08em;
+    color:rgba(255,255,255,0.55); text-transform:uppercase; margin-top:14px;
+  }
 
   /* ---------- prompt grid ---------- */
   .specimen-grid{
@@ -1218,36 +1226,77 @@ categories.forEach((cat, i) => {
 
 /* ============ catálogo: vista general con iconos por categoría ============ */
 const catalogIcons = {
-  "Razonamiento": `<svg viewBox="0 0 24 24" fill="none"><circle cx="6" cy="8" r="2.4" stroke="currentColor" stroke-width="1.6"/><circle cx="18" cy="8" r="2.4" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="18" r="2.4" stroke="currentColor" stroke-width="1.6"/><path d="M8.1 9.3L10 16M15.9 9.3L14 16M8.4 8H15.6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>`,
-  "Escritura": `<svg viewBox="0 0 24 24" fill="none"><path d="M4 20L4.8 16.4L15 6.2C15.6 5.6 16.6 5.6 17.2 6.2L17.8 6.8C18.4 7.4 18.4 8.4 17.8 9L7.6 19.2L4 20Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M13.5 7.7L16.3 10.5" stroke="currentColor" stroke-width="1.6"/></svg>`,
-  "Código": `<svg viewBox="0 0 24 24" fill="none"><path d="M9 7L4 12L9 17M15 7L20 12L15 17" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
-  "Estructura": `<svg viewBox="0 0 24 24" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.6"/><rect x="13" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.6"/><rect x="4" y="13" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.6"/><rect x="13" y="13" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.6"/></svg>`,
-  "Decisiones": `<svg viewBox="0 0 24 24" fill="none"><path d="M5 6H9L15 18H19M9 18H5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M15 6H19" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="5" cy="6" r="1.6" fill="currentColor"/><circle cx="5" cy="18" r="1.6" fill="currentColor"/><circle cx="19" cy="6" r="1.6" fill="currentColor"/><circle cx="19" cy="18" r="1.6" fill="currentColor"/></svg>`,
-  "Marketing": `<svg viewBox="0 0 24 24" fill="none"><path d="M4 11V15L7 15.6V17.5C7 18.3 7.7 19 8.5 19C9.3 19 10 18.3 10 17.5V16.1L15 17V9L4 11Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M15 9V17C17 17 19 15.2 19 13C19 10.8 17 9 15 9Z" stroke="currentColor" stroke-width="1.6"/></svg>`,
-  "Contenido": `<svg viewBox="0 0 24 24" fill="none"><rect x="4" y="5" width="16" height="14" rx="1.5" stroke="currentColor" stroke-width="1.6"/><path d="M10 9L15 12L10 15V9Z" fill="currentColor"/></svg>`,
-  "Negocio": `<svg viewBox="0 0 24 24" fill="none"><rect x="4" y="8" width="16" height="11" rx="1.5" stroke="currentColor" stroke-width="1.6"/><path d="M8 8V6C8 5.4 8.4 5 9 5H15C15.6 5 16 5.4 16 6V8" stroke="currentColor" stroke-width="1.6"/><path d="M4 13H20" stroke="currentColor" stroke-width="1.6"/></svg>`,
-  "Productividad": `<svg viewBox="0 0 24 24" fill="none"><rect x="5" y="4" width="14" height="17" rx="1.5" stroke="currentColor" stroke-width="1.6"/><path d="M8.5 10L10.5 12L14.5 8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M8.5 16H14.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>`,
-  "Aprendizaje": `<svg viewBox="0 0 24 24" fill="none"><path d="M12 5L21 9L12 13L3 9L12 5Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M7 11V16C7 17 9 18.5 12 18.5C15 18.5 17 17 17 16V11" stroke="currentColor" stroke-width="1.6"/></svg>`,
-  "Carrera": `<svg viewBox="0 0 24 24" fill="none"><path d="M12 3C14 5 15.5 8 15.5 11.5C15.5 14 14.5 16 12 19C9.5 16 8.5 14 8.5 11.5C8.5 8 10 5 12 3Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><circle cx="12" cy="10.5" r="1.6" stroke="currentColor" stroke-width="1.4"/><path d="M9 17L6.5 21M15 17L17.5 21" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>`,
-  "Finanzas": `<svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="1.6"/><path d="M12 7.5V16.5M14.5 9.3C14.5 8 13.4 7.5 12 7.5C10.5 7.5 9.5 8.2 9.5 9.3C9.5 11.7 14.5 10.7 14.5 13.1C14.5 14.2 13.4 14.9 12 14.9C10.6 14.9 9.5 14.4 9.5 13.1" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>`
+  "Razonamiento": `<svg viewBox="0 0 24 24" fill="none"><circle cx="6" cy="8" r="2.4" stroke="currentColor" stroke-width="2.2"/><circle cx="18" cy="8" r="2.4" stroke="currentColor" stroke-width="2.2"/><circle cx="12" cy="18" r="2.4" stroke="currentColor" stroke-width="2.2"/><path d="M8.1 9.3L10 16M15.9 9.3L14 16M8.4 8H15.6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>`,
+  "Escritura": `<svg viewBox="0 0 24 24" fill="none"><path d="M4 20L4.8 16.4L15 6.2C15.6 5.6 16.6 5.6 17.2 6.2L17.8 6.8C18.4 7.4 18.4 8.4 17.8 9L7.6 19.2L4 20Z" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/><path d="M13.5 7.7L16.3 10.5" stroke="currentColor" stroke-width="2.2"/></svg>`,
+  "Código": `<svg viewBox="0 0 24 24" fill="none"><path d="M9 7L4 12L9 17M15 7L20 12L15 17" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+  "Estructura": `<svg viewBox="0 0 24 24" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="2.2"/><rect x="13" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="2.2"/><rect x="4" y="13" width="7" height="7" rx="1" stroke="currentColor" stroke-width="2.2"/><rect x="13" y="13" width="7" height="7" rx="1" stroke="currentColor" stroke-width="2.2"/></svg>`,
+  "Decisiones": `<svg viewBox="0 0 24 24" fill="none"><path d="M5 6H9L15 18H19M9 18H5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><path d="M15 6H19" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><circle cx="5" cy="6" r="1.6" fill="currentColor"/><circle cx="5" cy="18" r="1.6" fill="currentColor"/><circle cx="19" cy="6" r="1.6" fill="currentColor"/><circle cx="19" cy="18" r="1.6" fill="currentColor"/></svg>`,
+  "Marketing": `<svg viewBox="0 0 24 24" fill="none"><path d="M4 11V15L7 15.6V17.5C7 18.3 7.7 19 8.5 19C9.3 19 10 18.3 10 17.5V16.1L15 17V9L4 11Z" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/><path d="M15 9V17C17 17 19 15.2 19 13C19 10.8 17 9 15 9Z" stroke="currentColor" stroke-width="2.2"/></svg>`,
+  "Contenido": `<svg viewBox="0 0 24 24" fill="none"><rect x="4" y="5" width="16" height="14" rx="1.5" stroke="currentColor" stroke-width="2.2"/><path d="M10 9L15 12L10 15V9Z" fill="currentColor"/></svg>`,
+  "Negocio": `<svg viewBox="0 0 24 24" fill="none"><rect x="4" y="8" width="16" height="11" rx="1.5" stroke="currentColor" stroke-width="2.2"/><path d="M8 8V6C8 5.4 8.4 5 9 5H15C15.6 5 16 5.4 16 6V8" stroke="currentColor" stroke-width="2.2"/><path d="M4 13H20" stroke="currentColor" stroke-width="2.2"/></svg>`,
+  "Productividad": `<svg viewBox="0 0 24 24" fill="none"><rect x="5" y="4" width="14" height="17" rx="1.5" stroke="currentColor" stroke-width="2.2"/><path d="M8.5 10L10.5 12L14.5 8" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M8.5 16H14.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>`,
+  "Aprendizaje": `<svg viewBox="0 0 24 24" fill="none"><path d="M12 5L21 9L12 13L3 9L12 5Z" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/><path d="M7 11V16C7 17 9 18.5 12 18.5C15 18.5 17 17 17 16V11" stroke="currentColor" stroke-width="2.2"/></svg>`,
+  "Carrera": `<svg viewBox="0 0 24 24" fill="none"><path d="M12 3C14 5 15.5 8 15.5 11.5C15.5 14 14.5 16 12 19C9.5 16 8.5 14 8.5 11.5C8.5 8 10 5 12 3Z" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/><circle cx="12" cy="10.5" r="1.6" stroke="currentColor" stroke-width="2"/><path d="M9 17L6.5 21M15 17L17.5 21" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>`,
+  "Finanzas": `<svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="2.2"/><path d="M12 7.5V16.5M14.5 9.3C14.5 8 13.4 7.5 12 7.5C10.5 7.5 9.5 8.2 9.5 9.3C9.5 11.7 14.5 10.7 14.5 13.1C14.5 14.2 13.4 14.9 12 14.9C10.6 14.9 9.5 14.4 9.5 13.1" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>`
+};
+
+const catalogGradients = {
+  "Razonamiento": "linear-gradient(137deg, #eafffa 0%, #4ee6cb 45%, #12b3a0 100%)",
+  "Escritura": "linear-gradient(137deg, #f1efff 0%, #8b7fff 45%, #5b3df0 100%)",
+  "Código": "linear-gradient(137deg, #fff0ea 0%, #ff7a52 45%, #d94a22 100%)",
+  "Estructura": "linear-gradient(137deg, #eaf7ff 0%, #5ec8ff 45%, #1f8fe0 100%)",
+  "Decisiones": "linear-gradient(137deg, #fff6e6 0%, #f2c46d 45%, #d99b2b 100%)",
+  "Marketing": "linear-gradient(137deg, #ffeaf4 0%, #ff7ab8 45%, #e63e8c 100%)",
+  "Contenido": "linear-gradient(137deg, #f5ffe6 0%, #b6e05e 45%, #82b52c 100%)",
+  "Negocio": "linear-gradient(137deg, #ffecec 0%, #ff6b6b 45%, #e0302f 100%)",
+  "Productividad": "linear-gradient(137deg, #eefaff 0%, #7dd3fc 45%, #2ba8e0 100%)",
+  "Aprendizaje": "linear-gradient(137deg, #f4f1ff 0%, #c4b5fd 45%, #8a6ff0 100%)",
+  "Carrera": "linear-gradient(137deg, #fff8e6 0%, #ffd166 45%, #e0a017 100%)",
+  "Finanzas": "linear-gradient(137deg, #eafff6 0%, #6ee7b7 45%, #2bb87e 100%)"
+};
+
+const catalogDescriptions = {
+  "Razonamiento": "Prompts que hacen pensar a la IA paso a paso antes de responder.",
+  "Escritura": "Estilo, tono y voz bajo control en cada texto que generes.",
+  "Código": "De la auditoría a la depuración, sin perder ni una línea.",
+  "Estructura": "Datos limpios y formatos que se integran con cualquier sistema.",
+  "Decisiones": "Comparativas y matrices para decidir con criterio, no con intuición.",
+  "Marketing": "Estrategia, copy y posicionamiento que sí generan resultados.",
+  "Contenido": "Guiones, calendarios y piezas listas para publicar hoy.",
+  "Negocio": "Respuestas, propuestas y análisis para mover tu negocio.",
+  "Productividad": "Actas, prioridades y orden para el caos del día a día.",
+  "Aprendizaje": "Tutores y repasos que se adaptan a lo que ya sabes.",
+  "Carrera": "CV, entrevistas y negociación para el siguiente paso.",
+  "Finanzas": "Presupuestos claros a partir de tus gastos reales."
 };
 
 const catalogGrid = document.getElementById('catalogGrid');
-categories.filter(c => c !== "Todos").forEach(cat => {
+categories.filter(c => c !== "Todos").forEach((cat, i) => {
   const count = specimens.filter(s => s.category === cat).length;
-  const card = document.createElement('div');
-  card.className = 'catalog-card reveal';
-  card.style.setProperty('--accent', categoryColors[cat]);
-  card.innerHTML = `
-    <div class="catalog-icon">${catalogIcons[cat] || ''}</div>
-    <div class="catalog-name">${cat}</div>
-    <div class="catalog-count">${count} prompt${count === 1 ? '' : 's'}</div>
+  const gradient = catalogGradients[cat];
+
+  const wrap = document.createElement('div');
+  wrap.className = 'glow-card-wrap reveal';
+  wrap.style.transitionDelay = `${(i % 6) * 90}ms`;
+
+  wrap.innerHTML = `
+    <div class="glow-bg" style="background:${gradient};"></div>
+    <div class="glow-card" style="background:linear-gradient(#1a1a1c,#1a1a1c) padding-box, ${gradient} border-box;">
+      <div class="glow-card-inner">
+        <div>
+          <div class="glow-icon">${catalogIcons[cat] || ''}</div>
+          <div class="glow-title">${cat}</div>
+          <div class="glow-desc">${catalogDescriptions[cat] || ''}</div>
+        </div>
+        <div class="glow-count">${count} prompt${count === 1 ? '' : 's'}</div>
+      </div>
+    </div>
   `;
-  card.addEventListener('click', () => {
+  wrap.addEventListener('click', () => {
     selectCategory(cat);
     document.getElementById('archive').scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
-  catalogGrid.appendChild(card);
+  catalogGrid.appendChild(wrap);
 });
 
 searchInput.addEventListener('input', (e) => {
