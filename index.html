@@ -218,6 +218,19 @@
   .copy-all-btn:hover{ filter:brightness(1.1); }
   .copy-all-btn.copied{ background:var(--ghost); }
 
+  .back-to-top{
+    position:fixed; right:32px; bottom:32px; z-index:90;
+    width:46px; height:46px; border-radius:50%;
+    background:var(--depth); border:1px solid var(--line);
+    color:var(--ghost); cursor:pointer;
+    display:flex; align-items:center; justify-content:center;
+    opacity:0; transform:translateY(12px); pointer-events:none;
+    transition:opacity .3s ease, transform .3s ease, border-color .25s ease, background .25s ease;
+  }
+  .back-to-top.show{ opacity:1; transform:translateY(0); pointer-events:auto; }
+  .back-to-top:hover{ background:var(--teal); color:var(--void); border-color:var(--teal); }
+  @media (max-width:640px){ .back-to-top{ right:20px; bottom:20px; width:42px; height:42px; } }
+
   .filters{
     display:flex; flex-wrap:wrap; gap:10px; margin-bottom:40px;
   }
@@ -634,6 +647,12 @@
   </a>
   <div class="footer-note">COPIA, ADAPTA, MEJORA</div>
 </footer>
+
+<button class="back-to-top" id="backToTop" type="button" aria-label="Volver arriba">
+  <svg viewBox="0 0 20 20" width="18" height="18">
+    <path d="M10 15V5M10 5L5 10M10 5L15 10" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+</button>
 
 <div class="modal-backdrop" id="modalBackdrop">
   <div class="modal" id="modal">
@@ -1062,6 +1081,17 @@ window.addEventListener('keydown', (e) => {
       document.getElementById('searchInput').focus();
     }
   }
+});
+
+/* ============ botón flotante: volver arriba ============ */
+const backToTop = document.getElementById('backToTop');
+const heroSection = document.querySelector('.hero');
+window.addEventListener('scroll', () => {
+  const threshold = heroSection ? heroSection.offsetHeight * 0.9 : window.innerHeight * 0.9;
+  backToTop.classList.toggle('show', window.scrollY > threshold);
+});
+backToTop.addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
 /* ============ render filters + búsqueda ============ */
