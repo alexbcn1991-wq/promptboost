@@ -1,0 +1,1154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PromptBoost — Prompts para Claude, Gemini, ChatGPT y Grok</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;800;900&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --void:#050711;
+    --depth:#0b0e1c;
+    --surface:#10142a;
+    --surface-2:#161b38;
+    --teal:#4ee6cb;
+    --violet:#8b7fff;
+    --plasma:#ff7a52;
+    --ghost:#e8ecf7;
+    --mist:#8890b0;
+    --line: rgba(232,236,247,0.09);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--void);
+    color:var(--ghost);
+    font-family:'Inter', sans-serif;
+    overflow-x:hidden;
+    cursor:none;
+  }
+  ::selection{ background:var(--violet); color:var(--void); }
+
+  /* ---------- custom cursor ---------- */
+  #cursor-dot, #cursor-ring{
+    position:fixed; top:0; left:0; pointer-events:none; z-index:9999;
+    transform:translate(-50%,-50%);
+  }
+  #cursor-dot{
+    width:6px; height:6px; border-radius:50%;
+    background:var(--teal);
+    box-shadow:0 0 8px var(--teal), 0 0 16px var(--teal);
+    transition:transform .12s ease;
+  }
+  #cursor-ring{
+    width:34px; height:34px; border-radius:50%;
+    border:1px solid rgba(78,230,203,0.5);
+    transition:width .25s ease, height .25s ease, border-radius .25s ease, border-color .25s ease, transform .05s linear;
+  }
+  #cursor-ring.hover{
+    width:14px; height:14px;
+    border-radius:4px;
+    border-color:var(--plasma);
+    transform:translate(-50%,-50%) rotate(45deg);
+  }
+  @media (hover:none){ #cursor-dot,#cursor-ring{display:none;} body{cursor:auto;} }
+
+  /* ---------- background canvas + ecosystem ---------- */
+  #particle-field{
+    position:fixed; inset:0; z-index:0; opacity:0.85;
+  }
+  .ecosystem{
+    position:fixed; inset:0; z-index:0; overflow:hidden; pointer-events:none;
+  }
+  .blob{
+    position:absolute; border-radius:50%;
+    filter:blur(60px);
+    opacity:0.35;
+    will-change:transform;
+  }
+  .blob-1{ width:520px; height:520px; top:-10%; left:-8%;
+    background:radial-gradient(circle at 30% 30%, var(--violet), transparent 70%); }
+  .blob-2{ width:460px; height:460px; bottom:-15%; right:-10%;
+    background:radial-gradient(circle at 60% 40%, var(--teal), transparent 70%); }
+  .blob-3{ width:340px; height:340px; top:40%; right:15%;
+    background:radial-gradient(circle at 50% 50%, var(--plasma), transparent 70%);
+    opacity:0.18; }
+
+  .grain{
+    position:fixed; inset:0; z-index:1; pointer-events:none;
+    opacity:0.035; mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  .vignette{
+    position:fixed; inset:0; z-index:1; pointer-events:none;
+    background:radial-gradient(ellipse at center, transparent 40%, rgba(5,7,17,0.75) 100%);
+  }
+
+  main{ position:relative; z-index:2; }
+
+  /* ---------- nav ---------- */
+  nav{
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    display:flex; justify-content:space-between; align-items:center;
+    padding:28px 6vw;
+    mix-blend-mode:difference;
+  }
+  .brand{
+    font-family:'JetBrains Mono', monospace; font-size:13px; letter-spacing:0.15em;
+    color:var(--ghost); text-transform:uppercase;
+  }
+  .brand span{ color:var(--teal); }
+  .nav-status{
+    font-family:'JetBrains Mono', monospace; font-size:11px; color:var(--mist);
+    letter-spacing:0.1em; display:flex; align-items:center; gap:8px;
+  }
+  .pulse-dot{
+    width:6px; height:6px; border-radius:50%; background:var(--teal);
+    box-shadow:0 0 6px var(--teal);
+    animation:pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse{ 0%,100%{opacity:1;} 50%{opacity:0.25;} }
+
+  /* ---------- hero ---------- */
+  .hero{
+    min-height:100vh; display:flex; flex-direction:column; justify-content:center;
+    padding:0 6vw; position:relative;
+  }
+  .eyebrow{
+    font-family:'JetBrains Mono', monospace; font-size:12px; letter-spacing:0.25em;
+    color:var(--teal); text-transform:uppercase; margin-bottom:24px;
+    display:flex; align-items:center; gap:12px;
+  }
+  .eyebrow::before{
+    content:''; width:32px; height:1px; background:var(--teal);
+  }
+  h1.display{
+    font-family:'Unbounded', sans-serif; font-weight:900;
+    font-size:clamp(2.6rem, 7.5vw, 6.4rem);
+    line-height:0.98; letter-spacing:-0.02em;
+    max-width:15ch;
+  }
+  h1.display .accent{
+    background:linear-gradient(120deg, var(--teal), var(--violet));
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+  .hero-sub{
+    margin-top:32px; max-width:52ch;
+    font-size:clamp(1rem, 1.4vw, 1.2rem); color:var(--mist); line-height:1.65;
+  }
+  .hero-sub strong{ color:var(--ghost); font-weight:600; }
+  .scroll-cue{
+    margin-top:64px; display:inline-flex; align-items:center; gap:14px;
+    font-family:'JetBrains Mono', monospace; font-size:12px; color:var(--mist);
+    letter-spacing:0.1em; width:fit-content;
+  }
+  .scroll-cue .line{
+    width:1px; height:36px; background:linear-gradient(var(--teal), transparent);
+    animation:drop 1.8s ease-in-out infinite;
+  }
+  @keyframes drop{ 0%{transform:scaleY(0); transform-origin:top;} 50%{transform:scaleY(1); transform-origin:top;} 51%{transform-origin:bottom;} 100%{transform:scaleY(0); transform-origin:bottom;} }
+
+  .compat-row{
+    margin-top:36px; display:flex; align-items:center; gap:10px; flex-wrap:wrap;
+  }
+  .compat-label{
+    font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.08em;
+    color:var(--mist); text-transform:uppercase; margin-right:4px;
+  }
+  .compat-chip{
+    font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.04em;
+    color:var(--ghost); border:1px solid var(--line); background:var(--depth);
+    padding:6px 12px; border-radius:100px;
+  }
+
+  /* ---------- section shell ---------- */
+  section{ padding:min(14vw,160px) 6vw; position:relative; }
+  .section-head{ max-width:64ch; margin-bottom:48px; }
+  .section-head .eyebrow{ color:var(--violet); }
+  .section-head .eyebrow::before{ background:var(--violet); }
+  h2.display{
+    font-family:'Unbounded', sans-serif; font-weight:800;
+    font-size:clamp(1.7rem, 3.4vw, 2.6rem); line-height:1.08; letter-spacing:-0.01em;
+  }
+  .section-head p{ margin-top:20px; color:var(--mist); font-size:1.05rem; line-height:1.7; max-width:56ch; }
+
+  /* ---------- filter tabs ---------- */
+  .filters{
+    display:flex; flex-wrap:wrap; gap:10px; margin-bottom:40px;
+  }
+  .filter-btn{
+    font-family:'JetBrains Mono', monospace; font-size:12px; letter-spacing:0.06em;
+    color:var(--mist); background:var(--depth); border:1px solid var(--line);
+    padding:10px 18px; cursor:pointer; transition:all .25s ease;
+    text-transform:uppercase;
+  }
+  .filter-btn:hover{ color:var(--ghost); border-color:rgba(78,230,203,0.35); }
+  .filter-btn.active{
+    color:var(--void); background:var(--teal); border-color:var(--teal); font-weight:600;
+  }
+
+  /* ---------- prompt grid ---------- */
+  .specimen-grid{
+    display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr));
+    gap:1px; background:var(--line);
+    border:1px solid var(--line);
+  }
+  .specimen{
+    background:var(--depth);
+    padding:32px 28px 28px;
+    position:relative;
+    transform-style:preserve-3d;
+    transition:transform .35s cubic-bezier(.2,.8,.2,1), background .35s ease, opacity .3s ease;
+    cursor:pointer;
+  }
+  .specimen.hidden{ display:none; }
+  .specimen:hover{ background:var(--surface); }
+  .specimen::before{
+    content:''; position:absolute; inset:14px; border:1px solid transparent;
+    transition:border-color .3s ease; pointer-events:none;
+  }
+  .specimen:hover::before{ border-color:rgba(78,230,203,0.25); }
+  .spc-code{
+    font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.1em;
+    color:var(--teal); display:flex; justify-content:space-between; align-items:center;
+    margin-bottom:20px;
+  }
+  .spc-code .tag{ color:var(--mist); }
+  .spc-title{
+    font-family:'Unbounded', sans-serif; font-weight:600; font-size:1.18rem;
+    line-height:1.3; margin-bottom:12px;
+  }
+  .spc-desc{ color:var(--mist); font-size:0.92rem; line-height:1.6; margin-bottom:22px; }
+  .spc-actions{
+    display:flex; align-items:center; justify-content:space-between; gap:12px;
+  }
+  .spc-open{
+    font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.08em;
+    color:var(--ghost); display:inline-flex; align-items:center; gap:8px;
+    text-transform:uppercase;
+  }
+  .spc-open .arrow{ transition:transform .3s ease; }
+  .specimen:hover .spc-open .arrow{ transform:translateX(4px); }
+  .quick-copy{
+    font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.06em;
+    text-transform:uppercase; color:var(--teal); background:none;
+    border:1px solid rgba(78,230,203,0.4); padding:8px 14px; cursor:pointer;
+    transition:all .2s ease; position:relative; z-index:3;
+  }
+  .quick-copy:hover{ background:var(--teal); color:var(--void); }
+  .quick-copy.copied{ background:var(--plasma); border-color:var(--plasma); color:var(--void); }
+
+  /* corner brackets, sci-fi targeting look */
+  .corner{ position:absolute; width:10px; height:10px; opacity:0; transition:opacity .3s ease; }
+  .specimen:hover .corner{ opacity:0.8; }
+  .corner.tl{ top:10px; left:10px; border-top:1px solid var(--teal); border-left:1px solid var(--teal); }
+  .corner.tr{ top:10px; right:10px; border-top:1px solid var(--teal); border-right:1px solid var(--teal); }
+  .corner.bl{ bottom:10px; left:10px; border-bottom:1px solid var(--teal); border-left:1px solid var(--teal); }
+  .corner.br{ bottom:10px; right:10px; border-bottom:1px solid var(--teal); border-right:1px solid var(--teal); }
+
+  /* ---------- reveal animation ---------- */
+  .reveal{ opacity:0; transform:translateY(28px); transition:opacity .8s ease, transform .8s cubic-bezier(.2,.8,.2,1); }
+  .reveal.in{ opacity:1; transform:translateY(0); }
+
+  /* ---------- principles ---------- */
+  .principles{
+    display:grid; grid-template-columns:repeat(auto-fit, minmax(240px,1fr)); gap:40px;
+  }
+  .principle .num{
+    font-family:'JetBrains Mono', monospace; color:var(--violet); font-size:12px; letter-spacing:0.1em;
+  }
+  .principle h3{
+    font-family:'Unbounded', sans-serif; font-size:1.05rem; margin:14px 0 10px; font-weight:600;
+  }
+  .principle p{ color:var(--mist); font-size:0.92rem; line-height:1.65; }
+
+  /* ---------- footer ---------- */
+  footer{
+    padding:60px 6vw 48px; border-top:1px solid var(--line);
+    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:20px;
+  }
+  footer .brand{ opacity:0.6; }
+  .footer-note{ font-family:'JetBrains Mono', monospace; font-size:11px; color:var(--mist); letter-spacing:0.06em; }
+
+  /* ---------- prompt modal ---------- */
+  .modal-backdrop{
+    position:fixed; inset:0; z-index:1000; background:rgba(5,7,17,0.82);
+    backdrop-filter:blur(6px);
+    display:flex; align-items:center; justify-content:center; padding:5vw;
+    opacity:0; pointer-events:none; transition:opacity .35s ease;
+  }
+  .modal-backdrop.open{ opacity:1; pointer-events:auto; }
+  .modal{
+    width:min(720px, 100%); max-height:82vh; overflow:auto;
+    background:var(--surface); border:1px solid rgba(78,230,203,0.25);
+    position:relative; padding:44px 40px 36px;
+    transform:scale(0.94) translateY(16px); transition:transform .4s cubic-bezier(.2,.8,.2,1);
+  }
+  .modal-backdrop.open .modal{ transform:scale(1) translateY(0); }
+  .modal .corner{ opacity:0.9; width:14px; height:14px; }
+  .modal-close{
+    position:absolute; top:22px; right:24px;
+    font-family:'JetBrains Mono', monospace; font-size:11px; color:var(--mist);
+    letter-spacing:0.1em; background:none; border:none; cursor:pointer;
+  }
+  .modal-close:hover{ color:var(--plasma); }
+  .modal-code{
+    font-family:'JetBrains Mono', monospace; font-size:11px; color:var(--teal); letter-spacing:0.1em; margin-bottom:18px;
+  }
+  .modal h3{
+    font-family:'Unbounded', sans-serif; font-size:1.5rem; margin-bottom:16px; font-weight:700;
+  }
+  .modal .modal-desc{ color:var(--mist); font-size:0.95rem; line-height:1.65; margin-bottom:26px; }
+  .prompt-box{
+    background:var(--depth); border:1px solid var(--line); padding:22px 22px;
+    font-family:'JetBrains Mono', monospace; font-size:0.87rem; line-height:1.75;
+    color:var(--ghost); white-space:pre-wrap; position:relative;
+  }
+  .copy-btn{
+    margin-top:20px; font-family:'JetBrains Mono', monospace; font-size:11px;
+    letter-spacing:0.1em; text-transform:uppercase; color:var(--void);
+    background:var(--teal); border:none; padding:12px 22px; cursor:pointer;
+    display:inline-flex; align-items:center; gap:10px; transition:background .25s ease;
+  }
+  .copy-btn:hover{ background:var(--ghost); }
+  .copy-btn.copied{ background:var(--plasma); }
+
+  /* ---------- launch scene: rocket at full throttle ---------- */
+  .hero{ display:flex; flex-direction:row; align-items:center; justify-content:space-between; gap:4vw; }
+  .hero-content{ position:relative; z-index:2; flex:1 1 auto; }
+  .launch-scene{
+    position:relative; z-index:1; flex:0 0 auto;
+    width:min(38vw, 420px); height:min(58vw, 540px);
+    pointer-events:none; overflow:visible;
+  }
+  .rocket-tilt{
+    position:absolute; top:50%; left:50%;
+    width:150px;
+    transform:translate(-50%,-50%) rotate(28deg);
+  }
+  .rocket-bob{ will-change:transform; }
+  .rocket-svg{ width:100%; display:block; overflow:visible; position:relative; z-index:2; }
+  .flame-main{ transform-origin:60px 222px; animation:flameFlicker 0.22s ease-in-out infinite alternate; }
+  .flame-side{ transform-origin:60px 222px; animation:flameFlicker 0.17s ease-in-out infinite alternate-reverse; }
+  @keyframes flameFlicker{ 0%{ transform:scaleY(0.85) scaleX(0.92); opacity:0.85; } 100%{ transform:scaleY(1.28) scaleX(1.1); opacity:1; } }
+
+  .streak{
+    position:absolute; top:0; left:50%; width:2px; height:65%;
+    background:linear-gradient(to bottom, transparent, rgba(232,236,247,0.5), transparent);
+    opacity:0.7; z-index:1; pointer-events:none;
+  }
+  .streak-a{ transform:translate(-130%, -14%) scaleY(0.85); }
+  .streak-b{ transform:translate(70%, -8%) scaleY(1.1); }
+
+  .puff{
+    position:absolute; border-radius:50%; pointer-events:none; z-index:0;
+    background:radial-gradient(circle, rgba(255,122,82,0.85), rgba(139,127,255,0.25) 55%, transparent 75%);
+    animation:puffLife 0.9s ease-out forwards;
+  }
+  @keyframes puffLife{
+    0%{ opacity:0.85; transform:translate(0,0) scale(0.4); }
+    100%{ opacity:0; transform:translate(var(--dx), var(--dy)) scale(2.2); }
+  }
+
+  @media (max-width:900px){
+    .hero{ flex-direction:column; justify-content:center; }
+    .launch-scene{ width:min(64vw, 340px); height:min(84vw, 400px); margin-top:36px; opacity:0.9; }
+  }
+  @media (max-width:640px){
+    .specimen-grid{ grid-template-columns:1fr; }
+    section{ padding:96px 6vw; }
+    .launch-scene{ width:min(74vw, 280px); height:min(94vw, 320px); }
+  }
+</style>
+</head>
+<body>
+
+<div id="cursor-dot"></div>
+<div id="cursor-ring"></div>
+
+<canvas id="particle-field"></canvas>
+<div class="ecosystem">
+  <div class="blob blob-1" data-depth="0.02"></div>
+  <div class="blob blob-2" data-depth="0.035"></div>
+  <div class="blob blob-3" data-depth="0.06"></div>
+</div>
+<div class="grain"></div>
+<div class="vignette"></div>
+
+<nav>
+  <div class="brand">PROMPT<span>·</span>BOOST</div>
+  <div class="nav-status"><span class="pulse-dot"></span> 27 PROMPTS LISTOS PARA USAR</div>
+</nav>
+
+<main>
+  <section class="hero">
+    <div class="hero-content">
+      <div class="eyebrow">Guía práctica · Prompt engineering multi-IA</div>
+      <h1 class="display">Prompts que puedes <span class="accent">copiar y usar hoy</span></h1>
+      <p class="hero-sub">
+        27 estructuras de prompt probadas, organizadas por lo que hacen: razonar mejor, escribir con un estilo concreto,
+        hacer marketing y contenido, trabajar con código, tomar decisiones, ser más productivo o aprender más rápido.
+        Funcionan igual de bien en <strong>Claude, Gemini, ChatGPT y Grok</strong>
+        — empezamos por estos cuatro e iremos sumando más. Elige un prompt, copia el texto y sustituye lo que va
+        <strong>entre corchetes [ ]</strong> por tu caso real.
+      </p>
+      <div class="scroll-cue"><span class="line"></span> VER LA BIBLIOTECA</div>
+      <div class="compat-row">
+        <span class="compat-label">Compatible con</span>
+        <span class="compat-chip">Claude</span>
+        <span class="compat-chip">Gemini</span>
+        <span class="compat-chip">ChatGPT</span>
+        <span class="compat-chip">Grok</span>
+      </div>
+    </div>
+
+    <div class="launch-scene" aria-hidden="true">
+      <div class="rocket-tilt" id="rocketTilt">
+        <div class="rocket-bob" id="rocketBob">
+          <div class="streak streak-a"></div>
+          <div class="streak streak-b"></div>
+          <svg class="rocket-svg" viewBox="0 0 120 260">
+          <defs>
+            <linearGradient id="bodyGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#9aa1bd"/>
+              <stop offset="45%" stop-color="#e8ecf7"/>
+              <stop offset="55%" stop-color="#e8ecf7"/>
+              <stop offset="100%" stop-color="#7c839f"/>
+            </linearGradient>
+            <linearGradient id="stripeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#4ee6cb"/>
+              <stop offset="100%" stop-color="#8b7fff"/>
+            </linearGradient>
+            <linearGradient id="skirtGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#4a5178"/>
+              <stop offset="50%" stop-color="#7c839f"/>
+              <stop offset="100%" stop-color="#3a3f5c"/>
+            </linearGradient>
+            <radialGradient id="flameGrad" cx="50%" cy="0%" r="85%">
+              <stop offset="0%" stop-color="#fff8ef"/>
+              <stop offset="30%" stop-color="#ffb27a"/>
+              <stop offset="65%" stop-color="#ff7a52"/>
+              <stop offset="100%" stop-color="#ff7a52" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
+
+          <!-- carenado / nose cone -->
+          <path d="M60 4 C46 22 40 44 40 66 L80 66 C80 44 74 22 60 4 Z" fill="url(#bodyGrad)"/>
+          <path d="M60 4 C55 20 51 40 50.5 66 L60 66 Z" fill="#ffffff" opacity="0.18"/>
+
+          <!-- cuerpo principal -->
+          <rect x="36" y="66" width="48" height="128" fill="url(#bodyGrad)"/>
+          <rect x="36" y="92" width="48" height="14" fill="url(#stripeGrad)"/>
+          <line x1="36" y1="80" x2="84" y2="80" stroke="#0b0e1c" stroke-width="1" opacity="0.16"/>
+          <line x1="36" y1="176" x2="84" y2="176" stroke="#0b0e1c" stroke-width="1" opacity="0.16"/>
+          <line x1="36" y1="186" x2="84" y2="186" stroke="#0b0e1c" stroke-width="1" opacity="0.16"/>
+
+          <!-- placa de insignias: modelos de IA -->
+          <rect x="38" y="114" width="44" height="52" rx="7" fill="#0b0e1c" opacity="0.5"/>
+          <circle cx="52" cy="129" r="8.5" fill="#4ee6cb"/>
+          <text x="52" y="132.5" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="700" fill="#0b0e1c" text-anchor="middle">C</text>
+          <circle cx="68" cy="129" r="8.5" fill="#8b7fff"/>
+          <text x="68" y="132.5" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="700" fill="#0b0e1c" text-anchor="middle">G</text>
+          <circle cx="52" cy="150" r="8.5" fill="#ff7a52"/>
+          <text x="52" y="153.5" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="700" fill="#0b0e1c" text-anchor="middle">X</text>
+          <circle cx="68" cy="150" r="8.5" fill="#e8ecf7"/>
+          <text x="68" y="153.5" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="700" fill="#0b0e1c" text-anchor="middle">P</text>
+
+          <!-- patas de aterrizaje plegadas -->
+          <path d="M36 178 L20 204 L30 204 L42 182 Z" fill="#5a6288"/>
+          <path d="M84 178 L100 204 L90 204 L78 182 Z" fill="#5a6288"/>
+
+          <!-- falda de motores -->
+          <path d="M34 194 L20 224 L100 224 L86 194 Z" fill="url(#skirtGrad)"/>
+
+          <!-- tres motores -->
+          <circle cx="46" cy="221" r="8" fill="#10142a" stroke="#4ee6cb" stroke-width="1" opacity="0.9"/>
+          <circle cx="60" cy="225" r="10" fill="#10142a" stroke="#8b7fff" stroke-width="1.1" opacity="0.9"/>
+          <circle cx="74" cy="221" r="8" fill="#10142a" stroke="#4ee6cb" stroke-width="1" opacity="0.9"/>
+
+          <!-- llamas -->
+          <g class="flame flame-side">
+            <ellipse cx="46" cy="238" rx="8.5" ry="19" fill="url(#flameGrad)"/>
+          </g>
+          <g class="flame flame-main">
+            <ellipse cx="60" cy="246" rx="12.5" ry="29" fill="url(#flameGrad)"/>
+          </g>
+          <g class="flame flame-side">
+            <ellipse cx="74" cy="238" rx="8.5" ry="19" fill="url(#flameGrad)"/>
+          </g>
+        </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="archive">
+    <div class="section-head reveal">
+      <div class="eyebrow">Biblioteca</div>
+      <h2 class="display">Elige un prompt</h2>
+      <p>Filtra por categoría o mira todos. Cada tarjeta tiene un botón para copiar directo, o puedes abrirla para ver el prompt completo con contexto.</p>
+    </div>
+
+    <div class="filters" id="filters"></div>
+    <div class="specimen-grid" id="grid"></div>
+  </section>
+
+  <section id="principles">
+    <div class="section-head reveal">
+      <div class="eyebrow">Guía de uso</div>
+      <h2 class="display">Cómo escribir tus propios prompts</h2>
+      <p>Principios que se repiten en cada prompt de esta biblioteca, útiles cuando diseñes los tuyos desde cero.</p>
+    </div>
+    <div class="principles">
+      <div class="principle reveal">
+        <div class="num">01</div>
+        <h3>Contexto antes que instrucción</h3>
+        <p>La IA razona mejor cuando entiende el "por qué" antes del "qué". Da contexto, restricciones y audiencia antes de pedir la tarea.</p>
+      </div>
+      <div class="principle reveal">
+        <div class="num">02</div>
+        <h3>Pide el proceso, no solo el resultado</h3>
+        <p>Pedir que razone paso a paso, o que muestre su plan antes de ejecutar, mejora la calidad incluso en tareas aparentemente simples.</p>
+      </div>
+      <div class="principle reveal">
+        <div class="num">03</div>
+        <h3>Ejemplos contrastantes, no solo positivos</h3>
+        <p>Mostrar qué NO quieres es tan informativo como mostrar qué sí. Los ejemplos negativos delimitan el espacio de soluciones.</p>
+      </div>
+      <div class="principle reveal">
+        <div class="num">04</div>
+        <h3>Diseña el formato de salida</h3>
+        <p>Pedir estructura explícita (XML, listas, tablas) reduce la ambigüedad y facilita reutilizar la respuesta en otro sistema.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="brand">PROMPT · BOOST</div>
+  <div class="footer-note">COPIA, ADAPTA, MEJORA</div>
+</footer>
+
+<div class="modal-backdrop" id="modalBackdrop">
+  <div class="modal" id="modal">
+    <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+    <button class="modal-close" id="modalClose">CERRAR ✕</button>
+    <div class="modal-code" id="modalCode"></div>
+    <h3 id="modalTitle"></h3>
+    <p class="modal-desc" id="modalDesc"></p>
+    <div class="prompt-box" id="modalPrompt"></div>
+    <button class="copy-btn" id="copyBtn">Copiar prompt</button>
+  </div>
+</div>
+
+<script>
+/* ============ DATA: prompts ============ */
+const specimens = [
+  {
+    code: "P01", tag: "Razonamiento", category: "Razonamiento",
+    title: "Cadena de razonamiento explícita",
+    desc: "Obliga a la IA a exponer su proceso de pensamiento antes de dar la respuesta final, reduciendo errores en tareas complejas.",
+    prompt: `Antes de responder, piensa paso a paso dentro de una sección <razonamiento>. Considera al menos dos enfoques distintos, evalúa sus ventajas y desventajas, y elige el mejor antes de escribir la <respuesta_final>.
+
+Tarea: [describe aquí tu problema o pregunta]
+
+Estructura tu salida así:
+<razonamiento>...</razonamiento>
+<respuesta_final>...</respuesta_final>`
+  },
+  {
+    code: "P02", tag: "Estilo", category: "Escritura",
+    title: "Rol + contexto + restricciones",
+    desc: "Define con precisión qué rol adopta la IA en esta conversación, para quién escribe y qué límites debe respetar.",
+    prompt: `Actúa como [rol específico, ej. "editor técnico senior con 10 años en documentación de APIs"].
+
+Tu audiencia es: [describe a quién va dirigido el contenido].
+
+Restricciones:
+- Tono: [ej. directo, sin jerga innecesaria]
+- Longitud máxima: [ej. 400 palabras]
+- Evita: [ej. afirmaciones sin evidencia, adjetivos vacíos]
+
+Tarea: [tu petición concreta]`
+  },
+  {
+    code: "P03", tag: "Ejemplos", category: "Escritura",
+    title: "Few-shot con ejemplos contrastantes",
+    desc: "Muestra pares de ejemplo bueno/malo para delimitar exactamente el estilo o criterio que buscas.",
+    prompt: `Aquí tienes dos ejemplos de la misma tarea, uno que sigue el estilo deseado y otro que no:
+
+BUENO:
+[pega aquí un ejemplo que representa lo que quieres]
+
+EVITAR:
+[pega aquí un ejemplo del error típico o estilo no deseado]
+
+Ahora, usando el mismo criterio del ejemplo "BUENO", realiza esta tarea:
+[tu tarea real]`
+  },
+  {
+    code: "P04", tag: "Iteración", category: "Escritura",
+    title: "Borrador → crítica → refinamiento",
+    desc: "Pide un primer borrador, luego una autocrítica honesta, y finalmente una versión mejorada. Simula tener un editor interno.",
+    prompt: `Vamos a trabajar en tres fases sobre la misma tarea: [describe la tarea].
+
+Fase 1 — Borrador: escribe una primera versión rápida, sin pulir.
+Fase 2 — Crítica: analiza tu propio borrador como lo haría un editor exigente. Señala al menos 3 debilidades concretas.
+Fase 3 — Versión final: reescribe incorporando esas correcciones.
+
+Muestra las tres fases por separado, etiquetadas claramente.`
+  },
+  {
+    code: "P05", tag: "Agentes", category: "Código",
+    title: "Prompt de agente con herramientas",
+    desc: "Estructura para tareas donde la IA debe decidir cuándo y cómo usar herramientas disponibles, en vez de responder directo.",
+    prompt: `Tienes acceso a las siguientes herramientas: [lista de herramientas, ej. búsqueda web, ejecución de código, lectura de archivos].
+
+Antes de usar cualquier herramienta, explica brevemente por qué la necesitas.
+Si una pregunta puede responderse sin herramientas, no las uses.
+Si el resultado de una herramienta es insuficiente, indica qué información falta y qué harías a continuación.
+
+Objetivo: [tu tarea real]`
+  },
+  {
+    code: "P06", tag: "Datos", category: "Estructura",
+    title: "Extracción estructurada en XML",
+    desc: "Fuerza una salida parseable, ideal cuando el resultado se conecta a otro sistema o script.",
+    prompt: `Extrae la siguiente información del texto y devuélvela ÚNICAMENTE en este formato XML, sin texto adicional:
+
+<datos>
+  <campo_1>...</campo_1>
+  <campo_2>...</campo_2>
+  <campo_3>...</campo_3>
+</datos>
+
+Si un campo no aparece en el texto, escribe "no_disponible".
+
+Texto a analizar:
+[pega aquí tu texto]`
+  },
+  {
+    code: "P07", tag: "Simulación", category: "Decisiones",
+    title: "Simulación de escenario con partes interesadas",
+    desc: "Útil para preparar negociaciones, entrevistas o decisiones difíciles simulando distintas perspectivas.",
+    prompt: `Simula una conversación sobre [tema/decisión] entre estas partes:
+1. [Persona/rol A y su postura principal]
+2. [Persona/rol B y su postura principal]
+
+Cada una debe defender su posición con argumentos realistas durante 3 turnos de diálogo.
+Al final, resume los puntos de fricción reales y una posible vía de acuerdo.`
+  },
+  {
+    code: "P08", tag: "Código", category: "Código",
+    title: "Auditoría de código guiada",
+    desc: "En vez de pedir 'revisa este código', dirige la atención de la IA a categorías específicas de riesgo.",
+    prompt: `Audita el siguiente código revisando estas categorías, en este orden:
+1. Errores de lógica o casos límite no manejados
+2. Problemas de seguridad
+3. Legibilidad y nombres poco claros
+4. Oportunidades de simplificación
+
+Para cada hallazgo, indica: línea aproximada, severidad (alta/media/baja) y una sugerencia concreta de corrección.
+
+Código:
+[pega aquí tu código]`
+  },
+  {
+    code: "P09", tag: "Verificación", category: "Razonamiento",
+    title: "Checklist de autoverificación",
+    desc: "Antes de entregar la respuesta final, la IA revisa su propio trabajo contra una lista de criterios explícitos. Reduce errores tontos y omisiones.",
+    prompt: `Resuelve la siguiente tarea: [describe tu tarea].
+
+Antes de dar tu respuesta final, revisa tu propio borrador contra esta checklist y corrige lo que falle:
+- [ ] ¿Responde exactamente lo que se pidió, sin desviarse?
+- [ ] ¿Los datos o cifras mencionados son consistentes entre sí?
+- [ ] ¿Falta algún caso límite evidente?
+- [ ] ¿El formato coincide con lo solicitado?
+
+Muestra primero la checklist marcada, luego la respuesta final ya corregida.`
+  },
+  {
+    code: "P10", tag: "Explicación", category: "Escritura",
+    title: "Explicación en capas de profundidad",
+    desc: "Genera tres niveles de la misma explicación —simple, intermedio, técnico— útil para preparar materiales que sirvan a públicos distintos.",
+    prompt: `Explica el siguiente concepto en tres niveles de profundidad, cada uno en su propia sección:
+
+Nivel 1 — Como si tuviera que explicárselo a alguien sin conocimientos previos (2-3 frases).
+Nivel 2 — Con el detalle que esperaría alguien del sector, sin jerga excesiva (1 párrafo).
+Nivel 3 — Con precisión técnica completa, incluyendo matices y excepciones.
+
+Concepto: [tu concepto o pregunta]`
+  },
+  {
+    code: "P11", tag: "Preguntas", category: "Razonamiento",
+    title: "Interrogatorio previo antes de responder",
+    desc: "En vez de responder de inmediato, la IA primero identifica qué información le falta y pregunta antes de comprometerse con una solución.",
+    prompt: `No respondas todavía. Antes de intentar resolver esto, identifica qué información crítica te falta para dar una buena respuesta y hazme como máximo 4 preguntas.
+
+Una vez te responda, usa esas respuestas para construir la solución final.
+
+Tarea: [describe tu objetivo, aunque esté incompleto o ambiguo]`
+  },
+  {
+    code: "P12", tag: "Síntesis", category: "Escritura",
+    title: "Resumen en pirámide invertida",
+    desc: "Estructura la respuesta de lo más importante a lo más detallado, como una noticia: primero la conclusión, luego el respaldo.",
+    prompt: `Estructura tu respuesta como una pirámide invertida:
+
+1. Conclusión o recomendación en una sola frase.
+2. Los 3 argumentos o datos que más la sustentan, en una lista breve.
+3. Detalle ampliado, matices y excepciones, solo para quien quiera profundizar.
+
+Tema: [tu pregunta o el material a resumir]`
+  },
+  {
+    code: "P13", tag: "Casos límite", category: "Código",
+    title: "Generador de casos límite",
+    desc: "Pide a la IA que ataque tu propia propuesta o diseño buscando activamente dónde se rompe, antes de que lo haga un usuario real.",
+    prompt: `Aquí tienes mi diseño/propuesta: [describe tu diseño, flujo o regla de negocio].
+
+Actúa como un tester adversarial: genera los 6 casos límite o de uso malicioso más probables que podrían romper esto. Para cada uno, explica por qué fallaría y qué cambio evitaría el problema.`
+  },
+  {
+    code: "P14", tag: "Decisión", category: "Decisiones",
+    title: "Matriz de decisión ponderada",
+    desc: "Convierte una decisión difícil en criterios explícitos y ponderados, en vez de una comparación vaga de pros y contras.",
+    prompt: `Tengo que decidir entre estas opciones: [lista tus opciones].
+
+Los criterios que más me importan, en orden de prioridad, son: [lista tus criterios, ej. coste, tiempo, riesgo].
+
+Construye una tabla que puntúe cada opción del 1 al 5 en cada criterio, calcula un total ponderado y recomienda una opción explicando el razonamiento detrás del peso asignado a cada criterio.`
+  },
+  {
+    code: "P15", tag: "Estratega", category: "Marketing",
+    title: "El mejor marketiniano del mercado",
+    desc: "Prompt de rol experto para conseguir estrategias de marketing accionables en vez de consejos genéricos.",
+    prompt: `Actúa como el mejor estratega de marketing del mercado, con experiencia demostrada haciendo crecer marcas en [tu sector, ej. "e-commerce de moda sostenible"].
+
+Mi situación actual:
+- Producto o servicio: [descríbelo]
+- Audiencia objetivo: [descríbela]
+- Presupuesto y canales disponibles: [descríbelos]
+- Objetivo concreto: [ej. "conseguir 100 leads cualificados en 30 días"]
+
+Dame una estrategia priorizada en 3 acciones concretas, ordenadas por impacto esperado frente a esfuerzo. Para cada una, indica el primer paso exacto que daría hoy mismo.`
+  },
+  {
+    code: "P16", tag: "Publicidad", category: "Marketing",
+    title: "Copy publicitario con gancho AIDA",
+    desc: "Genera anuncios estructurados en Atención-Interés-Deseo-Acción, con varias variantes para testear.",
+    prompt: `Escribe 3 variantes de copy publicitario para [producto/servicio], usando la estructura AIDA (Atención, Interés, Deseo, Acción).
+
+Contexto:
+- Audiencia: [describe a quién va dirigido]
+- Canal: [ej. Instagram Ads, Google Ads, email]
+- Tono de marca: [ej. cercano y directo / premium y aspiracional]
+- Longitud máxima: [ej. 40 palabras por variante]
+
+Para cada variante, señala qué emoción o gatillo psicológico usa como gancho principal.`
+  },
+  {
+    code: "P17", tag: "Audiencia", category: "Marketing",
+    title: "Buyer persona detallado",
+    desc: "Construye un perfil de cliente ideal con motivaciones y objeciones reales, no una ficha superficial.",
+    prompt: `Crea un buyer persona detallado para [tu producto/servicio], basado en estos datos que ya tengo: [pega datos de clientes actuales, encuestas o intuiciones que tengas].
+
+Incluye:
+- Nombre y contexto de vida breve
+- Sus 3 principales frustraciones relacionadas con el problema que resuelves
+- Qué objeciones tendría antes de comprar
+- Dónde consume contenido y en qué formato
+- Una frase textual que probablemente diría sobre su problema`
+  },
+  {
+    code: "P18", tag: "Vídeo", category: "Contenido",
+    title: "Guion para vídeo corto (reels/shorts)",
+    desc: "Estructura de guion pensada para retener atención en los primeros 3 segundos, clave en formato corto.",
+    prompt: `Escribe el guion de un vídeo corto (Reels/TikTok/Shorts) de unos [duración, ej. 30 segundos] sobre: [tema].
+
+Estructura:
+1. Gancho (primeros 3 segundos): algo que detenga el scroll
+2. Desarrollo: 2-3 puntos concretos, sin relleno
+3. Cierre: una idea memorable o llamada a la acción
+
+Indica también qué se ve en pantalla en cada parte (texto en pantalla, corte de cámara, etc.), no solo lo que se dice.`
+  },
+  {
+    code: "P19", tag: "Planificación", category: "Contenido",
+    title: "Calendario de contenido semanal",
+    desc: "Convierte un tema amplio en un plan de publicaciones concreto, con formato y objetivo para cada pieza.",
+    prompt: `Crea un calendario de contenido para [red social/canal] durante una semana, sobre el tema general de: [tu nicho o tema].
+
+Para cada día indica:
+- Formato (ej. carrusel, vídeo corto, texto, imagen)
+- Idea concreta del contenido (no genérica)
+- Objetivo de esa pieza (ej. alcance, autoridad, venta directa)
+- Una posible primera línea o titular
+
+Varía los formatos y objetivos a lo largo de la semana, no repitas la misma fórmula todos los días.`
+  },
+  {
+    code: "P20", tag: "Reutilización", category: "Contenido",
+    title: "Adaptar un contenido a varios formatos",
+    desc: "Aprovecha una sola pieza de contenido convirtiéndola en versiones nativas para distintos canales.",
+    prompt: `Aquí tienes un contenido original: [pega tu artículo, vídeo transcrito o post].
+
+Adáptalo a estos 3 formatos, respetando las convenciones de cada uno (no copies y pegues el mismo texto):
+1. Hilo para X/Twitter (máximo 6 tuits)
+2. Post de LinkedIn con tono profesional
+3. Guion breve para Reels/TikTok
+
+Cada versión debe funcionar de forma independiente, sin dar por hecho que se ha leído el original.`
+  },
+  {
+    code: "P21", tag: "Atención al cliente", category: "Negocio",
+    title: "Respuesta a una reseña negativa",
+    desc: "Plantilla para responder con empatía real sin sonar corporativo ni a la defensiva.",
+    prompt: `Redacta una respuesta a esta reseña negativa de un cliente: [pega la reseña].
+
+Contexto de la empresa: [breve descripción de tu negocio y tono habitual].
+
+La respuesta debe:
+- Reconocer el problema sin excusas vacías
+- Evitar sonar corporativo o defensivo
+- Ofrecer un siguiente paso concreto (no solo "lo sentimos")
+- Tener un máximo de 80 palabras`
+  },
+  {
+    code: "P22", tag: "Posicionamiento", category: "Negocio",
+    title: "Propuesta de valor en una frase",
+    desc: "Destila qué te hace diferente en una sola frase clara, evitando el lenguaje genérico de 'la mejor calidad'.",
+    prompt: `Ayúdame a definir la propuesta de valor de [tu producto/servicio] en una sola frase clara.
+
+Datos:
+- A quién ayuda: [audiencia]
+- Qué problema resuelve: [problema concreto]
+- Qué lo hace diferente de las alternativas: [tu diferencial real, no genérico]
+
+Dame 5 variantes de la frase, de más directa a más aspiracional, y señala cuál recomiendas para una web y cuál para un pitch verbal.`
+  },
+  {
+    code: "P23", tag: "Competencia", category: "Negocio",
+    title: "Análisis competitivo rápido",
+    desc: "Estructura para comparar tu oferta frente a competidores directos y encontrar huecos reales de mercado.",
+    prompt: `Analiza estos competidores de mi negocio: [lista 2-4 competidores y lo que sabes de ellos].
+
+Mi negocio: [breve descripción].
+
+Para cada competidor, indica: su punto fuerte principal, su punto débil más aprovechable, y qué mensaje usan en su comunicación.
+Termina con 2 huecos de mercado que ninguno cubre bien y que yo sí podría ocupar.`
+  },
+  {
+    code: "P24", tag: "Reuniones", category: "Productividad",
+    title: "Resumen de reunión en acta accionable",
+    desc: "Convierte notas desordenadas en un acta clara con responsables y fechas, no solo un resumen narrativo.",
+    prompt: `Convierte estas notas de reunión en un acta clara: [pega tus notas o la transcripción].
+
+Estructura la salida así:
+- Decisiones tomadas (lista breve)
+- Tareas asignadas: [tarea] — [responsable] — [fecha límite]
+- Temas abiertos que necesitan seguimiento
+
+Si alguna tarea no tiene responsable o fecha clara en las notas, márcala como "pendiente de asignar" en vez de inventarla.`
+  },
+  {
+    code: "P25", tag: "Priorización", category: "Productividad",
+    title: "Priorización con matriz de urgencia/importancia",
+    desc: "Ordena una lista de tareas revueltas usando un criterio real, en vez de simplemente reordenarlas por intuición.",
+    prompt: `Tengo esta lista de tareas pendientes: [pega tu lista, aunque esté desordenada].
+
+Clasifícalas en una matriz de urgente/importante:
+1. Urgente e importante — hacer ya
+2. Importante, no urgente — planificar
+3. Urgente, no importante — delegar si es posible
+4. Ni urgente ni importante — cuestionar si hace falta hacerla
+
+Para cada tarea, incluye una razón breve de por qué la colocas en ese cuadrante.`
+  },
+  {
+    code: "P26", tag: "Estudio", category: "Aprendizaje",
+    title: "Generador de preguntas de repaso",
+    desc: "Convierte un tema o apunte en preguntas de autoevaluación, útil para preparar exámenes o repasar antes de una reunión.",
+    prompt: `A partir de este contenido: [pega tus apuntes, artículo o tema a estudiar]
+
+Genera 8 preguntas de repaso en 3 niveles de dificultad (fácil, medio, difícil), sin darme las respuestas todavía.
+Cuando yo responda cada una, corrígeme indicando qué parte de mi respuesta es correcta y qué me falta o entendí mal.`
+  },
+  {
+    code: "P27", tag: "Tutoría", category: "Aprendizaje",
+    title: "Tutor socrático para aprender un tema",
+    desc: "En vez de que te lo expliquen todo de golpe, la IA te guía con preguntas para que llegues tú a la comprensión.",
+    prompt: `Quiero aprender sobre: [tema].
+
+Actúa como un tutor socrático: en vez de explicarme todo directamente, hazme una pregunta a la vez que me ayude a razonar hacia la comprensión del concepto.
+Espera mi respuesta antes de continuar, y ajusta la siguiente pregunta según lo que yo haya entendido o no.
+
+Empieza evaluando qué sé ya del tema con una primera pregunta sencilla.`
+  }
+];
+
+/* ============ render filters ============ */
+const categories = ["Todos", ...new Set(specimens.map(s => s.category))];
+const filtersEl = document.getElementById('filters');
+categories.forEach((cat, i) => {
+  const btn = document.createElement('button');
+  btn.className = 'filter-btn' + (i === 0 ? ' active' : '');
+  btn.textContent = cat;
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.specimen').forEach(card => {
+      const show = cat === "Todos" || card.dataset.category === cat;
+      card.classList.toggle('hidden', !show);
+    });
+  });
+  filtersEl.appendChild(btn);
+});
+
+/* ============ render grid ============ */
+const grid = document.getElementById('grid');
+specimens.forEach((s, i) => {
+  const el = document.createElement('div');
+  el.className = 'specimen reveal';
+  el.dataset.category = s.category;
+  el.innerHTML = `
+    <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+    <div class="spc-code"><span>${s.code}</span><span class="tag">${s.tag}</span></div>
+    <div class="spc-title">${s.title}</div>
+    <div class="spc-desc">${s.desc}</div>
+    <div class="spc-actions">
+      <div class="spc-open">Ver completo <span class="arrow">→</span></div>
+      <button class="quick-copy" type="button">Copiar</button>
+    </div>
+  `;
+  el.addEventListener('click', () => openModal(s));
+  el.querySelector('.quick-copy').addEventListener('click', (e) => {
+    e.stopPropagation();
+    const btn = e.currentTarget;
+    navigator.clipboard.writeText(s.prompt).then(() => {
+      btn.textContent = 'Copiado ✓';
+      btn.classList.add('copied');
+      setTimeout(() => { btn.textContent = 'Copiar'; btn.classList.remove('copied'); }, 1600);
+    });
+  });
+  el.addEventListener('mousemove', (e) => {
+    const r = el.getBoundingClientRect();
+    const x = (e.clientX - r.left) / r.width - 0.5;
+    const y = (e.clientY - r.top) / r.height - 0.5;
+    el.style.transform = `perspective(700px) rotateY(${x*8}deg) rotateX(${-y*8}deg) translateZ(6px)`;
+  });
+  el.addEventListener('mouseleave', () => { el.style.transform = ''; });
+  grid.appendChild(el);
+});
+
+/* ============ modal ============ */
+const backdrop = document.getElementById('modalBackdrop');
+const modalCode = document.getElementById('modalCode');
+const modalTitle = document.getElementById('modalTitle');
+const modalDesc = document.getElementById('modalDesc');
+const modalPrompt = document.getElementById('modalPrompt');
+const copyBtn = document.getElementById('copyBtn');
+let currentPrompt = '';
+
+function openModal(s){
+  modalCode.textContent = `${s.code} · CATEGORÍA: ${s.category.toUpperCase()}`;
+  modalTitle.textContent = s.title;
+  modalDesc.textContent = s.desc;
+  modalPrompt.textContent = s.prompt;
+  currentPrompt = s.prompt;
+  copyBtn.textContent = 'Copiar prompt';
+  copyBtn.classList.remove('copied');
+  backdrop.classList.add('open');
+}
+document.getElementById('modalClose').addEventListener('click', () => backdrop.classList.remove('open'));
+backdrop.addEventListener('click', (e) => { if(e.target === backdrop) backdrop.classList.remove('open'); });
+copyBtn.addEventListener('click', () => {
+  navigator.clipboard.writeText(currentPrompt).then(() => {
+    copyBtn.textContent = 'Copiado ✓';
+    copyBtn.classList.add('copied');
+    setTimeout(() => { copyBtn.textContent = 'Copiar prompt'; copyBtn.classList.remove('copied'); }, 1800);
+  });
+});
+
+/* ============ custom cursor ============ */
+const dot = document.getElementById('cursor-dot');
+const ring = document.getElementById('cursor-ring');
+let mx=0,my=0, rx=0, ry=0;
+window.addEventListener('mousemove', (e) => {
+  mx = e.clientX; my = e.clientY;
+  dot.style.left = mx+'px'; dot.style.top = my+'px';
+});
+function ringLoop(){
+  rx += (mx-rx)*0.18; ry += (my-ry)*0.18;
+  ring.style.left = rx+'px'; ring.style.top = ry+'px';
+  requestAnimationFrame(ringLoop);
+}
+ringLoop();
+function bindHoverTargets(){
+  document.querySelectorAll('a, button, .specimen, .spc-open').forEach(elm => {
+    elm.addEventListener('mouseenter', () => ring.classList.add('hover'));
+    elm.addEventListener('mouseleave', () => ring.classList.remove('hover'));
+  });
+}
+bindHoverTargets();
+
+/* ============ ecosystem parallax ============ */
+document.querySelectorAll('.blob').forEach(b => {
+  const depth = parseFloat(b.dataset.depth);
+  window.addEventListener('mousemove', (e) => {
+    const dx = (e.clientX - window.innerWidth/2) * depth;
+    const dy = (e.clientY - window.innerHeight/2) * depth;
+    b.style.transform = `translate(${dx}px, ${dy}px)`;
+  });
+});
+
+/* ============ particle field (canvas) ============ */
+const canvas = document.getElementById('particle-field');
+const ctx = canvas.getContext('2d');
+let W, H, particles = [];
+const PARTICLE_COUNT = 90;
+const MAX_DIST = 130;
+
+function resize(){
+  W = canvas.width = window.innerWidth;
+  H = canvas.height = document.body.scrollHeight;
+}
+window.addEventListener('resize', resize);
+resize();
+
+function initParticles(){
+  particles = [];
+  for(let i=0;i<PARTICLE_COUNT;i++){
+    particles.push({
+      x: Math.random()*W,
+      y: Math.random()*window.innerHeight,
+      z: Math.random()*0.8+0.2,
+      vx: (Math.random()-0.5)*0.25,
+      vy: (Math.random()-0.5)*0.25
+    });
+  }
+}
+initParticles();
+
+let scrollY = 0;
+window.addEventListener('scroll', () => { scrollY = window.scrollY; });
+
+function draw(){
+  ctx.clearRect(0,0,W,H);
+  const viewH = window.innerHeight;
+
+  for(const p of particles){
+    p.x += p.vx; p.y += p.vy;
+    if(p.x < 0) p.x = W; if(p.x > W) p.x = 0;
+    if(p.y < 0) p.y = viewH; if(p.y > viewH) p.y = 0;
+  }
+
+  for(let i=0;i<particles.length;i++){
+    for(let j=i+1;j<particles.length;j++){
+      const a = particles[i], b = particles[j];
+      const dx = a.x-b.x, dy = (a.y - b.y);
+      const dist = Math.sqrt(dx*dx+dy*dy);
+      if(dist < MAX_DIST){
+        ctx.strokeStyle = `rgba(78,230,203,${(1-dist/MAX_DIST)*0.12})`;
+        ctx.lineWidth = 0.6;
+        ctx.beginPath();
+        ctx.moveTo(a.x, a.y + scrollY*0.15*a.z);
+        ctx.lineTo(b.x, b.y + scrollY*0.15*b.z);
+        ctx.stroke();
+      }
+    }
+  }
+  for(const p of particles){
+    const y = p.y + scrollY*0.15*p.z;
+    ctx.beginPath();
+    ctx.arc(p.x, y, p.z*1.8, 0, Math.PI*2);
+    ctx.fillStyle = `rgba(232,236,247,${p.z*0.55})`;
+    ctx.fill();
+  }
+  requestAnimationFrame(draw);
+}
+draw();
+
+/* ============ scroll reveal ============ */
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('in'); });
+}, { threshold: 0.15 });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+/* respect reduced motion */
+if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+  document.querySelectorAll('.blob').forEach(b => b.style.transition = 'none');
+  canvas.style.display = 'none';
+}
+
+/* ============ rocket: static, tilted, full throttle ============ */
+const rocketTilt = document.getElementById('rocketTilt');
+const rocketBob = document.getElementById('rocketBob');
+const launchScene = document.querySelector('.launch-scene');
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const BASE_TILT = 28; // grados, cohete apuntando arriba-derecha
+
+if(rocketTilt && !reduceMotion){
+  const headingRad = BASE_TILT * Math.PI / 180;
+  const dirX = -Math.sin(headingRad), dirY = Math.cos(headingRad); // dirección del escape (opuesta al morro)
+  const perpX = Math.cos(headingRad), perpY = Math.sin(headingRad);
+
+  let startTime = null;
+  let lastPuff = 0;
+
+  function spawnPuff(){
+    const rect = rocketTilt.getBoundingClientRect();
+    const sceneRect = launchScene.getBoundingClientRect();
+    const centerX = rect.left + rect.width/2 - sceneRect.left;
+    const centerY = rect.top + rect.height/2 - sceneRect.top;
+    const halfLen = rect.height * 0.4;
+    const tailX = centerX + dirX * halfLen;
+    const tailY = centerY + dirY * halfLen;
+
+    const size = 9 + Math.random()*11;
+    const dist = 55 + Math.random()*70;
+    const jitter = (Math.random()*30 - 15);
+    const dx = dirX*dist + perpX*jitter;
+    const dy = dirY*dist + perpY*jitter;
+
+    const puff = document.createElement('div');
+    puff.className = 'puff';
+    puff.style.width = size+'px';
+    puff.style.height = size+'px';
+    puff.style.left = (tailX - size/2 + perpX*(Math.random()*14-7)) + 'px';
+    puff.style.top = (tailY - size/2 + perpY*(Math.random()*14-7)) + 'px';
+    puff.style.setProperty('--dx', dx.toFixed(0)+'px');
+    puff.style.setProperty('--dy', dy.toFixed(0)+'px');
+    puff.addEventListener('animationend', () => puff.remove());
+    launchScene.appendChild(puff);
+  }
+
+  function tick(ts){
+    if(startTime === null) startTime = ts;
+    const t = ts - startTime;
+    const bobY = Math.sin(t/900) * 7;
+    const bobX = Math.sin(t/1300) * 4;
+    const wobble = Math.sin(t/500) * 1.2;
+
+    rocketTilt.style.transform = `translate(-50%,-50%) rotate(${BASE_TILT + wobble}deg)`;
+    rocketBob.style.transform = `translate(${bobX}px, ${bobY}px)`;
+
+    if(ts - lastPuff > 45){
+      spawnPuff();
+      lastPuff = ts;
+    }
+    requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+} else if(rocketTilt && reduceMotion){
+  rocketTilt.style.transform = `translate(-50%,-50%) rotate(${BASE_TILT}deg)`;
+}
+
+
+
+</script>
+</body>
+</html>
