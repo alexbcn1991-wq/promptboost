@@ -101,8 +101,11 @@
   .brand{
     font-family:'JetBrains Mono', monospace; font-size:13px; letter-spacing:0.15em;
     color:var(--ghost); text-transform:uppercase;
+    display:inline-flex; align-items:center; gap:9px;
   }
   .brand span{ color:var(--teal); }
+  .brand-mark{ width:20px; height:20px; flex-shrink:0; transition:transform .5s ease; }
+  .brand:hover .brand-mark{ transform:rotate(90deg); }
   .nav-status{
     font-family:'JetBrains Mono', monospace; font-size:11px; color:var(--mist);
     letter-spacing:0.1em; display:flex; align-items:center; gap:8px;
@@ -537,7 +540,25 @@
 <div class="vignette"></div>
 
 <nav>
-  <div class="brand">PROMPT<span>·</span>BOOST</div>
+  <div class="brand">
+    <svg class="brand-mark" viewBox="0 0 480 480" aria-hidden="true">
+      <defs>
+        <linearGradient id="brandG1" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#4ee6cb"/><stop offset="100%" stop-color="#1f9384"/>
+        </linearGradient>
+        <linearGradient id="brandG2" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#8b7fff"/><stop offset="100%" stop-color="#5b3df0"/>
+        </linearGradient>
+      </defs>
+      <g transform="rotate(45 240 240)">
+        <path d="M480 240a240 240 0 0 0-240 240 240 240 0 0 0 240-240Z" fill="url(#brandG1)"/>
+        <path d="M240 0A240 240 0 0 0 0 240 240 240 0 0 0 240 0Z" fill="url(#brandG1)" opacity="0.55"/>
+        <path d="M480 240A240 240 0 0 0 240 0a240 240 0 0 0 240 240Z" fill="url(#brandG2)"/>
+        <path d="M240 480A240 240 0 0 0 0 240a240 240 0 0 0 240 240Z" fill="url(#brandG2)" opacity="0.55"/>
+      </g>
+    </svg>
+    PROMPT<span>·</span>BOOST
+  </div>
   <div class="nav-status">
     <span class="pulse-dot"></span> <span id="navTotal">30 PROMPTS LISTOS PARA USAR</span>
     <span class="nav-sep">·</span>
@@ -693,7 +714,17 @@
 </main>
 
 <footer>
-  <div class="brand">PROMPT · BOOST</div>
+  <div class="brand">
+    <svg class="brand-mark" viewBox="0 0 480 480" aria-hidden="true">
+      <g transform="rotate(45 240 240)">
+        <path d="M480 240a240 240 0 0 0-240 240 240 240 0 0 0 240-240Z" fill="url(#brandG1)"/>
+        <path d="M240 0A240 240 0 0 0 0 240 240 240 0 0 0 240 0Z" fill="url(#brandG1)" opacity="0.55"/>
+        <path d="M480 240A240 240 0 0 0 240 0a240 240 0 0 0 240 240Z" fill="url(#brandG2)"/>
+        <path d="M240 480A240 240 0 0 0 0 240a240 240 0 0 0 240 240Z" fill="url(#brandG2)" opacity="0.55"/>
+      </g>
+    </svg>
+    PROMPT · BOOST
+  </div>
   <a href="https://www.linkedin.com/in/elempleadodelmes/" target="_blank" rel="noopener" class="footer-credit">
     <svg class="li-icon" viewBox="0 0 24 24" width="15" height="15" aria-hidden="true">
       <rect x="1" y="1" width="22" height="22" rx="5" fill="none" stroke="currentColor" stroke-width="1.4"/>
