@@ -93,8 +93,10 @@
   nav{
     position:fixed; top:0; left:0; right:0; z-index:100;
     display:flex; justify-content:space-between; align-items:center;
-    padding:28px 6vw;
-    mix-blend-mode:difference;
+    padding:20px 6vw;
+    background:rgba(5,7,17,0.72);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
   }
   .brand{
     font-family:'JetBrains Mono', monospace; font-size:13px; letter-spacing:0.15em;
@@ -316,51 +318,77 @@
   .copy-btn:hover{ background:var(--ghost); }
   .copy-btn.copied{ background:var(--plasma); }
 
-  /* ---------- launch scene: rocket at full throttle ---------- */
+  /* ---------- transform scene: transformación al copiar el prompt ---------- */
   .hero{ display:flex; flex-direction:row; align-items:center; justify-content:space-between; gap:4vw; }
   .hero-content{ position:relative; z-index:2; flex:1 1 auto; }
   .launch-scene{
     position:relative; z-index:1; flex:0 0 auto;
-    width:min(38vw, 420px); height:min(58vw, 540px);
+    width:min(40vw, 460px); height:min(22.2vw, 256px);
     pointer-events:none; overflow:visible;
   }
-  .rocket-tilt{
+  .desk-scene{
     position:absolute; top:50%; left:50%;
-    width:150px;
-    transform:translate(-50%,-50%) rotate(28deg);
+    width:100%;
+    transform:translate(-50%,-50%);
+    animation:sceneBreathe 4.5s ease-in-out infinite;
   }
-  .rocket-bob{ will-change:transform; }
-  .rocket-svg{ width:100%; display:block; overflow:visible; position:relative; z-index:2; }
-  .flame-main{ transform-origin:60px 222px; animation:flameFlicker 0.22s ease-in-out infinite alternate; }
-  .flame-side{ transform-origin:60px 222px; animation:flameFlicker 0.17s ease-in-out infinite alternate-reverse; }
-  @keyframes flameFlicker{ 0%{ transform:scaleY(0.85) scaleX(0.92); opacity:0.85; } 100%{ transform:scaleY(1.28) scaleX(1.1); opacity:1; } }
+  @keyframes sceneBreathe{ 0%,100%{ transform:translate(-50%,-50%) translateY(0); } 50%{ transform:translate(-50%,-50%) translateY(-3px); } }
+  .desk-svg{ width:100%; display:block; overflow:visible; }
 
-  .streak{
-    position:absolute; top:0; left:50%; width:2px; height:65%;
-    background:linear-gradient(to bottom, transparent, rgba(232,236,247,0.5), transparent);
-    opacity:0.7; z-index:1; pointer-events:none;
+  .scribble{ animation:scribbleDrift 6s ease-in-out infinite; transform-origin:center; }
+  @keyframes scribbleDrift{ 0%,100%{ transform:translate(0,0); } 50%{ transform:translate(-2px,2px); } }
+
+  .copy-btn-scene{ animation:btnPulse 3.4s ease-in-out infinite; transform-origin:185px 120px; }
+  @keyframes btnPulse{
+    0%,50%{ transform:scale(1); }
+    58%{ transform:scale(0.9); }
+    66%{ transform:scale(1.06); }
+    75%,100%{ transform:scale(1); }
   }
-  .streak-a{ transform:translate(-130%, -14%) scaleY(0.85); }
-  .streak-b{ transform:translate(70%, -8%) scaleY(1.1); }
+  .click-ripple{ transform-origin:185px 120px; }
+  .click-ripple.active{ animation:rippleGo 0.6s ease-out; }
+  @keyframes rippleGo{ 0%{ r:10; opacity:0.85; } 100%{ r:32; opacity:0; } }
 
-  .puff{
+  .cursor-icon{ animation:cursorMove 3.4s ease-in-out infinite; }
+  @keyframes cursorMove{
+    0%{ transform:translate(202px,84px); }
+    50%{ transform:translate(185px,110px); }
+    58%{ transform:translate(185px,114px) scale(0.92); }
+    66%{ transform:translate(185px,110px); }
+    100%{ transform:translate(202px,84px); }
+  }
+
+  .out-card{ animation:outFloat 4s ease-in-out infinite; transform-origin:center; }
+  .out-card-1{ animation-delay:0s; }
+  .out-card-2{ animation-delay:0.3s; }
+  .out-card-3{ animation-delay:0.6s; }
+  @keyframes outFloat{ 0%,100%{ transform:translateY(0); } 50%{ transform:translateY(-3px); } }
+  .out-card.pop{ animation:outPop 0.55s ease-out !important; }
+  @keyframes outPop{
+    0%{ transform:scale(0.88); opacity:0.55; }
+    60%{ transform:scale(1.08); opacity:1; }
+    100%{ transform:scale(1); opacity:1; }
+  }
+
+  .mote{
     position:absolute; border-radius:50%; pointer-events:none; z-index:0;
-    background:radial-gradient(circle, rgba(255,122,82,0.85), rgba(139,127,255,0.25) 55%, transparent 75%);
-    animation:puffLife 0.9s ease-out forwards;
+    animation:moteLife 1.4s ease-out forwards;
   }
-  @keyframes puffLife{
-    0%{ opacity:0.85; transform:translate(0,0) scale(0.4); }
-    100%{ opacity:0; transform:translate(var(--dx), var(--dy)) scale(2.2); }
+  .mote-in{ background:radial-gradient(circle, rgba(124,131,159,0.75), transparent 70%); }
+  .mote-out{ background:radial-gradient(circle, rgba(78,230,203,0.9), rgba(139,127,255,0.35) 55%, transparent 75%); }
+  @keyframes moteLife{
+    0%{ opacity:0.8; transform:translate(0,0) scale(0.5); }
+    100%{ opacity:0; transform:translate(var(--dx), var(--dy)) scale(1.5); }
   }
 
   @media (max-width:900px){
     .hero{ flex-direction:column; justify-content:center; }
-    .launch-scene{ width:min(64vw, 340px); height:min(84vw, 400px); margin-top:36px; opacity:0.9; }
+    .launch-scene{ width:min(78vw, 420px); height:min(43.3vw, 233px); margin-top:36px; opacity:0.92; }
   }
   @media (max-width:640px){
     .specimen-grid{ grid-template-columns:1fr; }
     section{ padding:96px 6vw; }
-    .launch-scene{ width:min(74vw, 280px); height:min(94vw, 320px); }
+    .launch-scene{ width:min(86vw, 340px); height:min(47.8vw, 189px); }
   }
 </style>
 </head>
@@ -406,81 +434,61 @@
     </div>
 
     <div class="launch-scene" aria-hidden="true">
-      <div class="rocket-tilt" id="rocketTilt">
-        <div class="rocket-bob" id="rocketBob">
-          <div class="streak streak-a"></div>
-          <div class="streak streak-b"></div>
-          <svg class="rocket-svg" viewBox="0 0 120 260">
-          <defs>
-            <linearGradient id="bodyGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stop-color="#9aa1bd"/>
-              <stop offset="45%" stop-color="#e8ecf7"/>
-              <stop offset="55%" stop-color="#e8ecf7"/>
-              <stop offset="100%" stop-color="#7c839f"/>
-            </linearGradient>
-            <linearGradient id="stripeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stop-color="#4ee6cb"/>
-              <stop offset="100%" stop-color="#8b7fff"/>
-            </linearGradient>
-            <linearGradient id="skirtGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stop-color="#4a5178"/>
-              <stop offset="50%" stop-color="#7c839f"/>
-              <stop offset="100%" stop-color="#3a3f5c"/>
-            </linearGradient>
-            <radialGradient id="flameGrad" cx="50%" cy="0%" r="85%">
-              <stop offset="0%" stop-color="#fff8ef"/>
-              <stop offset="30%" stop-color="#ffb27a"/>
-              <stop offset="65%" stop-color="#ff7a52"/>
-              <stop offset="100%" stop-color="#ff7a52" stop-opacity="0"/>
-            </radialGradient>
-          </defs>
+      <div class="desk-scene" id="deskScene">
+        <svg class="desk-svg" viewBox="0 0 360 200">
 
-          <!-- carenado / nose cone -->
-          <path d="M60 4 C46 22 40 44 40 66 L80 66 C80 44 74 22 60 4 Z" fill="url(#bodyGrad)"/>
-          <path d="M60 4 C55 20 51 40 50.5 66 L60 66 Z" fill="#ffffff" opacity="0.18"/>
-
-          <!-- cuerpo principal -->
-          <rect x="36" y="66" width="48" height="128" fill="url(#bodyGrad)"/>
-          <rect x="36" y="92" width="48" height="14" fill="url(#stripeGrad)"/>
-          <line x1="36" y1="80" x2="84" y2="80" stroke="#0b0e1c" stroke-width="1" opacity="0.16"/>
-          <line x1="36" y1="176" x2="84" y2="176" stroke="#0b0e1c" stroke-width="1" opacity="0.16"/>
-          <line x1="36" y1="186" x2="84" y2="186" stroke="#0b0e1c" stroke-width="1" opacity="0.16"/>
-
-          <!-- placa de insignias: modelos de IA -->
-          <rect x="38" y="114" width="44" height="52" rx="7" fill="#0b0e1c" opacity="0.5"/>
-          <circle cx="52" cy="129" r="8.5" fill="#4ee6cb"/>
-          <text x="52" y="132.5" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="700" fill="#0b0e1c" text-anchor="middle">C</text>
-          <circle cx="68" cy="129" r="8.5" fill="#8b7fff"/>
-          <text x="68" y="132.5" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="700" fill="#0b0e1c" text-anchor="middle">G</text>
-          <circle cx="52" cy="150" r="8.5" fill="#ff7a52"/>
-          <text x="52" y="153.5" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="700" fill="#0b0e1c" text-anchor="middle">X</text>
-          <circle cx="68" cy="150" r="8.5" fill="#e8ecf7"/>
-          <text x="68" y="153.5" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="700" fill="#0b0e1c" text-anchor="middle">P</text>
-
-          <!-- patas de aterrizaje plegadas -->
-          <path d="M36 178 L20 204 L30 204 L42 182 Z" fill="#5a6288"/>
-          <path d="M84 178 L100 204 L90 204 L78 182 Z" fill="#5a6288"/>
-
-          <!-- falda de motores -->
-          <path d="M34 194 L20 224 L100 224 L86 194 Z" fill="url(#skirtGrad)"/>
-
-          <!-- tres motores -->
-          <circle cx="46" cy="221" r="8" fill="#10142a" stroke="#4ee6cb" stroke-width="1" opacity="0.9"/>
-          <circle cx="60" cy="225" r="10" fill="#10142a" stroke="#8b7fff" stroke-width="1.1" opacity="0.9"/>
-          <circle cx="74" cy="221" r="8" fill="#10142a" stroke="#4ee6cb" stroke-width="1" opacity="0.9"/>
-
-          <!-- llamas -->
-          <g class="flame flame-side">
-            <ellipse cx="46" cy="238" rx="8.5" ry="19" fill="url(#flameGrad)"/>
+          <!-- resplandor de la tarjeta central -->
+          <g class="screen-glow">
+            <circle cx="185" cy="75" r="42" fill="#4ee6cb" opacity="0.05"/>
+            <circle cx="185" cy="75" r="30" fill="#4ee6cb" opacity="0.09"/>
+            <circle cx="185" cy="75" r="18" fill="#4ee6cb" opacity="0.14"/>
           </g>
-          <g class="flame flame-main">
-            <ellipse cx="60" cy="246" rx="12.5" ry="29" fill="url(#flameGrad)"/>
+
+          <!-- zona caótica (antes) -->
+          <g class="scribble">
+            <path d="M28 68 Q38 54 48 68 T68 66" stroke="#7c839f" stroke-width="2" fill="none" opacity="0.55" stroke-linecap="round"/>
+            <path d="M32 92 Q46 82 58 96 T88 90" stroke="#7c839f" stroke-width="2" fill="none" opacity="0.5" stroke-linecap="round"/>
+            <path d="M40 118 Q52 108 66 120" stroke="#7c839f" stroke-width="2" fill="none" opacity="0.45" stroke-linecap="round"/>
+            <g transform="translate(76,52) rotate(-10)"><rect width="26" height="18" rx="2" fill="#5f5e5a" opacity="0.5"/></g>
+            <g transform="translate(88,96) rotate(9)"><rect width="22" height="16" rx="2" fill="#5f5e5a" opacity="0.45"/></g>
           </g>
-          <g class="flame flame-side">
-            <ellipse cx="74" cy="238" rx="8.5" ry="19" fill="url(#flameGrad)"/>
+
+          <!-- tarjeta central del prompt -->
+          <rect x="140" y="45" width="90" height="60" rx="6" fill="#10142a" stroke="#4ee6cb" stroke-width="0.75"/>
+          <rect x="150" y="55" width="60" height="4" rx="2" fill="#4ee6cb" opacity="0.85"/>
+          <rect x="150" y="64" width="45" height="4" rx="2" fill="#4ee6cb" opacity="0.6"/>
+          <rect x="150" y="73" width="52" height="4" rx="2" fill="#4ee6cb" opacity="0.45"/>
+          <rect x="150" y="82" width="38" height="4" rx="2" fill="#4ee6cb" opacity="0.35"/>
+
+          <!-- botón copiar + onda de clic -->
+          <circle class="click-ripple" id="clickRipple" cx="185" cy="120" r="10" fill="none" stroke="#4ee6cb" stroke-width="2" opacity="0"/>
+          <g class="copy-btn-scene">
+            <rect x="163" y="112" width="44" height="16" rx="8" fill="#4ee6cb"/>
+            <text x="185" y="123" font-family="'JetBrains Mono', monospace" font-size="7.5" font-weight="700" fill="#0b0e1c" text-anchor="middle">COPIAR</text>
+          </g>
+
+          <!-- cursor animado -->
+          <g class="cursor-icon" id="cursorIcon">
+            <path d="M0 0 L0 14 L4 10.5 L7 16 L9 15 L6 9.5 L11 9 Z" fill="#e8ecf7" stroke="#0b0e1c" stroke-width="0.5"/>
+          </g>
+
+          <!-- tarjetas ordenadas (después) -->
+          <g class="out-card out-card-1" id="outCard1">
+            <rect x="255" y="38" width="82" height="24" rx="4" fill="#10142a" stroke="#8b7fff" stroke-width="0.75"/>
+            <path d="M263 51 L267 55 L273 47" stroke="#8b7fff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            <rect x="280" y="47" width="50" height="3" rx="1.5" fill="#8b7fff" opacity="0.85"/>
+          </g>
+          <g class="out-card out-card-2" id="outCard2">
+            <rect x="255" y="70" width="82" height="24" rx="4" fill="#10142a" stroke="#4ee6cb" stroke-width="0.75"/>
+            <path d="M263 83 L267 87 L273 79" stroke="#4ee6cb" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            <rect x="280" y="79" width="50" height="3" rx="1.5" fill="#4ee6cb" opacity="0.85"/>
+          </g>
+          <g class="out-card out-card-3" id="outCard3">
+            <rect x="255" y="102" width="82" height="24" rx="4" fill="#10142a" stroke="#8b7fff" stroke-width="0.75"/>
+            <path d="M263 115 L267 119 L273 111" stroke="#8b7fff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            <rect x="280" y="111" width="50" height="3" rx="1.5" fill="#8b7fff" opacity="0.85"/>
           </g>
         </svg>
-        </div>
       </div>
     </div>
   </section>
@@ -1084,68 +1092,76 @@ if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){
   canvas.style.display = 'none';
 }
 
-/* ============ rocket: static, tilted, full throttle ============ */
-const rocketTilt = document.getElementById('rocketTilt');
-const rocketBob = document.getElementById('rocketBob');
+/* ============ transform scene: ciclo de clic en "copiar" ============ */
+const deskScene = document.getElementById('deskScene');
 const launchScene = document.querySelector('.launch-scene');
+const clickRipple = document.getElementById('clickRipple');
+const outCards = [document.getElementById('outCard1'), document.getElementById('outCard2'), document.getElementById('outCard3')];
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-const BASE_TILT = 28; // grados, cohete apuntando arriba-derecha
 
-if(rocketTilt && !reduceMotion){
-  const headingRad = BASE_TILT * Math.PI / 180;
-  const dirX = -Math.sin(headingRad), dirY = Math.cos(headingRad); // dirección del escape (opuesta al morro)
-  const perpX = Math.cos(headingRad), perpY = Math.sin(headingRad);
+if(deskScene && launchScene && !reduceMotion){
+  const CYCLE_MS = 3400;
+  const CLICK_AT = CYCLE_MS * 0.58; // sincronizado con el keyframe cursorMove/btnPulse
 
-  let startTime = null;
-  let lastPuff = 0;
+  let lastAmbient = 0;
+  let lastCycleFired = -1;
 
-  function spawnPuff(){
-    const rect = rocketTilt.getBoundingClientRect();
+  function spawnMote(originXRatio, originYRatio, dx, dy, spread, colorClass){
     const sceneRect = launchScene.getBoundingClientRect();
-    const centerX = rect.left + rect.width/2 - sceneRect.left;
-    const centerY = rect.top + rect.height/2 - sceneRect.top;
-    const halfLen = rect.height * 0.4;
-    const tailX = centerX + dirX * halfLen;
-    const tailY = centerY + dirY * halfLen;
+    const originX = sceneRect.width * originXRatio;
+    const originY = sceneRect.height * originYRatio;
+    const size = 3 + Math.random()*4;
 
-    const size = 9 + Math.random()*11;
-    const dist = 55 + Math.random()*70;
-    const jitter = (Math.random()*30 - 15);
-    const dx = dirX*dist + perpX*jitter;
-    const dy = dirY*dist + perpY*jitter;
+    const mote = document.createElement('div');
+    mote.className = 'mote ' + colorClass;
+    mote.style.width = size+'px';
+    mote.style.height = size+'px';
+    mote.style.left = (originX + (Math.random()*spread - spread/2) - size/2) + 'px';
+    mote.style.top = (originY + (Math.random()*spread*0.4 - spread*0.2) - size/2) + 'px';
+    mote.style.setProperty('--dx', dx.toFixed(0)+'px');
+    mote.style.setProperty('--dy', dy.toFixed(0)+'px');
+    mote.addEventListener('animationend', () => mote.remove());
+    launchScene.appendChild(mote);
+  }
 
-    const puff = document.createElement('div');
-    puff.className = 'puff';
-    puff.style.width = size+'px';
-    puff.style.height = size+'px';
-    puff.style.left = (tailX - size/2 + perpX*(Math.random()*14-7)) + 'px';
-    puff.style.top = (tailY - size/2 + perpY*(Math.random()*14-7)) + 'px';
-    puff.style.setProperty('--dx', dx.toFixed(0)+'px');
-    puff.style.setProperty('--dy', dy.toFixed(0)+'px');
-    puff.addEventListener('animationend', () => puff.remove());
-    launchScene.appendChild(puff);
+  function triggerTransform(){
+    clickRipple.classList.add('active');
+    setTimeout(() => clickRipple.classList.remove('active'), 650);
+
+    for(let i=0;i<7;i++){
+      const dx = 90 + Math.random()*40;
+      const dy = (Math.random()*70 - 35);
+      spawnMote(0.51, 0.6, dx, dy, 14, 'mote-out');
+    }
+
+    outCards.forEach((card, i) => {
+      setTimeout(() => {
+        card.classList.add('pop');
+        setTimeout(() => card.classList.remove('pop'), 560);
+      }, i*140);
+    });
   }
 
   function tick(ts){
-    if(startTime === null) startTime = ts;
-    const t = ts - startTime;
-    const bobY = Math.sin(t/900) * 7;
-    const bobX = Math.sin(t/1300) * 4;
-    const wobble = Math.sin(t/500) * 1.2;
+    const elapsed = ts % CYCLE_MS;
+    const cycleIndex = Math.floor(ts / CYCLE_MS);
 
-    rocketTilt.style.transform = `translate(-50%,-50%) rotate(${BASE_TILT + wobble}deg)`;
-    rocketBob.style.transform = `translate(${bobX}px, ${bobY}px)`;
-
-    if(ts - lastPuff > 45){
-      spawnPuff();
-      lastPuff = ts;
+    if(elapsed >= CLICK_AT && cycleIndex !== lastCycleFired){
+      lastCycleFired = cycleIndex;
+      triggerTransform();
     }
+
+    if(ts - lastAmbient > 420){
+      spawnMote(0.2, 0.5, 55 + Math.random()*25, (Math.random()*30-15), 20, 'mote-in');
+      lastAmbient = ts;
+    }
+
     requestAnimationFrame(tick);
   }
   requestAnimationFrame(tick);
-} else if(rocketTilt && reduceMotion){
-  rocketTilt.style.transform = `translate(-50%,-50%) rotate(${BASE_TILT}deg)`;
 }
+
+
 
 
 
