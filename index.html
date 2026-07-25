@@ -274,6 +274,13 @@
   }
   footer .brand{ opacity:0.6; }
   .footer-note{ font-family:'JetBrains Mono', monospace; font-size:11px; color:var(--mist); letter-spacing:0.06em; }
+  .footer-credit{
+    font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.04em;
+    color:var(--mist); text-decoration:none; transition:color .25s ease;
+  }
+  .footer-credit span{ color:var(--ghost); }
+  .footer-credit:hover{ color:var(--teal); }
+  .footer-credit:hover span{ color:var(--teal); }
 
   /* ---------- prompt modal ---------- */
   .modal-backdrop{
@@ -537,6 +544,7 @@
 
 <footer>
   <div class="brand">PROMPT · BOOST</div>
+  <a href="https://www.linkedin.com/in/elempleadodelmes/" target="_blank" rel="noopener" class="footer-credit">Contenido de <span>El Empleado del Mes</span> ↗</a>
   <div class="footer-note">COPIA, ADAPTA, MEJORA</div>
 </footer>
 
