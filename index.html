@@ -438,7 +438,7 @@
 
 <nav>
   <div class="brand">PROMPT<span>·</span>BOOST</div>
-  <div class="nav-status"><span class="pulse-dot"></span> 27 PROMPTS LISTOS PARA USAR</div>
+  <div class="nav-status"><span class="pulse-dot"></span> 30 PROMPTS LISTOS PARA USAR</div>
 </nav>
 
 <main>
@@ -447,8 +447,9 @@
       <div class="eyebrow">Guía práctica · Prompt engineering multi-IA</div>
       <h1 class="display">Prompts que puedes <span class="accent">copiar y usar hoy</span></h1>
       <p class="hero-sub">
-        27 estructuras de prompt probadas, organizadas por lo que hacen: razonar mejor, escribir con un estilo concreto,
-        hacer marketing y contenido, trabajar con código, tomar decisiones, ser más productivo o aprender más rápido.
+        30 estructuras de prompt probadas, organizadas por lo que hacen: razonar mejor, escribir con un estilo concreto,
+        hacer marketing y contenido, trabajar con código, tomar decisiones, ser más productivo, aprender más rápido
+        o avanzar en tu carrera y tus finanzas.
         Funcionan igual de bien en <strong>Claude, Gemini, ChatGPT y Grok</strong>
         — empezamos por estos cuatro e iremos sumando más. Elige un prompt, copia el texto y sustituye lo que va
         <strong>entre corchetes [ ]</strong> por tu caso real.
@@ -943,6 +944,39 @@ Actúa como un tutor socrático: en vez de explicarme todo directamente, hazme u
 Espera mi respuesta antes de continuar, y ajusta la siguiente pregunta según lo que yo haya entendido o no.
 
 Empieza evaluando qué sé ya del tema con una primera pregunta sencilla.`
+  },
+  {
+    code: "P28", tag: "CV", category: "Carrera",
+    title: "Adaptar tu currículum a una oferta concreta",
+    desc: "Reescribe tu experiencia destacando lo relevante para un puesto específico, en vez de un CV genérico para todo.",
+    prompt: `Aquí está mi experiencia actual: [pega tu CV o un resumen de tu trayectoria].
+
+Aquí está la oferta de trabajo a la que quiero aplicar: [pega la descripción del puesto].
+
+Reescribe mi experiencia destacando lo más relevante para esta oferta concreta, usando las mismas palabras clave que aparecen en la descripción del puesto (para pasar filtros automáticos de selección).
+Señala también qué parte de mi experiencia actual recomiendas quitar o acortar por no aportar a esta candidatura en concreto.`
+  },
+  {
+    code: "P29", tag: "Entrevista", category: "Carrera",
+    title: "Simulacro de entrevista de trabajo",
+    desc: "Practica antes de la entrevista real con preguntas adaptadas al puesto y feedback honesto sobre tus respuestas.",
+    prompt: `Actúa como entrevistador para este puesto: [pega el título y descripción del puesto].
+
+Hazme una pregunta de entrevista a la vez, empezando por una pregunta general sobre mi experiencia.
+Espera mi respuesta antes de continuar. Después de cada respuesta mía, dame feedback breve y honesto: qué ha funcionado y qué mejorarías, antes de pasar a la siguiente pregunta.
+
+Incluye al menos una pregunta de comportamiento (tipo "cuéntame de una vez que...") y una pregunta técnica relacionada con el puesto.`
+  },
+  {
+    code: "P30", tag: "Presupuesto", category: "Finanzas",
+    title: "Presupuesto personal a partir de tus gastos reales",
+    desc: "Convierte una lista de gastos desordenada en un presupuesto por categorías con recomendaciones concretas de ajuste.",
+    prompt: `Aquí están mis gastos del último mes: [pega tus gastos, aunque sea una lista desordenada de conceptos y cantidades].
+
+Mi ingreso mensual aproximado es: [cantidad].
+Mi objetivo es: [ej. "ahorrar 200€ al mes" o "reducir gastos hormiga"].
+
+Agrupa mis gastos por categorías, calcula qué porcentaje de mi ingreso representa cada una, y señala las 3 categorías con más margen de ajuste realista para acercarme a mi objetivo, con una acción concreta para cada una.`
   }
 ];
 
