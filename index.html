@@ -135,8 +135,17 @@
     font-size:clamp(2.6rem, 7.5vw, 6.4rem);
     line-height:0.98; letter-spacing:-0.02em;
     max-width:15ch;
+    position:relative;
+    text-shadow:0 0 40px rgba(78,230,203,0.35), 0 0 80px rgba(139,127,255,0.22);
+  }
+  h1.display::before{
+    content:''; position:absolute; z-index:-1;
+    left:-10%; top:-30%; width:85%; height:160%;
+    background:linear-gradient(137deg, #4ee6cb 0%, #8b7fff 45%, #ff7a52 100%);
+    opacity:0.22; filter:blur(70px); pointer-events:none;
   }
   h1.display .accent{
+    position:relative;
     background:linear-gradient(120deg, var(--teal), var(--violet));
     -webkit-background-clip:text; background-clip:text; color:transparent;
   }
@@ -177,6 +186,7 @@
   h2.display{
     font-family:'Unbounded', sans-serif; font-weight:800;
     font-size:clamp(1.7rem, 3.4vw, 2.6rem); line-height:1.08; letter-spacing:-0.01em;
+    text-shadow:0 0 26px rgba(78,230,203,0.22), 0 0 50px rgba(139,127,255,0.14);
   }
   .section-head p{ margin-top:20px; color:var(--mist); font-size:1.05rem; line-height:1.7; max-width:56ch; }
 
