@@ -107,6 +107,9 @@
     font-family:'JetBrains Mono', monospace; font-size:11px; color:var(--mist);
     letter-spacing:0.1em; display:flex; align-items:center; gap:8px;
   }
+  .nav-sep{ opacity:0.4; }
+  #navProgress{ color:var(--teal); transition:color .3s ease; }
+  @media (max-width:760px){ .nav-sep, #navProgress{ display:none; } }
   .pulse-dot{
     width:6px; height:6px; border-radius:50%; background:var(--teal);
     box-shadow:0 0 6px var(--teal);
@@ -193,19 +196,41 @@
   }
   .search-input::placeholder{ color:var(--mist); }
   .search-input:focus{ border-color:rgba(78,230,203,0.5); }
+  .search-input:focus ~ .search-kbd{ opacity:0; }
+  .search-kbd{
+    position:absolute; right:12px; top:50%; transform:translateY(-50%);
+    font-family:'JetBrains Mono', monospace; font-size:11px; color:var(--mist);
+    border:1px solid var(--line); border-radius:4px; padding:2px 7px;
+    pointer-events:none; transition:opacity .2s ease;
+  }
+
+  .filters-row{
+    display:flex; flex-wrap:wrap; align-items:center; gap:14px; margin-bottom:40px;
+  }
+  .filters-row .filters{ margin-bottom:0; }
+  .copy-all-btn{
+    display:none; align-items:center; gap:8px;
+    font-family:'JetBrains Mono', monospace; font-size:12px; letter-spacing:0.04em;
+    color:var(--void); background:var(--accent, var(--teal)); border:none;
+    padding:10px 16px; cursor:pointer; transition:filter .2s ease;
+  }
+  .copy-all-btn.show{ display:inline-flex; }
+  .copy-all-btn:hover{ filter:brightness(1.1); }
+  .copy-all-btn.copied{ background:var(--ghost); }
 
   .filters{
     display:flex; flex-wrap:wrap; gap:10px; margin-bottom:40px;
   }
   .filter-btn{
     font-family:'JetBrains Mono', monospace; font-size:12px; letter-spacing:0.06em;
-    color:var(--mist); background:var(--depth); border:1px solid var(--line);
+    color:var(--mist); background:var(--depth);
+    border:1px solid color-mix(in srgb, var(--accent, var(--teal)) 30%, var(--line));
     padding:10px 18px; cursor:pointer; transition:all .25s ease;
     text-transform:uppercase;
   }
-  .filter-btn:hover{ color:var(--ghost); border-color:rgba(78,230,203,0.35); }
+  .filter-btn:hover{ color:var(--ghost); border-color:color-mix(in srgb, var(--accent, var(--teal)) 65%, transparent); }
   .filter-btn.active{
-    color:var(--void); background:var(--teal); border-color:var(--teal); font-weight:600;
+    color:var(--void); background:var(--accent, var(--teal)); border-color:var(--accent, var(--teal)); font-weight:600;
   }
   .no-results{
     display:none; color:var(--mist); font-size:0.95rem; padding:40px 0; text-align:center;
@@ -222,23 +247,36 @@
     background:var(--depth);
     padding:32px 28px 28px;
     position:relative;
+    overflow:hidden;
     transform-style:preserve-3d;
     transition:transform .35s cubic-bezier(.2,.8,.2,1), background .35s ease, opacity .3s ease;
     cursor:pointer;
   }
   .specimen.hidden{ display:none; }
   .specimen:hover{ background:var(--surface); }
+  .scan-line{
+    position:absolute; left:0; right:0; top:-6%; height:2px;
+    background:linear-gradient(90deg, transparent, var(--accent, var(--teal)), transparent);
+    opacity:0; pointer-events:none;
+  }
+  .specimen:hover .scan-line{ animation:scanSweep 1.1s linear; }
+  @keyframes scanSweep{
+    0%{ top:-6%; opacity:0; }
+    12%{ opacity:0.9; }
+    88%{ opacity:0.9; }
+    100%{ top:104%; opacity:0; }
+  }
   .specimen::before{
     content:''; position:absolute; inset:14px; border:1px solid transparent;
     transition:border-color .3s ease; pointer-events:none;
   }
-  .specimen:hover::before{ border-color:rgba(78,230,203,0.25); }
+  .specimen:hover::before{ border-color:color-mix(in srgb, var(--accent, var(--teal)) 35%, transparent); }
   .spc-code{
     font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.1em;
     color:var(--teal); display:flex; justify-content:space-between; align-items:center;
     margin-bottom:20px;
   }
-  .spc-code .tag{ color:var(--mist); }
+  .spc-code .tag{ color:var(--accent, var(--mist)); }
   .spc-title{
     font-family:'Unbounded', sans-serif; font-weight:600; font-size:1.18rem;
     line-height:1.3; margin-bottom:12px;
@@ -266,10 +304,10 @@
   /* corner brackets, sci-fi targeting look */
   .corner{ position:absolute; width:10px; height:10px; opacity:0; transition:opacity .3s ease; }
   .specimen:hover .corner{ opacity:0.8; }
-  .corner.tl{ top:10px; left:10px; border-top:1px solid var(--teal); border-left:1px solid var(--teal); }
-  .corner.tr{ top:10px; right:10px; border-top:1px solid var(--teal); border-right:1px solid var(--teal); }
-  .corner.bl{ bottom:10px; left:10px; border-bottom:1px solid var(--teal); border-left:1px solid var(--teal); }
-  .corner.br{ bottom:10px; right:10px; border-bottom:1px solid var(--teal); border-right:1px solid var(--teal); }
+  .corner.tl{ top:10px; left:10px; border-top:1px solid var(--accent, var(--teal)); border-left:1px solid var(--accent, var(--teal)); }
+  .corner.tr{ top:10px; right:10px; border-top:1px solid var(--accent, var(--teal)); border-right:1px solid var(--accent, var(--teal)); }
+  .corner.bl{ bottom:10px; left:10px; border-bottom:1px solid var(--accent, var(--teal)); border-left:1px solid var(--accent, var(--teal)); }
+  .corner.br{ bottom:10px; right:10px; border-bottom:1px solid var(--accent, var(--teal)); border-right:1px solid var(--accent, var(--teal)); }
 
   /* ---------- reveal animation ---------- */
   .reveal{ opacity:0; transform:translateY(28px); transition:opacity .8s ease, transform .8s cubic-bezier(.2,.8,.2,1); }
@@ -315,7 +353,7 @@
   .modal-backdrop.open{ opacity:1; pointer-events:auto; }
   .modal{
     width:min(720px, 100%); max-height:82vh; overflow:auto;
-    background:var(--surface); border:1px solid rgba(78,230,203,0.25);
+    background:var(--surface); border:1px solid color-mix(in srgb, var(--accent, var(--teal)) 25%, transparent);
     position:relative; padding:44px 40px 36px;
     transform:scale(0.94) translateY(16px); transition:transform .4s cubic-bezier(.2,.8,.2,1);
   }
@@ -328,7 +366,7 @@
   }
   .modal-close:hover{ color:var(--plasma); }
   .modal-code{
-    font-family:'JetBrains Mono', monospace; font-size:11px; color:var(--teal); letter-spacing:0.1em; margin-bottom:18px;
+    font-family:'JetBrains Mono', monospace; font-size:11px; color:var(--accent, var(--teal)); letter-spacing:0.1em; margin-bottom:18px;
   }
   .modal h3{
     font-family:'Unbounded', sans-serif; font-size:1.5rem; margin-bottom:16px; font-weight:700;
@@ -438,7 +476,11 @@
 
 <nav>
   <div class="brand">PROMPT<span>·</span>BOOST</div>
-  <div class="nav-status"><span class="pulse-dot"></span> 30 PROMPTS LISTOS PARA USAR</div>
+  <div class="nav-status">
+    <span class="pulse-dot"></span> <span id="navTotal">30 PROMPTS LISTOS PARA USAR</span>
+    <span class="nav-sep">·</span>
+    <span id="navProgress">0/30 EXPLORADOS</span>
+  </div>
 </nav>
 
 <main>
@@ -537,9 +579,13 @@
         <line x1="14" y1="14" x2="18.5" y2="18.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
       </svg>
       <input type="text" id="searchInput" class="search-input" placeholder="Busca por palabra clave, ej. 'reunión', 'copy', 'código'…" autocomplete="off">
+      <kbd class="search-kbd">/</kbd>
     </div>
 
-    <div class="filters" id="filters"></div>
+    <div class="filters-row">
+      <div class="filters" id="filters"></div>
+      <button class="copy-all-btn" id="copyAllBtn" type="button"></button>
+    </div>
     <div class="specimen-grid" id="grid"></div>
     <p class="no-results" id="noResults">No hay ningún prompt que coincida. Prueba con otra palabra o quita el filtro de categoría.</p>
   </section>
@@ -980,7 +1026,60 @@ Agrupa mis gastos por categorías, calcula qué porcentaje de mi ingreso represe
   }
 ];
 
+/* ============ progreso: prompts explorados ============ */
+const navProgress = document.getElementById('navProgress');
+const navTotal = document.getElementById('navTotal');
+const EXPLORED_KEY = 'promptboost_explored';
+
+function getExplored(){
+  try{ return new Set(JSON.parse(localStorage.getItem(EXPLORED_KEY) || '[]')); }
+  catch(e){ return new Set(); }
+}
+function saveExplored(set){
+  try{ localStorage.setItem(EXPLORED_KEY, JSON.stringify([...set])); } catch(e){}
+}
+function updateProgressDisplay(){
+  const explored = getExplored();
+  navProgress.textContent = `${explored.size}/${specimens.length} EXPLORADOS`;
+}
+function markExplored(code){
+  const explored = getExplored();
+  if(!explored.has(code)){
+    explored.add(code);
+    saveExplored(explored);
+    updateProgressDisplay();
+  }
+}
+navTotal.textContent = `${specimens.length} PROMPTS LISTOS PARA USAR`;
+updateProgressDisplay();
+
+/* ============ atajo de teclado "/" para buscar ============ */
+window.addEventListener('keydown', (e) => {
+  if(e.key === '/' ){
+    const tag = document.activeElement.tagName;
+    if(tag !== 'INPUT' && tag !== 'TEXTAREA'){
+      e.preventDefault();
+      document.getElementById('searchInput').focus();
+    }
+  }
+});
+
 /* ============ render filters + búsqueda ============ */
+const categoryColors = {
+  "Razonamiento": "#4ee6cb",
+  "Escritura": "#8b7fff",
+  "Código": "#ff7a52",
+  "Estructura": "#5ec8ff",
+  "Decisiones": "#f2c46d",
+  "Marketing": "#ff7ab8",
+  "Contenido": "#b6e05e",
+  "Negocio": "#ff6b6b",
+  "Productividad": "#7dd3fc",
+  "Aprendizaje": "#c4b5fd",
+  "Carrera": "#ffd166",
+  "Finanzas": "#6ee7b7"
+};
+
 const categories = ["Todos", ...new Set(specimens.map(s => s.category))];
 const filtersEl = document.getElementById('filters');
 const searchInput = document.getElementById('searchInput');
@@ -989,9 +1088,12 @@ const noResults = document.getElementById('noResults');
 let currentCategory = "Todos";
 let currentSearch = "";
 
+const copyAllBtn = document.getElementById('copyAllBtn');
+
 function applyFilters(){
   const term = currentSearch.trim().toLowerCase();
   let visibleCount = 0;
+  const visibleCodes = [];
 
   document.querySelectorAll('.specimen').forEach(card => {
     const matchesCategory = currentCategory === "Todos" || card.dataset.category === currentCategory;
@@ -999,24 +1101,50 @@ function applyFilters(){
     const matchesSearch = term === "" || haystack.includes(term);
     const show = matchesCategory && matchesSearch;
     card.classList.toggle('hidden', !show);
-    if(show) visibleCount++;
+    if(show){ visibleCount++; visibleCodes.push(card.dataset.code); }
   });
 
   noResults.classList.toggle('show', visibleCount === 0);
+
+  if(currentCategory !== "Todos" && visibleCount > 0){
+    copyAllBtn.classList.add('show');
+    copyAllBtn.textContent = `Copiar los ${visibleCount} prompts de ${currentCategory}`;
+    if(categoryColors[currentCategory]) copyAllBtn.style.setProperty('--accent', categoryColors[currentCategory]);
+    copyAllBtn.dataset.codes = visibleCodes.join(',');
+  } else {
+    copyAllBtn.classList.remove('show');
+  }
 }
+
+copyAllBtn.addEventListener('click', () => {
+  const codes = (copyAllBtn.dataset.codes || '').split(',').filter(Boolean);
+  const block = codes.map(code => {
+    const s = specimens.find(x => x.code === code);
+    return `--- ${s.code} · ${s.title} ---\n${s.prompt}`;
+  }).join('\n\n');
+  navigator.clipboard.writeText(block).then(() => {
+    const original = copyAllBtn.textContent;
+    copyAllBtn.textContent = 'Copiado ✓';
+    copyAllBtn.classList.add('copied');
+    setTimeout(() => { copyAllBtn.textContent = original; copyAllBtn.classList.remove('copied'); }, 1800);
+  });
+});
 
 categories.forEach((cat, i) => {
   const btn = document.createElement('button');
   btn.className = 'filter-btn' + (i === 0 ? ' active' : '');
   btn.textContent = cat;
+  if(categoryColors[cat]) btn.style.setProperty('--accent', categoryColors[cat]);
   btn.addEventListener('click', () => {
     document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
     currentCategory = cat;
+    particleTintRGB = categoryColors[cat] ? hexToRgbString(categoryColors[cat]) : "78,230,203";
     applyFilters();
   });
   filtersEl.appendChild(btn);
 });
+
 
 searchInput.addEventListener('input', (e) => {
   currentSearch = e.target.value;
@@ -1029,9 +1157,13 @@ specimens.forEach((s, i) => {
   const el = document.createElement('div');
   el.className = 'specimen reveal';
   el.dataset.category = s.category;
+  el.dataset.code = s.code;
+  if(categoryColors[s.category]) el.style.setProperty('--accent', categoryColors[s.category]);
+  el.style.transitionDelay = `${(i % 9) * 55}ms`;
   el.dataset.search = `${s.title} ${s.desc} ${s.tag} ${s.category} ${s.code}`.toLowerCase();
   el.innerHTML = `
     <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+    <span class="scan-line"></span>
     <div class="spc-code"><span>${s.code}</span><span class="tag">${s.tag}</span></div>
     <div class="spc-title">${s.title}</div>
     <div class="spc-desc">${s.desc}</div>
@@ -1049,6 +1181,7 @@ specimens.forEach((s, i) => {
       btn.classList.add('copied');
       setTimeout(() => { btn.textContent = 'Copiar'; btn.classList.remove('copied'); }, 1600);
     });
+    markExplored(s.code);
   });
   el.addEventListener('mousemove', (e) => {
     const r = el.getBoundingClientRect();
@@ -1077,7 +1210,10 @@ function openModal(s){
   currentPrompt = s.prompt;
   copyBtn.textContent = 'Copiar prompt';
   copyBtn.classList.remove('copied');
+  const accent = categoryColors[s.category] || 'var(--teal)';
+  document.getElementById('modal').style.setProperty('--accent', accent);
   backdrop.classList.add('open');
+  markExplored(s.code);
 }
 document.getElementById('modalClose').addEventListener('click', () => backdrop.classList.remove('open'));
 backdrop.addEventListener('click', (e) => { if(e.target === backdrop) backdrop.classList.remove('open'); });
@@ -1127,6 +1263,15 @@ const ctx = canvas.getContext('2d');
 let W, H, particles = [];
 const PARTICLE_COUNT = 90;
 const MAX_DIST = 130;
+let particleTintRGB = "78,230,203"; // se actualiza según la categoría de filtro activa
+
+function hexToRgbString(hex){
+  const h = hex.replace('#','');
+  const r = parseInt(h.substring(0,2),16);
+  const g = parseInt(h.substring(2,4),16);
+  const b = parseInt(h.substring(4,6),16);
+  return `${r},${g},${b}`;
+}
 
 function resize(){
   W = canvas.width = window.innerWidth;
@@ -1168,7 +1313,7 @@ function draw(){
       const dx = a.x-b.x, dy = (a.y - b.y);
       const dist = Math.sqrt(dx*dx+dy*dy);
       if(dist < MAX_DIST){
-        ctx.strokeStyle = `rgba(78,230,203,${(1-dist/MAX_DIST)*0.12})`;
+        ctx.strokeStyle = `rgba(${particleTintRGB},${(1-dist/MAX_DIST)*0.12})`;
         ctx.lineWidth = 0.6;
         ctx.beginPath();
         ctx.moveTo(a.x, a.y + scrollY*0.15*a.z);
