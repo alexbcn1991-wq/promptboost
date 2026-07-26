@@ -148,9 +148,11 @@
   .eyebrow::before{
     content:''; width:32px; height:1px; background:var(--teal);
   }
+  h1.display .dud{ color:var(--teal); opacity:0.7; }
+
   h1.display{
     font-family:'Unbounded', sans-serif; font-weight:900;
-    font-size:clamp(2.6rem, 7.5vw, 6.4rem);
+    font-size:clamp(1.8rem, 4.8vw, 3.8rem);
     line-height:0.98; letter-spacing:-0.02em;
     max-width:15ch;
     position:relative;
@@ -593,7 +595,7 @@
 <main>
   <section class="hero">
     <div class="hero-content">
-      <h1 class="display">Prompts que puedes <span class="accent">copiar y usar hoy</span></h1>
+      <h1 class="display" id="scrambleText">Prompts que puedes copiar y usar hoy.</h1>
       <p class="hero-sub">
         30 estructuras de prompt probadas, organizadas por lo que hacen: razonar mejor, escribir con un estilo concreto,
         hacer marketing y contenido, trabajar con código, tomar decisiones, ser más productivo, aprender más rápido
@@ -1444,6 +1446,84 @@ document.querySelectorAll('.blob').forEach(b => {
     b.style.transform = `translate(${dx}px, ${dy}px)`;
   });
 });
+
+/* ============ texto con efecto scramble (descifrado) ============ */
+class TextScramble {
+  constructor(el){
+    this.el = el;
+    this.chars = '!<>-_\\/[]{}—=+*^?#';
+    this.queue = [];
+    this.frame = 0;
+    this.frameRequest = 0;
+    this.resolve = () => {};
+    this.update = this.update.bind(this);
+  }
+  setText(newText){
+    const oldText = this.el.innerText;
+    const length = Math.max(oldText.length, newText.length);
+    const promise = new Promise(resolve => { this.resolve = resolve; });
+    this.queue = [];
+    for(let i=0;i<length;i++){
+      const from = oldText[i] || '';
+      const to = newText[i] || '';
+      const start = Math.floor(Math.random()*110);
+      const end = start + Math.floor(Math.random()*110);
+      this.queue.push({ from, to, start, end });
+    }
+    cancelAnimationFrame(this.frameRequest);
+    this.frame = 0;
+    this.update();
+    return promise;
+  }
+  update(){
+    let output = '';
+    let complete = 0;
+    for(let i=0, n=this.queue.length; i<n; i++){
+      let { from, to, start, end, char } = this.queue[i];
+      if(this.frame >= end){
+        complete++;
+        output += to;
+      } else if(this.frame >= start){
+        if(!char || Math.random() < 0.28){
+          char = this.chars[Math.floor(Math.random()*this.chars.length)];
+          this.queue[i].char = char;
+        }
+        output += `<span class="dud">${char}</span>`;
+      } else {
+        output += from;
+      }
+    }
+    this.el.innerHTML = output;
+    if(complete === this.queue.length){
+      this.resolve();
+    } else {
+      this.frameRequest = requestAnimationFrame(this.update);
+      this.frame++;
+    }
+  }
+}
+
+const scrambleEl = document.getElementById('scrambleText');
+if(scrambleEl && !window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+  const scrambler = new TextScramble(scrambleEl);
+  const scramblePhrases = [
+    'Hola.', 'PromptBoost.', 'Prompts que puedes copiar y usar hoy.',
+    'Copia. Pega. Finge que lo escribiste tú.',
+    'El compañero de la IA ya no tiene ventaja.',
+    'Cero frameworks de 12 pasos.', 'Sin gurús. Sin webinars.',
+    'Disfruta. O finge que curras.', 'Repite mañana. Cobra igual.'
+  ];
+  let scrambleIndex = 0;
+  const runScramble = () => {
+    scrambler.setText(scramblePhrases[scrambleIndex]).then(() => {
+      setTimeout(runScramble, 3800);
+    });
+    scrambleIndex = (scrambleIndex + 1) % scramblePhrases.length;
+  };
+  setTimeout(runScramble, 500);
+} else if(scrambleEl){
+  scrambleEl.textContent = 'Prompts que puedes copiar y usar hoy.';
+}
 
 /* ============ digital rain (canvas) — adaptado de "raining letters" ============ */
 const canvas = document.getElementById('particle-field');
