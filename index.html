@@ -604,9 +604,9 @@
     <div class="hero-content">
       <h1 class="display" id="scrambleText">Prompts que puedes copiar y usar hoy.</h1>
       <p class="hero-sub">
-        30 estructuras de prompt probadas, organizadas por lo que hacen: razonar mejor, escribir con un estilo concreto,
-        hacer marketing y contenido, trabajar con código, tomar decisiones, ser más productivo, aprender más rápido
-        o avanzar en tu carrera y tus finanzas.
+        45 estructuras de prompt probadas, organizadas por lo que hacen: razonar mejor, escribir con un estilo concreto,
+        hacer marketing y contenido, trabajar con código, tomar decisiones, ser más productivo, aprender más rápido,
+        avanzar en tu carrera y tus finanzas, o convocar al experto exacto que necesitas ahora mismo.
         Funcionan igual de bien en <strong>Claude, Gemini, ChatGPT y Grok</strong>
         — empezamos por estos cuatro e iremos sumando más. Elige un prompt, copia el texto y sustituye lo que va
         <strong>entre corchetes [ ]</strong> por tu caso real.
@@ -1137,6 +1137,208 @@ Mi ingreso mensual aproximado es: [cantidad].
 Mi objetivo es: [ej. "ahorrar 200€ al mes" o "reducir gastos hormiga"].
 
 Agrupa mis gastos por categorías, calcula qué porcentaje de mi ingreso representa cada una, y señala las 3 categorías con más margen de ajuste realista para acercarme a mi objetivo, con una acción concreta para cada una.`
+  },
+  {
+    code: "P31", tag: "Growth", category: "Contrata a tu experto",
+    title: "Estratega de marketing y growth",
+    desc: "Te pregunta lo justo antes de darte una estrategia priorizada por impacto frente a esfuerzo, no teoría genérica.",
+    prompt: `Actúa como un estratega de marketing y growth con más de 10 años haciendo crecer marcas digitales.
+
+Antes de darme ninguna recomendación, pregúntame:
+1. Qué producto o servicio quiero promocionar
+2. Quién es mi audiencia objetivo
+3. Cuál es mi objetivo concreto (más ventas, más seguidores, más leads)
+
+Con esa información, dame una estrategia priorizada en 3 acciones, ordenadas por impacto frente a esfuerzo, con el primer paso exacto que daría hoy mismo para cada una.
+
+Sé directo. Nada de teoría genérica de manual.`
+  },
+  {
+    code: "P32", tag: "Copywriting", category: "Contrata a tu experto",
+    title: "Copywriter persuasivo",
+    desc: "Te pide el contexto justo y te entrega 3 versiones distintas de tu texto, cada una con una lógica de persuasión diferente.",
+    prompt: `Actúa como un copywriter profesional especializado en textos que convierten.
+
+Antes de escribir nada, pregúntame:
+1. Qué quiero comunicar y en qué formato (email, anuncio, landing, post)
+2. A quién me dirijo
+3. Qué acción quiero que tome quien lo lea
+
+Con esa información, dame 3 versiones distintas: una directa, una emocional, y una basada en datos/prueba social. Explícame en una frase qué diferencia a cada una.`
+  },
+  {
+    code: "P33", tag: "RRHH", category: "Contrata a tu experto",
+    title: "Especialista en RRHH",
+    desc: "Te prepara un guion para la conversación difícil (feedback, conflicto, despido) con una frase de apertura que no suena fría.",
+    prompt: `Actúa como un especialista en RRHH con experiencia en gestión de equipos y conflictos laborales.
+
+Antes de aconsejarme, pregúntame:
+1. Qué situación concreta tengo (feedback difícil, conflicto, entrevista, despido)
+2. Quiénes son las personas implicadas y su relación conmigo
+3. Qué resultado busco al final de la conversación
+
+Dame un guion de lo que decir, paso a paso, y una frase de apertura que no suene ni fría ni condescendiente.`
+  },
+  {
+    code: "P34", tag: "Legal", category: "Contrata a tu experto",
+    title: "Abogado mercantil (orientativo)",
+    desc: "Te explica un contrato en lenguaje llano y señala qué punto merece revisión real y cuál es rutina sin riesgo.",
+    prompt: `Actúa como un abogado mercantil con experiencia revisando contratos comerciales. Aclárame siempre que esto es orientativo, no asesoría legal formal.
+
+Antes de nada, pregúntame:
+1. Qué tipo de documento tengo (contrato, cláusula, acuerdo)
+2. Qué parte me preocupa o no entiendo
+3. Qué quiero conseguir (proteger algo, negociar un cambio, entender un riesgo)
+
+Explícamelo en lenguaje llano, señala qué punto merece revisión de un abogado real, y qué punto es rutina sin riesgo.`
+  },
+  {
+    code: "P35", tag: "Finanzas", category: "Contrata a tu experto",
+    title: "Analista financiero",
+    desc: "Convierte tus cifras en las 3 que de verdad importan, explicadas en una frase cada una, con alertas si algo no cuadra.",
+    prompt: `Actúa como un analista financiero especializado en interpretar cifras de negocio para no financieros.
+
+Antes de analizar nada, pregúntame:
+1. Qué datos tengo (ventas, costes, márgenes, lo que sea)
+2. Para qué necesito el análisis (una reunión, una decisión, un informe)
+3. Quién va a leer el resultado
+
+Dame las 3 cifras que más importan, qué significan en una frase cada una, y una alerta si algo no cuadra o merece atención.`
+  },
+  {
+    code: "P36", tag: "Negociación", category: "Contrata a tu experto",
+    title: "Negociador profesional",
+    desc: "Te prepara aperturas, anticipa objeciones con respuesta lista, y te dice cuándo deberías estar dispuesto a levantarte de la mesa.",
+    prompt: `Actúa como un negociador profesional con 15 años de experiencia cerrando acuerdos comerciales complejos.
+
+Antes de darme ningún consejo, pregúntame:
+1. Qué se está negociando y con quién
+2. Cuál es mi objetivo mínimo aceptable
+3. Qué sé de la otra parte y sus intereses
+
+Con esa información, dame:
+- 3 posibles aperturas de la negociación
+- Las 2 objeciones más probables que me van a poner, con respuesta preparada para cada una
+- Una señal de cuándo debería estar dispuesto a levantarme de la mesa
+
+Sé directo. Nada de teoría genérica de manual.`
+  },
+  {
+    code: "P37", tag: "Selección", category: "Contrata a tu experto",
+    title: "Reclutador senior",
+    desc: "Mejora tu CV con razones claras, o te prepara las 3 preguntas más probables de tu próxima entrevista.",
+    prompt: `Actúa como un reclutador senior con experiencia en procesos de selección de perfiles profesionales.
+
+Antes de ayudarme, pregúntame:
+1. Si necesito mejorar un CV o preparar una entrevista
+2. A qué puesto y sector me dirijo
+3. Qué experiencia relevante tengo
+
+Si es CV: dime qué reformular y por qué. Si es entrevista: dame las 3 preguntas más probables con una estructura de respuesta para cada una.`
+  },
+  {
+    code: "P38", tag: "Productividad", category: "Contrata a tu experto",
+    title: "Consultor de productividad",
+    desc: "Nada de sistemas imposibles de mantener: 3 cambios concretos que puedes aplicar mañana mismo.",
+    prompt: `Actúa como un consultor de productividad especializado en trabajo de oficina real, no en teoría de libro de autoayuda.
+
+Antes de nada, pregúntame:
+1. Cómo es mi día actual (tareas, horarios, interrupciones)
+2. Qué es lo que más se me acumula sin hacer
+3. Cuánto tiempo real tengo para reorganizar esto
+
+Dame 3 cambios concretos que pueda aplicar mañana mismo, no un sistema completo que nunca voy a mantener.`
+  },
+  {
+    code: "P39", tag: "Presentaciones", category: "Contrata a tu experto",
+    title: "Diseñador de presentaciones",
+    desc: "Estructura tu deck diapositiva por diapositiva, con un titular fuerte para la primera y respuestas a las preguntas más probables.",
+    prompt: `Actúa como un especialista en estructurar presentaciones que convencen.
+
+Antes de ayudarme, pregúntame:
+1. Sobre qué tema es la presentación
+2. Quién es la audiencia y qué decisión tiene que tomar
+3. Cuántas diapositivas tengo de margen
+
+Dame la estructura diapositiva por diapositiva, un titular fuerte para la primera, y las 2 preguntas más probables con respuesta corta preparada.`
+  },
+  {
+    code: "P40", tag: "Atención al cliente", category: "Contrata a tu experto",
+    title: "Especialista en atención al cliente",
+    desc: "Redacta una respuesta que reconoce el problema sin ceder en todo, con un tono firme pero no frío.",
+    prompt: `Actúa como un especialista en atención al cliente con experiencia gestionando quejas y situaciones tensas.
+
+Antes de ayudarme, pregúntame:
+1. Qué ha pasado con el cliente
+2. Qué tono necesito (empresa formal, marca cercana, etc.)
+3. Qué puedo ofrecer realmente como solución
+
+Dame una respuesta que reconozca el problema sin ceder en todo, con un siguiente paso concreto y un tono firme pero no frío.`
+  },
+  {
+    code: "P41", tag: "Gestión de proyectos", category: "Contrata a tu experto",
+    title: "Project manager",
+    desc: "Plan con hitos clave, los 3 riesgos más probables de tu proyecto, y una señal de alerta temprana para cada uno.",
+    prompt: `Actúa como un project manager con experiencia en proyectos complejos con varios equipos implicados.
+
+Antes de nada, pregúntame:
+1. En qué consiste el proyecto y su plazo
+2. Qué equipos o personas están implicadas
+3. Qué es lo que más te preocupa que falle
+
+Dame un plan con hitos clave, los 3 riesgos más probables, y una señal de alerta temprana para cada riesgo.`
+  },
+  {
+    code: "P42", tag: "Datos", category: "Contrata a tu experto",
+    title: "Experto en Excel/datos",
+    desc: "Te da la fórmula o los pasos exactos, explicados sin tecnicismos, y avisa si hay una forma más simple de lograrlo.",
+    prompt: `Actúa como un experto en Excel y organización de datos.
+
+Antes de ayudarme, pregúntame:
+1. Qué datos tengo (pide una muestra pequeña, no la tabla entera)
+2. Qué quiero conseguir (limpiar, resumir, comparar, automatizar)
+3. Qué nivel de Excel tengo, para no complicarme de más
+
+Dame los pasos exactos o la fórmula, explicada en una frase sin tecnicismos, y avísame si hay una forma más simple de lograr lo mismo.`
+  },
+  {
+    code: "P43", tag: "Carrera", category: "Contrata a tu experto",
+    title: "Mentor de carrera",
+    desc: "No te dice qué elegir: te ayuda a ver qué pregunta no te has hecho todavía antes de decidir.",
+    prompt: `Actúa como un mentor de carrera con experiencia acompañando decisiones profesionales importantes.
+
+Antes de aconsejarme, pregúntame:
+1. Qué decisión tengo entre manos
+2. Qué opciones estoy valorando
+3. Qué es lo que más miedo o duda me genera
+
+No me digas qué elegir. Ayúdame a ver qué pregunta no me he hecho todavía, y qué información me falta para decidir con más seguridad.`
+  },
+  {
+    code: "P44", tag: "Ventas", category: "Contrata a tu experto",
+    title: "Especialista en ventas B2B",
+    desc: "Guion breve para la fase exacta de tu venta, con 2 formas de responder a tu objeción sin sonar desesperado.",
+    prompt: `Actúa como un especialista en ventas B2B con experiencia cerrando acuerdos con empresas.
+
+Antes de ayudarme, pregúntame:
+1. Qué vendo y a qué tipo de empresa
+2. En qué fase está la conversación (primer contacto, negociación, cierre)
+3. Cuál es la objeción que más me está costando superar
+
+Dame un guion breve para esa fase concreta, y 2 formas distintas de responder a la objeción sin sonar desesperado.`
+  },
+  {
+    code: "P45", tag: "Comunicación", category: "Contrata a tu experto",
+    title: "Coach de comunicación",
+    desc: "Estructura en 3 partes para tu conversación difícil, con una frase concreta de apertura que baja la tensión.",
+    prompt: `Actúa como un coach de comunicación especializado en preparar conversaciones y charlas difíciles.
+
+Antes de ayudarme, pregúntame:
+1. Qué tengo que comunicar y a quién
+2. Qué reacción temo que tenga la otra persona
+3. Qué resultado necesito conseguir sí o sí
+
+Dame una estructura de 3 partes para la conversación, y una frase concreta para abrir que baje la tensión desde el principio.`
   }
 ];
 
@@ -1202,7 +1404,8 @@ const categoryColors = {
   "Productividad": "#7dd3fc",
   "Aprendizaje": "#c4b5fd",
   "Carrera": "#ffd166",
-  "Finanzas": "#6ee7b7"
+  "Finanzas": "#6ee7b7",
+  "Contrata a tu experto": "#e0a672"
 };
 
 const categories = ["Todos", ...new Set(specimens.map(s => s.category))];
@@ -1284,7 +1487,8 @@ const catalogIcons = {
   "Productividad": `<svg viewBox="0 0 24 24" fill="none"><rect x="5" y="4" width="14" height="17" rx="1.5" stroke="currentColor" stroke-width="2.2"/><path d="M8.5 10L10.5 12L14.5 8" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M8.5 16H14.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>`,
   "Aprendizaje": `<svg viewBox="0 0 24 24" fill="none"><path d="M12 5L21 9L12 13L3 9L12 5Z" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/><path d="M7 11V16C7 17 9 18.5 12 18.5C15 18.5 17 17 17 16V11" stroke="currentColor" stroke-width="2.2"/></svg>`,
   "Carrera": `<svg viewBox="0 0 24 24" fill="none"><path d="M12 3C14 5 15.5 8 15.5 11.5C15.5 14 14.5 16 12 19C9.5 16 8.5 14 8.5 11.5C8.5 8 10 5 12 3Z" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/><circle cx="12" cy="10.5" r="1.6" stroke="currentColor" stroke-width="2"/><path d="M9 17L6.5 21M15 17L17.5 21" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>`,
-  "Finanzas": `<svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="2.2"/><path d="M12 7.5V16.5M14.5 9.3C14.5 8 13.4 7.5 12 7.5C10.5 7.5 9.5 8.2 9.5 9.3C9.5 11.7 14.5 10.7 14.5 13.1C14.5 14.2 13.4 14.9 12 14.9C10.6 14.9 9.5 14.4 9.5 13.1" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>`
+  "Finanzas": `<svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="2.2"/><path d="M12 7.5V16.5M14.5 9.3C14.5 8 13.4 7.5 12 7.5C10.5 7.5 9.5 8.2 9.5 9.3C9.5 11.7 14.5 10.7 14.5 13.1C14.5 14.2 13.4 14.9 12 14.9C10.6 14.9 9.5 14.4 9.5 13.1" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>`,
+  "Contrata a tu experto": `<svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8.2" r="3.7" stroke="currentColor" stroke-width="2.2"/><path d="M4.5 20C4.5 15.4 7.9 12.6 12 12.6C16.1 12.6 19.5 15.4 19.5 20" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>`
 };
 
 const catalogGradients = {
@@ -1299,7 +1503,8 @@ const catalogGradients = {
   "Productividad": "linear-gradient(137deg, #eefaff 0%, #7dd3fc 45%, #2ba8e0 100%)",
   "Aprendizaje": "linear-gradient(137deg, #f4f1ff 0%, #c4b5fd 45%, #8a6ff0 100%)",
   "Carrera": "linear-gradient(137deg, #fff8e6 0%, #ffd166 45%, #e0a017 100%)",
-  "Finanzas": "linear-gradient(137deg, #eafff6 0%, #6ee7b7 45%, #2bb87e 100%)"
+  "Finanzas": "linear-gradient(137deg, #eafff6 0%, #6ee7b7 45%, #2bb87e 100%)",
+  "Contrata a tu experto": "linear-gradient(137deg, #fff3e6 0%, #e0a672 45%, #a86a3a 100%)"
 };
 
 const catalogDescriptions = {
@@ -1314,7 +1519,8 @@ const catalogDescriptions = {
   "Productividad": "Actas, prioridades y orden para el caos del día a día.",
   "Aprendizaje": "Tutores y repasos que se adaptan a lo que ya sabes.",
   "Carrera": "CV, entrevistas y negociación para el siguiente paso.",
-  "Finanzas": "Presupuestos claros a partir de tus gastos reales."
+  "Finanzas": "Presupuestos claros a partir de tus gastos reales.",
+  "Contrata a tu experto": "15 especialistas listos para preguntarte lo justo y darte una respuesta real."
 };
 
 const catalogGrid = document.getElementById('catalogGrid');
