@@ -1445,12 +1445,11 @@ document.querySelectorAll('.blob').forEach(b => {
   });
 });
 
-/* ============ particle field (canvas) ============ */
+/* ============ digital rain (canvas) — adaptado de "raining letters" ============ */
 const canvas = document.getElementById('particle-field');
 const ctx = canvas.getContext('2d');
-let W, H, particles = [];
-const PARTICLE_COUNT = 90;
-const MAX_DIST = 130;
+let W, H, rainChars = [];
+const CHARSET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789<>[]{}/\\+-*#";
 let particleTintRGB = "78,230,203"; // se actualiza según la categoría de filtro activa
 
 function hexToRgbString(hex){
@@ -1464,59 +1463,65 @@ function hexToRgbString(hex){
 function resize(){
   W = canvas.width = window.innerWidth;
   H = canvas.height = document.body.scrollHeight;
+  initRain();
 }
 window.addEventListener('resize', resize);
-resize();
 
-function initParticles(){
-  particles = [];
-  for(let i=0;i<PARTICLE_COUNT;i++){
-    particles.push({
+function randChar(){ return CHARSET[Math.floor(Math.random()*CHARSET.length)]; }
+
+function initRain(){
+  const density = 9500; // px² por carácter — sube este número para menos densidad
+  const count = Math.max(40, Math.floor((W*window.innerHeight)/density));
+  rainChars = [];
+  for(let i=0;i<count;i++){
+    rainChars.push({
+      char: randChar(),
       x: Math.random()*W,
-      y: Math.random()*window.innerHeight,
-      z: Math.random()*0.8+0.2,
-      vx: (Math.random()-0.5)*0.25,
-      vy: (Math.random()-0.5)*0.25
+      y: Math.random()*H,
+      speed: 0.25 + Math.random()*0.7,
+      active: false
     });
   }
 }
-initParticles();
+resize();
 
-let scrollY = 0;
-window.addEventListener('scroll', () => { scrollY = window.scrollY; });
+let lastActiveSwap = 0;
 
-function draw(){
+function draw(ts){
   ctx.clearRect(0,0,W,H);
   const viewH = window.innerHeight;
 
-  for(const p of particles){
-    p.x += p.vx; p.y += p.vy;
-    if(p.x < 0) p.x = W; if(p.x > W) p.x = 0;
-    if(p.y < 0) p.y = viewH; if(p.y > viewH) p.y = 0;
+  if(ts - lastActiveSwap > 60){
+    rainChars.forEach(c => c.active = false);
+    const activeCount = 4 + Math.floor(Math.random()*5);
+    for(let i=0;i<activeCount;i++){
+      rainChars[Math.floor(Math.random()*rainChars.length)].active = true;
+    }
+    lastActiveSwap = ts;
   }
 
-  for(let i=0;i<particles.length;i++){
-    for(let j=i+1;j<particles.length;j++){
-      const a = particles[i], b = particles[j];
-      const dx = a.x-b.x, dy = (a.y - b.y);
-      const dist = Math.sqrt(dx*dx+dy*dy);
-      if(dist < MAX_DIST){
-        ctx.strokeStyle = `rgba(${particleTintRGB},${(1-dist/MAX_DIST)*0.12})`;
-        ctx.lineWidth = 0.6;
-        ctx.beginPath();
-        ctx.moveTo(a.x, a.y + scrollY*0.15*a.z);
-        ctx.lineTo(b.x, b.y + scrollY*0.15*b.z);
-        ctx.stroke();
-      }
+  for(const c of rainChars){
+    c.y += c.speed;
+    if(c.y > H + 20){
+      c.y = -20;
+      c.x = Math.random()*W;
+      c.char = randChar();
     }
+    if(Math.random() < 0.01) c.char = randChar();
+
+    if(c.active){
+      ctx.font = "15px 'JetBrains Mono', monospace";
+      ctx.fillStyle = `rgba(${particleTintRGB},0.95)`;
+      ctx.shadowColor = `rgba(${particleTintRGB},0.9)`;
+      ctx.shadowBlur = 9;
+    } else {
+      ctx.font = "12px 'JetBrains Mono', monospace";
+      ctx.fillStyle = "rgba(136,144,176,0.32)";
+      ctx.shadowBlur = 0;
+    }
+    ctx.fillText(c.char, c.x, c.y);
   }
-  for(const p of particles){
-    const y = p.y + scrollY*0.15*p.z;
-    ctx.beginPath();
-    ctx.arc(p.x, y, p.z*1.8, 0, Math.PI*2);
-    ctx.fillStyle = `rgba(232,236,247,${p.z*0.55})`;
-    ctx.fill();
-  }
+  ctx.shadowBlur = 0;
   requestAnimationFrame(draw);
 }
 draw();
