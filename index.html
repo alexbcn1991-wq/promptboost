@@ -168,6 +168,21 @@
   }
   h1.display .dud{ color:var(--teal); opacity:0.7; }
 
+  .creator-badge{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:'JetBrains Mono', monospace; font-size:11.5px; letter-spacing:0.04em;
+    color:var(--mist); text-decoration:none;
+    border:1px solid var(--line); border-radius:100px; padding:7px 14px 7px 12px;
+    margin-bottom:22px; transition:border-color .25s ease, color .25s ease;
+  }
+  .creator-badge span{ color:var(--ghost); font-weight:600; }
+  .creator-badge:hover{ color:var(--teal); border-color:color-mix(in srgb, var(--teal) 45%, var(--line)); }
+  .creator-badge:hover span{ color:var(--teal); }
+  .creator-dot{
+    width:6px; height:6px; border-radius:50%; background:var(--teal);
+    box-shadow:0 0 6px var(--teal); animation:pulse 2s ease-in-out infinite;
+  }
+
   h1.display{
     font-family:'Unbounded', sans-serif; font-weight:900;
     font-size:clamp(1.8rem, 4.8vw, 3.8rem);
@@ -620,6 +635,9 @@
 <main>
   <section class="hero">
     <div class="hero-content">
+      <a href="https://www.linkedin.com/company/promptboost-app" target="_blank" rel="noopener" class="creator-badge">
+        <span class="creator-dot"></span> Síguenos en <span>LinkedIn</span> ↗
+      </a>
       <h1 class="display" id="scrambleText">Prompts que puedes copiar y usar hoy.</h1>
       <p class="hero-sub">
         45 estructuras de prompt probadas, organizadas por lo que hacen: razonar mejor, escribir con un estilo concreto,
