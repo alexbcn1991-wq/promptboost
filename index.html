@@ -431,6 +431,48 @@
   .reveal.in{ opacity:1; transform:translateY(0); }
 
   /* ---------- principles ---------- */
+  /* ---------- deck: mazo interactivo de los 5 bloques ---------- */
+  .deck{
+    position:relative; height:520px; margin:0 auto; max-width:900px;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .deck-slot{
+    position:absolute; top:50%; left:50%; width:280px;
+    transition:transform .55s cubic-bezier(.2,.8,.2,1);
+    transform-style:preserve-3d;
+  }
+  .deck-tilt{
+    transition:transform .25s ease-out;
+    transform-style:preserve-3d;
+  }
+  .deck-card{
+    background:var(--surface); border-radius:22px; padding:28px 26px;
+    border-top:5px solid var(--card-color, var(--teal));
+    box-shadow:0 20px 40px rgba(0,0,0,0.45);
+    cursor:pointer; user-select:none;
+    min-height:300px; display:flex; flex-direction:column; justify-content:space-between;
+  }
+  .deck-eyebrow{
+    font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.1em;
+    color:var(--card-color, var(--teal)); text-transform:uppercase; margin-bottom:14px;
+  }
+  .deck-name{
+    font-family:'Unbounded', sans-serif; font-weight:800; font-size:1.7rem;
+    color:var(--ghost); line-height:1.05; margin-bottom:10px;
+  }
+  .deck-desc{ color:var(--mist); font-size:0.92rem; line-height:1.5; margin-bottom:18px; }
+  .deck-example{
+    background:var(--depth); border-radius:12px; padding:14px 16px;
+    font-family:'JetBrains Mono', monospace; font-size:0.78rem; line-height:1.55;
+    color:var(--ghost); opacity:0.85; white-space:pre-line;
+  }
+  @media (max-width:760px){
+    .deck{ height:420px; }
+    .deck-slot{ width:220px; }
+    .deck-card{ padding:20px 18px; min-height:230px; }
+    .deck-name{ font-size:1.3rem; }
+  }
+
   .principles{
     display:grid; grid-template-columns:repeat(auto-fit, minmax(240px,1fr)); gap:40px;
   }
@@ -721,6 +763,15 @@
     </div>
     <div class="specimen-grid" id="grid"></div>
     <p class="no-results" id="noResults">No hay ningún prompt que coincida. Prueba con otra palabra o quita el filtro de categoría.</p>
+  </section>
+
+  <section id="anatomy">
+    <div class="section-head reveal">
+      <div class="eyebrow">Anatomía de un prompt</div>
+      <h2 class="display">Los 5 bloques que hacen que un prompt funcione</h2>
+      <p>El mismo patrón que usamos para construir los prompts de "Contrata a tu experto". Pasa el ratón por encima para inclinarla, haz clic para traerla al frente.</p>
+    </div>
+    <div class="deck" id="deck"></div>
   </section>
 
   <section id="principles">
@@ -1667,6 +1718,97 @@ searchInput.addEventListener('input', (e) => {
   currentSearch = e.target.value;
   applyFilters();
 });
+
+/* ============ deck: mazo interactivo de los 5 bloques ============ */
+const deckData = [
+  {
+    eyebrow: "Bloque 1 · 5", name: "ROL", color: "#4ee6cb",
+    desc: "Quién es la IA en esta conversación.",
+    example: `"Actúa como un negociador profesional\ncon 15 años de experiencia..."`
+  },
+  {
+    eyebrow: "Bloque 2 · 5", name: "CONTEXTO", color: "#8b7fff",
+    desc: "En qué se especializa exactamente.",
+    example: `"...cerrando acuerdos comerciales\ncomplejos."`
+  },
+  {
+    eyebrow: "Bloque 3 · 5", name: "TU SITUACIÓN", color: "#ff7a52",
+    desc: "Qué necesita saber de ti antes de ayudarte.",
+    example: `"Antes de aconsejarme, pregúntame:\nqué se negocia, con quién, mi\nobjetivo mínimo."`
+  },
+  {
+    eyebrow: "Bloque 4 · 5", name: "FORMATO DE ENTREGA", color: "#5ec8ff",
+    desc: "Cómo quieres que responda siempre.",
+    example: `"Dame 3 aperturas, las 2 objeciones\nmás probables con respuesta\npreparada."`
+  },
+  {
+    eyebrow: "Bloque 5 · 5", name: "ARRANQUE", color: "#e0a672",
+    desc: "Cómo empieza la conversación de verdad.",
+    example: `"Sé directo. Nada de teoría\ngenérica de manual."`
+  }
+];
+
+const deckEl = document.getElementById('deck');
+if(deckEl){
+  const CENTER_SLOT = 2;
+  let order = [0,1,2,3,4]; // deckData index que ocupa cada posición visual 0..4
+
+  const slots = deckData.map((d, i) => {
+    const slot = document.createElement('div');
+    slot.className = 'deck-slot';
+    const tilt = document.createElement('div');
+    tilt.className = 'deck-tilt';
+    const card = document.createElement('div');
+    card.className = 'deck-card';
+    card.style.setProperty('--card-color', d.color);
+    card.innerHTML = `
+      <div>
+        <div class="deck-eyebrow">${d.eyebrow}</div>
+        <div class="deck-name">${d.name}</div>
+        <div class="deck-desc">${d.desc}</div>
+      </div>
+      <div class="deck-example">${d.example}</div>
+    `;
+    tilt.appendChild(card);
+    slot.appendChild(tilt);
+    deckEl.appendChild(slot);
+
+    card.addEventListener('click', () => {
+      const clickedPos = order.indexOf(i);
+      if(clickedPos === CENTER_SLOT) return;
+      order.splice(clickedPos, 1);
+      order.splice(CENTER_SLOT, 0, i);
+      layout();
+    });
+
+    tilt.addEventListener('mousemove', (e) => {
+      const r = tilt.getBoundingClientRect();
+      const x = (e.clientX - r.left) / r.width - 0.5;
+      const y = (e.clientY - r.top) / r.height - 0.5;
+      tilt.style.transform = `perspective(700px) rotateY(${x*14}deg) rotateX(${-y*14}deg)`;
+    });
+    tilt.addEventListener('mouseleave', () => { tilt.style.transform = ''; });
+
+    return slot;
+  });
+
+  function layout(){
+    const containerW = deckEl.getBoundingClientRect().width || 900;
+    const spread = Math.min(230, containerW*0.22);
+    order.forEach((dataIndex, pos) => {
+      const offset = pos - CENTER_SLOT;
+      const rotate = offset * 8;
+      const tx = offset * spread;
+      const ty = Math.abs(offset) * 22;
+      const z = 10 - Math.abs(offset);
+      const slot = slots[dataIndex];
+      slot.style.transform = `translate(-50%,-50%) translate(${tx}px, ${ty}px) rotate(${rotate}deg)`;
+      slot.style.zIndex = z;
+    });
+  }
+  layout();
+  window.addEventListener('resize', layout);
+}
 
 /* ============ render grid ============ */
 const grid = document.getElementById('grid');
