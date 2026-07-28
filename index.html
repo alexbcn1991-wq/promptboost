@@ -469,6 +469,67 @@
     .deck-card{ transform:none !important; width:100%; max-width:340px; }
   }
 
+  /* ---------- pricing card: CTA del manual descargable ---------- */
+  .pricing-card{
+    position:relative; max-width:400px; margin:56px auto 0;
+  }
+  .pricing-glow{
+    position:absolute; inset:0; border-radius:28px;
+    background:linear-gradient(120deg, #4ee6cb 0%, #8b7fff 50%, #ff7a52 100%);
+    opacity:0.35; filter:blur(38px); pointer-events:none;
+  }
+  .pricing-inner{
+    position:relative; z-index:1; border-radius:22px; overflow:hidden;
+    background:linear-gradient(var(--surface),var(--surface)) padding-box,
+               linear-gradient(120deg, #4ee6cb, #8b7fff, #ff7a52) border-box;
+    border:1.5px solid transparent;
+    padding:36px 34px;
+  }
+  .pricing-top{ display:flex; justify-content:flex-start; margin-bottom:18px; }
+  .pdf-badge{
+    display:inline-block; font-family:'JetBrains Mono', monospace; font-size:11px;
+    letter-spacing:0.1em; color:var(--teal); border:1px solid rgba(78,230,203,0.35);
+    border-radius:100px; padding:5px 12px;
+  }
+  .pricing-title{
+    font-family:'Unbounded', sans-serif; font-weight:800; font-size:1.4rem;
+    color:var(--ghost); margin-bottom:8px;
+  }
+  .pricing-sub{ color:var(--mist); font-size:0.9rem; line-height:1.5; margin-bottom:24px; }
+  .pricing-price-row{ display:flex; align-items:baseline; gap:10px; margin-bottom:20px; }
+  .pricing-price{ font-family:'Unbounded', sans-serif; font-weight:800; font-size:2.6rem; color:var(--ghost); }
+  .pricing-unit{ font-family:'JetBrains Mono', monospace; font-size:12px; color:var(--mist); }
+  .pricing-cta{
+    display:flex; align-items:center; justify-content:center; gap:8px; width:100%;
+    font-family:'JetBrains Mono', monospace; font-size:13px; letter-spacing:0.04em; font-weight:600;
+    text-transform:uppercase; text-decoration:none; color:var(--void);
+    background:var(--teal); padding:15px 22px; border-radius:100px;
+    transition:transform .2s ease, box-shadow .2s ease; margin-bottom:28px;
+  }
+  .pricing-cta:hover{ transform:translateY(-2px); box-shadow:0 10px 24px rgba(78,230,203,0.3); }
+  .pricing-divider{
+    display:flex; align-items:center; gap:12px; margin-bottom:20px;
+    font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.1em;
+    color:var(--mist); text-transform:uppercase;
+  }
+  .pricing-divider::before, .pricing-divider::after{
+    content:''; flex:1 1 auto; height:1px; background:var(--line);
+  }
+  .pricing-features{ list-style:none; display:flex; flex-direction:column; gap:14px; }
+  .pricing-features li{
+    position:relative; padding-left:30px; color:var(--mist); font-size:0.9rem; line-height:1.5;
+  }
+  .pricing-features li strong{ color:var(--ghost); font-weight:600; }
+  .pricing-features li::before{
+    content:''; position:absolute; left:0; top:2px; width:18px; height:18px; border-radius:50%;
+    background:rgba(78,230,203,0.12);
+  }
+  .pricing-features li::after{
+    content:''; position:absolute; left:5px; top:6px; width:8px; height:5px;
+    border-left:2px solid var(--teal); border-bottom:2px solid var(--teal);
+    transform:rotate(-45deg);
+  }
+
   .principles{
     display:grid; grid-template-columns:repeat(auto-fit, minmax(240px,1fr)); gap:40px;
   }
@@ -761,6 +822,34 @@
       <p>El mismo patrón que usamos para construir los prompts de "Contrata a tu experto". Cinco bloques, siempre en el mismo orden.</p>
     </div>
     <div class="deck" id="deck"></div>
+
+    <div class="pricing-card reveal">
+      <div class="pricing-glow"></div>
+      <div class="pricing-inner">
+        <div class="pricing-top">
+          <span class="pdf-badge">PDF · 15 PÁGINAS</span>
+        </div>
+        <h3 class="pricing-title">El Manual PromptBoost</h3>
+        <p class="pricing-sub">Encadena expertos de IA en una sola conversación</p>
+
+        <div class="pricing-price-row">
+          <span class="pricing-price">4€</span>
+          <span class="pricing-unit">pago único</span>
+        </div>
+
+        <a href="https://alexworks8.gumroad.com/l/anatwd?wanted=true" target="_blank" rel="noopener" class="pricing-cta">Quiero el manual →</a>
+
+        <div class="pricing-divider"><span>Incluye</span></div>
+
+        <ul class="pricing-features">
+          <li>Metodología completa de los 5 bloques</li>
+          <li>Plantilla en blanco para construir tus propios prompts</li>
+          <li><strong>6 prompts avanzados de encadenamiento</strong>, exclusivos de este PDF</li>
+          <li>Resumen visual de las 13 categorías de la web</li>
+          <li>Descarga inmediata, sin registro</li>
+        </ul>
+      </div>
+    </div>
   </section>
 
   <section id="principles">
