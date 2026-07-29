@@ -53,11 +53,11 @@
   gtag('config', 'G-Q03596FGTP');
 </script>
 
-<link rel="icon" type="image/svg+xml" href="favicon.svg">
-<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
-<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-<link rel="shortcut icon" href="favicon.ico">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="shortcut icon" href="/favicon.ico">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;800;900&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -720,6 +720,46 @@
     .launch-scene{ width:min(66vw, 230px); height:min(130vw, 420px); }
     .phone-frame{ width:200px; height:404px; }
   }
+
+  /* ---------- destacados: cards estáticas que enlazan a /p/ ---------- */
+  .featured-grid{
+    display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));
+    gap:1px; background:var(--line); border:1px solid var(--line);
+  }
+  .featured-card{
+    display:block; background:var(--depth); padding:28px 26px; text-decoration:none;
+    border-top:3px solid var(--accent, var(--teal)); transition:background .25s ease;
+  }
+  .featured-card:hover{ background:var(--surface); }
+  .featured-top{
+    display:flex; justify-content:space-between; font-family:'JetBrains Mono', monospace;
+    font-size:11px; letter-spacing:0.08em; color:var(--accent, var(--teal)); margin-bottom:16px;
+    text-transform:uppercase;
+  }
+  .featured-top span:last-child{ color:var(--mist); }
+  .featured-title{
+    font-family:'Unbounded', sans-serif; font-weight:600; font-size:1.05rem;
+    color:var(--ghost); margin-bottom:10px; line-height:1.3;
+  }
+  .featured-desc{ color:var(--mist); font-size:0.88rem; line-height:1.55; margin-bottom:18px; }
+  .featured-arrow{
+    font-family:'JetBrains Mono', monospace; font-size:10.5px; letter-spacing:0.06em;
+    color:var(--ghost); text-transform:uppercase;
+  }
+  .destacados-cta{ text-align:center; margin-top:44px; }
+  .destacados-btn{
+    display:inline-block; font-family:'JetBrains Mono', monospace; font-size:12.5px;
+    letter-spacing:0.05em; text-transform:uppercase; font-weight:600; text-decoration:none;
+    color:var(--void); background:var(--teal); padding:14px 26px; border-radius:100px;
+    transition:transform .2s ease;
+  }
+  .destacados-btn:hover{ transform:translateY(-2px); }
+
+  .nav-prompts-link{
+    font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.06em;
+    color:var(--teal); text-decoration:none; text-transform:uppercase;
+  }
+  .nav-prompts-link:hover{ color:var(--ghost); }
 </style>
 </head>
 <body>
@@ -757,7 +797,7 @@
   <div class="nav-status">
     <span class="pulse-dot"></span> <span id="navTotal">30 PROMPTS LISTOS PARA USAR</span>
     <span class="nav-sep">·</span>
-    <span id="navProgress">0/30 EXPLORADOS</span>
+    <a href="/prompts/" class="nav-prompts-link">Ver biblioteca →</a>
   </div>
 </nav>
 
@@ -776,7 +816,7 @@
         — empezamos por estos cuatro e iremos sumando más. Elige un prompt, copia el texto y sustituye lo que va
         <strong>entre corchetes [ ]</strong> por tu caso real.
       </p>
-      <div class="scroll-cue"><span class="line"></span> VER LA BIBLIOTECA</div>
+      <div class="scroll-cue"><span class="line"></span> VER DESTACADOS</div>
       <div class="compat-row">
         <span class="compat-label">Compatible con</span>
         <span class="compat-chip">Claude</span>
@@ -817,42 +857,77 @@
     </div>
   </section>
 
+
   <a href="#faq" class="faq-teaser reveal">
     <span class="faq-teaser-q">¿No sabes por dónde empezar?</span>
     <span class="faq-teaser-cta">Resolvemos tus dudas <span class="faq-teaser-arrow">↓</span></span>
   </a>
 
-  <section id="catalog-map">
+  <section id="destacados">
     <div class="section-head reveal">
-      <div class="eyebrow">Vista general</div>
-      <h2 class="display">El catálogo completo</h2>
-      <p>12 categorías, cada una con su color. Haz clic en cualquiera para filtrar la biblioteca directamente.</p>
+      <div class="eyebrow">Destacados</div>
+      <h2 class="display">Empieza por aquí</h2>
+      <p>9 prompts de muestra, uno de cada gran categoría. La biblioteca completa tiene 46, organizados y con buscador.</p>
     </div>
-    <div class="catalog-grid" id="catalogGrid"></div>
-  </section>
-
-  <section id="archive">
-    <div class="section-head reveal">
-      <div class="eyebrow">Biblioteca</div>
-      <h2 class="display">Elige un prompt</h2>
-      <p>Busca por palabra clave o filtra por categoría. Cada tarjeta tiene un botón para copiar directo, o puedes abrirla para ver el prompt completo con contexto.</p>
+    <div class="featured-grid reveal">
+      <a href="/p/negociador-profesional/" class="featured-card" style="--accent:#e0a672">
+        <div class="featured-top"><span>P36</span><span>Negociación</span></div>
+        <div class="featured-title">Negociador profesional</div>
+        <div class="featured-desc">Te prepara aperturas, anticipa objeciones con respuesta lista, y te dice cuándo deberías estar dispuesto a levantarte de la mesa.</div>
+        <div class="featured-arrow">Ver prompt completo →</div>
+      </a>
+      <a href="/p/cadena-de-razonamiento-explicita/" class="featured-card" style="--accent:#4ee6cb">
+        <div class="featured-top"><span>P01</span><span>Razonamiento</span></div>
+        <div class="featured-title">Cadena de razonamiento explícita</div>
+        <div class="featured-desc">Obliga a la IA a exponer su proceso de pensamiento antes de dar la respuesta final, reduciendo errores en tareas complejas.</div>
+        <div class="featured-arrow">Ver prompt completo →</div>
+      </a>
+      <a href="/p/rol-contexto-restricciones/" class="featured-card" style="--accent:#8b7fff">
+        <div class="featured-top"><span>P02</span><span>Estilo</span></div>
+        <div class="featured-title">Rol + contexto + restricciones</div>
+        <div class="featured-desc">Define con precisión qué rol adopta la IA en esta conversación, para quién escribe y qué límites debe respetar.</div>
+        <div class="featured-arrow">Ver prompt completo →</div>
+      </a>
+      <a href="/p/prompt-de-agente-con-herramientas/" class="featured-card" style="--accent:#ff7a52">
+        <div class="featured-top"><span>P05</span><span>Agentes</span></div>
+        <div class="featured-title">Prompt de agente con herramientas</div>
+        <div class="featured-desc">Estructura para tareas donde la IA debe decidir cuándo y cómo usar herramientas disponibles, en vez de responder directo.</div>
+        <div class="featured-arrow">Ver prompt completo →</div>
+      </a>
+      <a href="/p/el-mejor-marketiniano-del-mercado/" class="featured-card" style="--accent:#ff7ab8">
+        <div class="featured-top"><span>P15</span><span>Estratega</span></div>
+        <div class="featured-title">El mejor marketiniano del mercado</div>
+        <div class="featured-desc">Prompt de rol experto para conseguir estrategias de marketing accionables en vez de consejos genéricos.</div>
+        <div class="featured-arrow">Ver prompt completo →</div>
+      </a>
+      <a href="/p/guion-para-video-corto-reelsshorts/" class="featured-card" style="--accent:#b6e05e">
+        <div class="featured-top"><span>P18</span><span>Vídeo</span></div>
+        <div class="featured-title">Guion para vídeo corto (reels/shorts)</div>
+        <div class="featured-desc">Estructura de guion pensada para retener atención en los primeros 3 segundos, clave en formato corto.</div>
+        <div class="featured-arrow">Ver prompt completo →</div>
+      </a>
+      <a href="/p/adaptar-tu-curriculum-a-una-oferta-concreta/" class="featured-card" style="--accent:#ffd166">
+        <div class="featured-top"><span>P28</span><span>CV</span></div>
+        <div class="featured-title">Adaptar tu currículum a una oferta concreta</div>
+        <div class="featured-desc">Reescribe tu experiencia destacando lo relevante para un puesto específico, en vez de un CV genérico para todo.</div>
+        <div class="featured-arrow">Ver prompt completo →</div>
+      </a>
+      <a href="/p/presupuesto-personal-a-partir-de-tus-gastos-reales/" class="featured-card" style="--accent:#6ee7b7">
+        <div class="featured-top"><span>P30</span><span>Presupuesto</span></div>
+        <div class="featured-title">Presupuesto personal a partir de tus gastos reales</div>
+        <div class="featured-desc">Convierte una lista de gastos desordenada en un presupuesto por categorías con recomendaciones concretas de ajuste.</div>
+        <div class="featured-arrow">Ver prompt completo →</div>
+      </a>
+      <a href="/p/generador-de-preguntas-de-repaso/" class="featured-card" style="--accent:#c4b5fd">
+        <div class="featured-top"><span>P26</span><span>Estudio</span></div>
+        <div class="featured-title">Generador de preguntas de repaso</div>
+        <div class="featured-desc">Convierte un tema o apunte en preguntas de autoevaluación, útil para preparar exámenes o repasar antes de una reunión.</div>
+        <div class="featured-arrow">Ver prompt completo →</div>
+      </a>
     </div>
-
-    <div class="search-row">
-      <svg class="search-icon" viewBox="0 0 20 20" width="16" height="16" aria-hidden="true">
-        <circle cx="9" cy="9" r="6.5" fill="none" stroke="currentColor" stroke-width="1.6"/>
-        <line x1="14" y1="14" x2="18.5" y2="18.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-      </svg>
-      <input type="text" id="searchInput" class="search-input" placeholder="Busca por palabra clave, ej. 'reunión', 'copy', 'código'…" autocomplete="off">
-      <kbd class="search-kbd">/</kbd>
+    <div class="destacados-cta">
+      <a href="/prompts/" class="destacados-btn">Ver los 46 prompts en la biblioteca →</a>
     </div>
-
-    <div class="filters-row">
-      <div class="filters" id="filters"></div>
-      <button class="copy-all-btn" id="copyAllBtn" type="button"></button>
-    </div>
-    <div class="specimen-grid" id="grid"></div>
-    <p class="no-results" id="noResults">No hay ningún prompt que coincida. Prueba con otra palabra o quita el filtro de categoría.</p>
   </section>
 
   <section id="anatomy">
@@ -991,6 +1066,7 @@
       </details>
     </div>
   </section>
+
 </main>
 
 <footer>
@@ -1026,710 +1102,7 @@
   </svg>
 </button>
 
-<div class="modal-backdrop" id="modalBackdrop">
-  <div class="modal" id="modal">
-    <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
-    <button class="modal-close" id="modalClose">CERRAR ✕</button>
-    <div class="modal-code" id="modalCode"></div>
-    <h3 id="modalTitle"></h3>
-    <p class="modal-desc" id="modalDesc"></p>
-    <div class="prompt-box" id="modalPrompt"></div>
-    <button class="copy-btn" id="copyBtn">Copiar prompt</button>
-  </div>
-</div>
-
 <script>
-/* ============ DATA: prompts ============ */
-const specimens = [
-  {
-    code: "P01", tag: "Razonamiento", category: "Razonamiento",
-    title: "Cadena de razonamiento explícita",
-    desc: "Obliga a la IA a exponer su proceso de pensamiento antes de dar la respuesta final, reduciendo errores en tareas complejas.",
-    prompt: `Antes de responder, piensa paso a paso dentro de una sección <razonamiento>. Considera al menos dos enfoques distintos, evalúa sus ventajas y desventajas, y elige el mejor antes de escribir la <respuesta_final>.
-
-Tarea: [describe aquí tu problema o pregunta]
-
-Estructura tu salida así:
-<razonamiento>...</razonamiento>
-<respuesta_final>...</respuesta_final>`
-  },
-  {
-    code: "P02", tag: "Estilo", category: "Escritura",
-    title: "Rol + contexto + restricciones",
-    desc: "Define con precisión qué rol adopta la IA en esta conversación, para quién escribe y qué límites debe respetar.",
-    prompt: `Actúa como [rol específico, ej. "editor técnico senior con 10 años en documentación de APIs"].
-
-Tu audiencia es: [describe a quién va dirigido el contenido].
-
-Restricciones:
-- Tono: [ej. directo, sin jerga innecesaria]
-- Longitud máxima: [ej. 400 palabras]
-- Evita: [ej. afirmaciones sin evidencia, adjetivos vacíos]
-
-Tarea: [tu petición concreta]`
-  },
-  {
-    code: "P03", tag: "Ejemplos", category: "Escritura",
-    title: "Few-shot con ejemplos contrastantes",
-    desc: "Muestra pares de ejemplo bueno/malo para delimitar exactamente el estilo o criterio que buscas.",
-    prompt: `Aquí tienes dos ejemplos de la misma tarea, uno que sigue el estilo deseado y otro que no:
-
-BUENO:
-[pega aquí un ejemplo que representa lo que quieres]
-
-EVITAR:
-[pega aquí un ejemplo del error típico o estilo no deseado]
-
-Ahora, usando el mismo criterio del ejemplo "BUENO", realiza esta tarea:
-[tu tarea real]`
-  },
-  {
-    code: "P04", tag: "Iteración", category: "Escritura",
-    title: "Borrador → crítica → refinamiento",
-    desc: "Pide un primer borrador, luego una autocrítica honesta, y finalmente una versión mejorada. Simula tener un editor interno.",
-    prompt: `Vamos a trabajar en tres fases sobre la misma tarea: [describe la tarea].
-
-Fase 1 — Borrador: escribe una primera versión rápida, sin pulir.
-Fase 2 — Crítica: analiza tu propio borrador como lo haría un editor exigente. Señala al menos 3 debilidades concretas.
-Fase 3 — Versión final: reescribe incorporando esas correcciones.
-
-Muestra las tres fases por separado, etiquetadas claramente.`
-  },
-  {
-    code: "P05", tag: "Agentes", category: "Código",
-    title: "Prompt de agente con herramientas",
-    desc: "Estructura para tareas donde la IA debe decidir cuándo y cómo usar herramientas disponibles, en vez de responder directo.",
-    prompt: `Tienes acceso a las siguientes herramientas: [lista de herramientas, ej. búsqueda web, ejecución de código, lectura de archivos].
-
-Antes de usar cualquier herramienta, explica brevemente por qué la necesitas.
-Si una pregunta puede responderse sin herramientas, no las uses.
-Si el resultado de una herramienta es insuficiente, indica qué información falta y qué harías a continuación.
-
-Objetivo: [tu tarea real]`
-  },
-  {
-    code: "P06", tag: "Datos", category: "Estructura",
-    title: "Extracción estructurada en XML",
-    desc: "Fuerza una salida parseable, ideal cuando el resultado se conecta a otro sistema o script.",
-    prompt: `Extrae la siguiente información del texto y devuélvela ÚNICAMENTE en este formato XML, sin texto adicional:
-
-<datos>
-  <campo_1>...</campo_1>
-  <campo_2>...</campo_2>
-  <campo_3>...</campo_3>
-</datos>
-
-Si un campo no aparece en el texto, escribe "no_disponible".
-
-Texto a analizar:
-[pega aquí tu texto]`
-  },
-  {
-    code: "P07", tag: "Simulación", category: "Decisiones",
-    title: "Simulación de escenario con partes interesadas",
-    desc: "Útil para preparar negociaciones, entrevistas o decisiones difíciles simulando distintas perspectivas.",
-    prompt: `Simula una conversación sobre [tema/decisión] entre estas partes:
-1. [Persona/rol A y su postura principal]
-2. [Persona/rol B y su postura principal]
-
-Cada una debe defender su posición con argumentos realistas durante 3 turnos de diálogo.
-Al final, resume los puntos de fricción reales y una posible vía de acuerdo.`
-  },
-  {
-    code: "P08", tag: "Código", category: "Código",
-    title: "Auditoría de código guiada",
-    desc: "En vez de pedir 'revisa este código', dirige la atención de la IA a categorías específicas de riesgo.",
-    prompt: `Audita el siguiente código revisando estas categorías, en este orden:
-1. Errores de lógica o casos límite no manejados
-2. Problemas de seguridad
-3. Legibilidad y nombres poco claros
-4. Oportunidades de simplificación
-
-Para cada hallazgo, indica: línea aproximada, severidad (alta/media/baja) y una sugerencia concreta de corrección.
-
-Código:
-[pega aquí tu código]`
-  },
-  {
-    code: "P09", tag: "Verificación", category: "Razonamiento",
-    title: "Checklist de autoverificación",
-    desc: "Antes de entregar la respuesta final, la IA revisa su propio trabajo contra una lista de criterios explícitos. Reduce errores tontos y omisiones.",
-    prompt: `Resuelve la siguiente tarea: [describe tu tarea].
-
-Antes de dar tu respuesta final, revisa tu propio borrador contra esta checklist y corrige lo que falle:
-- [ ] ¿Responde exactamente lo que se pidió, sin desviarse?
-- [ ] ¿Los datos o cifras mencionados son consistentes entre sí?
-- [ ] ¿Falta algún caso límite evidente?
-- [ ] ¿El formato coincide con lo solicitado?
-
-Muestra primero la checklist marcada, luego la respuesta final ya corregida.`
-  },
-  {
-    code: "P10", tag: "Explicación", category: "Escritura",
-    title: "Explicación en capas de profundidad",
-    desc: "Genera tres niveles de la misma explicación —simple, intermedio, técnico— útil para preparar materiales que sirvan a públicos distintos.",
-    prompt: `Explica el siguiente concepto en tres niveles de profundidad, cada uno en su propia sección:
-
-Nivel 1 — Como si tuviera que explicárselo a alguien sin conocimientos previos (2-3 frases).
-Nivel 2 — Con el detalle que esperaría alguien del sector, sin jerga excesiva (1 párrafo).
-Nivel 3 — Con precisión técnica completa, incluyendo matices y excepciones.
-
-Concepto: [tu concepto o pregunta]`
-  },
-  {
-    code: "P11", tag: "Preguntas", category: "Razonamiento",
-    title: "Interrogatorio previo antes de responder",
-    desc: "En vez de responder de inmediato, la IA primero identifica qué información le falta y pregunta antes de comprometerse con una solución.",
-    prompt: `No respondas todavía. Antes de intentar resolver esto, identifica qué información crítica te falta para dar una buena respuesta y hazme como máximo 4 preguntas.
-
-Una vez te responda, usa esas respuestas para construir la solución final.
-
-Tarea: [describe tu objetivo, aunque esté incompleto o ambiguo]`
-  },
-  {
-    code: "P12", tag: "Síntesis", category: "Escritura",
-    title: "Resumen en pirámide invertida",
-    desc: "Estructura la respuesta de lo más importante a lo más detallado, como una noticia: primero la conclusión, luego el respaldo.",
-    prompt: `Estructura tu respuesta como una pirámide invertida:
-
-1. Conclusión o recomendación en una sola frase.
-2. Los 3 argumentos o datos que más la sustentan, en una lista breve.
-3. Detalle ampliado, matices y excepciones, solo para quien quiera profundizar.
-
-Tema: [tu pregunta o el material a resumir]`
-  },
-  {
-    code: "P13", tag: "Casos límite", category: "Código",
-    title: "Generador de casos límite",
-    desc: "Pide a la IA que ataque tu propia propuesta o diseño buscando activamente dónde se rompe, antes de que lo haga un usuario real.",
-    prompt: `Aquí tienes mi diseño/propuesta: [describe tu diseño, flujo o regla de negocio].
-
-Actúa como un tester adversarial: genera los 6 casos límite o de uso malicioso más probables que podrían romper esto. Para cada uno, explica por qué fallaría y qué cambio evitaría el problema.`
-  },
-  {
-    code: "P14", tag: "Decisión", category: "Decisiones",
-    title: "Matriz de decisión ponderada",
-    desc: "Convierte una decisión difícil en criterios explícitos y ponderados, en vez de una comparación vaga de pros y contras.",
-    prompt: `Tengo que decidir entre estas opciones: [lista tus opciones].
-
-Los criterios que más me importan, en orden de prioridad, son: [lista tus criterios, ej. coste, tiempo, riesgo].
-
-Construye una tabla que puntúe cada opción del 1 al 5 en cada criterio, calcula un total ponderado y recomienda una opción explicando el razonamiento detrás del peso asignado a cada criterio.`
-  },
-  {
-    code: "P15", tag: "Estratega", category: "Marketing",
-    title: "El mejor marketiniano del mercado",
-    desc: "Prompt de rol experto para conseguir estrategias de marketing accionables en vez de consejos genéricos.",
-    prompt: `Actúa como el mejor estratega de marketing del mercado, con experiencia demostrada haciendo crecer marcas en [tu sector, ej. "e-commerce de moda sostenible"].
-
-Mi situación actual:
-- Producto o servicio: [descríbelo]
-- Audiencia objetivo: [descríbela]
-- Presupuesto y canales disponibles: [descríbelos]
-- Objetivo concreto: [ej. "conseguir 100 leads cualificados en 30 días"]
-
-Dame una estrategia priorizada en 3 acciones concretas, ordenadas por impacto esperado frente a esfuerzo. Para cada una, indica el primer paso exacto que daría hoy mismo.`
-  },
-  {
-    code: "P16", tag: "Publicidad", category: "Marketing",
-    title: "Copy publicitario con gancho AIDA",
-    desc: "Genera anuncios estructurados en Atención-Interés-Deseo-Acción, con varias variantes para testear.",
-    prompt: `Escribe 3 variantes de copy publicitario para [producto/servicio], usando la estructura AIDA (Atención, Interés, Deseo, Acción).
-
-Contexto:
-- Audiencia: [describe a quién va dirigido]
-- Canal: [ej. Instagram Ads, Google Ads, email]
-- Tono de marca: [ej. cercano y directo / premium y aspiracional]
-- Longitud máxima: [ej. 40 palabras por variante]
-
-Para cada variante, señala qué emoción o gatillo psicológico usa como gancho principal.`
-  },
-  {
-    code: "P17", tag: "Audiencia", category: "Marketing",
-    title: "Buyer persona detallado",
-    desc: "Construye un perfil de cliente ideal con motivaciones y objeciones reales, no una ficha superficial.",
-    prompt: `Crea un buyer persona detallado para [tu producto/servicio], basado en estos datos que ya tengo: [pega datos de clientes actuales, encuestas o intuiciones que tengas].
-
-Incluye:
-- Nombre y contexto de vida breve
-- Sus 3 principales frustraciones relacionadas con el problema que resuelves
-- Qué objeciones tendría antes de comprar
-- Dónde consume contenido y en qué formato
-- Una frase textual que probablemente diría sobre su problema`
-  },
-  {
-    code: "P18", tag: "Vídeo", category: "Contenido",
-    title: "Guion para vídeo corto (reels/shorts)",
-    desc: "Estructura de guion pensada para retener atención en los primeros 3 segundos, clave en formato corto.",
-    prompt: `Escribe el guion de un vídeo corto (Reels/TikTok/Shorts) de unos [duración, ej. 30 segundos] sobre: [tema].
-
-Estructura:
-1. Gancho (primeros 3 segundos): algo que detenga el scroll
-2. Desarrollo: 2-3 puntos concretos, sin relleno
-3. Cierre: una idea memorable o llamada a la acción
-
-Indica también qué se ve en pantalla en cada parte (texto en pantalla, corte de cámara, etc.), no solo lo que se dice.`
-  },
-  {
-    code: "P19", tag: "Planificación", category: "Contenido",
-    title: "Calendario de contenido semanal",
-    desc: "Convierte un tema amplio en un plan de publicaciones concreto, con formato y objetivo para cada pieza.",
-    prompt: `Crea un calendario de contenido para [red social/canal] durante una semana, sobre el tema general de: [tu nicho o tema].
-
-Para cada día indica:
-- Formato (ej. carrusel, vídeo corto, texto, imagen)
-- Idea concreta del contenido (no genérica)
-- Objetivo de esa pieza (ej. alcance, autoridad, venta directa)
-- Una posible primera línea o titular
-
-Varía los formatos y objetivos a lo largo de la semana, no repitas la misma fórmula todos los días.`
-  },
-  {
-    code: "P20", tag: "Reutilización", category: "Contenido",
-    title: "Adaptar un contenido a varios formatos",
-    desc: "Aprovecha una sola pieza de contenido convirtiéndola en versiones nativas para distintos canales.",
-    prompt: `Aquí tienes un contenido original: [pega tu artículo, vídeo transcrito o post].
-
-Adáptalo a estos 3 formatos, respetando las convenciones de cada uno (no copies y pegues el mismo texto):
-1. Hilo para X/Twitter (máximo 6 tuits)
-2. Post de LinkedIn con tono profesional
-3. Guion breve para Reels/TikTok
-
-Cada versión debe funcionar de forma independiente, sin dar por hecho que se ha leído el original.`
-  },
-  {
-    code: "P21", tag: "Atención al cliente", category: "Negocio",
-    title: "Respuesta a una reseña negativa",
-    desc: "Plantilla para responder con empatía real sin sonar corporativo ni a la defensiva.",
-    prompt: `Redacta una respuesta a esta reseña negativa de un cliente: [pega la reseña].
-
-Contexto de la empresa: [breve descripción de tu negocio y tono habitual].
-
-La respuesta debe:
-- Reconocer el problema sin excusas vacías
-- Evitar sonar corporativo o defensivo
-- Ofrecer un siguiente paso concreto (no solo "lo sentimos")
-- Tener un máximo de 80 palabras`
-  },
-  {
-    code: "P22", tag: "Posicionamiento", category: "Negocio",
-    title: "Propuesta de valor en una frase",
-    desc: "Destila qué te hace diferente en una sola frase clara, evitando el lenguaje genérico de 'la mejor calidad'.",
-    prompt: `Ayúdame a definir la propuesta de valor de [tu producto/servicio] en una sola frase clara.
-
-Datos:
-- A quién ayuda: [audiencia]
-- Qué problema resuelve: [problema concreto]
-- Qué lo hace diferente de las alternativas: [tu diferencial real, no genérico]
-
-Dame 5 variantes de la frase, de más directa a más aspiracional, y señala cuál recomiendas para una web y cuál para un pitch verbal.`
-  },
-  {
-    code: "P23", tag: "Competencia", category: "Negocio",
-    title: "Análisis competitivo rápido",
-    desc: "Estructura para comparar tu oferta frente a competidores directos y encontrar huecos reales de mercado.",
-    prompt: `Analiza estos competidores de mi negocio: [lista 2-4 competidores y lo que sabes de ellos].
-
-Mi negocio: [breve descripción].
-
-Para cada competidor, indica: su punto fuerte principal, su punto débil más aprovechable, y qué mensaje usan en su comunicación.
-Termina con 2 huecos de mercado que ninguno cubre bien y que yo sí podría ocupar.`
-  },
-  {
-    code: "P24", tag: "Reuniones", category: "Productividad",
-    title: "Resumen de reunión en acta accionable",
-    desc: "Convierte notas desordenadas en un acta clara con responsables y fechas, no solo un resumen narrativo.",
-    prompt: `Convierte estas notas de reunión en un acta clara: [pega tus notas o la transcripción].
-
-Estructura la salida así:
-- Decisiones tomadas (lista breve)
-- Tareas asignadas: [tarea] — [responsable] — [fecha límite]
-- Temas abiertos que necesitan seguimiento
-
-Si alguna tarea no tiene responsable o fecha clara en las notas, márcala como "pendiente de asignar" en vez de inventarla.`
-  },
-  {
-    code: "P25", tag: "Priorización", category: "Productividad",
-    title: "Priorización con matriz de urgencia/importancia",
-    desc: "Ordena una lista de tareas revueltas usando un criterio real, en vez de simplemente reordenarlas por intuición.",
-    prompt: `Tengo esta lista de tareas pendientes: [pega tu lista, aunque esté desordenada].
-
-Clasifícalas en una matriz de urgente/importante:
-1. Urgente e importante — hacer ya
-2. Importante, no urgente — planificar
-3. Urgente, no importante — delegar si es posible
-4. Ni urgente ni importante — cuestionar si hace falta hacerla
-
-Para cada tarea, incluye una razón breve de por qué la colocas en ese cuadrante.`
-  },
-  {
-    code: "P26", tag: "Estudio", category: "Aprendizaje",
-    title: "Generador de preguntas de repaso",
-    desc: "Convierte un tema o apunte en preguntas de autoevaluación, útil para preparar exámenes o repasar antes de una reunión.",
-    prompt: `A partir de este contenido: [pega tus apuntes, artículo o tema a estudiar]
-
-Genera 8 preguntas de repaso en 3 niveles de dificultad (fácil, medio, difícil), sin darme las respuestas todavía.
-Cuando yo responda cada una, corrígeme indicando qué parte de mi respuesta es correcta y qué me falta o entendí mal.`
-  },
-  {
-    code: "P27", tag: "Tutoría", category: "Aprendizaje",
-    title: "Tutor socrático para aprender un tema",
-    desc: "En vez de que te lo expliquen todo de golpe, la IA te guía con preguntas para que llegues tú a la comprensión.",
-    prompt: `Quiero aprender sobre: [tema].
-
-Actúa como un tutor socrático: en vez de explicarme todo directamente, hazme una pregunta a la vez que me ayude a razonar hacia la comprensión del concepto.
-Espera mi respuesta antes de continuar, y ajusta la siguiente pregunta según lo que yo haya entendido o no.
-
-Empieza evaluando qué sé ya del tema con una primera pregunta sencilla.`
-  },
-  {
-    code: "P28", tag: "CV", category: "Carrera",
-    title: "Adaptar tu currículum a una oferta concreta",
-    desc: "Reescribe tu experiencia destacando lo relevante para un puesto específico, en vez de un CV genérico para todo.",
-    prompt: `Aquí está mi experiencia actual: [pega tu CV o un resumen de tu trayectoria].
-
-Aquí está la oferta de trabajo a la que quiero aplicar: [pega la descripción del puesto].
-
-Reescribe mi experiencia destacando lo más relevante para esta oferta concreta, usando las mismas palabras clave que aparecen en la descripción del puesto (para pasar filtros automáticos de selección).
-Señala también qué parte de mi experiencia actual recomiendas quitar o acortar por no aportar a esta candidatura en concreto.`
-  },
-  {
-    code: "P29", tag: "Entrevista", category: "Carrera",
-    title: "Simulacro de entrevista de trabajo",
-    desc: "Practica antes de la entrevista real con preguntas adaptadas al puesto y feedback honesto sobre tus respuestas.",
-    prompt: `Actúa como entrevistador para este puesto: [pega el título y descripción del puesto].
-
-Hazme una pregunta de entrevista a la vez, empezando por una pregunta general sobre mi experiencia.
-Espera mi respuesta antes de continuar. Después de cada respuesta mía, dame feedback breve y honesto: qué ha funcionado y qué mejorarías, antes de pasar a la siguiente pregunta.
-
-Incluye al menos una pregunta de comportamiento (tipo "cuéntame de una vez que...") y una pregunta técnica relacionada con el puesto.`
-  },
-  {
-    code: "P30", tag: "Presupuesto", category: "Finanzas",
-    title: "Presupuesto personal a partir de tus gastos reales",
-    desc: "Convierte una lista de gastos desordenada en un presupuesto por categorías con recomendaciones concretas de ajuste.",
-    prompt: `Aquí están mis gastos del último mes: [pega tus gastos, aunque sea una lista desordenada de conceptos y cantidades].
-
-Mi ingreso mensual aproximado es: [cantidad].
-Mi objetivo es: [ej. "ahorrar 200€ al mes" o "reducir gastos hormiga"].
-
-Agrupa mis gastos por categorías, calcula qué porcentaje de mi ingreso representa cada una, y señala las 3 categorías con más margen de ajuste realista para acercarme a mi objetivo, con una acción concreta para cada una.`
-  },
-  {
-    code: "P31", tag: "Growth", category: "Contrata a tu experto",
-    title: "Estratega de marketing y growth",
-    desc: "Te pregunta lo justo antes de darte una estrategia priorizada por impacto frente a esfuerzo, no teoría genérica.",
-    prompt: `Actúa como un estratega de marketing y growth con más de 10 años haciendo crecer marcas digitales.
-
-Antes de darme ninguna recomendación, pregúntame:
-1. Qué producto o servicio quiero promocionar
-2. Quién es mi audiencia objetivo
-3. Cuál es mi objetivo concreto (más ventas, más seguidores, más leads)
-
-Con esa información, dame una estrategia priorizada en 3 acciones, ordenadas por impacto frente a esfuerzo, con el primer paso exacto que daría hoy mismo para cada una.
-
-Sé directo. Nada de teoría genérica de manual.`
-  },
-  {
-    code: "P32", tag: "Copywriting", category: "Contrata a tu experto",
-    title: "Copywriter persuasivo",
-    desc: "Te pide el contexto justo y te entrega 3 versiones distintas de tu texto, cada una con una lógica de persuasión diferente.",
-    prompt: `Actúa como un copywriter profesional especializado en textos que convierten.
-
-Antes de escribir nada, pregúntame:
-1. Qué quiero comunicar y en qué formato (email, anuncio, landing, post)
-2. A quién me dirijo
-3. Qué acción quiero que tome quien lo lea
-
-Con esa información, dame 3 versiones distintas: una directa, una emocional, y una basada en datos/prueba social. Explícame en una frase qué diferencia a cada una.`
-  },
-  {
-    code: "P33", tag: "RRHH", category: "Contrata a tu experto",
-    title: "Especialista en RRHH",
-    desc: "Te prepara un guion para la conversación difícil (feedback, conflicto, despido) con una frase de apertura que no suena fría.",
-    prompt: `Actúa como un especialista en RRHH con experiencia en gestión de equipos y conflictos laborales.
-
-Antes de aconsejarme, pregúntame:
-1. Qué situación concreta tengo (feedback difícil, conflicto, entrevista, despido)
-2. Quiénes son las personas implicadas y su relación conmigo
-3. Qué resultado busco al final de la conversación
-
-Dame un guion de lo que decir, paso a paso, y una frase de apertura que no suene ni fría ni condescendiente.`
-  },
-  {
-    code: "P34", tag: "Legal", category: "Contrata a tu experto",
-    title: "Abogado mercantil (orientativo)",
-    desc: "Te explica un contrato en lenguaje llano y señala qué punto merece revisión real y cuál es rutina sin riesgo.",
-    prompt: `Actúa como un abogado mercantil con experiencia revisando contratos comerciales. Aclárame siempre que esto es orientativo, no asesoría legal formal.
-
-Antes de nada, pregúntame:
-1. Qué tipo de documento tengo (contrato, cláusula, acuerdo)
-2. Qué parte me preocupa o no entiendo
-3. Qué quiero conseguir (proteger algo, negociar un cambio, entender un riesgo)
-
-Explícamelo en lenguaje llano, señala qué punto merece revisión de un abogado real, y qué punto es rutina sin riesgo.`
-  },
-  {
-    code: "P35", tag: "Finanzas", category: "Contrata a tu experto",
-    title: "Analista financiero",
-    desc: "Convierte tus cifras en las 3 que de verdad importan, explicadas en una frase cada una, con alertas si algo no cuadra.",
-    prompt: `Actúa como un analista financiero especializado en interpretar cifras de negocio para no financieros.
-
-Antes de analizar nada, pregúntame:
-1. Qué datos tengo (ventas, costes, márgenes, lo que sea)
-2. Para qué necesito el análisis (una reunión, una decisión, un informe)
-3. Quién va a leer el resultado
-
-Dame las 3 cifras que más importan, qué significan en una frase cada una, y una alerta si algo no cuadra o merece atención.`
-  },
-  {
-    code: "P36", tag: "Negociación", category: "Contrata a tu experto",
-    title: "Negociador profesional",
-    desc: "Te prepara aperturas, anticipa objeciones con respuesta lista, y te dice cuándo deberías estar dispuesto a levantarte de la mesa.",
-    prompt: `Actúa como un negociador profesional con 15 años de experiencia cerrando acuerdos comerciales complejos.
-
-Antes de darme ningún consejo, pregúntame:
-1. Qué se está negociando y con quién
-2. Cuál es mi objetivo mínimo aceptable
-3. Qué sé de la otra parte y sus intereses
-
-Con esa información, dame:
-- 3 posibles aperturas de la negociación
-- Las 2 objeciones más probables que me van a poner, con respuesta preparada para cada una
-- Una señal de cuándo debería estar dispuesto a levantarme de la mesa
-
-Sé directo. Nada de teoría genérica de manual.`
-  },
-  {
-    code: "P37", tag: "Selección", category: "Contrata a tu experto",
-    title: "Reclutador senior",
-    desc: "Mejora tu CV con razones claras, o te prepara las 3 preguntas más probables de tu próxima entrevista.",
-    prompt: `Actúa como un reclutador senior con experiencia en procesos de selección de perfiles profesionales.
-
-Antes de ayudarme, pregúntame:
-1. Si necesito mejorar un CV o preparar una entrevista
-2. A qué puesto y sector me dirijo
-3. Qué experiencia relevante tengo
-
-Si es CV: dime qué reformular y por qué. Si es entrevista: dame las 3 preguntas más probables con una estructura de respuesta para cada una.`
-  },
-  {
-    code: "P38", tag: "Productividad", category: "Contrata a tu experto",
-    title: "Consultor de productividad",
-    desc: "Nada de sistemas imposibles de mantener: 3 cambios concretos que puedes aplicar mañana mismo.",
-    prompt: `Actúa como un consultor de productividad especializado en trabajo de oficina real, no en teoría de libro de autoayuda.
-
-Antes de nada, pregúntame:
-1. Cómo es mi día actual (tareas, horarios, interrupciones)
-2. Qué es lo que más se me acumula sin hacer
-3. Cuánto tiempo real tengo para reorganizar esto
-
-Dame 3 cambios concretos que pueda aplicar mañana mismo, no un sistema completo que nunca voy a mantener.`
-  },
-  {
-    code: "P39", tag: "Presentaciones", category: "Contrata a tu experto",
-    title: "Diseñador de presentaciones",
-    desc: "Estructura tu deck diapositiva por diapositiva, con un titular fuerte para la primera y respuestas a las preguntas más probables.",
-    prompt: `Actúa como un especialista en estructurar presentaciones que convencen.
-
-Antes de ayudarme, pregúntame:
-1. Sobre qué tema es la presentación
-2. Quién es la audiencia y qué decisión tiene que tomar
-3. Cuántas diapositivas tengo de margen
-
-Dame la estructura diapositiva por diapositiva, un titular fuerte para la primera, y las 2 preguntas más probables con respuesta corta preparada.`
-  },
-  {
-    code: "P40", tag: "Atención al cliente", category: "Contrata a tu experto",
-    title: "Especialista en atención al cliente",
-    desc: "Redacta una respuesta que reconoce el problema sin ceder en todo, con un tono firme pero no frío.",
-    prompt: `Actúa como un especialista en atención al cliente con experiencia gestionando quejas y situaciones tensas.
-
-Antes de ayudarme, pregúntame:
-1. Qué ha pasado con el cliente
-2. Qué tono necesito (empresa formal, marca cercana, etc.)
-3. Qué puedo ofrecer realmente como solución
-
-Dame una respuesta que reconozca el problema sin ceder en todo, con un siguiente paso concreto y un tono firme pero no frío.`
-  },
-  {
-    code: "P41", tag: "Gestión de proyectos", category: "Contrata a tu experto",
-    title: "Project manager",
-    desc: "Plan con hitos clave, los 3 riesgos más probables de tu proyecto, y una señal de alerta temprana para cada uno.",
-    prompt: `Actúa como un project manager con experiencia en proyectos complejos con varios equipos implicados.
-
-Antes de nada, pregúntame:
-1. En qué consiste el proyecto y su plazo
-2. Qué equipos o personas están implicadas
-3. Qué es lo que más te preocupa que falle
-
-Dame un plan con hitos clave, los 3 riesgos más probables, y una señal de alerta temprana para cada riesgo.`
-  },
-  {
-    code: "P42", tag: "Datos", category: "Contrata a tu experto",
-    title: "Experto en Excel/datos",
-    desc: "Te da la fórmula o los pasos exactos, explicados sin tecnicismos, y avisa si hay una forma más simple de lograrlo.",
-    prompt: `Actúa como un experto en Excel y organización de datos.
-
-Antes de ayudarme, pregúntame:
-1. Qué datos tengo (pide una muestra pequeña, no la tabla entera)
-2. Qué quiero conseguir (limpiar, resumir, comparar, automatizar)
-3. Qué nivel de Excel tengo, para no complicarme de más
-
-Dame los pasos exactos o la fórmula, explicada en una frase sin tecnicismos, y avísame si hay una forma más simple de lograr lo mismo.`
-  },
-  {
-    code: "P43", tag: "Carrera", category: "Contrata a tu experto",
-    title: "Mentor de carrera",
-    desc: "No te dice qué elegir: te ayuda a ver qué pregunta no te has hecho todavía antes de decidir.",
-    prompt: `Actúa como un mentor de carrera con experiencia acompañando decisiones profesionales importantes.
-
-Antes de aconsejarme, pregúntame:
-1. Qué decisión tengo entre manos
-2. Qué opciones estoy valorando
-3. Qué es lo que más miedo o duda me genera
-
-No me digas qué elegir. Ayúdame a ver qué pregunta no me he hecho todavía, y qué información me falta para decidir con más seguridad.`
-  },
-  {
-    code: "P44", tag: "Ventas", category: "Contrata a tu experto",
-    title: "Especialista en ventas B2B",
-    desc: "Guion breve para la fase exacta de tu venta, con 2 formas de responder a tu objeción sin sonar desesperado.",
-    prompt: `Actúa como un especialista en ventas B2B con experiencia cerrando acuerdos con empresas.
-
-Antes de ayudarme, pregúntame:
-1. Qué vendo y a qué tipo de empresa
-2. En qué fase está la conversación (primer contacto, negociación, cierre)
-3. Cuál es la objeción que más me está costando superar
-
-Dame un guion breve para esa fase concreta, y 2 formas distintas de responder a la objeción sin sonar desesperado.`
-  },
-  {
-    code: "P45", tag: "Comunicación", category: "Contrata a tu experto",
-    title: "Coach de comunicación",
-    desc: "Estructura en 3 partes para tu conversación difícil, con una frase concreta de apertura que baja la tensión.",
-    prompt: `Actúa como un coach de comunicación especializado en preparar conversaciones y charlas difíciles.
-
-Antes de ayudarme, pregúntame:
-1. Qué tengo que comunicar y a quién
-2. Qué reacción temo que tenga la otra persona
-3. Qué resultado necesito conseguir sí o sí
-
-Dame una estructura de 3 partes para la conversación, y una frase concreta para abrir que baje la tensión desde el principio.`
-  },
-  {
-    code: "P46", tag: "Diseño web", category: "Contrata a tu experto",
-    title: "Diseñador web y director creativo",
-    desc: "Audita o diseña tu web como un equipo de dirección de arte, estrategia y copy en uno: ángulo, arquitectura, texto real y sistema visual, con decisiones justificadas.",
-    prompt: `# ROL
-Eres un diseñador web y director creativo con 15 años de experiencia
-construyendo productos digitales que convierten. Trabajas como un equipo
-de tres personas en una sola cabeza: dirección de arte, estrategia de
-contenido y copywriting. Tu criterio es fuerte y lo defiendes con
-argumentos, no con opiniones.
-
-# CÓMO EMPIEZAS
-Antes de diseñar o escribir nada, haz un máximo de 5 preguntas para
-cerrar lo que no puedas deducir del brief:
-1. Producto/servicio y qué problema real resuelve.
-2. Público objetivo: quién es, qué le duele, qué ha probado antes.
-3. Acción única que debe realizar el usuario (una sola).
-4. Referencias visuales que le gustan y —más importante— cuáles odia.
-5. Restricciones: marca existente, stack técnico, plazos, presupuesto.
-Si el usuario dice "tú decide", asume decisiones razonables, decláralas
-de forma explícita y sigue adelante. No te bloquees pidiendo permiso.
-
-# PROCESO (en este orden, sin saltarte fases)
-1. ÁNGULO ESTRATÉGICO
-   Define en una frase la promesa central y por qué es creíble.
-   Propón 3 ángulos de posicionamiento distintos, no 3 variaciones del
-   mismo. Marca cuál recomiendas y por qué.
-2. ARQUITECTURA DE CONTENIDO
-   Estructura la página sección a sección, justificando cada bloque:
-   qué objeción resuelve o qué pregunta responde en la cabeza del
-   usuario. Si una sección no tiene función, elimínala.
-3. COPY
-   Escribe el texto real, no lorem ipsum ni descripciones de lo que
-   iría ahí. Reglas: frases cortas, verbos concretos, cero adjetivos
-   de relleno. Prohibido: "soluciones innovadoras", "llevamos tu
-   negocio al siguiente nivel", "sinergias", "excelencia".
-   El titular debe funcionar solo, sin la imagen que lo acompaña.
-4. DIRECCIÓN DE ARTE
-   Especifica y justifica:
-   - Tipografía: 2 familias máximo, con escala modular concreta
-     (ej. 14/16/20/28/40/64px) y jerarquía clara.
-   - Color: paleta de 4-5 tonos con valores HEX, incluyendo un color
-     de acento que solo se usa para acciones.
-   - Espaciado: sistema basado en múltiplos (4 u 8px).
-   - Personalidad visual: una decisión formal que haga que esta página
-     no parezca una plantilla. Nómbrala explícitamente.
-5. ENTREGABLE
-   Si se pide código: HTML + CSS en un solo archivo, responsive,
-   accesible (contraste AA, foco visible, HTML semántico), sin
-   dependencias innecesarias. Comenta solo lo no obvio.
-
-# PRINCIPIOS QUE NO NEGOCIAS
-- La jerarquía manda: en cada pantalla debe estar clarísimo qué mirar
-  primero, segundo y tercero.
-- El espacio en blanco es contenido, no desperdicio.
-- Una sola acción principal por pantalla. Todo lo demás es secundario
-  visualmente.
-- Contraste real entre elementos: si dos cosas son distintas, que se
-  note; si son iguales, que sean idénticas.
-- Diseña primero el estado móvil y el estado de "peor caso" (texto
-  largo, imagen ausente, lista vacía).
-- Concreción sobre abstracción: "aumenta un 30% la conversión" en vez
-  de "mejora resultados".
-
-# CÓMO RESPONDES
-- Directo, sin preámbulos ni resúmenes de lo que vas a hacer.
-- Toma decisiones y explícalas en una línea. Nunca ofrezcas 5 opciones
-  para que el usuario elija: recomienda una y menciona la alternativa.
-- Si el brief tiene un problema de fondo (público confuso, promesa poco
-  creíble, demasiadas acciones), dilo antes de diseñar. Un diseño
-  bonito sobre una estrategia rota no sirve.
-- Al terminar, propón 2 mejoras concretas para la siguiente iteración.`
-  }
-];
-
-/* ============ progreso: prompts explorados ============ */
-const navProgress = document.getElementById('navProgress');
-const navTotal = document.getElementById('navTotal');
-const EXPLORED_KEY = 'promptboost_explored';
-
-function getExplored(){
-  try{ return new Set(JSON.parse(localStorage.getItem(EXPLORED_KEY) || '[]')); }
-  catch(e){ return new Set(); }
-}
-function saveExplored(set){
-  try{ localStorage.setItem(EXPLORED_KEY, JSON.stringify([...set])); } catch(e){}
-}
-function updateProgressDisplay(){
-  const explored = getExplored();
-  navProgress.textContent = `${explored.size}/${specimens.length} EXPLORADOS`;
-}
-function markExplored(code){
-  const explored = getExplored();
-  if(!explored.has(code)){
-    explored.add(code);
-    saveExplored(explored);
-    updateProgressDisplay();
-  }
-}
-navTotal.textContent = `${specimens.length} PROMPTS LISTOS PARA USAR`;
-updateProgressDisplay();
-
-/* ============ atajo de teclado "/" para buscar ============ */
-window.addEventListener('keydown', (e) => {
-  if(e.key === '/' ){
-    const tag = document.activeElement.tagName;
-    if(tag !== 'INPUT' && tag !== 'TEXTAREA'){
-      e.preventDefault();
-      document.getElementById('searchInput').focus();
-    }
-  }
-});
-
 /* ============ botón flotante: volver arriba ============ */
 const backToTop = document.getElementById('backToTop');
 const heroSection = document.querySelector('.hero');
@@ -1739,172 +1112,6 @@ window.addEventListener('scroll', () => {
 });
 backToTop.addEventListener('click', () => {
   window.scrollTo({ top: 0, behavior: 'smooth' });
-});
-
-/* ============ render filters + búsqueda ============ */
-const categoryColors = {
-  "Razonamiento": "#4ee6cb",
-  "Escritura": "#8b7fff",
-  "Código": "#ff7a52",
-  "Estructura": "#5ec8ff",
-  "Decisiones": "#f2c46d",
-  "Marketing": "#ff7ab8",
-  "Contenido": "#b6e05e",
-  "Negocio": "#ff6b6b",
-  "Productividad": "#7dd3fc",
-  "Aprendizaje": "#c4b5fd",
-  "Carrera": "#ffd166",
-  "Finanzas": "#6ee7b7",
-  "Contrata a tu experto": "#e0a672"
-};
-
-const categories = ["Todos", ...new Set(specimens.map(s => s.category))];
-const filtersEl = document.getElementById('filters');
-const searchInput = document.getElementById('searchInput');
-const noResults = document.getElementById('noResults');
-
-let currentCategory = "Todos";
-let currentSearch = "";
-
-const copyAllBtn = document.getElementById('copyAllBtn');
-
-function applyFilters(){
-  const term = currentSearch.trim().toLowerCase();
-  let visibleCount = 0;
-  const visibleCodes = [];
-
-  document.querySelectorAll('.specimen').forEach(card => {
-    const matchesCategory = currentCategory === "Todos" || card.dataset.category === currentCategory;
-    const haystack = card.dataset.search;
-    const matchesSearch = term === "" || haystack.includes(term);
-    const show = matchesCategory && matchesSearch;
-    card.classList.toggle('hidden', !show);
-    if(show){ visibleCount++; visibleCodes.push(card.dataset.code); }
-  });
-
-  noResults.classList.toggle('show', visibleCount === 0);
-
-  if(currentCategory !== "Todos" && visibleCount > 0){
-    copyAllBtn.classList.add('show');
-    copyAllBtn.textContent = `Copiar los ${visibleCount} prompts de ${currentCategory}`;
-    if(categoryColors[currentCategory]) copyAllBtn.style.setProperty('--accent', categoryColors[currentCategory]);
-    copyAllBtn.dataset.codes = visibleCodes.join(',');
-  } else {
-    copyAllBtn.classList.remove('show');
-  }
-}
-
-copyAllBtn.addEventListener('click', () => {
-  const codes = (copyAllBtn.dataset.codes || '').split(',').filter(Boolean);
-  const block = codes.map(code => {
-    const s = specimens.find(x => x.code === code);
-    return `--- ${s.code} · ${s.title} ---\n${s.prompt}`;
-  }).join('\n\n');
-  navigator.clipboard.writeText(block).then(() => {
-    const original = copyAllBtn.textContent;
-    copyAllBtn.textContent = 'Copiado ✓';
-    copyAllBtn.classList.add('copied');
-    setTimeout(() => { copyAllBtn.textContent = original; copyAllBtn.classList.remove('copied'); }, 1800);
-  });
-});
-
-function selectCategory(cat){
-  document.querySelectorAll('.filter-btn').forEach(b => b.classList.toggle('active', b.textContent === cat));
-  currentCategory = cat;
-  particleTintRGB = categoryColors[cat] ? hexToRgbString(categoryColors[cat]) : "78,230,203";
-  applyFilters();
-}
-
-categories.forEach((cat, i) => {
-  const btn = document.createElement('button');
-  btn.className = 'filter-btn' + (i === 0 ? ' active' : '');
-  btn.textContent = cat;
-  if(categoryColors[cat]) btn.style.setProperty('--accent', categoryColors[cat]);
-  btn.addEventListener('click', () => selectCategory(cat));
-  filtersEl.appendChild(btn);
-});
-
-/* ============ catálogo: vista general con iconos por categoría ============ */
-const catalogIcons = {
-  "Razonamiento": `<svg viewBox="0 0 24 24" fill="none"><circle cx="6" cy="8" r="2.4" stroke="currentColor" stroke-width="2.2"/><circle cx="18" cy="8" r="2.4" stroke="currentColor" stroke-width="2.2"/><circle cx="12" cy="18" r="2.4" stroke="currentColor" stroke-width="2.2"/><path d="M8.1 9.3L10 16M15.9 9.3L14 16M8.4 8H15.6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>`,
-  "Escritura": `<svg viewBox="0 0 24 24" fill="none"><path d="M4 20L4.8 16.4L15 6.2C15.6 5.6 16.6 5.6 17.2 6.2L17.8 6.8C18.4 7.4 18.4 8.4 17.8 9L7.6 19.2L4 20Z" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/><path d="M13.5 7.7L16.3 10.5" stroke="currentColor" stroke-width="2.2"/></svg>`,
-  "Código": `<svg viewBox="0 0 24 24" fill="none"><path d="M9 7L4 12L9 17M15 7L20 12L15 17" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
-  "Estructura": `<svg viewBox="0 0 24 24" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="2.2"/><rect x="13" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="2.2"/><rect x="4" y="13" width="7" height="7" rx="1" stroke="currentColor" stroke-width="2.2"/><rect x="13" y="13" width="7" height="7" rx="1" stroke="currentColor" stroke-width="2.2"/></svg>`,
-  "Decisiones": `<svg viewBox="0 0 24 24" fill="none"><path d="M5 6H9L15 18H19M9 18H5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><path d="M15 6H19" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><circle cx="5" cy="6" r="1.6" fill="currentColor"/><circle cx="5" cy="18" r="1.6" fill="currentColor"/><circle cx="19" cy="6" r="1.6" fill="currentColor"/><circle cx="19" cy="18" r="1.6" fill="currentColor"/></svg>`,
-  "Marketing": `<svg viewBox="0 0 24 24" fill="none"><path d="M4 11V15L7 15.6V17.5C7 18.3 7.7 19 8.5 19C9.3 19 10 18.3 10 17.5V16.1L15 17V9L4 11Z" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/><path d="M15 9V17C17 17 19 15.2 19 13C19 10.8 17 9 15 9Z" stroke="currentColor" stroke-width="2.2"/></svg>`,
-  "Contenido": `<svg viewBox="0 0 24 24" fill="none"><rect x="4" y="5" width="16" height="14" rx="1.5" stroke="currentColor" stroke-width="2.2"/><path d="M10 9L15 12L10 15V9Z" fill="currentColor"/></svg>`,
-  "Negocio": `<svg viewBox="0 0 24 24" fill="none"><rect x="4" y="8" width="16" height="11" rx="1.5" stroke="currentColor" stroke-width="2.2"/><path d="M8 8V6C8 5.4 8.4 5 9 5H15C15.6 5 16 5.4 16 6V8" stroke="currentColor" stroke-width="2.2"/><path d="M4 13H20" stroke="currentColor" stroke-width="2.2"/></svg>`,
-  "Productividad": `<svg viewBox="0 0 24 24" fill="none"><rect x="5" y="4" width="14" height="17" rx="1.5" stroke="currentColor" stroke-width="2.2"/><path d="M8.5 10L10.5 12L14.5 8" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M8.5 16H14.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>`,
-  "Aprendizaje": `<svg viewBox="0 0 24 24" fill="none"><path d="M12 5L21 9L12 13L3 9L12 5Z" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/><path d="M7 11V16C7 17 9 18.5 12 18.5C15 18.5 17 17 17 16V11" stroke="currentColor" stroke-width="2.2"/></svg>`,
-  "Carrera": `<svg viewBox="0 0 24 24" fill="none"><path d="M12 3C14 5 15.5 8 15.5 11.5C15.5 14 14.5 16 12 19C9.5 16 8.5 14 8.5 11.5C8.5 8 10 5 12 3Z" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/><circle cx="12" cy="10.5" r="1.6" stroke="currentColor" stroke-width="2"/><path d="M9 17L6.5 21M15 17L17.5 21" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>`,
-  "Finanzas": `<svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="2.2"/><path d="M12 7.5V16.5M14.5 9.3C14.5 8 13.4 7.5 12 7.5C10.5 7.5 9.5 8.2 9.5 9.3C9.5 11.7 14.5 10.7 14.5 13.1C14.5 14.2 13.4 14.9 12 14.9C10.6 14.9 9.5 14.4 9.5 13.1" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>`,
-  "Contrata a tu experto": `<svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8.2" r="3.7" stroke="currentColor" stroke-width="2.2"/><path d="M4.5 20C4.5 15.4 7.9 12.6 12 12.6C16.1 12.6 19.5 15.4 19.5 20" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>`
-};
-
-const catalogGradients = {
-  "Razonamiento": "linear-gradient(137deg, #eafffa 0%, #4ee6cb 45%, #12b3a0 100%)",
-  "Escritura": "linear-gradient(137deg, #f1efff 0%, #8b7fff 45%, #5b3df0 100%)",
-  "Código": "linear-gradient(137deg, #fff0ea 0%, #ff7a52 45%, #d94a22 100%)",
-  "Estructura": "linear-gradient(137deg, #eaf7ff 0%, #5ec8ff 45%, #1f8fe0 100%)",
-  "Decisiones": "linear-gradient(137deg, #fff6e6 0%, #f2c46d 45%, #d99b2b 100%)",
-  "Marketing": "linear-gradient(137deg, #ffeaf4 0%, #ff7ab8 45%, #e63e8c 100%)",
-  "Contenido": "linear-gradient(137deg, #f5ffe6 0%, #b6e05e 45%, #82b52c 100%)",
-  "Negocio": "linear-gradient(137deg, #ffecec 0%, #ff6b6b 45%, #e0302f 100%)",
-  "Productividad": "linear-gradient(137deg, #eefaff 0%, #7dd3fc 45%, #2ba8e0 100%)",
-  "Aprendizaje": "linear-gradient(137deg, #f4f1ff 0%, #c4b5fd 45%, #8a6ff0 100%)",
-  "Carrera": "linear-gradient(137deg, #fff8e6 0%, #ffd166 45%, #e0a017 100%)",
-  "Finanzas": "linear-gradient(137deg, #eafff6 0%, #6ee7b7 45%, #2bb87e 100%)",
-  "Contrata a tu experto": "linear-gradient(137deg, #fff3e6 0%, #e0a672 45%, #a86a3a 100%)"
-};
-
-const catalogDescriptions = {
-  "Razonamiento": "Prompts que hacen pensar a la IA paso a paso antes de responder.",
-  "Escritura": "Estilo, tono y voz bajo control en cada texto que generes.",
-  "Código": "De la auditoría a la depuración, sin perder ni una línea.",
-  "Estructura": "Datos limpios y formatos que se integran con cualquier sistema.",
-  "Decisiones": "Comparativas y matrices para decidir con criterio, no con intuición.",
-  "Marketing": "Estrategia, copy y posicionamiento que sí generan resultados.",
-  "Contenido": "Guiones, calendarios y piezas listas para publicar hoy.",
-  "Negocio": "Respuestas, propuestas y análisis para mover tu negocio.",
-  "Productividad": "Actas, prioridades y orden para el caos del día a día.",
-  "Aprendizaje": "Tutores y repasos que se adaptan a lo que ya sabes.",
-  "Carrera": "CV, entrevistas y negociación para el siguiente paso.",
-  "Finanzas": "Presupuestos claros a partir de tus gastos reales.",
-  "Contrata a tu experto": "15 especialistas listos para preguntarte lo justo y darte una respuesta real."
-};
-
-const catalogGrid = document.getElementById('catalogGrid');
-categories.filter(c => c !== "Todos").forEach((cat, i) => {
-  const count = specimens.filter(s => s.category === cat).length;
-  const gradient = catalogGradients[cat];
-
-  const wrap = document.createElement('div');
-  wrap.className = 'glow-card-wrap reveal';
-  wrap.style.transitionDelay = `${(i % 6) * 90}ms`;
-
-  wrap.innerHTML = `
-    <div class="glow-bg" style="background:${gradient};"></div>
-    <div class="glow-card" style="background:linear-gradient(#1a1a1c,#1a1a1c) padding-box, ${gradient} border-box;">
-      <div class="glow-card-inner">
-        <div>
-          <div class="glow-icon">${catalogIcons[cat] || ''}</div>
-          <div class="glow-title">${cat}</div>
-          <div class="glow-desc">${catalogDescriptions[cat] || ''}</div>
-        </div>
-        <div class="glow-count">${count} prompt${count === 1 ? '' : 's'}</div>
-      </div>
-    </div>
-  `;
-  wrap.addEventListener('click', () => {
-    selectCategory(cat);
-    document.getElementById('archive').scrollIntoView({ behavior: 'smooth', block: 'start' });
-  });
-  catalogGrid.appendChild(wrap);
-});
-
-searchInput.addEventListener('input', (e) => {
-  currentSearch = e.target.value;
-  applyFilters();
 });
 
 /* ============ deck: mazo interactivo de los 5 bloques ============ */
@@ -1960,91 +1167,6 @@ if(deckEl){
     deckEl.appendChild(card);
   });
 }
-
-/* ============ render grid ============ */
-const grid = document.getElementById('grid');
-specimens.forEach((s, i) => {
-  const el = document.createElement('div');
-  el.className = 'specimen reveal';
-  el.dataset.category = s.category;
-  el.dataset.code = s.code;
-  if(categoryColors[s.category]) el.style.setProperty('--accent', categoryColors[s.category]);
-  el.style.transitionDelay = `${(i % 9) * 55}ms`;
-  el.dataset.search = `${s.title} ${s.desc} ${s.tag} ${s.category} ${s.code}`.toLowerCase();
-  el.innerHTML = `
-    <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
-    <span class="scan-line"></span>
-    <div class="spc-code"><span>${s.code}</span><span class="tag">${s.tag}</span></div>
-    <div class="spc-title">${s.title}</div>
-    <div class="spc-desc">${s.desc}</div>
-    <div class="spc-actions">
-      <div class="spc-open">Ver completo <span class="arrow">→</span></div>
-      <button class="quick-copy" type="button">Copiar</button>
-    </div>
-  `;
-  el.addEventListener('click', () => openModal(s));
-  el.querySelector('.quick-copy').addEventListener('click', (e) => {
-    e.stopPropagation();
-    const btn = e.currentTarget;
-    navigator.clipboard.writeText(s.prompt).then(() => {
-      btn.textContent = 'Copiado ✓';
-      btn.classList.add('copied');
-      setTimeout(() => { btn.textContent = 'Copiar'; btn.classList.remove('copied'); }, 1600);
-    });
-    markExplored(s.code);
-  });
-  el.addEventListener('mousemove', (e) => {
-    const r = el.getBoundingClientRect();
-    const x = (e.clientX - r.left) / r.width - 0.5;
-    const y = (e.clientY - r.top) / r.height - 0.5;
-    el.style.transform = `perspective(700px) rotateY(${x*8}deg) rotateX(${-y*8}deg) translateZ(6px)`;
-  });
-  el.addEventListener('mouseleave', () => { el.style.transform = ''; });
-  grid.appendChild(el);
-});
-
-/* ============ modal ============ */
-const backdrop = document.getElementById('modalBackdrop');
-const modalCode = document.getElementById('modalCode');
-const modalTitle = document.getElementById('modalTitle');
-const modalDesc = document.getElementById('modalDesc');
-const modalPrompt = document.getElementById('modalPrompt');
-const copyBtn = document.getElementById('copyBtn');
-let currentPrompt = '';
-
-function openModal(s){
-  modalCode.textContent = `${s.code} · CATEGORÍA: ${s.category.toUpperCase()}`;
-  modalTitle.textContent = s.title;
-  modalDesc.textContent = s.desc;
-  modalPrompt.textContent = s.prompt;
-  currentPrompt = s.prompt;
-  copyBtn.textContent = 'Copiar prompt';
-  copyBtn.classList.remove('copied');
-  const accent = categoryColors[s.category] || 'var(--teal)';
-  document.getElementById('modal').style.setProperty('--accent', accent);
-  backdrop.classList.add('open');
-  markExplored(s.code);
-}
-document.getElementById('modalClose').addEventListener('click', () => backdrop.classList.remove('open'));
-backdrop.addEventListener('click', (e) => { if(e.target === backdrop) backdrop.classList.remove('open'); });
-copyBtn.addEventListener('click', () => {
-  navigator.clipboard.writeText(currentPrompt).then(() => {
-    copyBtn.textContent = 'Copiado ✓';
-    copyBtn.classList.add('copied');
-    setTimeout(() => { copyBtn.textContent = 'Copiar prompt'; copyBtn.classList.remove('copied'); }, 1800);
-  });
-});
-
-/* ============ custom cursor ============ */
-/* ============ ecosystem parallax ============ */
-document.querySelectorAll('.blob').forEach(b => {
-  const depth = parseFloat(b.dataset.depth);
-  window.addEventListener('mousemove', (e) => {
-    const dx = (e.clientX - window.innerWidth/2) * depth;
-    const dy = (e.clientY - window.innerHeight/2) * depth;
-    b.style.transform = `translate(${dx}px, ${dy}px)`;
-  });
-});
 
 /* ============ texto con efecto scramble (descifrado) ============ */
 class TextScramble {
@@ -2288,6 +1410,7 @@ if(phoneScreen){
     runConversation();
   }
 }
+
 
 
 
