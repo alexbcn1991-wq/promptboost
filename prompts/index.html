@@ -351,11 +351,11 @@
   /* ---------- prompt grid ---------- */
   .specimen-grid{
     display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr));
-    gap:1px; background:var(--line);
-    border:1px solid var(--line);
+    gap:1px; border:1px solid var(--line); background:transparent;
   }
   .specimen{
     background:var(--depth);
+    border:1px solid var(--line);
     padding:32px 28px 28px;
     position:relative;
     overflow:hidden;
@@ -582,7 +582,7 @@
   /* ---------- footer ---------- */
   footer{
     position:relative; z-index:2;
-    padding:60px 6vw 32px; border-top:1px solid var(--line);
+    padding:90px 6vw 32px; border-top:1px solid var(--line);
     display:flex; flex-direction:column; gap:28px;
   }
   .footer-top{
@@ -761,8 +761,56 @@
   }
   .nav-prompts-link:hover{ color:var(--ghost); }
 
-  .catalog-block{ padding:60px 6vw min(10vw,110px); }
-  .archive-block{ padding:min(10vw,110px) 6vw 0; }
+  .nav-links{ display:flex; gap:26px; align-items:center; }
+  .nav-links > a{
+    font-family:'JetBrains Mono', monospace; font-size:11.5px; letter-spacing:0.08em;
+    color:var(--mist); text-decoration:none; text-transform:uppercase; transition:color .2s ease;
+  }
+  .nav-links > a:hover{ color:var(--teal); }
+  @media (max-width:900px){ .nav-links{ display:none; } }
+
+  .nav-item-mega{ position:relative; }
+  .nav-item-mega > a{
+    font-family:'JetBrains Mono', monospace; font-size:11.5px; letter-spacing:0.08em;
+    color:var(--mist); text-decoration:none; text-transform:uppercase; transition:color .2s ease;
+  }
+  .nav-item-mega:hover > a{ color:var(--teal); }
+  .mega-panel{
+    position:absolute; top:100%; left:50%; transform:translate(-50%,8px);
+    margin-top:0; padding-top:14px;
+    opacity:0; visibility:hidden; pointer-events:none;
+    transition:opacity .2s ease, transform .2s ease, visibility .2s;
+    z-index:200;
+  }
+  .mega-panel-inner{
+    width:420px; padding:22px;
+    background:var(--surface); border:1px solid var(--line); border-radius:16px;
+    box-shadow:0 24px 48px rgba(0,0,0,0.5);
+  }
+  .nav-item-mega:hover .mega-panel{
+    opacity:1; visibility:visible; pointer-events:auto; transform:translate(-50%,0);
+  }
+  .mega-grid{
+    display:grid; grid-template-columns:repeat(3, 1fr); gap:4px;
+  }
+  .mega-item{
+    display:flex; flex-direction:column; align-items:center; gap:7px; text-align:center;
+    padding:12px 6px; border-radius:10px; text-decoration:none; transition:background .2s ease;
+  }
+  .mega-item:hover{ background:var(--depth); }
+  .mega-icon{ width:20px; height:20px; color:var(--accent, var(--teal)); }
+  .mega-icon svg{ width:100%; height:100%; }
+  .mega-label{
+    font-family:'Inter', sans-serif; font-size:11px; color:var(--ghost); line-height:1.25;
+  }
+  .mega-viewall{
+    display:block; margin-top:16px; padding-top:16px; border-top:1px solid var(--line);
+    text-align:center; font-family:'JetBrains Mono', monospace; font-size:11px;
+    letter-spacing:0.06em; text-transform:uppercase; color:var(--teal); text-decoration:none;
+  }
+
+  .catalog-block{ padding:140px 6vw min(10vw,110px); }
+  .archive-block{ padding:min(10vw,110px) 6vw min(12vw,130px); }
   </style>
 </head>
 <body>
@@ -796,6 +844,11 @@
       </g>
     </svg>
     PROMPT<span>·</span>BOOST
+  </div>
+  <div class="nav-links">
+    <a href="/">Inicio</a>
+    <a href="/#anatomy">Metodología</a>
+    <a href="/#manual">Manual</a>
   </div>
   <div class="nav-status">
     <span class="pulse-dot"></span> <span id="navTotal">46 PROMPTS LISTOS PARA USAR</span>
@@ -1752,6 +1805,21 @@ searchInput.addEventListener('input', (e) => {
   applyFilters();
 });
 
+
+/* ============ leer ?cat= de la URL (llegada desde el mega menú) ============ */
+(function(){
+  const params = new URLSearchParams(window.location.search);
+  const catParam = params.get('cat');
+  if(catParam){
+    const target = categories.find(c => c.toLowerCase() === catParam.toLowerCase());
+    if(target){
+      selectCategory(target);
+      setTimeout(() => {
+        document.getElementById('archive').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 100);
+    }
+  }
+})();
 /* ============ render grid ============ */
 const grid = document.getElementById('grid');
 specimens.forEach((s, i) => {
