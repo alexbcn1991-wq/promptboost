@@ -760,7 +760,10 @@
     color:var(--teal); text-decoration:none; text-transform:uppercase;
   }
   .nav-prompts-link:hover{ color:var(--ghost); }
-</style>
+
+  .catalog-block{ padding:60px 6vw min(10vw,110px); }
+  .archive-block{ padding:min(10vw,110px) 6vw 0; }
+  </style>
 </head>
 <body>
 
@@ -795,29 +798,22 @@
     PROMPT<span>·</span>BOOST
   </div>
   <div class="nav-status">
-    <span class="pulse-dot"></span> <span id="navTotal">30 PROMPTS LISTOS PARA USAR</span>
+    <span class="pulse-dot"></span> <span id="navTotal">46 PROMPTS LISTOS PARA USAR</span>
     <span class="nav-sep">·</span>
     <span id="navProgress">0/46 EXPLORADOS</span>
   </div>
 </nav>
 
 <main>
-  <section id="library">
-  <div class="section-head reveal" style="padding-top:60px;">
-    <div class="eyebrow">Biblioteca completa</div>
-    <h2 class="display">Los 46 prompts</h2>
-    <p>Filtra por categoría o busca por palabra clave. Cada tarjeta tiene un botón para copiar directo, o puedes abrirla para ver el prompt completo con contexto.</p>
-  </div>
-
-  
+  <div class="catalog-block">
     <div class="section-head reveal">
       <div class="eyebrow">Vista general</div>
       <h2 class="display">El catálogo completo</h2>
       <p>12 categorías, cada una con su color. Haz clic en cualquiera para filtrar la biblioteca directamente.</p>
     </div>
     <div class="catalog-grid" id="catalogGrid"></div>
-  
-  
+  </div>
+  <div class="archive-block" id="archive">
     <div class="section-head reveal">
       <div class="eyebrow">Biblioteca</div>
       <h2 class="display">Elige un prompt</h2>
@@ -839,8 +835,7 @@
     </div>
     <div class="specimen-grid" id="grid"></div>
     <p class="no-results" id="noResults">No hay ningún prompt que coincida. Prueba con otra palabra o quita el filtro de categoría.</p>
-  
-  </section>
+  </div>
 
 </main>
 
