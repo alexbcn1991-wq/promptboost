@@ -724,10 +724,10 @@
   /* ---------- destacados: cards estáticas que enlazan a /p/ ---------- */
   .featured-grid{
     display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));
-    gap:1px; background:var(--line); border:1px solid var(--line);
+    gap:1px; border:1px solid var(--line); background:transparent;
   }
   .featured-card{
-    display:block; background:var(--depth); padding:28px 26px; text-decoration:none;
+    display:block; background:var(--depth); border:1px solid var(--line); padding:28px 26px; text-decoration:none;
     border-top:3px solid var(--accent, var(--teal)); transition:background .25s ease;
   }
   .featured-card:hover{ background:var(--surface); }
@@ -856,7 +856,7 @@
           <span class="mega-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M4 20L4.8 16.4L15 6.2C15.6 5.6 16.6 5.6 17.2 6.2L17.8 6.8C18.4 7.4 18.4 8.4 17.8 9L7.6 19.2L4 20Z" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/><path d="M13.5 7.7L16.3 10.5" stroke="currentColor" stroke-width="2.2"/></svg></span>
           <span class="mega-label">Escritura</span>
         </a>
-        <a href="/prompts/?cat=Código" class="mega-item" style="--accent:#ff7a52">
+        <a href="/prompts/?cat=C%C3%B3digo" class="mega-item" style="--accent:#ff7a52">
           <span class="mega-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M9 7L4 12L9 17M15 7L20 12L15 17" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
           <span class="mega-label">Código</span>
         </a>
@@ -896,7 +896,7 @@
           <span class="mega-icon"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="2.2"/><path d="M12 7.5V16.5M14.5 9.3C14.5 8 13.4 7.5 12 7.5C10.5 7.5 9.5 8.2 9.5 9.3C9.5 11.7 14.5 10.7 14.5 13.1C14.5 14.2 13.4 14.9 12 14.9C10.6 14.9 9.5 14.4 9.5 13.1" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></span>
           <span class="mega-label">Finanzas</span>
         </a>
-        <a href="/prompts/?cat=Contrata+a+tu+experto" class="mega-item" style="--accent:#e0a672">
+        <a href="/prompts/?cat=Contrata%20a%20tu%20experto" class="mega-item" style="--accent:#e0a672">
           <span class="mega-icon"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8.2" r="3.7" stroke="currentColor" stroke-width="2.2"/><path d="M4.5 20C4.5 15.4 7.9 12.6 12 12.6C16.1 12.6 19.5 15.4 19.5 20" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></span>
           <span class="mega-label">Contrata a tu experto</span>
         </a>
@@ -982,7 +982,7 @@
     <div class="section-head reveal">
       <div class="eyebrow">Destacados</div>
       <h2 class="display">Empieza por aquí</h2>
-      <p>9 prompts de muestra, uno de cada gran categoría. La biblioteca completa tiene 46, organizados y con buscador.</p>
+      <p>12 prompts de muestra, casi uno de cada categoría. La biblioteca completa tiene 46, organizados y con buscador.</p>
     </div>
     <div class="featured-grid reveal">
       <a href="/p/negociador-profesional/" class="featured-card" style="--accent:#e0a672">
@@ -1031,6 +1031,30 @@
         <div class="featured-top"><span>P30</span><span>Presupuesto</span></div>
         <div class="featured-title">Presupuesto personal a partir de tus gastos reales</div>
         <div class="featured-desc">Convierte una lista de gastos desordenada en un presupuesto por categorías con recomendaciones concretas de ajuste.</div>
+        <div class="featured-arrow">Ver prompt completo →</div>
+      </a>
+      <a href="/p/generador-de-preguntas-de-repaso/" class="featured-card" style="--accent:#c4b5fd">
+        <div class="featured-top"><span>P26</span><span>Estudio</span></div>
+        <div class="featured-title">Generador de preguntas de repaso</div>
+        <div class="featured-desc">Convierte un tema o apunte en preguntas de autoevaluación, útil para preparar exámenes o repasar antes de una reunión.</div>
+        <div class="featured-arrow">Ver prompt completo →</div>
+      </a>
+      <a href="/p/respuesta-a-una-resena-negativa/" class="featured-card" style="--accent:#ff6b6b">
+        <div class="featured-top"><span>P21</span><span>Atención al cliente</span></div>
+        <div class="featured-title">Respuesta a una reseña negativa</div>
+        <div class="featured-desc">Plantilla para responder con empatía real sin sonar corporativo ni a la defensiva.</div>
+        <div class="featured-arrow">Ver prompt completo →</div>
+      </a>
+      <a href="/p/resumen-de-reunion-en-acta-accionable/" class="featured-card" style="--accent:#7dd3fc">
+        <div class="featured-top"><span>P24</span><span>Reuniones</span></div>
+        <div class="featured-title">Resumen de reunión en acta accionable</div>
+        <div class="featured-desc">Convierte notas desordenadas en un acta clara con responsables y fechas, no solo un resumen narrativo.</div>
+        <div class="featured-arrow">Ver prompt completo →</div>
+      </a>
+      <a href="/p/extraccion-estructurada-en-xml/" class="featured-card" style="--accent:#5ec8ff">
+        <div class="featured-top"><span>P06</span><span>Datos</span></div>
+        <div class="featured-title">Extracción estructurada en XML</div>
+        <div class="featured-desc">Fuerza una salida parseable, ideal cuando el resultado se conecta a otro sistema o script.</div>
         <div class="featured-arrow">Ver prompt completo →</div>
       </a>
     </div>

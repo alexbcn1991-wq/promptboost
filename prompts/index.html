@@ -724,10 +724,10 @@
   /* ---------- destacados: cards estáticas que enlazan a /p/ ---------- */
   .featured-grid{
     display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));
-    gap:1px; background:var(--line); border:1px solid var(--line);
+    gap:1px; border:1px solid var(--line); background:transparent;
   }
   .featured-card{
-    display:block; background:var(--depth); padding:28px 26px; text-decoration:none;
+    display:block; background:var(--depth); border:1px solid var(--line); padding:28px 26px; text-decoration:none;
     border-top:3px solid var(--accent, var(--teal)); transition:background .25s ease;
   }
   .featured-card:hover{ background:var(--surface); }
@@ -1805,21 +1805,6 @@ searchInput.addEventListener('input', (e) => {
   applyFilters();
 });
 
-
-/* ============ leer ?cat= de la URL (llegada desde el mega menú) ============ */
-(function(){
-  const params = new URLSearchParams(window.location.search);
-  const catParam = params.get('cat');
-  if(catParam){
-    const target = categories.find(c => c.toLowerCase() === catParam.toLowerCase());
-    if(target){
-      selectCategory(target);
-      setTimeout(() => {
-        document.getElementById('archive').scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }, 100);
-    }
-  }
-})();
 /* ============ render grid ============ */
 const grid = document.getElementById('grid');
 specimens.forEach((s, i) => {
@@ -1905,6 +1890,21 @@ document.querySelectorAll('.blob').forEach(b => {
   });
 });
 
+
+/* ============ leer ?cat= de la URL (llegada desde el mega menú) ============ */
+(function(){
+  const params = new URLSearchParams(window.location.search);
+  const catParam = params.get('cat');
+  if(catParam){
+    const target = categories.find(c => c.toLowerCase() === catParam.toLowerCase());
+    if(target){
+      selectCategory(target);
+      setTimeout(() => {
+        document.getElementById('archive').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 100);
+    }
+  }
+})();
 /* ============ digital rain (canvas) — adaptado de "raining letters" ============ */
 const canvas = document.getElementById('particle-field');
 const ctx = canvas.getContext('2d');
