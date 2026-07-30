@@ -181,7 +181,7 @@
 
   h1.display{
     font-family:'Unbounded', sans-serif; font-weight:900;
-    font-size:clamp(1.8rem, 4.8vw, 3.8rem);
+    font-size:clamp(1.5rem, 3.8vw, 3rem);
     line-height:0.98; letter-spacing:-0.02em;
     max-width:15ch;
     position:relative;
@@ -1361,11 +1361,14 @@ const scrambleEl = document.getElementById('scrambleText');
 if(scrambleEl && !window.matchMedia('(prefers-reduced-motion: reduce)').matches){
   const scrambler = new TextScramble(scrambleEl);
   const scramblePhrases = [
-    'Hola.', 'PromptBoost.', 'Prompts que puedes copiar y usar hoy.',
+    'Prompts que puedes copiar y usar hoy.',
+    '46 prompts. Gratis. Sin registro.',
     'Copia. Pega. Finge que lo escribiste tú.',
+    'Para Claude, Gemini, ChatGPT y Grok.',
     'El compañero de la IA ya no tiene ventaja.',
-    'Cero frameworks de 12 pasos.', 'Sin gurús. Sin webinars.',
-    'Disfruta. O finge que curras.', 'Repite mañana. Cobra igual.'
+    'Sin cursos de 8 horas. Sin gurús.',
+    'Copia. Pega. Repite mañana.',
+    'Gratis. Como debería ser todo esto.'
   ];
   let scrambleIndex = 0;
   const runScramble = () => {
