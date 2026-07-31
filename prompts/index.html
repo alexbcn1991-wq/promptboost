@@ -181,7 +181,7 @@
 
   h1.display{
     font-family:'Unbounded', sans-serif; font-weight:900;
-    font-size:clamp(1.8rem, 4.8vw, 3.8rem);
+    font-size:clamp(2.4rem, 6vw, 4.4rem);
     line-height:0.98; letter-spacing:-0.02em;
     max-width:15ch;
     position:relative;
@@ -198,8 +198,13 @@
     background:linear-gradient(120deg, var(--teal), var(--violet));
     -webkit-background-clip:text; background-clip:text; color:transparent;
   }
+  .hero-tagline{
+    margin-top:22px; max-width:48ch;
+    font-size:clamp(1.05rem, 1.6vw, 1.35rem); color:var(--ghost); line-height:1.5; font-weight:500;
+  }
+  .hero-tagline strong{ color:var(--teal); font-weight:700; }
   .hero-sub{
-    margin-top:32px; max-width:52ch;
+    margin-top:20px; max-width:52ch;
     font-size:clamp(1rem, 1.4vw, 1.2rem); color:var(--mist); line-height:1.65;
   }
   .hero-sub strong{ color:var(--ghost); font-weight:600; }
@@ -769,51 +774,10 @@
   .nav-links > a:hover{ color:var(--teal); }
   @media (max-width:900px){ .nav-links{ display:none; } }
 
-  .nav-item-mega{ position:relative; }
-  .nav-item-mega > a{
-    font-family:'JetBrains Mono', monospace; font-size:11.5px; letter-spacing:0.08em;
-    color:var(--mist); text-decoration:none; text-transform:uppercase; transition:color .2s ease;
-  }
-  .nav-item-mega:hover > a{ color:var(--teal); }
-  .mega-panel{
-    position:absolute; top:100%; left:50%; transform:translate(-50%,8px);
-    margin-top:0; padding-top:14px;
-    opacity:0; visibility:hidden; pointer-events:none;
-    transition:opacity .2s ease, transform .2s ease, visibility .2s;
-    z-index:200;
-  }
-  .mega-panel-inner{
-    width:420px; padding:22px;
-    background:var(--surface); border:1px solid var(--line); border-radius:16px;
-    box-shadow:0 24px 48px rgba(0,0,0,0.5);
-  }
-  .nav-item-mega:hover .mega-panel{
-    opacity:1; visibility:visible; pointer-events:auto; transform:translate(-50%,0);
-  }
-  .mega-grid{
-    display:grid; grid-template-columns:repeat(3, 1fr); gap:4px;
-  }
-  .mega-item{
-    display:flex; flex-direction:column; align-items:center; gap:7px; text-align:center;
-    padding:12px 6px; border-radius:10px; text-decoration:none; transition:background .2s ease;
-  }
-  .mega-item:hover{ background:var(--depth); }
-  .mega-icon{ width:20px; height:20px; color:var(--accent, var(--teal)); }
-  .mega-icon svg{ width:100%; height:100%; }
-  .mega-label{
-    font-family:'Inter', sans-serif; font-size:11px; color:var(--ghost); line-height:1.25;
-  }
-  .mega-viewall{
-    display:block; margin-top:16px; padding-top:16px; border-top:1px solid var(--line);
-    text-align:center; font-family:'JetBrains Mono', monospace; font-size:11px;
-    letter-spacing:0.06em; text-transform:uppercase; color:var(--teal); text-decoration:none;
-  }
-
   .catalog-block{ padding:140px 6vw min(10vw,110px); }
   .archive-block{ padding:min(10vw,110px) 6vw min(12vw,130px); }
   </style>
-</head>
-<body>
+</head><body>
 
 
 <canvas id="particle-field"></canvas>
@@ -856,17 +820,18 @@
     <span id="navProgress">0/46 EXPLORADOS</span>
   </div>
 </nav>
-
 <main>
   <div class="catalog-block">
+<section id="catalog-map">
     <div class="section-head reveal">
       <div class="eyebrow">Vista general</div>
       <h2 class="display">El catálogo completo</h2>
       <p>12 categorías, cada una con su color. Haz clic en cualquiera para filtrar la biblioteca directamente.</p>
     </div>
     <div class="catalog-grid" id="catalogGrid"></div>
-  </div>
+  </section>  </div>
   <div class="archive-block" id="archive">
+<section id="archive">
     <div class="section-head reveal">
       <div class="eyebrow">Biblioteca</div>
       <h2 class="display">Elige un prompt</h2>
@@ -888,7 +853,7 @@
     </div>
     <div class="specimen-grid" id="grid"></div>
     <p class="no-results" id="noResults">No hay ningún prompt que coincida. Prueba con otra palabra o quita el filtro de categoría.</p>
-  </div>
+  </section>  </div>
 
 </main>
 
@@ -918,13 +883,11 @@
   </div>
   <div class="footer-bottom">© 2026 PromptBoost. Todos los derechos reservados.</div>
 </footer>
-
 <button class="back-to-top" id="backToTop" type="button" aria-label="Volver arriba">
   <svg viewBox="0 0 20 20" width="18" height="18">
     <path d="M10 15V5M10 5L5 10M10 5L15 10" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
   </svg>
 </button>
-
 <div class="modal-backdrop" id="modalBackdrop">
   <div class="modal" id="modal">
     <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
@@ -936,8 +899,6 @@
     <button class="copy-btn" id="copyBtn">Copiar prompt</button>
   </div>
 </div>
-
-
 <script>
 const specimens = [
   {
@@ -1589,8 +1550,7 @@ de forma explícita y sigue adelante. No te bloquees pidiendo permiso.
   bonito sobre una estrategia rota no sirve.
 - Al terminar, propón 2 mejoras concretas para la siguiente iteración.`
   }
-];
-/* ============ progreso: prompts explorados ============ */
+];/* ============ progreso: prompts explorados ============ */
 const navProgress = document.getElementById('navProgress');
 const navTotal = document.getElementById('navTotal');
 const EXPLORED_KEY = 'promptboost_explored';
@@ -1889,6 +1849,87 @@ document.querySelectorAll('.blob').forEach(b => {
     b.style.transform = `translate(${dx}px, ${dy}px)`;
   });
 });
+
+/* ============ texto con efecto scramble (descifrado) ============ */
+class TextScramble {
+  constructor(el){
+    this.el = el;
+    this.chars = '!<>-_\\/[]{}—=+*^?#';
+    this.queue = [];
+    this.frame = 0;
+    this.frameRequest = 0;
+    this.resolve = () => {};
+    this.update = this.update.bind(this);
+  }
+  setText(newText){
+    const oldText = this.el.innerText;
+    const length = Math.max(oldText.length, newText.length);
+    const promise = new Promise(resolve => { this.resolve = resolve; });
+    this.queue = [];
+    for(let i=0;i<length;i++){
+      const from = oldText[i] || '';
+      const to = newText[i] || '';
+      const start = Math.floor(Math.random()*110);
+      const end = start + Math.floor(Math.random()*110);
+      this.queue.push({ from, to, start, end });
+    }
+    cancelAnimationFrame(this.frameRequest);
+    this.frame = 0;
+    this.update();
+    return promise;
+  }
+  update(){
+    let output = '';
+    let complete = 0;
+    for(let i=0, n=this.queue.length; i<n; i++){
+      let { from, to, start, end, char } = this.queue[i];
+      if(this.frame >= end){
+        complete++;
+        output += to;
+      } else if(this.frame >= start){
+        if(!char || Math.random() < 0.28){
+          char = this.chars[Math.floor(Math.random()*this.chars.length)];
+          this.queue[i].char = char;
+        }
+        output += `<span class="dud">${char}</span>`;
+      } else {
+        output += from;
+      }
+    }
+    this.el.innerHTML = output;
+    if(complete === this.queue.length){
+      this.resolve();
+    } else {
+      this.frameRequest = requestAnimationFrame(this.update);
+      this.frame++;
+    }
+  }
+}
+
+const scrambleEl = document.getElementById('scrambleText');
+if(scrambleEl && !window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+  const scrambler = new TextScramble(scrambleEl);
+  const scramblePhrases = [
+    'Prompts que puedes copiar y usar hoy.',
+    '46 prompts. Gratis. Sin registro.',
+    'Copia. Pega. Finge que lo escribiste tú.',
+    'Para Claude, Gemini, ChatGPT y Grok.',
+    'El compañero de la IA ya no tiene ventaja.',
+    'Sin cursos de 8 horas. Sin gurús.',
+    'Copia. Pega. Repite mañana.',
+    'Gratis. Como debería ser todo esto.'
+  ];
+  let scrambleIndex = 0;
+  const runScramble = () => {
+    scrambler.setText(scramblePhrases[scrambleIndex]).then(() => {
+      setTimeout(runScramble, 3800);
+    });
+    scrambleIndex = (scrambleIndex + 1) % scramblePhrases.length;
+  };
+  setTimeout(runScramble, 500);
+} else if(scrambleEl){
+  scrambleEl.textContent = 'Prompts que puedes copiar y usar hoy.';
+}
 
 
 /* ============ leer ?cat= de la URL (llegada desde el mega menú) ============ */

@@ -181,7 +181,7 @@
 
   h1.display{
     font-family:'Unbounded', sans-serif; font-weight:900;
-    font-size:clamp(1.5rem, 3.8vw, 3rem);
+    font-size:clamp(2.4rem, 6vw, 4.4rem);
     line-height:0.98; letter-spacing:-0.02em;
     max-width:15ch;
     position:relative;
@@ -198,8 +198,13 @@
     background:linear-gradient(120deg, var(--teal), var(--violet));
     -webkit-background-clip:text; background-clip:text; color:transparent;
   }
+  .hero-tagline{
+    margin-top:22px; max-width:48ch;
+    font-size:clamp(1.05rem, 1.6vw, 1.35rem); color:var(--ghost); line-height:1.5; font-weight:500;
+  }
+  .hero-tagline strong{ color:var(--teal); font-weight:700; }
   .hero-sub{
-    margin-top:32px; max-width:52ch;
+    margin-top:20px; max-width:52ch;
     font-size:clamp(1rem, 1.4vw, 1.2rem); color:var(--mist); line-height:1.65;
   }
   .hero-sub strong{ color:var(--ghost); font-weight:600; }
@@ -768,49 +773,8 @@
   }
   .nav-links > a:hover{ color:var(--teal); }
   @media (max-width:900px){ .nav-links{ display:none; } }
-
-  .nav-item-mega{ position:relative; }
-  .nav-item-mega > a{
-    font-family:'JetBrains Mono', monospace; font-size:11.5px; letter-spacing:0.08em;
-    color:var(--mist); text-decoration:none; text-transform:uppercase; transition:color .2s ease;
-  }
-  .nav-item-mega:hover > a{ color:var(--teal); }
-  .mega-panel{
-    position:absolute; top:100%; left:50%; transform:translate(-50%,8px);
-    margin-top:0; padding-top:14px;
-    opacity:0; visibility:hidden; pointer-events:none;
-    transition:opacity .2s ease, transform .2s ease, visibility .2s;
-    z-index:200;
-  }
-  .mega-panel-inner{
-    width:420px; padding:22px;
-    background:var(--surface); border:1px solid var(--line); border-radius:16px;
-    box-shadow:0 24px 48px rgba(0,0,0,0.5);
-  }
-  .nav-item-mega:hover .mega-panel{
-    opacity:1; visibility:visible; pointer-events:auto; transform:translate(-50%,0);
-  }
-  .mega-grid{
-    display:grid; grid-template-columns:repeat(3, 1fr); gap:4px;
-  }
-  .mega-item{
-    display:flex; flex-direction:column; align-items:center; gap:7px; text-align:center;
-    padding:12px 6px; border-radius:10px; text-decoration:none; transition:background .2s ease;
-  }
-  .mega-item:hover{ background:var(--depth); }
-  .mega-icon{ width:20px; height:20px; color:var(--accent, var(--teal)); }
-  .mega-icon svg{ width:100%; height:100%; }
-  .mega-label{
-    font-family:'Inter', sans-serif; font-size:11px; color:var(--ghost); line-height:1.25;
-  }
-  .mega-viewall{
-    display:block; margin-top:16px; padding-top:16px; border-top:1px solid var(--line);
-    text-align:center; font-family:'JetBrains Mono', monospace; font-size:11px;
-    letter-spacing:0.06em; text-transform:uppercase; color:var(--teal); text-decoration:none;
-  }
 </style>
-</head>
-<body>
+</head><body>
 
 
 <canvas id="particle-field"></canvas>
@@ -843,68 +807,7 @@
     PROMPT<span>·</span>BOOST
   </div>
   <div class="nav-links">
-    <div class="nav-item-mega">
-      <a href="/prompts/">Prompts</a>
-      <div class="mega-panel">
-        <div class="mega-panel-inner">
-        <div class="mega-grid">
-        <a href="/prompts/?cat=Razonamiento" class="mega-item" style="--accent:#4ee6cb">
-          <span class="mega-icon"><svg viewBox="0 0 24 24" fill="none"><circle cx="6" cy="8" r="2.4" stroke="currentColor" stroke-width="2.2"/><circle cx="18" cy="8" r="2.4" stroke="currentColor" stroke-width="2.2"/><circle cx="12" cy="18" r="2.4" stroke="currentColor" stroke-width="2.2"/><path d="M8.1 9.3L10 16M15.9 9.3L14 16M8.4 8H15.6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></span>
-          <span class="mega-label">Razonamiento</span>
-        </a>
-        <a href="/prompts/?cat=Escritura" class="mega-item" style="--accent:#8b7fff">
-          <span class="mega-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M4 20L4.8 16.4L15 6.2C15.6 5.6 16.6 5.6 17.2 6.2L17.8 6.8C18.4 7.4 18.4 8.4 17.8 9L7.6 19.2L4 20Z" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/><path d="M13.5 7.7L16.3 10.5" stroke="currentColor" stroke-width="2.2"/></svg></span>
-          <span class="mega-label">Escritura</span>
-        </a>
-        <a href="/prompts/?cat=C%C3%B3digo" class="mega-item" style="--accent:#ff7a52">
-          <span class="mega-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M9 7L4 12L9 17M15 7L20 12L15 17" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          <span class="mega-label">Código</span>
-        </a>
-        <a href="/prompts/?cat=Estructura" class="mega-item" style="--accent:#5ec8ff">
-          <span class="mega-icon"><svg viewBox="0 0 24 24" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="2.2"/><rect x="13" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="2.2"/><rect x="4" y="13" width="7" height="7" rx="1" stroke="currentColor" stroke-width="2.2"/><rect x="13" y="13" width="7" height="7" rx="1" stroke="currentColor" stroke-width="2.2"/></svg></span>
-          <span class="mega-label">Estructura</span>
-        </a>
-        <a href="/prompts/?cat=Decisiones" class="mega-item" style="--accent:#f2c46d">
-          <span class="mega-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M5 6H9L15 18H19M9 18H5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><path d="M15 6H19" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><circle cx="5" cy="6" r="1.6" fill="currentColor"/><circle cx="5" cy="18" r="1.6" fill="currentColor"/><circle cx="19" cy="6" r="1.6" fill="currentColor"/><circle cx="19" cy="18" r="1.6" fill="currentColor"/></svg></span>
-          <span class="mega-label">Decisiones</span>
-        </a>
-        <a href="/prompts/?cat=Marketing" class="mega-item" style="--accent:#ff7ab8">
-          <span class="mega-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M4 11V15L7 15.6V17.5C7 18.3 7.7 19 8.5 19C9.3 19 10 18.3 10 17.5V16.1L15 17V9L4 11Z" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/><path d="M15 9V17C17 17 19 15.2 19 13C19 10.8 17 9 15 9Z" stroke="currentColor" stroke-width="2.2"/></svg></span>
-          <span class="mega-label">Marketing</span>
-        </a>
-        <a href="/prompts/?cat=Contenido" class="mega-item" style="--accent:#b6e05e">
-          <span class="mega-icon"><svg viewBox="0 0 24 24" fill="none"><rect x="4" y="5" width="16" height="14" rx="1.5" stroke="currentColor" stroke-width="2.2"/><path d="M10 9L15 12L10 15V9Z" fill="currentColor"/></svg></span>
-          <span class="mega-label">Contenido</span>
-        </a>
-        <a href="/prompts/?cat=Negocio" class="mega-item" style="--accent:#ff6b6b">
-          <span class="mega-icon"><svg viewBox="0 0 24 24" fill="none"><rect x="4" y="8" width="16" height="11" rx="1.5" stroke="currentColor" stroke-width="2.2"/><path d="M8 8V6C8 5.4 8.4 5 9 5H15C15.6 5 16 5.4 16 6V8" stroke="currentColor" stroke-width="2.2"/><path d="M4 13H20" stroke="currentColor" stroke-width="2.2"/></svg></span>
-          <span class="mega-label">Negocio</span>
-        </a>
-        <a href="/prompts/?cat=Productividad" class="mega-item" style="--accent:#7dd3fc">
-          <span class="mega-icon"><svg viewBox="0 0 24 24" fill="none"><rect x="5" y="4" width="14" height="17" rx="1.5" stroke="currentColor" stroke-width="2.2"/><path d="M8.5 10L10.5 12L14.5 8" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M8.5 16H14.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></span>
-          <span class="mega-label">Productividad</span>
-        </a>
-        <a href="/prompts/?cat=Aprendizaje" class="mega-item" style="--accent:#c4b5fd">
-          <span class="mega-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M12 5L21 9L12 13L3 9L12 5Z" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/><path d="M7 11V16C7 17 9 18.5 12 18.5C15 18.5 17 17 17 16V11" stroke="currentColor" stroke-width="2.2"/></svg></span>
-          <span class="mega-label">Aprendizaje</span>
-        </a>
-        <a href="/prompts/?cat=Carrera" class="mega-item" style="--accent:#ffd166">
-          <span class="mega-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3C14 5 15.5 8 15.5 11.5C15.5 14 14.5 16 12 19C9.5 16 8.5 14 8.5 11.5C8.5 8 10 5 12 3Z" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/><circle cx="12" cy="10.5" r="1.6" stroke="currentColor" stroke-width="2"/><path d="M9 17L6.5 21M15 17L17.5 21" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></span>
-          <span class="mega-label">Carrera</span>
-        </a>
-        <a href="/prompts/?cat=Finanzas" class="mega-item" style="--accent:#6ee7b7">
-          <span class="mega-icon"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="2.2"/><path d="M12 7.5V16.5M14.5 9.3C14.5 8 13.4 7.5 12 7.5C10.5 7.5 9.5 8.2 9.5 9.3C9.5 11.7 14.5 10.7 14.5 13.1C14.5 14.2 13.4 14.9 12 14.9C10.6 14.9 9.5 14.4 9.5 13.1" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></span>
-          <span class="mega-label">Finanzas</span>
-        </a>
-        <a href="/prompts/?cat=Contrata%20a%20tu%20experto" class="mega-item" style="--accent:#e0a672">
-          <span class="mega-icon"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8.2" r="3.7" stroke="currentColor" stroke-width="2.2"/><path d="M4.5 20C4.5 15.4 7.9 12.6 12 12.6C16.1 12.6 19.5 15.4 19.5 20" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></span>
-          <span class="mega-label">Contrata a tu experto</span>
-        </a>
-        </div>
-        <a href="/prompts/" class="mega-viewall">Ver los 46 prompts →</a>
-        </div>
-      </div>
-    </div>
+    <a href="/prompts/">Biblioteca de prompts</a>
     <a href="#anatomy">Metodología</a>
     <a href="#manual">Manual</a>
     <a href="#faq">FAQ</a>
@@ -915,20 +818,19 @@
     <a href="/prompts/" class="nav-prompts-link">Ver biblioteca →</a>
   </div>
 </nav>
-
 <main>
-  <section class="hero">
+<section class="hero">
     <div class="hero-content">
       <a href="https://www.linkedin.com/company/promptboost-app" target="_blank" rel="noopener" class="creator-badge">
         <span class="creator-dot"></span> Síguenos en <span>LinkedIn</span> ↗
       </a>
-      <h1 class="display" id="scrambleText">Prompts que puedes copiar y usar hoy.</h1>
+      <h1 class="display">PromptBoost</h1>
+      <p class="hero-tagline">La biblioteca de prompts de IA: <strong>46 prompts gratis</strong>, listos para copiar y usar en Claude, Gemini, ChatGPT y Grok.</p>
       <p class="hero-sub">
-        46 estructuras de prompt probadas, organizadas por lo que hacen: razonar mejor, escribir con un estilo concreto,
+        Organizados por lo que hacen: razonar mejor, escribir con un estilo concreto,
         hacer marketing y contenido, trabajar con código, tomar decisiones, ser más productivo, aprender más rápido,
         avanzar en tu carrera y tus finanzas, o convocar al experto exacto que necesitas ahora mismo.
-        Funcionan igual de bien en <strong>Claude, Gemini, ChatGPT y Grok</strong>
-        — empezamos por estos cuatro e iremos sumando más. Elige un prompt, copia el texto y sustituye lo que va
+        Elige un prompt, copia el texto y sustituye lo que va
         <strong>entre corchetes [ ]</strong> por tu caso real.
       </p>
       <div class="scroll-cue"><span class="line"></span> VER DESTACADOS</div>
@@ -971,13 +873,10 @@
       </div>
     </div>
   </section>
-
-
-  <a href="#faq" class="faq-teaser reveal">
+<a href="#faq" class="faq-teaser reveal">
     <span class="faq-teaser-q">¿No sabes por dónde empezar?</span>
     <span class="faq-teaser-cta">Resolvemos tus dudas <span class="faq-teaser-arrow">↓</span></span>
   </a>
-
   <section id="destacados">
     <div class="section-head reveal">
       <div class="eyebrow">Destacados</div>
@@ -1063,7 +962,7 @@
     </div>
   </section>
 
-  <section id="anatomy">
+<section id="anatomy">
     <div class="section-head reveal">
       <div class="eyebrow">Anatomía de un prompt</div>
       <h2 class="display">Los 5 bloques que hacen que un prompt funcione</h2>
@@ -1099,8 +998,7 @@
       </div>
     </div>
   </section>
-
-  <section id="principles">
+<section id="principles">
     <div class="section-head reveal">
       <div class="eyebrow">Guía de uso</div>
       <h2 class="display">Cómo escribir tus propios prompts</h2>
@@ -1129,8 +1027,7 @@
       </div>
     </div>
   </section>
-
-  <section id="faq">
+<section id="faq">
     <div class="section-head reveal">
       <div class="eyebrow">Preguntas frecuentes</div>
       <h2 class="display">Lo que la gente pregunta antes de empezar</h2>
@@ -1199,7 +1096,6 @@
       </details>
     </div>
   </section>
-
 </main>
 
 <footer>
@@ -1228,13 +1124,11 @@
   </div>
   <div class="footer-bottom">© 2026 PromptBoost. Todos los derechos reservados.</div>
 </footer>
-
 <button class="back-to-top" id="backToTop" type="button" aria-label="Volver arriba">
   <svg viewBox="0 0 20 20" width="18" height="18">
     <path d="M10 15V5M10 5L5 10M10 5L15 10" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
   </svg>
 </button>
-
 <script>
 /* ============ botón flotante: volver arriba ============ */
 const backToTop = document.getElementById('backToTop');
@@ -1299,87 +1193,6 @@ if(deckEl){
     `;
     deckEl.appendChild(card);
   });
-}
-
-/* ============ texto con efecto scramble (descifrado) ============ */
-class TextScramble {
-  constructor(el){
-    this.el = el;
-    this.chars = '!<>-_\\/[]{}—=+*^?#';
-    this.queue = [];
-    this.frame = 0;
-    this.frameRequest = 0;
-    this.resolve = () => {};
-    this.update = this.update.bind(this);
-  }
-  setText(newText){
-    const oldText = this.el.innerText;
-    const length = Math.max(oldText.length, newText.length);
-    const promise = new Promise(resolve => { this.resolve = resolve; });
-    this.queue = [];
-    for(let i=0;i<length;i++){
-      const from = oldText[i] || '';
-      const to = newText[i] || '';
-      const start = Math.floor(Math.random()*110);
-      const end = start + Math.floor(Math.random()*110);
-      this.queue.push({ from, to, start, end });
-    }
-    cancelAnimationFrame(this.frameRequest);
-    this.frame = 0;
-    this.update();
-    return promise;
-  }
-  update(){
-    let output = '';
-    let complete = 0;
-    for(let i=0, n=this.queue.length; i<n; i++){
-      let { from, to, start, end, char } = this.queue[i];
-      if(this.frame >= end){
-        complete++;
-        output += to;
-      } else if(this.frame >= start){
-        if(!char || Math.random() < 0.28){
-          char = this.chars[Math.floor(Math.random()*this.chars.length)];
-          this.queue[i].char = char;
-        }
-        output += `<span class="dud">${char}</span>`;
-      } else {
-        output += from;
-      }
-    }
-    this.el.innerHTML = output;
-    if(complete === this.queue.length){
-      this.resolve();
-    } else {
-      this.frameRequest = requestAnimationFrame(this.update);
-      this.frame++;
-    }
-  }
-}
-
-const scrambleEl = document.getElementById('scrambleText');
-if(scrambleEl && !window.matchMedia('(prefers-reduced-motion: reduce)').matches){
-  const scrambler = new TextScramble(scrambleEl);
-  const scramblePhrases = [
-    'Prompts que puedes copiar y usar hoy.',
-    '46 prompts. Gratis. Sin registro.',
-    'Copia. Pega. Finge que lo escribiste tú.',
-    'Para Claude, Gemini, ChatGPT y Grok.',
-    'El compañero de la IA ya no tiene ventaja.',
-    'Sin cursos de 8 horas. Sin gurús.',
-    'Copia. Pega. Repite mañana.',
-    'Gratis. Como debería ser todo esto.'
-  ];
-  let scrambleIndex = 0;
-  const runScramble = () => {
-    scrambler.setText(scramblePhrases[scrambleIndex]).then(() => {
-      setTimeout(runScramble, 3800);
-    });
-    scrambleIndex = (scrambleIndex + 1) % scramblePhrases.length;
-  };
-  setTimeout(runScramble, 500);
-} else if(scrambleEl){
-  scrambleEl.textContent = 'Prompts que puedes copiar y usar hoy.';
 }
 
 /* ============ digital rain (canvas) — adaptado de "raining letters" ============ */
