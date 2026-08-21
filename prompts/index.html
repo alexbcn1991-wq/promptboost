@@ -352,6 +352,12 @@
     font-family:'JetBrains Mono', monospace; font-size:10.5px; letter-spacing:0.08em;
     color:rgba(255,255,255,0.55); text-transform:uppercase; margin-top:14px;
   }
+  .glow-page-link{
+    display:inline-block; margin-top:10px;
+    font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:0.05em;
+    color:var(--teal); text-decoration:none; text-transform:uppercase;
+  }
+  .glow-page-link:hover{ color:#fff; }
 
   /* ---------- prompt grid ---------- */
   .specimen-grid{
@@ -1735,6 +1741,7 @@ const catalogGrid = document.getElementById('catalogGrid');
 categories.filter(c => c !== "Todos").forEach((cat, i) => {
   const count = specimens.filter(s => s.category === cat).length;
   const gradient = catalogGradients[cat];
+  const catSlug = cat.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^\w\s-]/g,'').trim().replace(/[\s_]+/g,'-');
 
   const wrap = document.createElement('div');
   wrap.className = 'glow-card-wrap reveal';
@@ -1750,6 +1757,7 @@ categories.filter(c => c !== "Todos").forEach((cat, i) => {
           <div class="glow-desc">${catalogDescriptions[cat] || ''}</div>
         </div>
         <div class="glow-count">${count} prompt${count === 1 ? '' : 's'}</div>
+        <a href="/categoria/${catSlug}/" class="glow-page-link" onclick="event.stopPropagation();">Ver página de categoría →</a>
       </div>
     </div>
   `;

@@ -597,8 +597,17 @@
   .footer-note{ font-family:'JetBrains Mono', monospace; font-size:11px; color:var(--mist); letter-spacing:0.06em; }
   .footer-bottom{
     font-family:'JetBrains Mono', monospace; font-size:11px; color:var(--mist);
-    opacity:0.55; letter-spacing:0.04em; border-top:1px solid var(--line); padding-top:20px;
+    opacity:0.55; letter-spacing:0.04em;
   }
+  .footer-categories{
+    display:flex; flex-wrap:wrap; gap:10px 18px; padding:22px 0;
+    border-top:1px solid var(--line);
+  }
+  .footer-categories a{
+    font-family:'JetBrains Mono', monospace; font-size:10.5px; letter-spacing:0.04em;
+    color:var(--mist); text-decoration:none; text-transform:uppercase;
+  }
+  .footer-categories a:hover{ color:var(--teal); }
   .footer-credit{
     font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.04em;
     color:var(--mist); text-decoration:none; transition:color .25s ease;
@@ -1178,6 +1187,21 @@
       Síguenos en <span>LinkedIn</span> ↗
     </a>
     <div class="footer-note">COPIA, ADAPTA, MEJORA</div>
+  </div>
+  <div class="footer-categories">
+    <a href="/categoria/razonamiento/">Razonamiento</a>
+    <a href="/categoria/escritura/">Escritura</a>
+    <a href="/categoria/codigo/">Código</a>
+    <a href="/categoria/estructura/">Estructura</a>
+    <a href="/categoria/decisiones/">Decisiones</a>
+    <a href="/categoria/marketing/">Marketing</a>
+    <a href="/categoria/contenido/">Contenido</a>
+    <a href="/categoria/negocio/">Negocio</a>
+    <a href="/categoria/productividad/">Productividad</a>
+    <a href="/categoria/aprendizaje/">Aprendizaje</a>
+    <a href="/categoria/carrera/">Carrera</a>
+    <a href="/categoria/finanzas/">Finanzas</a>
+    <a href="/categoria/contrata-a-tu-experto/">Contrata a tu experto</a>
   </div>
   <div class="footer-bottom">© 2026 PromptBoost. Todos los derechos reservados.</div>
 </footer>
