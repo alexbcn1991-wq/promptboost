@@ -72,6 +72,8 @@
   .nav-back:hover{ color:var(--teal); }
   main.wrap{ padding:150px 6vw 130px; }
   .eyebrow{ font-family:'JetBrains Mono', monospace; font-size:12px; letter-spacing:0.2em; color:var(--accent); text-transform:uppercase; margin-bottom:18px; display:flex; align-items:center; gap:10px; }
+  .eyebrow-link{ color:inherit; text-decoration:none; border-bottom:1px solid transparent; transition:border-color .2s ease; }
+  .eyebrow-link:hover{ border-color:var(--accent); }
   .eyebrow::before{ content:''; width:26px; height:1px; background:var(--accent); }
   h1{ font-family:'Unbounded', sans-serif; font-weight:800; font-size:clamp(1.8rem, 4.5vw, 2.6rem); line-height:1.15; letter-spacing:-0.01em; margin-bottom:20px; }
   .lede{ font-size:1.08rem; color:var(--mist); margin-bottom:44px; max-width:62ch; }
@@ -142,7 +144,7 @@
 </nav>
 
 <main class="wrap">
-  <div class="eyebrow">Contrata a tu experto · Ventas</div>
+  <div class="eyebrow"><a href="/categoria/contrata-a-tu-experto/" class="eyebrow-link">Contrata a tu experto</a> · Ventas</div>
   <h1>Especialista en ventas B2B: el prompt de IA que puedes copiar hoy</h1>
   <p class="lede">Guion breve para la fase exacta de tu venta, con 2 formas de responder a tu objeción sin sonar desesperado. Funciona igual en Claude, ChatGPT, Gemini y Grok — copia el texto y sustituye lo que va entre corchetes por tu caso real.</p>
 
