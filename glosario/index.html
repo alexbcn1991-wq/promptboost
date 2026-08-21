@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Glosario de Ingeniería de Prompts: 18 Términos Explicados | PromptBoost</title>
+<meta name="description" content="Qué es un system prompt, few-shot, chain of thought, temperatura, ventana de contexto y otros 13 términos de prompt engineering explicados en lenguaje llano, sin jerga innecesaria.">
+<link rel="canonical" href="https://promptboost.app/glosario/">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://promptboost.app/glosario/">
+<meta property="og:title" content="Glosario de Ingeniería de Prompts | PromptBoost">
+<meta property="og:description" content="18 términos de prompt engineering explicados en lenguaje llano: system prompt, few-shot, chain of thought, temperatura y más.">
+<meta property="og:image" content="https://promptboost.app/og-image.png">
+<meta property="og:locale" content="es_ES">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://promptboost.app/"},
+    {"@type": "ListItem", "position": 2, "name": "Glosario", "item": "https://promptboost.app/glosario/"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "DefinedTermSet",
+  "name": "Glosario de Ingeniería de Prompts",
+  "description": "18 términos de prompt engineering explicados en lenguaje llano.",
+  "url": "https://promptboost.app/glosario/"
+}
+</script>
+
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@700;800;900&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Q03596FGTP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-Q03596FGTP');
+</script>
+
+<style>
+  :root{
+    --void:#050711; --depth:#0b0e1c; --surface:#10142a;
+    --teal:#4ee6cb; --violet:#8b7fff; --plasma:#ff7a52; --ghost:#e8ecf7; --mist:#8890b0;
+    --line: rgba(232,236,247,0.09); --accent:#8b7fff;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{ background:var(--void); color:var(--ghost); font-family:'Inter',sans-serif; line-height:1.6; }
+  a{ color:var(--teal); }
+  .wrap{ max-width:800px; margin:0 auto; padding:0 6vw; }
+
+  nav{
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    padding:20px 6vw; display:flex; align-items:center; justify-content:space-between;
+    background:rgba(5,7,17,0.82); backdrop-filter:blur(10px); border-bottom:1px solid var(--line);
+  }
+  .brand{ font-family:'JetBrains Mono', monospace; font-size:13px; letter-spacing:0.12em; color:var(--ghost); text-decoration:none; display:flex; align-items:center; gap:9px; }
+  .brand span{ color:var(--teal); }
+  .brand-mark{ width:20px; height:20px; }
+  .nav-back{ font-family:'JetBrains Mono', monospace; font-size:12px; color:var(--mist); text-decoration:none; letter-spacing:0.04em; }
+  .nav-back:hover{ color:var(--teal); }
+
+  main.wrap{ padding:150px 6vw 130px; }
+
+  .breadcrumbs{
+    display:flex; align-items:center; gap:8px; flex-wrap:wrap;
+    font-family:'JetBrains Mono', monospace; font-size:12px; color:var(--mist); margin-bottom:30px;
+  }
+  .breadcrumbs a{ color:var(--mist); text-decoration:none; }
+  .breadcrumbs a:hover{ color:var(--teal); }
+  .breadcrumbs .current{ color:var(--accent); }
+  .breadcrumbs .sep{ opacity:0.5; }
+
+  .eyebrow{
+    font-family:'JetBrains Mono', monospace; font-size:12px; letter-spacing:0.2em; color:var(--accent);
+    text-transform:uppercase; margin-bottom:18px; display:flex; align-items:center; gap:10px;
+  }
+  .eyebrow::before{ content:''; width:26px; height:1px; background:var(--accent); }
+
+  h1{
+    font-family:'Unbounded', sans-serif; font-weight:800; font-size:clamp(1.8rem, 4.5vw, 2.6rem);
+    line-height:1.15; letter-spacing:-0.01em; margin-bottom:24px;
+  }
+  .lede{ font-size:1.02rem; color:var(--mist); line-height:1.7; margin-bottom:20px; max-width:65ch; }
+
+  .jump-nav{
+    display:flex; flex-wrap:wrap; gap:8px; margin-bottom:56px; padding:18px;
+    background:var(--depth); border:1px solid var(--line); border-radius:12px;
+  }
+  .jump-nav a{
+    font-family:'JetBrains Mono', monospace; font-size:11px; color:var(--mist);
+    text-decoration:none; padding:5px 10px; border-radius:100px; border:1px solid var(--line);
+  }
+  .jump-nav a:hover{ color:var(--teal); border-color:var(--teal); }
+
+  .term{ padding:28px 0; border-top:1px solid var(--line); scroll-margin-top:110px; }
+  .term:first-of-type{ border-top:none; }
+  .term h2{
+    font-family:'Unbounded', sans-serif; font-weight:700; font-size:1.2rem; color:var(--ghost);
+    margin-bottom:10px; scroll-margin-top:110px;
+  }
+  .term p{ color:var(--mist); font-size:0.92rem; line-height:1.65; max-width:65ch; }
+  .term p strong{ color:var(--ghost); font-weight:600; }
+  .term .example{
+    margin-top:12px; font-family:'JetBrains Mono', monospace; font-size:0.8rem;
+    color:var(--teal); background:var(--surface); border-radius:8px; padding:10px 14px;
+    display:inline-block;
+  }
+
+  .cta-box{
+    margin-top:20px; padding:32px 30px; border-radius:16px; text-align:center;
+    background:linear-gradient(var(--surface),var(--surface)) padding-box,
+               linear-gradient(120deg, #4ee6cb, #8b7fff, #ff7a52) border-box;
+    border:1.5px solid transparent;
+  }
+  .cta-box p{ margin-bottom:18px; color:var(--ghost); }
+  .cta-btn{
+    display:inline-block; font-family:'JetBrains Mono', monospace; font-size:13px;
+    letter-spacing:0.06em; text-transform:uppercase; font-weight:600; text-decoration:none;
+    color:var(--void); background:var(--teal); padding:14px 28px; border-radius:100px;
+  }
+
+  footer{ padding:70px 6vw 40px; border-top:1px solid var(--line); text-align:center; font-family:'JetBrains Mono', monospace; font-size:11px; color:var(--mist); }
+  footer a{ color:var(--mist); }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="brand">
+    <svg class="brand-mark" viewBox="0 0 480 480" aria-hidden="true">
+      <defs>
+        <linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#4ee6cb"/><stop offset="100%" stop-color="#1f9384"/></linearGradient>
+        <linearGradient id="g2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#8b7fff"/><stop offset="100%" stop-color="#5b3df0"/></linearGradient>
+      </defs>
+      <g transform="rotate(45 240 240)">
+        <path d="M480 240a240 240 0 0 0-240 240 240 240 0 0 0 240-240Z" fill="url(#g1)"/>
+        <path d="M240 0A240 240 0 0 0 0 240 240 240 0 0 0 240 0Z" fill="url(#g1)" opacity="0.55"/>
+        <path d="M480 240A240 240 0 0 0 240 0a240 240 0 0 0 240 240Z" fill="url(#g2)"/>
+        <path d="M240 480A240 240 0 0 0 0 240a240 240 0 0 0 240 240Z" fill="url(#g2)" opacity="0.55"/>
+      </g>
+    </svg>
+    PROMPT<span>·</span>BOOST
+  </a>
+  <a href="/prompts/" class="nav-back">← Ver los 46 prompts</a>
+</nav>
+
+<main class="wrap">
+  <div class="breadcrumbs">
+    <a href="/">Inicio</a> <span class="sep">/</span> <span class="current">Glosario</span>
+  </div>
+
+  <div class="eyebrow">Referencia</div>
+  <h1>Glosario de ingeniería de prompts</h1>
+  <p class="lede">18 términos que verás una y otra vez si trabajas con IA, explicados sin rodeos — sin jerga que necesite otra búsqueda para entender la jerga.</p>
+
+  <div class="jump-nav">
+    <a href="#prompt">Prompt</a><a href="#system-prompt">System prompt</a><a href="#few-shot">Few-shot</a>
+    <a href="#zero-shot">Zero-shot</a><a href="#chain-of-thought">Chain of thought</a><a href="#temperatura">Temperatura</a>
+    <a href="#ventana-de-contexto">Ventana de contexto</a><a href="#alucinacion">Alucinación</a><a href="#token">Token</a>
+    <a href="#role-prompting">Role prompting</a><a href="#prompt-injection">Prompt injection</a><a href="#fine-tuning">Fine-tuning</a>
+    <a href="#rag">RAG</a><a href="#embedding">Embedding</a><a href="#agente">Agente</a>
+    <a href="#prompt-chaining">Prompt chaining</a><a href="#stop-sequence">Stop sequence</a><a href="#multimodal">Multimodal</a>
+  </div>
+
+  <div class="term" id="prompt">
+    <h2>Prompt</h2>
+    <p>El texto que le das a una IA para pedirle algo. Puede ser una frase suelta ("resume esto") o una estructura completa con rol, contexto y formato — que es justo la diferencia entre un resultado genérico y uno útil.</p>
+  </div>
+  <div class="term" id="system-prompt">
+    <h2>System prompt</h2>
+    <p>Instrucciones que definen el comportamiento de la IA <strong>antes</strong> de que empiece la conversación — el tono, lo que puede o no puede hacer, su "personalidad" durante toda la sesión. El usuario normalmente no lo ve directamente, pero condiciona cada respuesta.</p>
+  </div>
+  <div class="term" id="few-shot">
+    <h2>Few-shot prompting</h2>
+    <p>Dar ejemplos concretos de lo que quieres antes de pedir la tarea real. En vez de describir el estilo que buscas, se lo enseñas con 2-3 muestras — la IA copia el patrón en vez de adivinarlo.</p>
+    <div class="example">Ver P03 · Few-shot con ejemplos contrastantes</div>
+  </div>
+  <div class="term" id="zero-shot">
+    <h2>Zero-shot prompting</h2>
+    <p>Lo contrario de few-shot: pedirle algo a la IA sin darle ningún ejemplo previo, confiando en que ya sabe hacerlo por su entrenamiento general. Es lo que hace la mayoría de la gente sin saber que tiene nombre.</p>
+  </div>
+  <div class="term" id="chain-of-thought">
+    <h2>Chain of thought (cadena de pensamiento)</h2>
+    <p>Pedirle a la IA que muestre su razonamiento paso a paso antes de dar la respuesta final, en vez de saltar directo a la conclusión. Reduce errores en tareas complejas porque obliga a "pensar en voz alta".</p>
+    <div class="example">Ver P01 · Cadena de razonamiento explícita</div>
+  </div>
+  <div class="term" id="temperatura">
+    <h2>Temperatura</h2>
+    <p>Un parámetro técnico (no siempre visible al usuario) que controla cuán predecible o "creativa" es la respuesta. Temperatura baja da respuestas más consistentes y literales; alta da más variedad, a costa de previsibilidad.</p>
+  </div>
+  <div class="term" id="ventana-de-contexto">
+    <h2>Ventana de contexto</h2>
+    <p>Cuánto texto puede "recordar" la IA de golpe en una conversación — tu mensaje actual, los anteriores, y cualquier documento que hayas compartido. Si la conversación se alarga demasiado, lo más antiguo puede quedar fuera de esa ventana.</p>
+  </div>
+  <div class="term" id="alucinacion">
+    <h2>Alucinación</h2>
+    <p>Cuando la IA inventa información — una cifra, una cita, un hecho — y la presenta con la misma confianza que algo verificado. No es un fallo raro ni ocasional: es un comportamiento inherente a cómo funcionan estos modelos, y por eso conviene verificar datos concretos antes de darlos por buenos.</p>
+  </div>
+  <div class="term" id="token">
+    <h2>Token</h2>
+    <p>La unidad mínima de texto que procesa un modelo — no siempre es una palabra completa, a veces es una parte de ella. La ventana de contexto y los límites de uso se miden en tokens, no en palabras ni caracteres.</p>
+  </div>
+  <div class="term" id="role-prompting">
+    <h2>Role prompting</h2>
+    <p>Asignarle a la IA una identidad concreta ("actúa como un negociador con 15 años de experiencia") en vez de pedirle la tarea a secas. Cambia el vocabulario, la profundidad y el enfoque de la respuesta — es la base de toda la categoría "Contrata a tu experto".</p>
+    <div class="example">Ver categoría · Contrata a tu experto</div>
+  </div>
+  <div class="term" id="prompt-injection">
+    <h2>Prompt injection</h2>
+    <p>Una técnica (normalmente maliciosa) para manipular a una IA e ignorar sus instrucciones originales, insertando comandos ocultos dentro de un texto aparentemente inocente. Relevante sobre todo si integras IA en herramientas que procesan contenido de terceros.</p>
+  </div>
+  <div class="term" id="fine-tuning">
+    <h2>Fine-tuning</h2>
+    <p>Entrenar un modelo ya existente con datos específicos para especializarlo en una tarea o dominio concreto. Es un proceso técnico, distinto de escribir un buen prompt — no hace falta para el 99% de los usos cotidianos.</p>
+  </div>
+  <div class="term" id="rag">
+    <h2>RAG (Retrieval-Augmented Generation)</h2>
+    <p>Una técnica que combina la IA con una base de datos o documentos externos, para que responda con información actualizada o específica de una empresa en vez de depender solo de lo que aprendió en su entrenamiento.</p>
+  </div>
+  <div class="term" id="embedding">
+    <h2>Embedding</h2>
+    <p>Una representación numérica del significado de un texto, que permite comparar qué tan parecidos son dos fragmentos de contenido. Es la tecnología detrás de muchos buscadores semánticos y sistemas de recomendación.</p>
+  </div>
+  <div class="term" id="agente">
+    <h2>Agente (AI agent)</h2>
+    <p>Una IA que no solo responde texto, sino que puede usar herramientas, tomar decisiones intermedias y ejecutar acciones por su cuenta para completar una tarea de varios pasos, sin que el usuario apruebe cada paso individual.</p>
+    <div class="example">Ver P05 · Prompt de agente con herramientas</div>
+  </div>
+  <div class="term" id="prompt-chaining">
+    <h2>Prompt chaining</h2>
+    <p>Encadenar varios prompts, donde la salida de uno alimenta al siguiente como entrada — en vez de intentar resolverlo todo en una sola instrucción gigante. Es la técnica detrás de las combinaciones avanzadas del Manual PromptBoost.</p>
+  </div>
+  <div class="term" id="stop-sequence">
+    <h2>Stop sequence</h2>
+    <p>Una instrucción o carácter que le indica a la IA dónde debe dejar de generar texto. Se usa sobre todo en integraciones técnicas, para evitar que la respuesta se extienda más de lo necesario.</p>
+  </div>
+  <div class="term" id="multimodal">
+    <h2>Multimodal</h2>
+    <p>Un modelo que entiende y puede generar más de un tipo de contenido — texto, imágenes, audio — en vez de estar limitado solo a texto. Claude, Gemini y ChatGPT son multimodales en distinto grado.</p>
+  </div>
+
+  <div class="cta-box">
+    <p>Ya conoces los términos. Ahora ve a ver los 46 prompts que los ponen en práctica.</p>
+    <a href="/prompts/" class="cta-btn">Ver la biblioteca completa →</a>
+  </div>
+</main>
+
+<footer>
+  <p>© 2026 PromptBoost · <a href="/">promptboost.app</a></p>
+</footer>
+
+</body>
+</html>
