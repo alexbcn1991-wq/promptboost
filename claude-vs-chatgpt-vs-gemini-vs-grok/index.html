@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claude vs ChatGPT vs Gemini vs Grok: ¿Cuál Usar Para Qué? | PromptBoost</title>
+<meta name="description" content="Comparativa objetiva de Claude, ChatGPT, Gemini y Grok: para qué destaca cada uno, y qué modelo elegir según la tarea. Los 46 prompts de PromptBoost funcionan igual en los cuatro.">
+<link rel="canonical" href="https://promptboost.app/claude-vs-chatgpt-vs-gemini-vs-grok/">
+
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://promptboost.app/claude-vs-chatgpt-vs-gemini-vs-grok/">
+<meta property="og:title" content="Claude vs ChatGPT vs Gemini vs Grok: ¿Cuál Usar Para Qué?">
+<meta property="og:description" content="Comparativa objetiva: para qué destaca cada modelo de IA, y cuál elegir según la tarea.">
+<meta property="og:image" content="https://promptboost.app/og-image.png">
+<meta property="og:locale" content="es_ES">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://promptboost.app/"},
+    {"@type": "ListItem", "position": 2, "name": "Claude vs ChatGPT vs Gemini vs Grok", "item": "https://promptboost.app/claude-vs-chatgpt-vs-gemini-vs-grok/"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Claude vs ChatGPT vs Gemini vs Grok: ¿cuál usar para qué?",
+  "description": "Comparativa objetiva de los 4 modelos de IA más usados, y qué elegir según la tarea.",
+  "author": {"@type": "Organization", "name": "PromptBoost", "url": "https://promptboost.app"},
+  "publisher": {"@type": "Organization", "name": "PromptBoost", "url": "https://promptboost.app"},
+  "mainEntityOfPage": "https://promptboost.app/claude-vs-chatgpt-vs-gemini-vs-grok/",
+  "inLanguage": "es"
+}
+</script>
+
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@700;800;900&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Q03596FGTP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-Q03596FGTP');
+</script>
+
+<style>
+  :root{
+    --void:#050711; --depth:#0b0e1c; --surface:#10142a;
+    --teal:#4ee6cb; --violet:#8b7fff; --plasma:#ff7a52; --ghost:#e8ecf7; --mist:#8890b0;
+    --line: rgba(232,236,247,0.09); --accent:#5ec8ff;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{ background:var(--void); color:var(--ghost); font-family:'Inter',sans-serif; line-height:1.6; }
+  a{ color:var(--teal); }
+  .wrap{ max-width:820px; margin:0 auto; padding:0 6vw; }
+
+  nav{
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    padding:20px 6vw; display:flex; align-items:center; justify-content:space-between;
+    background:rgba(5,7,17,0.82); backdrop-filter:blur(10px); border-bottom:1px solid var(--line);
+  }
+  .brand{ font-family:'JetBrains Mono', monospace; font-size:13px; letter-spacing:0.12em; color:var(--ghost); text-decoration:none; display:flex; align-items:center; gap:9px; }
+  .brand span{ color:var(--teal); }
+  .brand-mark{ width:20px; height:20px; }
+  .nav-back{ font-family:'JetBrains Mono', monospace; font-size:12px; color:var(--mist); text-decoration:none; letter-spacing:0.04em; }
+  .nav-back:hover{ color:var(--teal); }
+
+  main.wrap{ padding:150px 6vw 130px; }
+
+  .breadcrumbs{
+    display:flex; align-items:center; gap:8px; flex-wrap:wrap;
+    font-family:'JetBrains Mono', monospace; font-size:12px; color:var(--mist); margin-bottom:30px;
+  }
+  .breadcrumbs a{ color:var(--mist); text-decoration:none; }
+  .breadcrumbs a:hover{ color:var(--teal); }
+  .breadcrumbs .current{ color:var(--accent); }
+  .breadcrumbs .sep{ opacity:0.5; }
+
+  .eyebrow{
+    font-family:'JetBrains Mono', monospace; font-size:12px; letter-spacing:0.2em; color:var(--accent);
+    text-transform:uppercase; margin-bottom:18px; display:flex; align-items:center; gap:10px;
+  }
+  .eyebrow::before{ content:''; width:26px; height:1px; background:var(--accent); }
+
+  h1{
+    font-family:'Unbounded', sans-serif; font-weight:800; font-size:clamp(1.7rem, 4.2vw, 2.4rem);
+    line-height:1.2; letter-spacing:-0.01em; margin-bottom:22px;
+  }
+  .lede{ font-size:1.02rem; color:var(--mist); line-height:1.7; margin-bottom:50px; max-width:65ch; }
+  .lede strong{ color:var(--ghost); font-weight:600; }
+
+  h2{ font-family:'Unbounded', sans-serif; font-weight:700; font-size:1.35rem; color:var(--ghost); margin:56px 0 22px; }
+  p{ color:var(--mist); font-size:0.92rem; line-height:1.65; max-width:65ch; margin-bottom:14px; }
+  p strong{ color:var(--ghost); font-weight:600; }
+
+  .model-cards{ display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--line); border:1px solid var(--line); border-radius:14px; overflow:hidden; margin-bottom:20px; }
+  .model-card{ background:var(--depth); padding:26px 24px; }
+  .model-name{ font-family:'Unbounded', sans-serif; font-weight:800; font-size:1.15rem; margin-bottom:4px; }
+  .model-by{ font-family:'JetBrains Mono', monospace; font-size:10.5px; color:var(--mist); text-transform:uppercase; letter-spacing:0.05em; margin-bottom:16px; }
+  .model-card p{ font-size:0.85rem; margin-bottom:12px; }
+  .model-card .best-for{ font-size:0.8rem; color:var(--teal); font-weight:600; }
+
+  .quick-table{ width:100%; border-collapse:collapse; margin-bottom:20px; }
+  .quick-table th{
+    text-align:left; font-family:'JetBrains Mono', monospace; font-size:10.5px; letter-spacing:0.06em;
+    color:var(--mist); text-transform:uppercase; padding:10px 14px; border-bottom:1px solid var(--line);
+  }
+  .quick-table td{ padding:14px; border-bottom:1px solid var(--line); font-size:0.86rem; color:var(--mist); }
+  .quick-table td:first-child{ color:var(--ghost); font-weight:500; }
+  .quick-table td:last-child{ color:var(--teal); font-family:'JetBrains Mono', monospace; font-size:0.8rem; }
+
+  .official-links{ display:flex; flex-wrap:wrap; gap:10px; margin:20px 0 40px; }
+  .official-links a{
+    font-family:'JetBrains Mono', monospace; font-size:11px; color:var(--ghost); text-decoration:none;
+    border:1px solid var(--line); border-radius:100px; padding:8px 16px;
+  }
+  .official-links a:hover{ border-color:var(--teal); color:var(--teal); }
+
+  .note{ font-size:0.82rem; color:var(--mist); opacity:0.75; margin-top:8px; }
+
+  .cta-box{
+    margin-top:20px; padding:32px 30px; border-radius:16px; text-align:center;
+    background:linear-gradient(var(--surface),var(--surface)) padding-box,
+               linear-gradient(120deg, #4ee6cb, #8b7fff, #ff7a52) border-box;
+    border:1.5px solid transparent;
+  }
+  .cta-box p{ margin-bottom:18px; color:var(--ghost); max-width:none; }
+  .cta-btn{
+    display:inline-block; font-family:'JetBrains Mono', monospace; font-size:13px;
+    letter-spacing:0.06em; text-transform:uppercase; font-weight:600; text-decoration:none;
+    color:var(--void); background:var(--teal); padding:14px 28px; border-radius:100px;
+  }
+
+  footer{ padding:70px 6vw 40px; border-top:1px solid var(--line); text-align:center; font-family:'JetBrains Mono', monospace; font-size:11px; color:var(--mist); }
+  footer a{ color:var(--mist); }
+
+  @media (max-width:640px){ .model-cards{ grid-template-columns:1fr; } .quick-table{ font-size:0.8rem; } }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="brand">
+    <svg class="brand-mark" viewBox="0 0 480 480" aria-hidden="true">
+      <defs>
+        <linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#4ee6cb"/><stop offset="100%" stop-color="#1f9384"/></linearGradient>
+        <linearGradient id="g2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#8b7fff"/><stop offset="100%" stop-color="#5b3df0"/></linearGradient>
+      </defs>
+      <g transform="rotate(45 240 240)">
+        <path d="M480 240a240 240 0 0 0-240 240 240 240 0 0 0 240-240Z" fill="url(#g1)"/>
+        <path d="M240 0A240 240 0 0 0 0 240 240 240 0 0 0 240 0Z" fill="url(#g1)" opacity="0.55"/>
+        <path d="M480 240A240 240 0 0 0 240 0a240 240 0 0 0 240 240Z" fill="url(#g2)"/>
+        <path d="M240 480A240 240 0 0 0 0 240a240 240 0 0 0 240 240Z" fill="url(#g2)" opacity="0.55"/>
+      </g>
+    </svg>
+    PROMPT<span>·</span>BOOST
+  </a>
+  <a href="/prompts/" class="nav-back">← Ver los 46 prompts</a>
+</nav>
+
+<main class="wrap">
+  <div class="breadcrumbs">
+    <a href="/">Inicio</a> <span class="sep">/</span> <span class="current">Claude vs ChatGPT vs Gemini vs Grok</span>
+  </div>
+
+  <div class="eyebrow">Comparativa</div>
+  <h1>Claude vs ChatGPT vs Gemini vs Grok: ¿cuál usar para qué?</h1>
+  <p class="lede">No hay un "mejor" absoluto — hay una IA más adecuada según lo que tengas entre manos. <strong>Los 46 prompts de PromptBoost funcionan igual en los cuatro</strong>, así que esta comparativa no es para elegir uno y quedarte con él, sino para saber a cuál acudir según la tarea.</p>
+
+  <h2>Los cuatro, en resumen</h2>
+  <div class="model-cards">
+    <div class="model-card">
+      <div class="model-name">Claude</div>
+      <div class="model-by">Anthropic</div>
+      <p>Conocido por seguir instrucciones detalladas con precisión y mantener el hilo en documentos largos. Suele preferirse para escritura cuidada, análisis de texto extenso y tareas de programación con mucho contexto.</p>
+      <div class="best-for">Mejor para: escritura, código, documentos largos</div>
+    </div>
+    <div class="model-card">
+      <div class="model-name">ChatGPT</div>
+      <div class="model-by">OpenAI</div>
+      <p>El más extendido, con el ecosistema más amplio de aplicaciones de terceros (GPTs) y generación de imágenes integrada. Buena opción como herramienta "todoterreno" para quien quiere una sola app para casi todo.</p>
+      <div class="best-for">Mejor para: uso general, imágenes, ecosistema de apps</div>
+    </div>
+    <div class="model-card">
+      <div class="model-name">Gemini</div>
+      <div class="model-by">Google</div>
+      <p>Su punto fuerte es la integración directa con Gmail, Docs, Sheets y el resto de Google Workspace, además de manejar bien contenido multimodal (imágenes, vídeo). Tiene sentido si ya vives dentro del ecosistema Google.</p>
+      <div class="best-for">Mejor para: Google Workspace, multimodal</div>
+    </div>
+    <div class="model-card">
+      <div class="model-name">Grok</div>
+      <div class="model-by">xAI</div>
+      <p>Integrado con X (Twitter), con acceso a información más reciente de esa red y un tono más informal y directo que los otros tres. Útil cuando necesitas contexto de lo que se está diciendo ahora mismo en esa plataforma.</p>
+      <div class="best-for">Mejor para: información en tiempo real de X</div>
+    </div>
+  </div>
+
+  <h2>¿Cuál para qué tarea?</h2>
+  <table class="quick-table">
+    <tr><th>Necesitas</th><th>Prueba con</th></tr>
+    <tr><td>Escribir un texto largo con estilo cuidado</td><td>Claude</td></tr>
+    <tr><td>Generar imágenes desde el propio chat</td><td>ChatGPT o Gemini</td></tr>
+    <tr><td>Trabajar con tus documentos de Google</td><td>Gemini</td></tr>
+    <tr><td>Programar con archivos largos de contexto</td><td>Claude</td></tr>
+    <tr><td>Saber qué se está diciendo ahora mismo en X</td><td>Grok</td></tr>
+    <tr><td>Una sola app con muchos complementos de terceros</td><td>ChatGPT</td></tr>
+  </table>
+  <p class="note">Esta tabla es orientativa, no una regla fija — los cuatro modelos mejoran constantemente y las diferencias se estrechan con cada actualización.</p>
+
+  <h2>Dónde probarlos</h2>
+  <div class="official-links">
+    <a href="https://claude.ai" target="_blank" rel="noopener">claude.ai ↗</a>
+    <a href="https://chatgpt.com" target="_blank" rel="noopener">chatgpt.com ↗</a>
+    <a href="https://gemini.google.com" target="_blank" rel="noopener">gemini.google.com ↗</a>
+    <a href="https://grok.com" target="_blank" rel="noopener">grok.com ↗</a>
+  </div>
+
+  <div class="cta-box">
+    <p>Sea cual sea el que elijas, los 46 prompts de PromptBoost están escritos para funcionar igual en los cuatro.</p>
+    <a href="/prompts/" class="cta-btn">Ver la biblioteca completa →</a>
+  </div>
+</main>
+
+<footer>
+  <p>© 2026 PromptBoost · <a href="/">promptboost.app</a></p>
+</footer>
+
+</body>
+</html>
