@@ -444,6 +444,13 @@
     display:flex; align-items:flex-end; justify-content:center;
     flex-wrap:wrap; gap:28px 22px; padding-top:44px;
   }
+  .anatomy-guide-link{ text-align:center; margin-top:40px; }
+  .anatomy-guide-link a{
+    font-family:'JetBrains Mono', monospace; font-size:12.5px; letter-spacing:0.05em;
+    color:var(--teal); text-decoration:none; border-bottom:1px solid transparent;
+    transition:border-color .2s ease;
+  }
+  .anatomy-guide-link a:hover{ border-color:var(--teal); }
   .deck-card{
     background:var(--surface); border-radius:16px; padding:24px 22px;
     border-top:4px solid var(--card-color, var(--teal));
@@ -857,7 +864,7 @@
   <div class="nav-links">
     <a href="/prompts/">Biblioteca de prompts</a>
     <a href="/glosario/">Glosario</a>
-    <a href="#anatomy">Metodología</a>
+    <a href="/guia-de-prompt-engineering/">Metodología</a>
     <a href="#manual">Manual</a>
     <a href="#faq">FAQ</a>
   </div>
@@ -1041,6 +1048,9 @@
       <p>El mismo patrón que usamos para construir los prompts de "Contrata a tu experto". Cinco bloques, siempre en el mismo orden.</p>
     </div>
     <div class="deck" id="deck"></div>
+    <div class="anatomy-guide-link">
+      <a href="/guia-de-prompt-engineering/">Esto es solo el resumen — lee la guía completa →</a>
+    </div>
 
     <div class="pricing-card reveal" id="manual">
       <div class="pricing-glow"></div>
@@ -1187,6 +1197,7 @@
   </div>
   <div class="footer-categories">
     <a href="/glosario/">Glosario</a>
+    <a href="/guia-de-prompt-engineering/">Guía completa</a>
     <a href="/claude-vs-chatgpt-vs-gemini-vs-grok/">Claude vs ChatGPT vs Gemini vs Grok</a>
     <a href="/categoria/razonamiento/">Razonamiento</a>
     <a href="/categoria/escritura/">Escritura</a>

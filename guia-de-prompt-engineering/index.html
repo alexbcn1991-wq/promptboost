@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guía Completa de Prompt Engineering en Español | PromptBoost</title>
+<meta name="description" content="Guía completa de ingeniería de prompts: por qué la mayoría fallan, el método de 5 bloques explicado a fondo, técnicas avanzadas, errores comunes y una plantilla para construir los tuyos.">
+<link rel="canonical" href="https://promptboost.app/guia-de-prompt-engineering/">
+
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://promptboost.app/guia-de-prompt-engineering/">
+<meta property="og:title" content="Guía Completa de Prompt Engineering en Español">
+<meta property="og:description" content="Por qué la mayoría de los prompts fallan, el método de 5 bloques, técnicas avanzadas y una plantilla para construir los tuyos.">
+<meta property="og:image" content="https://promptboost.app/og-image.png">
+<meta property="og:locale" content="es_ES">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://promptboost.app/"},
+    {"@type": "ListItem", "position": 2, "name": "Guía de prompt engineering", "item": "https://promptboost.app/guia-de-prompt-engineering/"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Guía completa de prompt engineering en español",
+  "description": "Por qué la mayoría de los prompts fallan, el método de 5 bloques, técnicas avanzadas y una plantilla para construir los tuyos.",
+  "author": {"@type": "Organization", "name": "PromptBoost", "url": "https://promptboost.app"},
+  "publisher": {"@type": "Organization", "name": "PromptBoost", "url": "https://promptboost.app"},
+  "mainEntityOfPage": "https://promptboost.app/guia-de-prompt-engineering/",
+  "inLanguage": "es"
+}
+</script>
+
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@700;800;900&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Q03596FGTP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-Q03596FGTP');
+</script>
+
+<style>
+  :root{
+    --void:#050711; --depth:#0b0e1c; --surface:#10142a;
+    --teal:#4ee6cb; --violet:#8b7fff; --plasma:#ff7a52; --ghost:#e8ecf7; --mist:#8890b0;
+    --line: rgba(232,236,247,0.09); --accent:#8b7fff;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{ background:var(--void); color:var(--ghost); font-family:'Inter',sans-serif; line-height:1.6; }
+  a{ color:var(--teal); }
+  .wrap{ max-width:780px; margin:0 auto; padding:0 6vw; }
+
+  nav{
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    padding:20px 6vw; display:flex; align-items:center; justify-content:space-between;
+    background:rgba(5,7,17,0.82); backdrop-filter:blur(10px); border-bottom:1px solid var(--line);
+  }
+  .brand{ font-family:'JetBrains Mono', monospace; font-size:13px; letter-spacing:0.12em; color:var(--ghost); text-decoration:none; display:flex; align-items:center; gap:9px; }
+  .brand span{ color:var(--teal); }
+  .brand-mark{ width:20px; height:20px; }
+  .nav-back{ font-family:'JetBrains Mono', monospace; font-size:12px; color:var(--mist); text-decoration:none; letter-spacing:0.04em; }
+  .nav-back:hover{ color:var(--teal); }
+
+  main.wrap{ padding:150px 6vw 130px; }
+
+  .breadcrumbs{
+    display:flex; align-items:center; gap:8px; flex-wrap:wrap;
+    font-family:'JetBrains Mono', monospace; font-size:12px; color:var(--mist); margin-bottom:30px;
+  }
+  .breadcrumbs a{ color:var(--mist); text-decoration:none; }
+  .breadcrumbs a:hover{ color:var(--teal); }
+  .breadcrumbs .current{ color:var(--accent); }
+  .breadcrumbs .sep{ opacity:0.5; }
+
+  .eyebrow{
+    font-family:'JetBrains Mono', monospace; font-size:12px; letter-spacing:0.2em; color:var(--accent);
+    text-transform:uppercase; margin-bottom:18px; display:flex; align-items:center; gap:10px;
+  }
+  .eyebrow::before{ content:''; width:26px; height:1px; background:var(--accent); }
+
+  h1{
+    font-family:'Unbounded', sans-serif; font-weight:800; font-size:clamp(1.8rem, 4.5vw, 2.7rem);
+    line-height:1.15; letter-spacing:-0.01em; margin-bottom:22px;
+  }
+  .lede{ font-size:1.05rem; color:var(--mist); line-height:1.7; margin-bottom:20px; max-width:65ch; }
+  .lede strong{ color:var(--ghost); font-weight:600; }
+
+  .toc{
+    display:flex; flex-wrap:wrap; gap:8px; margin:36px 0 56px; padding:18px;
+    background:var(--depth); border:1px solid var(--line); border-radius:12px;
+  }
+  .toc a{
+    font-family:'JetBrains Mono', monospace; font-size:11px; color:var(--mist);
+    text-decoration:none; padding:5px 10px; border-radius:100px; border:1px solid var(--line);
+  }
+  .toc a:hover{ color:var(--teal); border-color:var(--teal); }
+
+  h2{
+    font-family:'Unbounded', sans-serif; font-weight:800; font-size:1.5rem; color:var(--ghost);
+    margin:64px 0 20px; scroll-margin-top:110px;
+  }
+  h3{ font-family:'Unbounded', sans-serif; font-weight:700; font-size:1.1rem; color:var(--ghost); margin:28px 0 12px; }
+  p{ color:var(--mist); font-size:0.95rem; line-height:1.75; max-width:66ch; margin-bottom:16px; }
+  p strong{ color:var(--ghost); font-weight:600; }
+  ul, ol{ margin:0 0 20px 20px; color:var(--mist); font-size:0.95rem; line-height:1.75; max-width:66ch; }
+  li{ margin-bottom:8px; }
+  li strong{ color:var(--ghost); }
+
+  .diagram-box{
+    background:var(--depth); border:1px solid var(--line); border-radius:16px;
+    padding:30px 20px; margin:24px 0 36px; overflow-x:auto;
+  }
+  .flow-diagram{ width:100%; height:auto; min-width:640px; display:block; }
+
+  .example-box{
+    background:var(--surface); border-left:3px solid var(--violet); border-radius:0 10px 10px 0;
+    padding:16px 20px; margin:16px 0 28px; font-family:'JetBrains Mono', monospace;
+    font-size:0.82rem; color:var(--ghost); line-height:1.6;
+  }
+  .example-box .lbl{ font-family:'JetBrains Mono', monospace; font-size:10px; color:var(--violet); text-transform:uppercase; letter-spacing:0.06em; margin-bottom:8px; display:block; }
+
+  .compare{ display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--line); border:1px solid var(--line); border-radius:14px; overflow:hidden; margin:24px 0 36px; }
+  .compare-col{ background:var(--depth); padding:22px; }
+  .compare-col.bad{ opacity:0.72; }
+  .compare-head{ display:flex; align-items:center; gap:8px; margin-bottom:14px; font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:0.06em; text-transform:uppercase; }
+  .compare-col.bad .compare-head{ color:var(--mist); }
+  .compare-col.good .compare-head{ color:var(--teal); }
+  .compare-dot{ width:6px; height:6px; border-radius:50%; }
+  .compare-col.bad .compare-dot{ background:var(--mist); }
+  .compare-col.good .compare-dot{ background:var(--teal); box-shadow:0 0 8px var(--teal); }
+  .compare-col p{ font-size:0.82rem; margin:0; }
+  .compare-col.good p{ color:var(--ghost); }
+
+  .checklist{ display:flex; flex-direction:column; gap:1px; background:var(--line); border:1px solid var(--line); border-radius:14px; overflow:hidden; margin:24px 0 36px; }
+  .check-item{ background:var(--depth); padding:20px 22px; display:flex; gap:16px; align-items:flex-start; }
+  .check-num{
+    flex-shrink:0; width:28px; height:28px; border-radius:50%; background:var(--plasma); color:var(--void);
+    display:flex; align-items:center; justify-content:center; font-family:'JetBrains Mono', monospace;
+    font-weight:700; font-size:12px;
+  }
+  .check-item h3{ margin:0 0 6px; font-size:0.98rem; }
+  .check-item p{ margin:0; font-size:0.85rem; }
+
+  .template-box{
+    background:var(--surface); border:1px dashed var(--line); border-radius:14px;
+    padding:24px 22px; margin:24px 0 36px; font-family:'JetBrains Mono', monospace;
+    font-size:0.82rem; color:var(--ghost); line-height:1.85; white-space:pre-wrap;
+  }
+
+  .inline-link-card{
+    display:flex; align-items:center; justify-content:space-between; gap:16px;
+    background:var(--depth); border:1px solid var(--line); border-radius:12px;
+    padding:16px 20px; margin:14px 0; text-decoration:none;
+  }
+  .inline-link-card:hover{ border-color:var(--teal); }
+  .inline-link-card span{ font-family:'Inter', sans-serif; font-size:0.9rem; color:var(--ghost); }
+  .inline-link-card .arrow{ color:var(--teal); font-family:'JetBrains Mono', monospace; font-size:12px; flex-shrink:0; }
+
+  .cta-box{
+    margin-top:20px; padding:32px 30px; border-radius:16px; text-align:center;
+    background:linear-gradient(var(--surface),var(--surface)) padding-box,
+               linear-gradient(120deg, #4ee6cb, #8b7fff, #ff7a52) border-box;
+    border:1.5px solid transparent;
+  }
+  .cta-box p{ margin-bottom:18px; color:var(--ghost); max-width:none; }
+  .cta-btn{
+    display:inline-block; font-family:'JetBrains Mono', monospace; font-size:13px;
+    letter-spacing:0.06em; text-transform:uppercase; font-weight:600; text-decoration:none;
+    color:var(--void); background:var(--teal); padding:14px 28px; border-radius:100px;
+  }
+
+  footer{ padding:70px 6vw 40px; border-top:1px solid var(--line); text-align:center; font-family:'JetBrains Mono', monospace; font-size:11px; color:var(--mist); }
+  footer a{ color:var(--mist); }
+
+  @media (max-width:640px){ .compare{ grid-template-columns:1fr; } }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="brand">
+    <svg class="brand-mark" viewBox="0 0 480 480" aria-hidden="true">
+      <defs>
+        <linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#4ee6cb"/><stop offset="100%" stop-color="#1f9384"/></linearGradient>
+        <linearGradient id="g2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#8b7fff"/><stop offset="100%" stop-color="#5b3df0"/></linearGradient>
+      </defs>
+      <g transform="rotate(45 240 240)">
+        <path d="M480 240a240 240 0 0 0-240 240 240 240 0 0 0 240-240Z" fill="url(#g1)"/>
+        <path d="M240 0A240 240 0 0 0 0 240 240 240 0 0 0 240 0Z" fill="url(#g1)" opacity="0.55"/>
+        <path d="M480 240A240 240 0 0 0 240 0a240 240 0 0 0 240 240Z" fill="url(#g2)"/>
+        <path d="M240 480A240 240 0 0 0 0 240a240 240 0 0 0 240 240Z" fill="url(#g2)" opacity="0.55"/>
+      </g>
+    </svg>
+    PROMPT<span>·</span>BOOST
+  </a>
+  <a href="/prompts/" class="nav-back">← Ver los 46 prompts</a>
+</nav>
+
+<main class="wrap">
+  <div class="breadcrumbs">
+    <a href="/">Inicio</a> <span class="sep">/</span> <span class="current">Guía de prompt engineering</span>
+  </div>
+
+  <div class="eyebrow">Guía completa</div>
+  <h1>Guía completa de prompt engineering en español</h1>
+  <p class="lede">Todo lo que necesitas para escribir prompts que dan resultados concretos en vez de respuestas genéricas — el método, las técnicas, los errores más comunes, y una plantilla para construir los tuyos desde cero.</p>
+
+  <div class="toc">
+    <a href="#por-que-fallan">Por qué fallan los prompts</a>
+    <a href="#los-5-bloques">Los 5 bloques</a>
+    <a href="#tecnicas-avanzadas">Técnicas avanzadas</a>
+    <a href="#errores-comunes">Errores comunes</a>
+    <a href="#segun-el-modelo">Según el modelo</a>
+    <a href="#plantilla">Plantilla</a>
+  </div>
+
+  <h2 id="por-que-fallan">Por qué la mayoría de los prompts fallan</h2>
+  <p>Casi todo el mundo escribe prompts de la misma forma: una frase corta, directa, tipo "ayúdame a hacer X". Y casi siempre funciona <strong>a medias</strong> — la respuesta no está mal, pero es genérica, podría servir para cualquier persona en cualquier situación parecida, y normalmente hace falta reescribirla o pedir una segunda vuelta.</p>
+  <p>El problema no es la IA. Es que un prompt corto no le da a la IA la información que necesitaría un humano para ayudarte de verdad. Si le pides consejo a un amigo con la frase "ayúdame a negociar un contrato", lo primero que haría es preguntarte: ¿qué contrato, con quién, cuál es tu objetivo? Un prompt bien construido hace exactamente eso — y es la diferencia entre una respuesta de manual y una respuesta útil.</p>
+
+  <h2 id="los-5-bloques">El método de los 5 bloques</h2>
+  <p>Todos los prompts que funcionan de verdad — no solo en PromptBoost, en general — siguen un patrón reconocible. Da igual el idioma o el modelo: si desmontas un buen prompt, casi siempre encuentras estas 5 piezas.</p>
+
+  <div class="diagram-box">
+    <svg viewBox="0 0 1040 220" xmlns="http://www.w3.org/2000/svg" class="flow-diagram" role="img" aria-label="Los 5 bloques: Rol, Contexto, Tu situación, Formato, Arranque">
+<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#8890b0"/></marker></defs>
+<rect x="16.0" y="50.0" width="168" height="120" rx="16" fill="#10142a" stroke="#4ee6cb" stroke-width="2"/>
+<text x="36.0" y="84.0" font-family="JetBrains Mono, monospace" font-size="13" font-weight="700" fill="#4ee6cb">1</text>
+<text x="100.0" y="126.0" font-family="Unbounded, sans-serif" font-size="15" font-weight="700" fill="#e8ecf7" text-anchor="middle">ROL</text>
+<line x1="184.0" y1="110.0" x2="222.0" y2="110.0" stroke="#8890b0" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="226.0" y="50.0" width="168" height="120" rx="16" fill="#10142a" stroke="#8b7fff" stroke-width="2"/>
+<text x="246.0" y="84.0" font-family="JetBrains Mono, monospace" font-size="13" font-weight="700" fill="#8b7fff">2</text>
+<text x="310.0" y="126.0" font-family="Unbounded, sans-serif" font-size="15" font-weight="700" fill="#e8ecf7" text-anchor="middle">CONTEXTO</text>
+<line x1="394.0" y1="110.0" x2="432.0" y2="110.0" stroke="#8890b0" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="436.0" y="50.0" width="168" height="120" rx="16" fill="#10142a" stroke="#ff7a52" stroke-width="2"/>
+<text x="456.0" y="84.0" font-family="JetBrains Mono, monospace" font-size="13" font-weight="700" fill="#ff7a52">3</text>
+<text x="520.0" y="126.0" font-family="Unbounded, sans-serif" font-size="15" font-weight="700" fill="#e8ecf7" text-anchor="middle">TU SITUACIÓN</text>
+<line x1="604.0" y1="110.0" x2="642.0" y2="110.0" stroke="#8890b0" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="646.0" y="50.0" width="168" height="120" rx="16" fill="#10142a" stroke="#5ec8ff" stroke-width="2"/>
+<text x="666.0" y="84.0" font-family="JetBrains Mono, monospace" font-size="13" font-weight="700" fill="#5ec8ff">4</text>
+<text x="730.0" y="126.0" font-family="Unbounded, sans-serif" font-size="15" font-weight="700" fill="#e8ecf7" text-anchor="middle">FORMATO</text>
+<line x1="814.0" y1="110.0" x2="852.0" y2="110.0" stroke="#8890b0" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="856.0" y="50.0" width="168" height="120" rx="16" fill="#10142a" stroke="#e0a672" stroke-width="2"/>
+<text x="876.0" y="84.0" font-family="JetBrains Mono, monospace" font-size="13" font-weight="700" fill="#e0a672">5</text>
+<text x="940.0" y="126.0" font-family="Unbounded, sans-serif" font-size="15" font-weight="700" fill="#e8ecf7" text-anchor="middle">ARRANQUE</text>
+</svg>
+  </div>
+
+  <h3>1. Rol</h3>
+  <p>Quién es la IA en esta conversación: título, años de experiencia, sector. No es decoración — cambia el vocabulario, la profundidad y el enfoque de la respuesta.</p>
+  <div class="example-box"><span class="lbl">Ejemplo</span>"Actúa como un negociador profesional con 15 años de experiencia cerrando acuerdos comerciales complejos."</div>
+
+  <h3>2. Contexto</h3>
+  <p>En qué se especializa exactamente ese rol. Acota el terreno para que no responda con generalidades de manual.</p>
+
+  <h3>3. Tu situación</h3>
+  <p>Esta es la pieza que casi nadie usa, y la que más cambia el resultado: en vez de responder a ciegas, pide que la IA <strong>te pregunte a ti primero</strong> lo que necesita saber.</p>
+  <div class="example-box"><span class="lbl">Ejemplo</span>"Antes de darme ningún consejo, pregúntame: qué se está negociando, mi objetivo mínimo aceptable, y qué sé de la otra parte."</div>
+
+  <h3>4. Formato de entrega</h3>
+  <p>Cómo quieres que responda siempre: cuántas opciones, qué estructura, qué tono. Sin esto, cada respuesta es una sorpresa distinta, y no puedes automatizar ni repetir el proceso con confianza.</p>
+
+  <h3>5. Arranque</h3>
+  <p>El tono real de la conversación, y lo que explícitamente no quieres. Decir qué evitar es tan informativo para la IA como decir qué buscas.</p>
+  <div class="example-box"><span class="lbl">Ejemplo</span>"Sé directo. Nada de teoría genérica de manual."</div>
+
+  <p>Puedes ver estos 5 bloques aplicados en las <a href="/#anatomy">tarjetas interactivas de la home</a>, o directamente en cualquiera de los <a href="/prompts/">46 prompts de la biblioteca</a>.</p>
+
+  <h2 id="tecnicas-avanzadas">Técnicas avanzadas que conviene conocer</h2>
+  <p>Una vez dominas los 5 bloques, hay técnicas adicionales que se combinan bien con ellos:</p>
+  <ul>
+    <li><strong>Few-shot prompting</strong> — dar 2-3 ejemplos concretos de lo que quieres, en vez de describir el estilo. La IA copia el patrón en lugar de adivinarlo.</li>
+    <li><strong>Chain of thought (cadena de pensamiento)</strong> — pedir que la IA razone paso a paso antes de dar la respuesta final. Reduce errores en tareas complejas.</li>
+    <li><strong>Prompt chaining</strong> — encadenar varios prompts, donde la salida de uno alimenta al siguiente, en vez de intentar resolverlo todo en una sola instrucción gigante.</li>
+  </ul>
+  <p>Puedes ver la definición completa de estos y otros 15 términos en el <a href="/glosario/">glosario de prompt engineering</a>.</p>
+
+  <div class="compare">
+    <div class="compare-col bad">
+      <div class="compare-head"><span class="compare-dot"></span> Prompt corto</div>
+      <p>"Ayúdame a negociar un contrato" → respuesta genérica, la misma que le daría a cualquiera.</p>
+    </div>
+    <div class="compare-col good">
+      <div class="compare-head"><span class="compare-dot"></span> Con los 5 bloques</div>
+      <p>Rol + contexto + tu situación + formato + arranque → respuesta específica, con datos concretos para tu caso.</p>
+    </div>
+  </div>
+
+  <h2 id="errores-comunes">7 errores que arruinan un prompt</h2>
+  <div class="checklist">
+    <div class="check-item">
+      <div class="check-num">1</div>
+      <div><h3>Pedir la tarea antes que el contexto</h3><p>La IA rellena los huecos con suposiciones si no le das el contexto primero.</p></div>
+    </div>
+    <div class="check-item">
+      <div class="check-num">2</div>
+      <div><h3>No decir el formato de salida</h3><p>Si no especificas cómo quieres la respuesta, cada vez te la da distinta.</p></div>
+    </div>
+    <div class="check-item">
+      <div class="check-num">3</div>
+      <div><h3>Un prompt gigante para todo</h3><p>Mejor encadenar fases claras que meterlo todo en una sola instrucción.</p></div>
+    </div>
+    <div class="check-item">
+      <div class="check-num">4</div>
+      <div><h3>No pedirle que te pregunte</h3><p>La mejor información no es la que tú crees que hace falta, es la que un experto real pediría antes de trabajar.</p></div>
+    </div>
+    <div class="check-item">
+      <div class="check-num">5</div>
+      <div><h3>Aceptar la primera respuesta sin iterar</h3><p>Un prompt bueno es el punto de partida, no el final — pide una segunda vuelta si algo no cuadra.</p></div>
+    </div>
+    <div class="check-item">
+      <div class="check-num">6</div>
+      <div><h3>No decir qué NO quieres</h3><p>Los ejemplos negativos delimitan el espacio de soluciones tanto como los positivos.</p></div>
+    </div>
+    <div class="check-item">
+      <div class="check-num">7</div>
+      <div><h3>Confiar sin verificar datos concretos</h3><p>Las IAs pueden "alucinar" cifras o hechos con total confianza. Verifica antes de dar por buena una cifra o cita exacta.</p></div>
+    </div>
+  </div>
+
+  <h2 id="segun-el-modelo">¿Cambia algo según el modelo?</h2>
+  <p>El método de los 5 bloques funciona igual en Claude, ChatGPT, Gemini y Grok — no hace falta reescribir nada al cambiar de IA. Lo que sí cambia es para qué tarea concreta rinde mejor cada uno.</p>
+  <a href="/claude-vs-chatgpt-vs-gemini-vs-grok/" class="inline-link-card">
+    <span>Ver la comparativa completa: Claude vs ChatGPT vs Gemini vs Grok</span>
+    <span class="arrow">→</span>
+  </a>
+
+  <h2 id="plantilla">Plantilla para construir tu propio prompt</h2>
+  <p>Rellena estos 5 huecos cada vez que necesites un prompt que no esté ya en la biblioteca:</p>
+  <div class="template-box">ROL
+Actúa como _______________ con _____ años de experiencia en _______________.
+
+CONTEXTO
+Especializado/a en _______________________________.
+
+TU SITUACIÓN
+Antes de ayudarme, pregúntame:
+1. _______________________________
+2. _______________________________
+3. _______________________________
+
+FORMATO DE ENTREGA
+Con esa información, dame _______________________________.
+
+ARRANQUE
+Tono: _______________  Evita: _______________</div>
+
+  <div class="cta-box">
+    <p>46 prompts ya construidos con este método, listos para copiar — organizados por categoría.</p>
+    <a href="/prompts/" class="cta-btn">Ver la biblioteca completa →</a>
+  </div>
+</main>
+
+<footer>
+  <p>© 2026 PromptBoost · <a href="/">promptboost.app</a></p>
+</footer>
+
+</body>
+</html>
