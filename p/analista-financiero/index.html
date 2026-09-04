@@ -108,6 +108,17 @@
   .compare-col.good .compare-response strong{ color:var(--teal); }
   @media (max-width:640px){ .compare{ grid-template-columns:1fr; } }
 
+
+  .diff-table{ width:100%; border-collapse:collapse; margin:20px 0 36px; }
+  .diff-table th{
+    text-align:left; font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:0.05em;
+    color:var(--mist); text-transform:uppercase; padding:10px 12px; border-bottom:1px solid var(--line);
+  }
+  .diff-table td{ padding:13px 12px; border-bottom:1px solid var(--line); font-size:0.84rem; vertical-align:top; }
+  .diff-table td:first-child{ color:var(--ghost); font-weight:500; width:34%; }
+  .diff-table td.bad-cell{ color:var(--mist); }
+  .diff-table td.good-cell{ color:var(--teal); }
+
   .related{ display:grid; grid-template-columns:repeat(auto-fit, minmax(200px,1fr)); gap:1px; border:1px solid var(--line); background:transparent; margin-top:16px; }
   .related a{ display:block; background:var(--depth); border:1px solid var(--line); padding:18px 20px; text-decoration:none; font-family:'Unbounded', sans-serif; font-weight:600; font-size:0.92rem; color:var(--ghost); transition:background .2s ease; }
   .related a:hover{ background:var(--surface); color:var(--teal); }
@@ -170,6 +181,29 @@ Dame las 3 cifras que más importan, qué significan en una frase cada una, y un
   </div>
 
   
+  <h2>Sin prompt vs. con este prompt</h2>
+  <div class="compare">
+    <div class="compare-col bad">
+      <div class="compare-head"><span class="compare-dot"></span> Lo que escribe cualquiera</div>
+      <div class="compare-label">Prompt</div>
+      <div class="compare-prompt">&quot;Ayúdame a entender las cifras de mi negocio&quot;</div>
+      <div class="compare-label">Respuesta de la IA</div>
+      <div class="compare-response">Es importante revisar tus ingresos, gastos y márgenes con regularidad. Te recomiendo llevar un control mensual y comparar con periodos anteriores para detectar tendencias.</div>
+    </div>
+    <div class="compare-col good">
+      <div class="compare-head"><span class="compare-dot"></span> Con este prompt</div>
+      <div class="compare-label">Prompt · Analista financiero</div>
+      <div class="compare-prompt">&quot;Antes de analizar nada, pregúntame: qué datos tengo, para qué lo necesito, quién lo va a leer. Dame las 3 cifras que más importan y una alerta si algo no cuadra.&quot;</div>
+      <div class="compare-label">Respuesta de la IA</div>
+      <div class="compare-response"><strong>Margen bruto:</strong> 34%, por debajo de la media del sector (40-45%) — revisar coste de proveedores.<br><br><strong>Gasto en marketing:</strong> subió 6 puntos respecto al trimestre anterior sin subida proporcional en ventas.<br><br><strong>Alerta:</strong> ese desajuste merece revisión antes de la próxima campaña.</div>
+    </div>
+  </div>
+  <table class="diff-table">
+    <tr><th>Dimensión</th><th>Sin este prompt</th><th>Con este prompt</th></tr>
+    <tr><td>Punto de partida</td><td class="bad-cell">Consejo genérico sin conocer tus datos reales</td><td class="good-cell">Pregunta tus cifras exactas antes de opinar</td></tr>
+    <tr><td>Resultado</td><td class="bad-cell">Recomendaciones vagas de &quot;control mensual&quot;</td><td class="good-cell">Las 3 cifras que más importan, explicadas en una frase cada una</td></tr>
+    <tr><td>Alertas</td><td class="bad-cell">Ninguna — tienes que detectar tú los problemas</td><td class="good-cell">Señala qué cifra no cuadra o merece atención</td></tr>
+  </table>
   <h2>Por qué funciona (la estructura detrás)</h2>
   <p>Este prompt sigue un patrón de 5 bloques que se repite en toda la biblioteca de PromptBoost: <strong>rol</strong> (quién es la IA), <strong>contexto</strong> (en qué se especializa), <strong>tu situación</strong> (qué necesita saber de ti), <strong>formato de entrega</strong> (qué estructura exacta quieres) y <strong>arranque</strong> (el tono y lo que no quieres). Puedes ver la metodología completa, con una plantilla en blanco para construir tus propios prompts, en <a href="/#anatomy">la web de PromptBoost</a>.</p>
 

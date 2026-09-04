@@ -108,6 +108,17 @@
   .compare-col.good .compare-response strong{ color:var(--teal); }
   @media (max-width:640px){ .compare{ grid-template-columns:1fr; } }
 
+
+  .diff-table{ width:100%; border-collapse:collapse; margin:20px 0 36px; }
+  .diff-table th{
+    text-align:left; font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:0.05em;
+    color:var(--mist); text-transform:uppercase; padding:10px 12px; border-bottom:1px solid var(--line);
+  }
+  .diff-table td{ padding:13px 12px; border-bottom:1px solid var(--line); font-size:0.84rem; vertical-align:top; }
+  .diff-table td:first-child{ color:var(--ghost); font-weight:500; width:34%; }
+  .diff-table td.bad-cell{ color:var(--mist); }
+  .diff-table td.good-cell{ color:var(--teal); }
+
   .related{ display:grid; grid-template-columns:repeat(auto-fit, minmax(200px,1fr)); gap:1px; border:1px solid var(--line); background:transparent; margin-top:16px; }
   .related a{ display:block; background:var(--depth); border:1px solid var(--line); padding:18px 20px; text-decoration:none; font-family:'Unbounded', sans-serif; font-weight:600; font-size:0.92rem; color:var(--ghost); transition:background .2s ease; }
   .related a:hover{ background:var(--surface); color:var(--teal); }
@@ -168,6 +179,29 @@ Incluye al menos una pregunta de comportamiento (tipo &quot;cuéntame de una vez
   </div>
 
   
+  <h2>Sin prompt vs. con este prompt</h2>
+  <div class="compare">
+    <div class="compare-col bad">
+      <div class="compare-head"><span class="compare-dot"></span> Lo que escribe cualquiera</div>
+      <div class="compare-label">Prompt</div>
+      <div class="compare-prompt">&quot;Prepárame para una entrevista de trabajo&quot;</div>
+      <div class="compare-label">Respuesta de la IA</div>
+      <div class="compare-response">Aquí tienes algunos consejos: sé puntual, investiga la empresa antes, prepara preguntas para el final, y practica bien tu respuesta a &quot;cuéntame sobre ti&quot;. ¡Mucha suerte!</div>
+    </div>
+    <div class="compare-col good">
+      <div class="compare-head"><span class="compare-dot"></span> Con este prompt</div>
+      <div class="compare-label">Prompt · Simulacro de entrevista de trabajo</div>
+      <div class="compare-prompt">&quot;Actúa como entrevistador para este puesto. Hazme una pregunta a la vez, espera mi respuesta, y dame feedback honesto antes de la siguiente.&quot;</div>
+      <div class="compare-label">Respuesta de la IA</div>
+      <div class="compare-response"><strong>Pregunta 1:</strong> "Cuéntame sobre tu experiencia con [tecnología del puesto]."<br><br><em>— tú respondes —</em><br><br><strong>Feedback:</strong> "Mencionaste el qué pero no el impacto. Añade una cifra o resultado concreto."</div>
+    </div>
+  </div>
+  <table class="diff-table">
+    <tr><th>Dimensión</th><th>Sin este prompt</th><th>Con este prompt</th></tr>
+    <tr><td>Formato</td><td class="bad-cell">Lista de consejos genéricos para leer</td><td class="good-cell">Simulación real, pregunta a pregunta</td></tr>
+    <tr><td>Feedback</td><td class="bad-cell">Ninguno — tú decides si lo hiciste bien</td><td class="good-cell">Feedback honesto después de cada respuesta</td></tr>
+    <tr><td>Cobertura</td><td class="bad-cell">Consejos que sirven para cualquier puesto</td><td class="good-cell">Incluye pregunta de comportamiento + técnica del puesto concreto</td></tr>
+  </table>
   <h2>Por qué funciona (la estructura detrás)</h2>
   <p>Este prompt sigue un patrón de 5 bloques que se repite en toda la biblioteca de PromptBoost: <strong>rol</strong> (quién es la IA), <strong>contexto</strong> (en qué se especializa), <strong>tu situación</strong> (qué necesita saber de ti), <strong>formato de entrega</strong> (qué estructura exacta quieres) y <strong>arranque</strong> (el tono y lo que no quieres). Puedes ver la metodología completa, con una plantilla en blanco para construir tus propios prompts, en <a href="/#anatomy">la web de PromptBoost</a>.</p>
 

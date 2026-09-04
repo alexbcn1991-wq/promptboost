@@ -108,6 +108,17 @@
   .compare-col.good .compare-response strong{ color:var(--teal); }
   @media (max-width:640px){ .compare{ grid-template-columns:1fr; } }
 
+
+  .diff-table{ width:100%; border-collapse:collapse; margin:20px 0 36px; }
+  .diff-table th{
+    text-align:left; font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:0.05em;
+    color:var(--mist); text-transform:uppercase; padding:10px 12px; border-bottom:1px solid var(--line);
+  }
+  .diff-table td{ padding:13px 12px; border-bottom:1px solid var(--line); font-size:0.84rem; vertical-align:top; }
+  .diff-table td:first-child{ color:var(--ghost); font-weight:500; width:34%; }
+  .diff-table td.bad-cell{ color:var(--mist); }
+  .diff-table td.good-cell{ color:var(--teal); }
+
   .related{ display:grid; grid-template-columns:repeat(auto-fit, minmax(200px,1fr)); gap:1px; border:1px solid var(--line); background:transparent; margin-top:16px; }
   .related a{ display:block; background:var(--depth); border:1px solid var(--line); padding:18px 20px; text-decoration:none; font-family:'Unbounded', sans-serif; font-weight:600; font-size:0.92rem; color:var(--ghost); transition:background .2s ease; }
   .related a:hover{ background:var(--surface); color:var(--teal); }
@@ -172,6 +183,29 @@ Código:
   </div>
 
   
+  <h2>Sin prompt vs. con este prompt</h2>
+  <div class="compare">
+    <div class="compare-col bad">
+      <div class="compare-head"><span class="compare-dot"></span> Lo que escribe cualquiera</div>
+      <div class="compare-label">Prompt</div>
+      <div class="compare-prompt">&quot;Revisa este código y dime qué está mal&quot;</div>
+      <div class="compare-label">Respuesta de la IA</div>
+      <div class="compare-response">El código parece funcionar bien en general. Podrías mejorar los nombres de algunas variables y añadir más comentarios. También sería buena práctica añadir manejo de errores en algunos puntos.</div>
+    </div>
+    <div class="compare-col good">
+      <div class="compare-head"><span class="compare-dot"></span> Con este prompt</div>
+      <div class="compare-label">Prompt · Auditoría de código guiada</div>
+      <div class="compare-prompt">&quot;Audita el código revisando: 1. Errores de lógica, 2. Problemas de seguridad, 3. Legibilidad, 4. Simplificación. Para cada hallazgo: línea, severidad y corrección.&quot;</div>
+      <div class="compare-label">Respuesta de la IA</div>
+      <div class="compare-response"><strong>Lógica (línea 23):</strong> el bucle no maneja lista vacía — lanzará error. Severidad: alta.<br><br><strong>Seguridad (línea 41):</strong> la consulta concatena texto sin parametrizar — riesgo de inyección. Severidad: alta.<br><br><strong>Legibilidad (línea 8):</strong> la variable "x" debería tener un nombre descriptivo. Severidad: baja.</div>
+    </div>
+  </div>
+  <table class="diff-table">
+    <tr><th>Dimensión</th><th>Sin este prompt</th><th>Con este prompt</th></tr>
+    <tr><td>Especificidad</td><td class="bad-cell">&quot;Mejora los nombres de variables&quot;</td><td class="good-cell">Línea exacta, severidad y corrección concreta</td></tr>
+    <tr><td>Priorización</td><td class="bad-cell">Todo suena igual de importante</td><td class="good-cell">Ordenado por severidad: alta, media, baja</td></tr>
+    <tr><td>Siguiente paso</td><td class="bad-cell">Tienes que adivinar qué tocar primero</td><td class="good-cell">Sugerencia de corrección lista para aplicar</td></tr>
+  </table>
   <h2>Por qué funciona (la estructura detrás)</h2>
   <p>Este prompt sigue un patrón de 5 bloques que se repite en toda la biblioteca de PromptBoost: <strong>rol</strong> (quién es la IA), <strong>contexto</strong> (en qué se especializa), <strong>tu situación</strong> (qué necesita saber de ti), <strong>formato de entrega</strong> (qué estructura exacta quieres) y <strong>arranque</strong> (el tono y lo que no quieres). Puedes ver la metodología completa, con una plantilla en blanco para construir tus propios prompts, en <a href="/#anatomy">la web de PromptBoost</a>.</p>
 

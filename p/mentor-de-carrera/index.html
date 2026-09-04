@@ -108,6 +108,17 @@
   .compare-col.good .compare-response strong{ color:var(--teal); }
   @media (max-width:640px){ .compare{ grid-template-columns:1fr; } }
 
+
+  .diff-table{ width:100%; border-collapse:collapse; margin:20px 0 36px; }
+  .diff-table th{
+    text-align:left; font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:0.05em;
+    color:var(--mist); text-transform:uppercase; padding:10px 12px; border-bottom:1px solid var(--line);
+  }
+  .diff-table td{ padding:13px 12px; border-bottom:1px solid var(--line); font-size:0.84rem; vertical-align:top; }
+  .diff-table td:first-child{ color:var(--ghost); font-weight:500; width:34%; }
+  .diff-table td.bad-cell{ color:var(--mist); }
+  .diff-table td.good-cell{ color:var(--teal); }
+
   .related{ display:grid; grid-template-columns:repeat(auto-fit, minmax(200px,1fr)); gap:1px; border:1px solid var(--line); background:transparent; margin-top:16px; }
   .related a{ display:block; background:var(--depth); border:1px solid var(--line); padding:18px 20px; text-decoration:none; font-family:'Unbounded', sans-serif; font-weight:600; font-size:0.92rem; color:var(--ghost); transition:background .2s ease; }
   .related a:hover{ background:var(--surface); color:var(--teal); }
@@ -170,6 +181,29 @@ No me digas qué elegir. Ayúdame a ver qué pregunta no me he hecho todavía, y
   </div>
 
   
+  <h2>Sin prompt vs. con este prompt</h2>
+  <div class="compare">
+    <div class="compare-col bad">
+      <div class="compare-head"><span class="compare-dot"></span> Lo que escribe cualquiera</div>
+      <div class="compare-label">Prompt</div>
+      <div class="compare-prompt">&quot;¿Debería cambiar de trabajo?&quot;</div>
+      <div class="compare-label">Respuesta de la IA</div>
+      <div class="compare-response">Es una decisión personal que depende de muchos factores: satisfacción laboral, salario, oportunidades de crecimiento, equilibrio vida-trabajo... Te recomiendo hacer una lista de pros y contras.</div>
+    </div>
+    <div class="compare-col good">
+      <div class="compare-head"><span class="compare-dot"></span> Con este prompt</div>
+      <div class="compare-label">Prompt · Mentor de carrera</div>
+      <div class="compare-prompt">&quot;Antes de aconsejarme, pregúntame: qué decisión tengo entre manos, qué opciones valoro, qué me da más miedo. No me digas qué elegir.&quot;</div>
+      <div class="compare-label">Respuesta de la IA</div>
+      <div class="compare-response"><strong>Pregunta que no te has hecho:</strong> "¿Qué pasaría si te quedas 2 años más sin buscar ese cambio?"<br><br><strong>Distinción clave:</strong> "¿Es miedo al cambio, o es una señal real de que algo no encaja?"</div>
+    </div>
+  </div>
+  <table class="diff-table">
+    <tr><th>Dimensión</th><th>Sin este prompt</th><th>Con este prompt</th></tr>
+    <tr><td>Enfoque</td><td class="bad-cell">Te da una lista de pros y contras genérica</td><td class="good-cell">Te ayuda a pensar mejor — no decide por ti</td></tr>
+    <tr><td>Personalización</td><td class="bad-cell">Sirve igual para cualquier decisión</td><td class="good-cell">Basado en tu situación y tus dudas concretas</td></tr>
+    <tr><td>Profundidad</td><td class="bad-cell">Pros y contras superficiales</td><td class="good-cell">Identifica la pregunta que todavía no te has hecho</td></tr>
+  </table>
   <h2>Por qué funciona (la estructura detrás)</h2>
   <p>Este prompt sigue un patrón de 5 bloques que se repite en toda la biblioteca de PromptBoost: <strong>rol</strong> (quién es la IA), <strong>contexto</strong> (en qué se especializa), <strong>tu situación</strong> (qué necesita saber de ti), <strong>formato de entrega</strong> (qué estructura exacta quieres) y <strong>arranque</strong> (el tono y lo que no quieres). Puedes ver la metodología completa, con una plantilla en blanco para construir tus propios prompts, en <a href="/#anatomy">la web de PromptBoost</a>.</p>
 
