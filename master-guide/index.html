@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prompt Master Guide 2026 — 300+ prompts | PromptBoost</title>
+<meta name="description" content="Prompt Master Guide 2026: 300+ prompts en 24 categorías, 10 Superprompts, la Fórmula Maestra y 5 flujos de trabajo avanzados.">
+<link rel="canonical" href="https://promptboost.app/master-guide/">
+
+<meta property="og:type" content="product">
+<meta property="og:url" content="https://promptboost.app/master-guide/">
+<meta property="og:title" content="Prompt Master Guide 2026 | PromptBoost">
+<meta property="og:description" content="300+ prompts en 24 categorías, 10 Superprompts, la Fórmula Maestra y 5 flujos de trabajo avanzados.">
+<meta property="og:image" content="https://promptboost.app/og-image.png">
+<meta property="og:locale" content="es_ES">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="shortcut icon" href="/favicon.ico">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Q03596FGTP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-Q03596FGTP');
+</script>
+
+<style>
+:root{
+  --pb-bg:#03091F; --pb-bg-secondary:#06133A; --pb-bg-surface:#081B4A; --pb-bg-surface-hover:#0D2864;
+  --pb-blue:#1689FF; --pb-blue-light:#36B8FF; --pb-cyan:#11D9EF;
+  --pb-purple:#733CFF; --pb-purple-light:#9B6CFF;
+  --pb-magenta:#FF19D4; --pb-pink:#FF5BE7;
+  --pb-green:#16C987;
+  --pb-white:#FFFFFF; --pb-text:#F4F7FF; --pb-text-secondary:#AAB9D8; --pb-text-muted:#808FB1;
+  --pb-border:rgba(255,255,255,.10); --pb-border-strong:rgba(255,255,255,.18); --pb-border-blue:rgba(22,137,255,.35);
+  --pb-radius-sm:8px; --pb-radius-md:12px; --pb-radius-lg:18px;
+  --ink:#10182b; --muted:#667085; --line:#dfe5f2; --soft:#f5f7fc;
+  --shadow:0 18px 50px rgba(13,31,76,.12);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:#fff;color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,sans-serif;line-height:1.6}
+a{text-decoration:none;color:inherit}
+.container{width:min(1140px,calc(100% - 64px));margin:auto}
+
+/* ---- navbar real, identico al resto del sitio ---- */
+.topbar{height:72px;background:#06163f;color:#fff;display:flex;align-items:center;position:sticky;top:0;z-index:50;border-bottom:1px solid var(--pb-border)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:24px}
+.logo{font-size:19px;font-weight:950;letter-spacing:-.5px;white-space:nowrap;display:flex;align-items:center;gap:6px}
+.logo .b{color:var(--pb-cyan)}
+.navlinks{display:flex;align-items:center;gap:22px;font-size:13px;color:#e4ebff}
+.navlinks a:hover{color:#fff}
+.navlinks a.active{color:#fff;border-bottom:2px solid var(--pb-cyan);padding-bottom:8px}
+.navlinks .promo-link{
+  display:inline-flex;align-items:center;gap:5px;font-weight:800;color:#fff;
+  background:linear-gradient(135deg,var(--pb-blue),var(--pb-purple),var(--pb-magenta));
+  padding:6px 12px;border-radius:100px;font-size:12.5px;
+}
+.nav-right{display:flex;align-items:center;gap:12px}
+.search-ic{width:44px;height:44px;border:1px solid #ffffff30;border-radius:var(--pb-radius-sm);display:grid;place-items:center;font-size:16px;color:#fff}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:11px 18px;border-radius:var(--pb-radius-md);font-weight:800;border:1px solid transparent;cursor:pointer;font-size:13.5px;transition:transform .15s ease,filter .15s ease}
+.btn-primary{color:#fff;background:linear-gradient(135deg,var(--pb-blue),var(--pb-purple),var(--pb-magenta))}
+.btn-primary:hover{filter:brightness(1.1);transform:translateY(-1px)}
+.btn-outline{color:#fff;border:1px solid rgba(255,255,255,.28);background:rgba(255,255,255,.06)}
+.btn-lg{padding:15px 24px;font-size:15px}
+@media(max-width:900px){.navlinks{display:none}}
+@media(max-width:560px){ .nav{gap:8px} .logo{font-size:15px} .btn{padding:9px 13px;font-size:12px} .nav-right{gap:8px} }
+a:focus-visible, button:focus-visible, .btn:focus-visible, .search-ic:focus-visible, summary:focus-visible {
+  outline: 3px solid var(--pb-cyan); outline-offset: 3px; border-radius: 6px;
+}
+
+/* ---- hero ---- */
+.hero{background:radial-gradient(circle at 78% 30%,rgba(43,113,255,.35),transparent 33%),linear-gradient(135deg,#06143d 0%,#0a225a 58%,#07173f 100%);color:#fff;padding:64px 0 72px;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;align-items:center;gap:48px}
+.eyebrow{display:inline-flex;padding:7px 12px;border-radius:999px;background:linear-gradient(90deg,var(--pb-purple),var(--pb-magenta));color:#fff;font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:.05em;margin-bottom:18px}
+h1{font-size:clamp(36px,4.8vw,60px);line-height:1;letter-spacing:-1.8px;margin-bottom:16px}
+h1 span{color:var(--pb-cyan)}
+.hero p.lede{font-size:16px;line-height:1.6;color:#dbe5ff;max-width:560px;margin-bottom:24px}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-bottom:14px}
+.micro{font-size:11.5px;color:#aebee0}
+
+/* ---- portada libro ---- */
+.book-wrap{position:relative;min-height:440px;display:grid;place-items:center}
+.glow{position:absolute;width:340px;height:340px;border-radius:50%;background:rgba(17,217,239,.18);filter:blur(45px)}
+.book{position:relative;width:min(340px,85%);aspect-ratio:.72;background:#f7fbff;border-radius:8px 16px 16px 8px;box-shadow:24px 28px 55px rgba(0,0,0,.32),inset -8px 0 0 #d9e6f4;transform:rotate(4deg);padding:32px 26px;color:#12315f}
+.book::before{content:'';position:absolute;left:-13px;top:0;bottom:0;width:13px;background:linear-gradient(#0c3b72,#1b6db7);border-radius:5px 0 0 5px}
+.book .mini{font-size:9px;font-weight:900;letter-spacing:.1em;color:#2871bc}
+.book h2{font-size:29px;line-height:1;margin:12px 0 16px;letter-spacing:-1px;color:#12315f}
+.book .stat{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:16px 0}
+.book .stat div{border:1px solid #c7d8eb;background:#eef6ff;padding:11px;border-radius:8px}
+.book strong{font-size:17px;display:block}
+.book em{font-style:normal;font-size:8px;color:var(--muted)}
+.book .cover-foot{position:absolute;left:26px;right:26px;bottom:24px;border-top:2px solid #1b6db7;padding-top:9px;font-size:9.5px;font-weight:800;letter-spacing:.02em}
+@media(max-width:900px){ .hero-grid{grid-template-columns:1fr;gap:0} .book-wrap{order:-1;min-height:360px} }
+
+/* ---- barra de datos ---- */
+.strip{background:#fff;border-bottom:1px solid var(--line)}
+.strip-in{display:grid;grid-template-columns:repeat(3,1fr)}
+.strip-item{padding:22px;text-align:center;border-right:1px solid var(--line)}
+.strip-item:last-child{border-right:0}
+.strip strong{display:block;font-size:25px;letter-spacing:-1px;color:var(--ink)}
+.strip span{font-size:11.5px;color:var(--muted)}
+@media(max-width:560px){ .strip-in{grid-template-columns:1fr} .strip-item{border-right:0;border-bottom:1px solid var(--line)} .strip-item:last-child{border-bottom:0} }
+
+main{background:#fff}
+section{padding:min(8vw,72px) 0}
+.center{text-align:center}
+.kicker{font-size:11px;font-weight:900;color:var(--pb-purple);letter-spacing:.08em;text-transform:uppercase}
+.section-h2{font-size:clamp(28px,3.8vw,42px);line-height:1.08;letter-spacing:-1.2px;margin:12px 0 14px;color:var(--ink)}
+.lead{max-width:700px;margin:0 auto;color:var(--muted);line-height:1.6;font-size:14.5px}
+
+/* ---- cards 3x2 ---- */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:36px}
+.card{border:1px solid var(--line);border-radius:var(--pb-radius-lg);padding:24px;background:#fff;box-shadow:0 8px 28px rgba(13,31,76,.06)}
+.card .num{font-size:11px;font-weight:900;color:var(--pb-purple);margin-bottom:12px}
+.card h3{margin:0 0 8px;font-size:18px;color:var(--ink)}
+.card p{margin:0;color:var(--muted);line-height:1.55;font-size:13.5px}
+@media(max-width:900px){.cards{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.cards{grid-template-columns:1fr}}
+
+/* ---- superprompts (fondo oscuro) ---- */
+.dark{background:var(--pb-bg-secondary);color:#fff}
+.dark .section-h2{color:#fff}
+.dark .lead{color:var(--pb-text-secondary)}
+.dark .kicker{color:var(--pb-cyan)}
+.super-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:34px}
+.super{border:1px solid var(--pb-border);background:var(--pb-bg-surface);border-radius:16px;padding:20px}
+.super b{font-size:13px;color:var(--pb-cyan)}
+.super h3{margin:7px 0;font-size:17px}
+.super p{margin:0;color:var(--pb-text-secondary);line-height:1.55;font-size:13px}
+@media(max-width:700px){.super-grid{grid-template-columns:1fr}}
+
+.formula{margin:36px auto 0;max-width:900px;padding:26px;border:1px solid var(--pb-border-blue);background:var(--pb-bg-surface);color:#fff;border-radius:18px;text-align:center}
+.formula strong{font-size:clamp(16px,2.6vw,26px);letter-spacing:-.5px;line-height:1.4;display:block}
+
+/* ---- 5 flujos ---- */
+.workflow-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:34px}
+.flow{padding:18px 12px;border:1px solid var(--line);border-radius:14px;text-align:center;background:var(--soft);font-size:12px;font-weight:800;color:var(--ink)}
+.flow span{display:block;color:var(--pb-purple);font-size:10px;margin-bottom:7px}
+@media(max-width:900px){.workflow-grid{grid-template-columns:repeat(2,1fr)}}
+
+/* ---- oferta ---- */
+.offer{background:linear-gradient(135deg,#f5f2ff,#effcff);border:1px solid #d7dff0;border-radius:24px;padding:40px;display:grid;grid-template-columns:1fr 340px;gap:38px;align-items:center}
+.check{display:flex;gap:10px;margin:12px 0;color:#344054;font-size:14px}
+.check i{color:var(--pb-green);font-style:normal;font-weight:900}
+.price-box{background:#fff;border:1px solid var(--line);border-radius:20px;padding:26px;box-shadow:var(--shadow);text-align:center}
+.price{font-size:52px;font-weight:950;letter-spacing:-2px;color:var(--ink);display:flex;align-items:baseline;justify-content:center;gap:8px;flex-wrap:wrap}
+.price small{font-size:15px;color:var(--muted);letter-spacing:0;font-weight:600;white-space:nowrap}
+.price-box .btn{width:100%;margin-top:14px}
+.price-note{font-size:11px;color:var(--muted);margin-top:10px}
+@media(max-width:900px){.offer{grid-template-columns:1fr;padding:26px 20px}}
+
+/* ---- faq ---- */
+.faq{max-width:800px;margin:32px auto 0}
+.faq details{border-bottom:1px solid var(--line);padding:18px 0}
+.faq summary{cursor:pointer;font-weight:800;font-size:14px;color:var(--ink);list-style:none;display:flex;justify-content:space-between;gap:16px}
+.faq summary::-webkit-details-marker{display:none}
+.faq p{color:var(--muted);line-height:1.6;font-size:13.5px;margin-top:10px}
+
+/* ---- cta final ---- */
+.final{padding:76px 0;background:linear-gradient(135deg,#07163f,#0d2d6c);color:#fff;text-align:center}
+.final h2{font-size:clamp(26px,3.8vw,40px);letter-spacing:-1px;margin-bottom:16px;line-height:1.15}
+.final p{color:#c8d6f2;max-width:600px;margin:0 auto 24px;line-height:1.6}
+
+/* ---- footer real, identico al resto del sitio ---- */
+footer{background:#06143d;color:var(--pb-text-secondary);padding:30px 0}
+.foot{display:flex;justify-content:space-between;gap:20px;align-items:center;font-size:12.5px;flex-wrap:wrap}
+.footlinks{display:flex;gap:16px;flex-wrap:wrap}
+.footlinks a{color:var(--pb-text-secondary)}
+.footlinks a:hover{color:#fff}
+
+.mobile-buy{display:none}
+@media(max-width:560px){
+  .mobile-buy{display:block;position:fixed;left:12px;right:12px;bottom:12px;z-index:60}
+  .mobile-buy a{display:flex;justify-content:center;padding:14px;border-radius:var(--pb-radius-md);background:linear-gradient(135deg,var(--pb-blue),var(--pb-purple),var(--pb-magenta));color:#fff;font-size:13px;font-weight:900;box-shadow:0 10px 30px rgba(6,19,59,.4)}
+  main{padding-bottom:76px}
+}
+@media(prefers-reduced-motion:reduce){ html{scroll-behavior:auto} }
+@media(max-width:640px){ .container{width:min(1140px,calc(100% - 40px))} }
+</style>
+</head>
+<body>
+
+<div class="topbar"><div class="container nav">
+  <div class="logo"><svg width="22" height="22" viewBox="0 0 480 480" aria-hidden="true">
+      <defs>
+        <linearGradient id="navG1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#4ee6cb"/><stop offset="100%" stop-color="#1f9384"/></linearGradient>
+        <linearGradient id="navG2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#8b7fff"/><stop offset="100%" stop-color="#5b3df0"/></linearGradient>
+      </defs>
+      <g transform="rotate(45 240 240)">
+        <path d="M480 240a240 240 0 0 0-240 240 240 240 0 0 0 240-240Z" fill="url(#navG1)"/>
+        <path d="M240 0A240 240 0 0 0 0 240 240 240 0 0 0 240 0Z" fill="url(#navG1)" opacity="0.55"/>
+        <path d="M480 240A240 240 0 0 0 240 0a240 240 0 0 0 240 240Z" fill="url(#navG2)"/>
+        <path d="M240 480A240 240 0 0 0 0 240a240 240 0 0 0 240 240Z" fill="url(#navG2)" opacity="0.55"/>
+      </g>
+    </svg> PROMPT<span class="b">BOOST</span>.APP</div>
+  <div class="navlinks">
+    <a href="/">Inicio</a>
+    <a href="/prompts/">Categorías</a>
+    <a href="/guia-de-prompt-engineering/">Guías</a>
+    <a href="/recursos/">Recursos</a>
+    <a href="/master-guide/" class="promo-link active">🔥 Master Guide</a>
+  </div>
+  <div class="nav-right">
+    <a class="search-ic" href="/prompts/" aria-label="Buscar">🔍</a>
+    <a class="btn btn-primary" href="/prompts/">Empieza gratis →</a>
+  </div>
+</div></div>
+
+<main>
+
+<section class="hero"><div class="container hero-grid">
+  <div>
+    <div class="eyebrow">PROMPT MASTER GUIDE 2026</div>
+    <h1>Deja de improvisar.<br><span>Empieza con un buen prompt.</span></h1>
+    <p class="lede">Una biblioteca práctica para convertir ChatGPT en tu copiloto de creatividad, investigación, negocio, datos, programación y productividad.</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary btn-lg" href="#comprar">Quiero el Master Guide →</a>
+      <a class="btn btn-outline btn-lg" href="#que-incluye">Ver qué incluye</a>
+    </div>
+    <div class="micro">300+ prompts · 24 categorías · 10 Superprompts · 5 flujos de trabajo avanzados</div>
+  </div>
+  <div class="book-wrap" role="img" aria-label="Portada del Prompt Master Guide 2026">
+    <div class="glow"></div>
+    <div class="book">
+      <div class="mini">PROMPTBOOST.APP</div>
+      <h2>PROMPT<br>MASTER<br>GUIDE 2026</h2>
+      <div class="stat"><div><strong>300+</strong><em>PROMPTS</em></div><div><strong>24</strong><em>CATEGORÍAS</em></div></div>
+      <p style="font-size:11px;line-height:1.45;color:#344a70">Ideas listas para adaptar · prompts + ejemplos + buenas prácticas.</p>
+      <div class="cover-foot">CREATIVIDAD · INVESTIGACIÓN · NEGOCIO · DATOS · PROGRAMACIÓN</div>
+    </div>
+  </div>
+</div></section>
+
+<div class="strip"><div class="container strip-in">
+  <div class="strip-item"><strong>300+</strong><span>prompts listos para adaptar</span></div>
+  <div class="strip-item"><strong>24</strong><span>categorías de uso</span></div>
+  <div class="strip-item"><strong>22</strong><span>páginas de guía práctica</span></div>
+</div></div>
+
+<section id="que-incluye"><div class="container center">
+  <div class="kicker">¿Qué hay dentro?</div>
+  <h2 class="section-h2">No es teoría. Es material para usar.</h2>
+  <p class="lead">El manual está pensado para copiar un prompt, sustituir los campos entre corchetes y adaptarlo a tu objetivo. También incluye buenas prácticas para mejorar los resultados.</p>
+  <div class="cards">
+    <article class="card"><div class="num">01 · CREATIVIDAD</div><h3>Imagen y creatividad</h3><p>Comic Strip, Storyboard, Cinematic, Product Mockup, Infographic y más para convertir ideas en piezas visuales.</p></article>
+    <article class="card"><div class="num">02 · INVESTIGACIÓN</div><h3>Investiga mejor</h3><p>Research, Deep Research, Primary Sources, Fact Check, Sources, Latest, Timeline y análisis de competidores.</p></article>
+    <article class="card"><div class="num">03 · PENSAMIENTO</div><h3>Razona con más rigor</h3><p>Analyze, Devil's Advocate, Red Team, Second Opinion y otras estructuras para cuestionar ideas y decisiones.</p></article>
+    <article class="card"><div class="num">04 · CONTENIDO</div><h3>Escribe y comunica</h3><p>Rewrite, Humanize, Copywriting, Storytelling, Hook, Social Media, Email y formatos de contenido.</p></article>
+    <article class="card"><div class="num">05 · NEGOCIO</div><h3>Convierte ideas en planes</h3><p>Business Model, Competitor Analysis, Pricing Strategy, Go To Market, Decision Matrix y Action Plan.</p></article>
+    <article class="card"><div class="num">06 · DATOS Y CÓDIGO</div><h3>Trabaja con más estructura</h3><p>Datos, Excel, programación, arquitectura, revisión de código, seguridad, documentación y mejora técnica.</p></article>
+  </div>
+</div></section>
+
+<section class="dark"><div class="container center">
+  <div class="kicker">BONUS DENTRO DEL MANUAL</div>
+  <h2 class="section-h2">10 Superprompts para tareas complejas.</h2>
+  <p class="lead">Estructuras más completas para analizar, investigar, decidir, mejorar, enseñar y convertir procesos en sistemas.</p>
+  <div class="super-grid">
+    <div class="super"><b>01</b><h3>El Analista</h3><p>Analiza problemas, variables, supuestos, escenarios, riesgos y alternativas antes de recomendar.</p></div>
+    <div class="super"><b>02</b><h3>Investigación Profesional</h3><p>Investiga con fuentes de calidad, contrasta perspectivas y separa hechos de interpretaciones.</p></div>
+    <div class="super"><b>03</b><h3>Decisor</h3><p>Compara alternativas, pondera criterios y analiza qué supuestos podrían cambiar la decisión.</p></div>
+    <div class="super"><b>04</b><h3>Red Team</h3><p>Busca errores de razonamiento, riesgos, costes ocultos y escenarios adversos.</p></div>
+    <div class="super"><b>05</b><h3>Mejora Iterativa</h3><p>Crea una primera solución, evalúala y produce después una versión mejorada.</p></div>
+    <div class="super"><b>06</b><h3>Experto Multidisciplinar</h3><p>Combina perspectivas de distintas disciplinas para llegar a una conclusión integrada.</p></div>
+    <div class="super"><b>07</b><h3>Del Caos al Plan</h3><p>Convierte notas en objetivos, prioridades, tareas, dependencias, fechas y próximos pasos.</p></div>
+    <div class="super"><b>08</b><h3>Convierte cualquier cosa en un sistema</h3><p>Diseña entradas, procesos, decisiones, salidas, control de calidad y mejora continua.</p></div>
+    <div class="super"><b>09</b><h3>El Profesor Perfecto</h3><p>Evalúa tu nivel, enseña progresivamente, pregunta, detecta errores y comprueba comprensión.</p></div>
+    <div class="super"><b>10</b><h3>Hazlo Mejor</h3><p>Analiza un trabajo, encuentra debilidades, reescribe y explica las mejoras principales.</p></div>
+  </div>
+  <div class="formula"><div class="kicker">LA FÓRMULA MAESTRA</div><strong>OBJETIVO + ROL + CONTEXTO + INPUT + PROCESO + OUTPUT + RESTRICCIONES + CONTROL DE CALIDAD</strong></div>
+</div></section>
+
+<section><div class="container center">
+  <div class="kicker">5 FLUJOS DE TRABAJO</div>
+  <h2 class="section-h2">De un prompt aislado a un sistema.</h2>
+  <p class="lead">El manual incluye recorridos para lanzar un negocio, crear contenido, aprender, mejorar proyectos técnicos y tomar decisiones importantes.</p>
+  <div class="workflow-grid">
+    <div class="flow"><span>01</span>LANZAR UN NEGOCIO</div>
+    <div class="flow"><span>02</span>CREAR CONTENIDO</div>
+    <div class="flow"><span>03</span>APRENDER UNA MATERIA</div>
+    <div class="flow"><span>04</span>MEJORAR UN PROYECTO TÉCNICO</div>
+    <div class="flow"><span>05</span>TOMAR UNA DECISIÓN</div>
+  </div>
+</div></section>
+
+<section id="comprar"><div class="container">
+  <div class="offer">
+    <div>
+      <div class="kicker">PROMPT MASTER GUIDE 2026</div>
+      <h2 class="section-h2">Todo el sistema en un solo manual.</h2>
+      <p class="lead" style="margin:0;max-width:620px;text-align:left">Para quien quiere dejar de empezar desde cero cada vez que abre ChatGPT y tener estructuras listas para adaptar.</p>
+      <div style="margin-top:20px">
+        <div class="check"><i>✓</i><span>300+ prompts listos para adaptar</span></div>
+        <div class="check"><i>✓</i><span>24 categorías</span></div>
+        <div class="check"><i>✓</i><span>10 Superprompts</span></div>
+        <div class="check"><i>✓</i><span>La Fórmula Maestra de prompting</span></div>
+        <div class="check"><i>✓</i><span>5 flujos de trabajo avanzados</span></div>
+        <div class="check"><i>✓</i><span>22 páginas en PDF</span></div>
+      </div>
+    </div>
+    <aside class="price-box">
+      <div class="kicker">PRECIO DE LANZAMIENTO</div>
+      <div class="price">9,90€ <small>pago único</small></div>
+      <p style="font-size:12px;color:var(--muted);margin-top:8px">Acceso al PDF del Prompt Master Guide 2026.</p>
+      <!-- PENDIENTE: sustituir GUMROAD_URL_MASTER_GUIDE por la URL real de Gumroad -->
+      <a class="btn btn-primary" id="buyBtn" href="#" data-gumroad-url="PENDIENTE_URL_GUMROAD">Comprar el Master Guide →</a>
+      <div class="price-note">Pago único · producto digital · descarga del PDF</div>
+    </aside>
+  </div>
+</div></section>
+
+<section><div class="container">
+  <div class="center">
+    <div class="kicker">PREGUNTAS FRECUENTES</div>
+    <h2 class="section-h2">Antes de comprar.</h2>
+  </div>
+  <div class="faq">
+    <details><summary>¿Cuántos prompts incluye?<span>＋</span></summary><p>El manual se presenta como una biblioteca de 300+ prompts organizada en 24 categorías.</p></details>
+    <details><summary>¿Qué tipo de prompts hay?<span>＋</span></summary><p>Incluye áreas como imagen y creatividad, investigación, razonamiento, escritura, negocio, marketing, datos, programación y meta-prompts, entre otras.</p></details>
+    <details><summary>¿Es un producto oficial de OpenAI o ChatGPT?<span>＋</span></summary><p>No. Es un manual independiente de PromptBoost.app. La disponibilidad de funciones y herramientas de ChatGPT puede variar según cuenta, plan, región y producto.</p></details>
+    <details><summary>¿Puedo adaptar los prompts?<span>＋</span></summary><p>Sí. El propio manual recomienda sustituir los campos entre corchetes y añadir contexto, objetivo, restricciones y formato de salida.</p></details>
+    <details><summary>¿Qué recibo al comprarlo?<span>＋</span></summary><p>El producto es un PDF digital del Prompt Master Guide 2026.</p></details>
+  </div>
+</div></section>
+
+<section class="final"><div class="container">
+  <h2>Tu próxima conversación con ChatGPT puede empezar mucho mejor.</h2>
+  <p>300+ prompts, 24 categorías, 10 Superprompts y un sistema para estructurar mejores peticiones.</p>
+  <a class="btn btn-primary btn-lg" href="#comprar">Quiero el Master Guide por 9,90€ →</a>
+</div></section>
+
+</main>
+
+<footer><div class="container foot">
+  <div><b style="font-size:15px;color:#fff"><svg width="18" height="18" viewBox="0 0 480 480" aria-hidden="true" style="vertical-align:-3px;margin-right:4px">
+      <defs>
+        <linearGradient id="footG1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#4ee6cb"/><stop offset="100%" stop-color="#1f9384"/></linearGradient>
+        <linearGradient id="footG2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#8b7fff"/><stop offset="100%" stop-color="#5b3df0"/></linearGradient>
+      </defs>
+      <g transform="rotate(45 240 240)">
+        <path d="M480 240a240 240 0 0 0-240 240 240 240 0 0 0 240-240Z" fill="url(#footG1)"/>
+        <path d="M240 0A240 240 0 0 0 0 240 240 240 0 0 0 240 0Z" fill="url(#footG1)" opacity="0.55"/>
+        <path d="M480 240A240 240 0 0 0 240 0a240 240 0 0 0 240 240Z" fill="url(#footG2)"/>
+        <path d="M240 480A240 240 0 0 0 0 240a240 240 0 0 0 240 240Z" fill="url(#footG2)" opacity="0.55"/>
+      </g>
+    </svg>PROMPTBOOST.APP</b></div>
+  <div class="footlinks">
+    <a href="/prompts/">Biblioteca</a>
+    <a href="/glosario/">Glosario</a>
+    <a href="/recursos/">Recursos</a>
+    <a href="/guia-de-prompt-engineering/">Guía completa</a>
+  </div>
+  <div>© 2026 PromptBoost</div>
+</div></footer>
+
+<div class="mobile-buy"><a href="#comprar">Comprar el Master Guide — 9,90€ →</a></div>
+
+<script>
+/* ===== URL de compra: UNA sola constante para sustituir cuando exista el enlace real de Gumroad ===== */
+const GUMROAD_URL_MASTER_GUIDE = null; // PENDIENTE: sustituir por la URL real, ej. 'https://alexworks8.gumroad.com/l/xxxxx'
+
+const buyBtn = document.getElementById('buyBtn');
+if (GUMROAD_URL_MASTER_GUIDE) {
+  buyBtn.href = GUMROAD_URL_MASTER_GUIDE;
+  buyBtn.target = '_blank';
+  buyBtn.rel = 'noopener';
+} else {
+  buyBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    alert('Configura aquí la URL real de compra de Gumroad (variable GUMROAD_URL_MASTER_GUIDE).');
+  });
+}
+</script>
+
+</body>
+</html>

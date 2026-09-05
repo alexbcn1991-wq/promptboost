@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 900">
+<defs>
+ <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#050d28"/><stop offset=".62" stop-color="#09245e"/><stop offset="1" stop-color="#061335"/></linearGradient>
+ <linearGradient id="title" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#fff"/><stop offset=".5" stop-color="#8eefff"/><stop offset="1" stop-color="#9d7cff"/></linearGradient>
+ <radialGradient id="glow"><stop stop-color="#16e4ff" stop-opacity=".9"/><stop offset=".55" stop-color="#1785ff" stop-opacity=".3"/><stop offset="1" stop-color="#1785ff" stop-opacity="0"/></radialGradient>
+ <filter id="blur"><feGaussianBlur stdDeviation="22"/></filter>
+</defs>
+<rect x="18" y="12" width="650" height="872" rx="16" fill="#020719" opacity=".45"/>
+<rect x="8" y="4" width="650" height="872" rx="16" fill="url(#bg)" stroke="#8edfff" stroke-opacity=".35" stroke-width="3"/>
+<ellipse cx="340" cy="510" rx="270" ry="240" fill="url(#glow)" filter="url(#blur)"/>
+<text x="52" y="78" fill="#fff" font-family="Arial,Helvetica,sans-serif" font-size="25" font-weight="800">PROMPT<tspan fill="#11d9ef">BOOST</tspan></text>
+<text x="52" y="155" fill="url(#title)" font-family="Arial,Helvetica,sans-serif" font-size="64" font-weight="900">SUPERPROMPTS</text>
+<text x="52" y="196" fill="#dce8ff" font-family="Arial,Helvetica,sans-serif" font-size="25">300+ prompts para</text>
+<text x="52" y="228" fill="#dce8ff" font-family="Arial,Helvetica,sans-serif" font-size="25">trabajar mejor con IA</text>
+<!-- abstract neon brain -->
+<g transform="translate(350 490)">
+ <path d="M-120 40 C-160 5 -150 -65 -105 -75 C-90 -125 -25 -132 -3 -95 C40 -120 98 -85 88 -38 C132 -5 111 55 70 65 C50 108 -12 116 -45 82 C-82 101 -124 82 -120 40Z" fill="#06194a" stroke="#18dfff" stroke-width="8"/>
+ <path d="M0 -91 C-24 -54 -17 -16 0 8 C-18 35 -14 66 0 93" fill="none" stroke="#7d75ff" stroke-width="8"/>
+ <path d="M-72 -56 C-42 -43 -52 -15 -72 0 M-98 14 C-65 5 -55 34 -78 54 M65 -52 C38 -38 52 -13 76 1 M96 20 C65 9 54 38 74 55 M-34 -83 C-5 -62 -13 -38 -35 -25 M35 -82 C5 -62 14 -39 35 -25" fill="none" stroke="#19e5ff" stroke-width="7" stroke-linecap="round"/>
+</g>
+<text x="52" y="805" fill="#12d9ef" font-family="Arial,Helvetica,sans-serif" font-size="18" font-weight="800">CHATGPT · CLAUDE · GEMINI · GROK</text>
+<rect x="535" y="700" width="92" height="92" rx="46" fill="#fff" opacity=".96"/>
+<text x="581" y="742" text-anchor="middle" fill="#17306c" font-family="Arial,Helvetica,sans-serif" font-size="23" font-weight="900">22</text>
+<text x="581" y="766" text-anchor="middle" fill="#17306c" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="800">págs.</text>
+</svg>
