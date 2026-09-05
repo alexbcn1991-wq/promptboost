@@ -90,18 +90,18 @@ a{text-decoration:none;color:inherit}button,input,textarea,select{font:inherit}
 .hero{background:
  radial-gradient(circle at 72% 42%,#173f9e 0,#0a205b 27%,#06163e 60%),
  linear-gradient(110deg,#06163f,#06133b);color:#fff;overflow:hidden}
-.hero-inner{min-height:410px;display:grid;grid-template-columns:43% 57%;align-items:center;padding:36px 0 44px;gap:20px}
+.hero-inner{min-height:440px;display:grid;grid-template-columns:minmax(430px,46%) minmax(0,54%);align-items:center;padding:28px 0 34px;gap:8px}
 .badge{display:inline-flex;background:linear-gradient(90deg,#7b27c8,#5420ae);border-radius:999px;padding:7px 14px;font-size:12px;font-weight:950}
 h1{font-size:clamp(38px,4.6vw,64px);line-height:.98;letter-spacing:-2.5px;margin:16px 0}
 .grad{color:#16d7f2}.hero p{font-size:16.5px;line-height:1.4;color:#f3f6ff;max-width:480px}
 .hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin:18px 0 8px}
 .hero-note{font-size:12px;color:#d8e3ff}
 .benefits{display:flex;gap:20px;margin-top:18px;flex-wrap:wrap}.benefit{display:flex;gap:7px;align-items:center;font-size:12px}.benefit i{font-size:20px;font-style:normal}
-.robot-stage{position:relative;min-height:420px;display:grid;place-items:center;padding-right:2%}
-.robot-img{width:215px;max-width:60%;filter:drop-shadow(0 10px 22px rgba(17,217,239,.20));z-index:2}
-.float{position:absolute;padding:8px 13px;border:1px solid #11d9ef66;background:#08245cb0;color:#fff;font-weight:700;box-shadow:0 0 10px #0ad8ff14;font-size:12px;backdrop-filter:blur(4px);border-radius:9px}
-.f1{left:20%;top:10%}.f2{left:14%;top:34%}.f3{left:20%;top:58%}.f4{right:16%;top:14%}.f5{right:10%;top:38%}.f6{right:18%;top:60%}
-.metrics{position:absolute;left:8%;right:8%;bottom:2%;border:1px solid #9b8cff66;background:#10185fcf;border-radius:16px;display:grid;grid-template-columns:repeat(3,1fr);overflow:hidden;z-index:3}
+.robot-stage{min-height:400px;padding:0;position:relative;display:grid;place-items:center}
+.robot-img{width:420px;max-width:88%;height:auto;object-fit:contain;filter:drop-shadow(0 14px 28px rgba(17,217,239,.22));transform:translate(12px,4px);z-index:2}
+.float{position:absolute;padding:8px 12px;border:1px solid #11d9ef66;background:#08245cb0;color:#fff;font-weight:700;box-shadow:0 0 10px #0ad8ff14;font-size:11px;backdrop-filter:blur(4px);border-radius:9px;white-space:nowrap}
+.f1{left:8%;top:7%}.f2{left:1%;top:34%}.f3{left:8%;top:61%}.f4{right:5%;top:11%}.f5{right:0;top:38%}.f6{right:5%;top:64%}
+.metrics{position:absolute;left:4%;right:4%;bottom:0;border:1px solid #9b8cff66;background:#10185fcf;border-radius:16px;display:grid;grid-template-columns:repeat(3,1fr);overflow:hidden;z-index:3}
 .metric{padding:14px;text-align:center;border-right:1px solid #ffffff20}.metric:last-child{border:0}.metric b{display:block;font-size:20px}.metric span{font-size:10.5px;color:#e3e7ff}
 .steps{padding:26px 0 18px;background:#fff}
 .steps-bar{display:flex;align-items:center;flex-wrap:wrap;gap:18px 22px;padding:18px 22px;border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow)}
@@ -318,11 +318,6 @@ a:focus-visible, button:focus-visible, .btn:focus-visible, .search:focus-visible
     <span class="badge">MÁS QUE PROMPTS, RESULTADOS REALES</span>
     <h1>No busques<br>el prompt.<br><span class="grad">Busca el resultado.</span></h1>
     <p>La biblioteca de prompts de IA: <strong>46 prompts gratis</strong>, listos para copiar y usar en Claude, Gemini, ChatGPT y Grok. Organizados por lo que hacen: razonar mejor, escribir con un estilo concreto, hacer marketing y contenido, trabajar con código, tomar decisiones, ser más productivo, aprender más rápido, avanzar en tu carrera y tus finanzas, o convocar al experto exacto que necesitas ahora mismo.</p>
-    <div class="benefits">
-      <div class="benefit"><i>⚡</i> Ahorra tiempo</div>
-      <div class="benefit"><i>📈</i> Sé más productivo</div>
-      <div class="benefit"><i>💡</i> Multiplica tu creatividad</div>
-    </div>
     <div class="hero-actions">
       <a class="btn btn-primary" href="/prompts/">🚀 Explora todos los prompts</a>
     </div>
