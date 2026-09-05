@@ -239,6 +239,38 @@
   }
   .compat-compare-link:hover{ border-color:var(--teal); }
 
+  .formulas-banner{
+    position:relative; display:block; margin-top:22px; max-width:440px;
+    text-decoration:none; border-radius:14px;
+  }
+  .formulas-banner-glow{
+    position:absolute; inset:0; border-radius:16px;
+    background:linear-gradient(120deg, #4ee6cb 0%, #8b7fff 50%, #ff7a52 100%);
+    opacity:0.28; filter:blur(20px); transition:opacity .25s ease; pointer-events:none;
+  }
+  .formulas-banner:hover .formulas-banner-glow{ opacity:0.45; }
+  .formulas-banner-inner{
+    position:relative; z-index:1; border-radius:14px; overflow:hidden;
+    background:linear-gradient(var(--surface),var(--surface)) padding-box,
+               linear-gradient(120deg, #4ee6cb, #8b7fff, #ff7a52) border-box;
+    border:1.5px solid transparent;
+    padding:16px 18px; display:flex; align-items:center; gap:12px;
+  }
+  .formulas-banner-tag{
+    flex-shrink:0; font-family:'JetBrains Mono', monospace; font-size:9.5px; letter-spacing:0.06em;
+    text-transform:uppercase; color:var(--plasma); border:1px solid rgba(255,122,82,0.4);
+    border-radius:100px; padding:4px 9px;
+  }
+  .formulas-banner-title{
+    flex:1 1 auto; font-family:'Inter', sans-serif; font-size:0.86rem; font-weight:600; color:var(--ghost); line-height:1.35;
+  }
+  .formulas-banner-arrow{ flex-shrink:0; color:var(--teal); font-family:'JetBrains Mono', monospace; font-size:16px; transition:transform .2s ease; }
+  .formulas-banner:hover .formulas-banner-arrow{ transform:translateX(3px); }
+  @media (max-width:500px){
+    .formulas-banner{ max-width:100%; }
+    .formulas-banner-inner{ flex-wrap:wrap; }
+  }
+
   /* ---------- section shell ---------- */
   section{ padding:min(14vw,160px) 6vw; position:relative; }
   .section-head{ max-width:64ch; margin-bottom:48px; }
@@ -896,6 +928,15 @@
         <span class="compat-chip">Grok</span>
       </div>
       <a href="/claude-vs-chatgpt-vs-gemini-vs-grok/" class="compat-compare-link">¿Cuál elegir? →</a>
+
+      <a href="/formulas-avanzadas/" class="formulas-banner">
+        <div class="formulas-banner-glow"></div>
+        <div class="formulas-banner-inner">
+          <span class="formulas-banner-tag">Nivel avanzado</span>
+          <span class="formulas-banner-title">5 fórmulas de prompt más allá de "actúa como experto"</span>
+          <span class="formulas-banner-arrow">→</span>
+        </div>
+      </a>
     </div>
 
     <div class="launch-scene" aria-hidden="true">
