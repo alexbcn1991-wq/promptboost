@@ -43,7 +43,7 @@
 }
 </script>
 
-<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;800;900&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q03596FGTP"></script>
 <script>
@@ -54,97 +54,185 @@
 </script>
 
 <style>
-  :root{
-    --void:#050711; --depth:#0b0e1c; --surface:#10142a; --surface-2:#161b38;
-    --teal:#4ee6cb; --violet:#8b7fff; --plasma:#ff7a52; --ghost:#e8ecf7; --mist:#8890b0;
-    --line: rgba(232,236,247,0.09); --accent:#8b7fff;
-  }
-  *{margin:0;padding:0;box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  body{ background:var(--void); color:var(--ghost); font-family:'Inter',sans-serif; line-height:1.6; }
-  a{ color:var(--teal); }
-  .wrap{ max-width:760px; margin:0 auto; padding:0 6vw; }
-  nav{ position:fixed; top:0; left:0; right:0; z-index:100; padding:20px 6vw; display:flex; align-items:center; justify-content:space-between; background:rgba(5,7,17,0.82); backdrop-filter:blur(10px); border-bottom:1px solid var(--line); }
-  .brand{ font-family:'JetBrains Mono', monospace; font-size:13px; letter-spacing:0.12em; color:var(--ghost); text-decoration:none; display:flex; align-items:center; gap:9px; }
-  .brand span{ color:var(--teal); }
-  .brand-mark{ width:20px; height:20px; }
-  .nav-back{ font-family:'JetBrains Mono', monospace; font-size:12px; color:var(--mist); text-decoration:none; letter-spacing:0.04em; }
-  .nav-back:hover{ color:var(--teal); }
-  main.wrap{ padding:150px 6vw 130px; }
-  .eyebrow{ font-family:'JetBrains Mono', monospace; font-size:12px; letter-spacing:0.2em; color:var(--accent); text-transform:uppercase; margin-bottom:18px; display:flex; align-items:center; gap:10px; }
-  .eyebrow-link{ color:inherit; text-decoration:none; border-bottom:1px solid transparent; transition:border-color .2s ease; }
-  .eyebrow-link:hover{ border-color:var(--accent); }
-  .eyebrow::before{ content:''; width:26px; height:1px; background:var(--accent); }
-  h1{ font-family:'Unbounded', sans-serif; font-weight:800; font-size:clamp(1.8rem, 4.5vw, 2.6rem); line-height:1.15; letter-spacing:-0.01em; margin-bottom:20px; }
-  .lede{ font-size:1.08rem; color:var(--mist); margin-bottom:44px; max-width:62ch; }
-  h2{ font-family:'Unbounded', sans-serif; font-weight:700; font-size:1.3rem; margin:52px 0 18px; color:var(--ghost); }
-  p{ margin-bottom:16px; color:var(--mist); max-width:66ch; }
-  p strong{ color:var(--ghost); font-weight:600; }
-  .prompt-card{ background:var(--surface); border:1px solid var(--accent); border-top:4px solid var(--accent); border-radius:12px; padding:28px 26px; margin:24px 0 12px; position:relative; }
-  .prompt-label{ font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.1em; color:var(--accent); text-transform:uppercase; margin-bottom:16px; }
-  .prompt-text{ font-family:'JetBrains Mono', monospace; font-size:0.92rem; line-height:1.75; color:var(--ghost); white-space:pre-wrap; }
-  .copy-btn{ margin-top:22px; font-family:'JetBrains Mono', monospace; font-size:12px; letter-spacing:0.08em; text-transform:uppercase; color:var(--void); background:var(--teal); border:none; padding:12px 24px; border-radius:100px; cursor:pointer; font-weight:600; transition:background .2s ease; }
-  .copy-btn:hover{ background:var(--ghost); }
-  .copy-btn.copied{ background:var(--plasma); }
-  ul.use-cases{ list-style:none; margin:0 0 20px; }
-  ul.use-cases li{ position:relative; padding-left:26px; margin-bottom:10px; color:var(--mist); max-width:62ch; }
-  ul.use-cases li::before{ content:''; position:absolute; left:0; top:8px; width:7px; height:7px; border-radius:50%; background:var(--teal); }
-  /* ---------- compare: antes/despues ---------- */
-  .compare{ display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--line); border:1px solid var(--line); border-radius:16px; overflow:hidden; margin:24px 0; }
-  .compare-col{ background:var(--depth); padding:26px; }
-  .compare-col.bad{ opacity:0.72; }
-  .compare-head{ display:flex; align-items:center; gap:10px; margin-bottom:18px; font-family:'JetBrains Mono', monospace; font-size:10.5px; letter-spacing:0.08em; text-transform:uppercase; }
-  .compare-col.bad .compare-head{ color:var(--mist); }
-  .compare-col.good .compare-head{ color:var(--teal); }
-  .compare-dot{ width:7px; height:7px; border-radius:50%; }
-  .compare-col.bad .compare-dot{ background:var(--mist); }
-  .compare-col.good .compare-dot{ background:var(--teal); box-shadow:0 0 8px var(--teal); }
-  .compare-label{ font-family:'JetBrains Mono', monospace; font-size:9.5px; color:var(--mist); text-transform:uppercase; letter-spacing:0.06em; margin-bottom:7px; }
-  .compare-prompt{ font-family:'JetBrains Mono', monospace; font-size:0.76rem; line-height:1.55; color:var(--ghost); background:var(--surface); border-radius:8px; padding:12px 14px; margin-bottom:18px; }
-  .compare-col.good .compare-prompt{ border-left:3px solid var(--teal); }
-  .compare-response{ font-size:0.82rem; line-height:1.6; color:var(--mist); }
-  .compare-col.good .compare-response{ color:var(--ghost); }
-  .compare-response strong{ color:var(--ghost); }
-  .compare-col.good .compare-response strong{ color:var(--teal); }
-  @media (max-width:640px){ .compare{ grid-template-columns:1fr; } }
+:root{
+  --pb-bg:#03091F; --pb-bg-secondary:#06133A; --pb-bg-surface:#081B4A; --pb-bg-surface-hover:#0D2864;
+  --pb-blue:#1689FF; --pb-blue-light:#36B8FF; --pb-cyan:#11D9EF;
+  --pb-purple:#733CFF; --pb-purple-light:#9B6CFF;
+  --pb-magenta:#FF19D4; --pb-pink:#FF5BE7;
+  --pb-green:#16C987;
+  --pb-white:#FFFFFF; --pb-text:#F4F7FF; --pb-text-secondary:#AAB9D8; --pb-text-muted:#808FB1;
+  --pb-border:rgba(255,255,255,.10); --pb-border-strong:rgba(255,255,255,.18); --pb-border-blue:rgba(22,137,255,.35);
+  --pb-radius-sm:8px; --pb-radius-md:12px; --pb-radius-lg:18px;
+  --accent: #8b7fff;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--pb-bg);color:var(--pb-text);font-family:Inter,ui-sans-serif,system-ui,sans-serif;line-height:1.65}
+a{text-decoration:none;color:var(--pb-cyan)}
+.container{width:min(1140px,calc(100% - 64px));margin:auto}
+.wrap{max-width:720px;margin:0 auto}
 
-  .related{ display:grid; grid-template-columns:repeat(auto-fit, minmax(200px,1fr)); gap:1px; border:1px solid var(--line); background:transparent; margin-top:16px; }
-  .related a{ display:block; background:var(--depth); border:1px solid var(--line); padding:18px 20px; text-decoration:none; font-family:'Unbounded', sans-serif; font-weight:600; font-size:0.92rem; color:var(--ghost); transition:background .2s ease; }
-  .related a:hover{ background:var(--surface); color:var(--teal); }
-  .related a span{ display:block; font-family:'JetBrains Mono',monospace; font-size:10.5px; color:var(--mist); font-weight:400; margin-top:4px; }
-  .faq-item{ margin-bottom:22px; }
-  .faq-item h3{ font-size:1rem; color:var(--ghost); margin-bottom:8px; font-family:'Inter',sans-serif; font-weight:600; }
-  .faq-item p{ font-size:0.92rem; }
-  .cta-box{ margin-top:56px; padding:32px 30px; border-radius:16px; background:linear-gradient(var(--surface),var(--surface)) padding-box, linear-gradient(120deg, #4ee6cb, #8b7fff, #ff7a52) border-box; border:1.5px solid transparent; text-align:center; }
-  .cta-box p{ margin-bottom:18px; color:var(--ghost); max-width:none; }
-  .cta-btn{ display:inline-block; font-family:'JetBrains Mono', monospace; font-size:13px; letter-spacing:0.06em; text-transform:uppercase; font-weight:600; text-decoration:none; color:var(--void); background:var(--teal); padding:14px 28px; border-radius:100px; }
-  footer{ padding:70px 6vw 40px; border-top:1px solid var(--line); text-align:center; font-family:'JetBrains Mono', monospace; font-size:11px; color:var(--mist); }
-  footer a{ color:var(--mist); }
+.topbar{height:72px;background:#06163f;color:#fff;display:flex;align-items:center;position:sticky;top:0;z-index:50;border-bottom:1px solid var(--pb-border)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:24px;width:100%}
+.logo{font-size:19px;font-weight:950;letter-spacing:-.5px;white-space:nowrap;display:flex;align-items:center;gap:6px}
+.logo .b{color:var(--pb-cyan)}
+.navlinks{display:flex;align-items:center;gap:24px;font-size:13px;color:#e4ebff}
+.navlinks a:hover{color:#fff}
+.navlinks a.active{color:#fff;border-bottom:2px solid var(--pb-cyan);padding-bottom:8px}
+.nav-right{display:flex;align-items:center;gap:12px}
+.search-ic{width:44px;height:44px;border:1px solid #ffffff30;border-radius:var(--pb-radius-sm);display:grid;place-items:center;font-size:16px;color:#fff}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:11px 18px;border-radius:var(--pb-radius-md);font-weight:800;border:1px solid transparent;cursor:pointer;font-size:13.5px;transition:transform .15s ease,filter .15s ease}
+.btn-primary{color:#fff;background:linear-gradient(135deg,var(--pb-blue),var(--pb-purple),var(--pb-magenta))}
+.btn-primary:hover{filter:brightness(1.1);transform:translateY(-1px)}
+
+a:focus-visible, button:focus-visible, .btn:focus-visible, .search-ic:focus-visible, .cop:focus-visible, .pack:focus-visible, .cat-chip:focus-visible, .prompt-card:focus-visible, .related a:focus-visible {
+  outline: 2px solid var(--pb-cyan); outline-offset: 2px; border-radius: 6px;
+}
+@media(max-width:900px){.navlinks{display:none}}
+@media(max-width:560px){
+  .nav{gap:8px}
+  .logo{font-size:15px}
+  .btn{padding:9px 13px;font-size:12px}
+  .nav-right{gap:8px}
+}
+
+main{padding:48px 0 80px}
+.breadcrumb{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:12.5px;color:var(--pb-text-muted);margin-bottom:22px}
+.breadcrumb a{color:var(--pb-text-muted)}
+.breadcrumb a:hover{color:var(--pb-cyan)}
+.breadcrumb .current{color:var(--pb-text-secondary)}
+.breadcrumb .sep{opacity:.5}
+
+.eyebrow{
+  display:inline-flex;align-items:center;gap:8px;padding:6px 12px;border-radius:100px;
+  background:color-mix(in srgb, var(--accent) 14%, transparent);border:1px solid color-mix(in srgb, var(--accent) 40%, transparent);
+  font-size:11.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--accent);
+  margin-bottom:20px;
+}
+.eyebrow a{color:inherit}
+.eyebrow a:hover{text-decoration:underline}
+
+h1{font-size:clamp(26px,4vw,38px);font-weight:800;letter-spacing:-.8px;line-height:1.15;margin-bottom:16px;color:var(--pb-white)}
+.lede{font-size:16px;color:var(--pb-text-secondary);max-width:66ch;margin-bottom:40px}
+
+h2{font-size:21px;font-weight:800;color:var(--pb-white);margin:44px 0 16px;letter-spacing:-.3px}
+p{margin-bottom:14px;color:var(--pb-text-secondary);max-width:68ch}
+p strong{color:var(--pb-white);font-weight:600}
+
+ul.use-cases{list-style:none;margin:0 0 12px}
+ul.use-cases li{position:relative;padding-left:24px;margin-bottom:9px;color:var(--pb-text-secondary);max-width:64ch}
+ul.use-cases li::before{content:'';position:absolute;left:0;top:8px;width:6px;height:6px;border-radius:50%;background:var(--pb-cyan)}
+
+.prompt-card{
+  background:var(--pb-bg);border:1px solid var(--pb-border-blue);border-radius:var(--pb-radius-lg);
+  padding:0;margin:20px 0 14px;box-shadow:0 0 40px rgba(22,137,255,.14),0 20px 60px rgba(0,0,0,.35);
+  overflow:hidden;
+}
+.prompt-card-head{
+  display:flex;align-items:center;gap:10px;padding:16px 22px;
+  background:var(--pb-bg-surface);border-bottom:1px solid var(--pb-border-blue);
+}
+.prompt-card-dots{display:flex;gap:6px}
+.prompt-card-dots span{width:9px;height:9px;border-radius:50%;background:var(--pb-border-strong)}
+.prompt-label{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--pb-blue-light)}
+.prompt-card-body{padding:24px 24px 26px}
+.prompt-text{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:14px;line-height:1.7;color:var(--pb-text);white-space:pre-wrap}
+.copy-btn{
+  margin-top:22px;font-size:13.5px;letter-spacing:.02em;color:#fff;
+  background:linear-gradient(135deg,var(--pb-blue),var(--pb-purple),var(--pb-magenta));
+  border:none;padding:13px 26px;border-radius:var(--pb-radius-md);cursor:pointer;font-weight:800;
+  transition:transform .15s ease,filter .15s ease;box-shadow:0 8px 24px rgba(115,60,255,.25);
+}
+.copy-btn:hover{filter:brightness(1.1);transform:translateY(-1px)}
+.copy-btn.copied{background:var(--pb-green)}
+
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--pb-border);border:1px solid var(--pb-border);border-radius:var(--pb-radius-lg);overflow:hidden;margin:22px 0}
+.compare-col{background:var(--pb-bg-surface);padding:24px}
+.compare-col.bad{opacity:.68}
+.compare-head{display:flex;align-items:center;gap:9px;margin-bottom:16px;font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+.compare-col.bad .compare-head{color:var(--pb-text-muted)}
+.compare-col.good .compare-head{color:var(--pb-cyan)}
+.compare-dot{width:7px;height:7px;border-radius:50%}
+.compare-col.bad .compare-dot{background:var(--pb-text-muted)}
+.compare-col.good .compare-dot{background:var(--pb-cyan);box-shadow:0 0 8px var(--pb-cyan)}
+.compare-label{font-size:9.5px;font-weight:700;color:var(--pb-text-muted);text-transform:uppercase;letter-spacing:.05em;margin-bottom:7px}
+.compare-prompt{font-family:ui-monospace,monospace;font-size:12.5px;line-height:1.55;color:var(--pb-text);background:var(--pb-bg);border-radius:var(--pb-radius-sm);padding:11px 13px;margin-bottom:16px}
+.compare-col.good .compare-prompt{border-left:3px solid var(--pb-cyan)}
+.compare-response{font-size:13px;line-height:1.6;color:var(--pb-text-secondary)}
+.compare-col.good .compare-response{color:var(--pb-text)}
+.compare-response strong{color:var(--pb-white)}
+.compare-col.good .compare-response strong{color:var(--pb-cyan)}
+@media(max-width:640px){.compare{grid-template-columns:1fr}}
+
+.diff-table{width:100%;border-collapse:collapse;margin:18px 0 36px}
+.diff-table th{text-align:left;font-size:10px;font-weight:700;letter-spacing:.05em;color:var(--pb-text-muted);text-transform:uppercase;padding:10px 12px;border-bottom:1px solid var(--pb-border)}
+.diff-table td{padding:13px 12px;border-bottom:1px solid var(--pb-border);font-size:13px;vertical-align:top;color:var(--pb-text-secondary)}
+.diff-table td:first-child{color:var(--pb-white);font-weight:600;width:34%}
+.diff-table td.good-cell{color:var(--pb-cyan)}
+.diff-table td.bad-cell{color:var(--pb-text-secondary)}
+
+.related{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,260px));gap:10px;margin-top:14px}
+.related a{
+  display:block;background:rgba(8,27,74,.80);border:1px solid var(--pb-border);border-radius:var(--pb-radius-md);
+  padding:16px 18px;font-weight:700;font-size:14px;color:var(--pb-white);transition:border-color .15s ease,transform .15s ease;
+}
+.related a:hover{border-color:var(--pb-border-strong);transform:translateY(-2px);color:var(--pb-cyan)}
+.related a span{display:block;font-size:11px;color:var(--pb-text-muted);font-weight:500;margin-top:4px}
+
+.faq-item{margin-bottom:20px}
+.faq-item h3{font-size:15px;font-weight:700;color:var(--pb-white);margin-bottom:6px}
+.faq-item p{font-size:13.5px}
+
+.cta-box{
+  margin-top:52px;padding:32px 28px;border-radius:var(--pb-radius-lg);text-align:center;
+  background:linear-gradient(var(--pb-bg-secondary),var(--pb-bg-secondary)) padding-box,
+             linear-gradient(135deg,var(--pb-blue),var(--pb-purple),var(--pb-magenta)) border-box;
+  border:1.5px solid transparent;
+}
+.cta-box p{color:var(--pb-text);margin-bottom:16px;max-width:none;font-size:14.5px}
+
+footer{background:#06143d;color:var(--pb-text-secondary);padding:30px 0}
+.foot{display:flex;justify-content:space-between;gap:20px;align-items:center;font-size:12.5px;flex-wrap:wrap}
+.footlinks{display:flex;gap:16px;flex-wrap:wrap}
+.footlinks a{color:var(--pb-text-secondary)}
+.footlinks a:hover{color:#fff}
+
+@media(max-width:640px){ .container{ width:min(1140px,calc(100% - 40px)); } }
 </style>
 </head>
 <body>
 
-<nav>
-  <a href="/" class="brand">
-    <svg class="brand-mark" viewBox="0 0 480 480" aria-hidden="true">
+<div class="topbar"><div class="container nav">
+  <div class="logo"><svg width="22" height="22" viewBox="0 0 480 480" aria-hidden="true">
       <defs>
-        <linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#4ee6cb"/><stop offset="100%" stop-color="#1f9384"/></linearGradient>
-        <linearGradient id="g2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#8b7fff"/><stop offset="100%" stop-color="#5b3df0"/></linearGradient>
+        <linearGradient id="navG1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#4ee6cb"/><stop offset="100%" stop-color="#1f9384"/></linearGradient>
+        <linearGradient id="navG2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#8b7fff"/><stop offset="100%" stop-color="#5b3df0"/></linearGradient>
       </defs>
       <g transform="rotate(45 240 240)">
-        <path d="M480 240a240 240 0 0 0-240 240 240 240 0 0 0 240-240Z" fill="url(#g1)"/>
-        <path d="M240 0A240 240 0 0 0 0 240 240 240 0 0 0 240 0Z" fill="url(#g1)" opacity="0.55"/>
-        <path d="M480 240A240 240 0 0 0 240 0a240 240 0 0 0 240 240Z" fill="url(#g2)"/>
-        <path d="M240 480A240 240 0 0 0 0 240a240 240 0 0 0 240 240Z" fill="url(#g2)" opacity="0.55"/>
+        <path d="M480 240a240 240 0 0 0-240 240 240 240 0 0 0 240-240Z" fill="url(#navG1)"/>
+        <path d="M240 0A240 240 0 0 0 0 240 240 240 0 0 0 240 0Z" fill="url(#navG1)" opacity="0.55"/>
+        <path d="M480 240A240 240 0 0 0 240 0a240 240 0 0 0 240 240Z" fill="url(#navG2)"/>
+        <path d="M240 480A240 240 0 0 0 0 240a240 240 0 0 0 240 240Z" fill="url(#navG2)" opacity="0.55"/>
       </g>
-    </svg>
-    PROMPT<span>·</span>BOOST
-  </a>
-  <a href="/prompts/" class="nav-back">← Ver los 46 prompts</a>
-</nav>
+    </svg> PROMPT<span class="b">BOOST</span>.APP</div>
+  <div class="navlinks">
+    <a href="/">Inicio</a>
+    <a href="/prompts/" class="active">Categorías</a>
+    <a href="/guia-de-prompt-engineering/">Guías</a>
+    <a href="/recursos/">Recursos</a>
+  </div>
+  <div class="nav-right">
+    <a class="search-ic" href="/prompts/" aria-label="Buscar">🔍</a>
+    <a class="btn btn-primary" href="/prompts/">Empieza gratis →</a>
+  </div>
+</div></div>
 
-<main class="wrap">
-  <div class="eyebrow"><a href="/categoria/escritura/" class="eyebrow-link">Escritura</a> · Explicación</div>
+<main><div class="container"><div class="wrap">
+  <div class="breadcrumb">
+    <a href="/">Inicio</a> <span class="sep">/</span> <a href="/prompts/">Biblioteca</a> <span class="sep">/</span> <a href="/categoria/escritura/">Escritura</a> <span class="sep">/</span> <span class="current">Explicación en capas de profundidad</span>
+  </div>
+
+  <div class="eyebrow"><a href="/categoria/escritura/">Escritura</a> · Explicación</div>
   <h1>Explicación en capas de profundidad: el prompt de IA que puedes copiar hoy</h1>
   <p class="lede">Genera tres niveles de la misma explicación —simple, intermedio, técnico— útil para preparar materiales que sirvan a públicos distintos. Funciona igual en Claude, ChatGPT, Gemini y Grok — copia el texto y sustituye lo que va entre corchetes por tu caso real.</p>
 
@@ -157,20 +245,26 @@
 
   <h2>El prompt</h2>
   <div class="prompt-card">
-    <div class="prompt-label">Cópialo tal cual · Funciona en Claude, ChatGPT, Gemini y Grok</div>
-    <div class="prompt-text" id="promptText">Explica el siguiente concepto en tres niveles de profundidad, cada uno en su propia sección:
+    <div class="prompt-card-head">
+      <div class="prompt-card-dots"><span></span><span></span><span></span></div>
+      <div class="prompt-label">Cópialo tal cual · Funciona en Claude, ChatGPT, Gemini y Grok</div>
+    </div>
+    <div class="prompt-card-body">
+      <div class="prompt-text" id="promptText">Explica el siguiente concepto en tres niveles de profundidad, cada uno en su propia sección:
 
 Nivel 1 — Como si tuviera que explicárselo a alguien sin conocimientos previos (2-3 frases).
 Nivel 2 — Con el detalle que esperaría alguien del sector, sin jerga excesiva (1 párrafo).
 Nivel 3 — Con precisión técnica completa, incluyendo matices y excepciones.
 
 Concepto: [tu concepto o pregunta]</div>
-    <button class="copy-btn" id="copyBtn" type="button">Copiar prompt</button>
+      <button class="copy-btn" id="copyBtn" type="button">Copiar prompt</button>
+    </div>
   </div>
 
-  
   <h2>Por qué funciona (la estructura detrás)</h2>
-  <p>Este prompt sigue un patrón de 5 bloques que se repite en toda la biblioteca de PromptBoost: <strong>rol</strong> (quién es la IA), <strong>contexto</strong> (en qué se especializa), <strong>tu situación</strong> (qué necesita saber de ti), <strong>formato de entrega</strong> (qué estructura exacta quieres) y <strong>arranque</strong> (el tono y lo que no quieres). Puedes ver la metodología completa, con una plantilla en blanco para construir tus propios prompts, en <a href="/#anatomy">la web de PromptBoost</a>.</p>
+  <p>Este prompt sigue un patrón de 5 bloques que se repite en toda la biblioteca de PromptBoost: <strong>rol</strong> (quién es la IA), <strong>contexto</strong> (en qué se especializa), <strong>tu situación</strong> (qué necesita saber de ti), <strong>formato de entrega</strong> (qué estructura exacta quieres) y <strong>arranque</strong> (el tono y lo que no quieres). Puedes ver la metodología completa, con una plantilla en blanco para construir tus propios prompts, en <a href="/guia-de-prompt-engineering/">la guía de PromptBoost</a>.</p>
+
+  
 
   <h2>Prompts relacionados</h2>
   <div class="related">
@@ -195,13 +289,31 @@ Concepto: [tu concepto o pregunta]</div>
 
   <div class="cta-box">
     <p>Este es 1 de los 46 prompts gratuitos de la biblioteca — organizados por categoría, con buscador y filtros.</p>
-    <a href="/prompts/" class="cta-btn">Ver la biblioteca completa →</a>
+    <a href="/prompts/" class="btn btn-primary">Ver la biblioteca completa →</a>
   </div>
-</main>
+</div></div></main>
 
-<footer>
-  <p>© 2026 PromptBoost · <a href="/">promptboost.app</a></p>
-</footer>
+<footer><div class="container foot">
+  <div><b style="font-size:15px;color:#fff"><svg width="18" height="18" viewBox="0 0 480 480" aria-hidden="true" style="vertical-align:-3px;margin-right:4px">
+      <defs>
+        <linearGradient id="footG1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#4ee6cb"/><stop offset="100%" stop-color="#1f9384"/></linearGradient>
+        <linearGradient id="footG2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#8b7fff"/><stop offset="100%" stop-color="#5b3df0"/></linearGradient>
+      </defs>
+      <g transform="rotate(45 240 240)">
+        <path d="M480 240a240 240 0 0 0-240 240 240 240 0 0 0 240-240Z" fill="url(#footG1)"/>
+        <path d="M240 0A240 240 0 0 0 0 240 240 240 0 0 0 240 0Z" fill="url(#footG1)" opacity="0.55"/>
+        <path d="M480 240A240 240 0 0 0 240 0a240 240 0 0 0 240 240Z" fill="url(#footG2)"/>
+        <path d="M240 480A240 240 0 0 0 0 240a240 240 0 0 0 240 240Z" fill="url(#footG2)" opacity="0.55"/>
+      </g>
+    </svg>PROMPTBOOST.APP</b></div>
+  <div class="footlinks">
+    <a href="/prompts/">Biblioteca</a>
+    <a href="/glosario/">Glosario</a>
+    <a href="/recursos/">Recursos</a>
+    <a href="/guia-de-prompt-engineering/">Guía completa</a>
+  </div>
+  <div>© 2026 PromptBoost</div>
+</div></footer>
 
 <script>
 document.getElementById('copyBtn').addEventListener('click', function(){
