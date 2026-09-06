@@ -459,16 +459,15 @@ footer{background:#04112f;color:#a9b9d8;padding:27px 0}
 
 <script>
 /* ==========================================================
-   CHECKOUT — dejar preparado para conectar el enlace real.
-   No se inventa ninguna URL de pago.
+   CHECKOUT — conectado al producto real publicado en Gumroad.
    ========================================================== */
-const GUMROAD_URL_SUPERPROMPTS = null;
+const GUMROAD_URL_SUPERPROMPTS = 'https://alexworks8.gumroad.com/l/nqqlq?wanted=true';
 
 document.querySelectorAll('.buy-btn').forEach(btn=>{
   if(GUMROAD_URL_SUPERPROMPTS){
     btn.href=GUMROAD_URL_SUPERPROMPTS;
     btn.target='_blank';
-    btn.rel='noopener';
+    btn.rel='noopener noreferrer';
   }else{
     btn.href='#comprar';
     btn.addEventListener('click',e=>{
