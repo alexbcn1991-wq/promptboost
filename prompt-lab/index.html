@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prompt Lab — Convierte tu idea en un prompt | PromptBoost</title>
+<meta name="description" content="Prompt Lab: describe lo que quieres conseguir y obtén un prompt estructurado y listo para usar en ChatGPT, Claude, Gemini o Grok.">
+<link rel="canonical" href="https://promptboost.app/prompt-lab/">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://promptboost.app/prompt-lab/">
+<meta property="og:title" content="Prompt Lab | PromptBoost">
+<meta property="og:description" content="Describe lo que quieres conseguir y Prompt Lab te ayuda a convertir tu idea en un prompt listo para usar.">
+<meta property="og:locale" content="es_ES">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="shortcut icon" href="/favicon.ico">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Q03596FGTP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-Q03596FGTP');
+</script>
+
+<style>
+:root{
+  --pb-bg:#03091F; --pb-bg-secondary:#06133A; --pb-bg-surface:#081B4A; --pb-bg-surface-hover:#0D2864;
+  --pb-blue:#1689FF; --pb-blue-light:#36B8FF; --pb-cyan:#11D9EF;
+  --pb-purple:#733CFF; --pb-purple-light:#9B6CFF;
+  --pb-magenta:#FF19D4; --pb-pink:#FF5BE7;
+  --pb-green:#16C987;
+  --pb-white:#FFFFFF; --pb-text:#F4F7FF; --pb-text-secondary:#AAB9D8; --pb-text-muted:#808FB1;
+  --pb-border:rgba(255,255,255,.10); --pb-border-strong:rgba(255,255,255,.18); --pb-border-blue:rgba(22,137,255,.35);
+  --pb-radius-sm:8px; --pb-radius-md:12px; --pb-radius-lg:18px;
+  --ink:#0b1330; --muted:#5d6d91; --line:#e2e8f5; --soft:#f5f8ff;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:#fff;color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,sans-serif;line-height:1.6}
+a{text-decoration:none;color:inherit}
+.container{width:min(1140px,calc(100% - 64px));margin:auto}
+
+/* ===== HEADER MAESTRO (identico al resto del sitio) ===== */
+.topbar{height:72px;background:#06163f;color:#fff;display:flex;align-items:center;position:sticky;top:0;z-index:50}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:24px}
+.logo{font-size:21px;font-weight:950;letter-spacing:-.6px;white-space:nowrap;color:#fff;display:block}
+.logo .b{color:#11d9ef}
+.tagline{display:block;color:#28d9ee;font-size:11px;font-weight:700;letter-spacing:.2px;margin-top:1px}
+.navlinks{display:flex;align-items:center;gap:26px;font-size:13px;color:#e4ebff}
+.navlinks a{color:#e4ebff;text-decoration:none}
+.navlinks a:hover{color:#fff}
+.navlinks a.active{color:#fff;border-bottom:2px solid #20d9ee;padding-bottom:8px}
+.nav-right{display:flex;align-items:center;gap:14px}
+.nav-superventas{display:inline-flex;flex-direction:column;align-items:flex-start;gap:2px;padding:8px 16px;border-radius:14px;color:#fff;text-decoration:none;background:linear-gradient(100deg,#733CFF,#FF19D4,#08a8ff);box-shadow:0 7px 20px rgba(115,60,255,.28);border:1px solid rgba(255,255,255,.16);transition:transform .2s ease,box-shadow .2s ease;max-width:280px}
+.nav-superventas:hover{transform:translateY(-1px);box-shadow:0 10px 25px rgba(115,60,255,.38)}
+.nav-superventas-title{font-size:12.5px;font-weight:950;white-space:nowrap;line-height:1.2}
+.nav-superventas-sub{font-size:9.5px;font-weight:600;color:rgba(255,255,255,.88);line-height:1.25;white-space:normal}
+@media(max-width:900px){.navlinks{display:none}}
+@media(max-width:560px){
+  .topbar{height:auto;padding:12px 0}
+  .nav{flex-wrap:wrap;row-gap:10px}
+  .tagline{display:none}
+  .logo{font-size:16px}
+  .nav-right{gap:8px}
+  .nav-superventas{max-width:170px;padding:7px 11px}
+  .nav-superventas-title{font-size:11px}
+  .nav-superventas-sub{font-size:8.5px}
+}
+
+a:focus-visible, button:focus-visible, textarea:focus-visible { outline: 2px solid var(--pb-blue); outline-offset: 2px; }
+
+/* ===== hero ===== */
+.hero{background:radial-gradient(circle at 76% 30%,#173f9e 0,#0a205b 30%,#06163e 65%),linear-gradient(110deg,#06163f,#06133b);color:#fff;padding:52px 0 46px}
+.eyebrow{display:inline-flex;padding:7px 14px;border-radius:999px;background:linear-gradient(90deg,#733CFF,#FF19D4);font-size:11px;font-weight:900;letter-spacing:.04em;text-transform:uppercase;margin-bottom:16px}
+h1{font-size:clamp(32px,4.4vw,52px);line-height:1.02;letter-spacing:-1.6px;margin-bottom:14px;font-weight:900}
+.hero-lede{font-size:16px;color:#dce7ff;max-width:640px;margin-bottom:6px}
+.hero-lede strong{color:#fff}
+
+main{background:#fff}
+section{padding:min(7vw,64px) 0}
+.center{text-align:center}
+.kicker{font-size:11px;font-weight:900;color:var(--pb-purple);letter-spacing:.08em;text-transform:uppercase}
+.section-title{font-size:clamp(24px,3.2vw,34px);font-weight:900;letter-spacing:-1px;color:var(--ink);margin:10px 0 12px}
+.lead{max-width:640px;margin:0 auto;color:var(--muted);font-size:14.5px}
+
+/* ===== 3 pasos ===== */
+.steps3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:34px}
+.step3{background:var(--soft);border:1px solid var(--line);border-radius:16px;padding:24px}
+.step3 .n{font-size:12px;font-weight:900;color:var(--pb-purple);margin-bottom:10px}
+.step3 h3{font-size:16.5px;margin-bottom:8px;color:var(--ink)}
+.step3 p{font-size:13px;color:var(--muted);line-height:1.55}
+@media(max-width:800px){.steps3{grid-template-columns:1fr}}
+
+/* ===== compat (misma barra que home/super-ventas) ===== */
+.compat{background:#f7f9fd;border-bottom:1px solid #edf1f8;border-top:1px solid #edf1f8}
+.compat-inner{min-height:73px;display:flex;align-items:center;justify-content:center;gap:28px;flex-wrap:wrap}
+.compat-label{font-size:13px;color:#26447c;font-weight:600;padding-right:24px;border-right:1px solid #d9e0ee}
+.compat-brand{display:flex;align-items:center;gap:9px;font-weight:700;color:#14224a;font-size:16px}
+.compat-dot{width:29px;height:29px;border-radius:8px;display:grid;place-items:center;border:1px solid #d9e3f2;background:#fff;font-size:13px;font-weight:900}
+@media(max-width:720px){.compat-inner{gap:14px;padding:16px 0}.compat-label{border:0;padding:0 8px}.compat-brand{font-size:13px}.compat-dot{width:25px;height:25px}}
+
+/* ===== posibilidades (categorias reales) ===== */
+.uses-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:32px}
+.use-card{border:1px solid var(--line);border-radius:14px;padding:18px 16px;text-align:center;background:#fff;transition:transform .2s ease,box-shadow .2s ease}
+.use-card:hover{transform:translateY(-3px);box-shadow:0 12px 26px rgba(13,35,84,.1)}
+.use-card .ic{font-size:22px;margin-bottom:8px}
+.use-card b{display:block;font-size:13.5px;color:var(--ink)}
+@media(max-width:900px){.uses-grid{grid-template-columns:repeat(2,1fr)}}
+
+/* ===== ejemplo idea -> prompt ===== */
+.example-wrap{max-width:760px;margin:34px auto 0;display:grid;gap:14px}
+.example-box{border:1px solid var(--line);border-radius:14px;padding:18px 20px;background:#fff}
+.example-box .tag{font-size:10.5px;font-weight:900;letter-spacing:.06em;text-transform:uppercase;margin-bottom:8px}
+.example-in .tag{color:var(--muted)}
+.example-in p{font-size:14px;color:var(--ink)}
+.example-arrow{text-align:center;font-size:20px;color:var(--pb-purple)}
+.example-out{background:var(--pb-bg-secondary);border-color:transparent;color:#fff}
+.example-out .tag{color:var(--pb-cyan)}
+.example-out pre{white-space:pre-wrap;font:12.5px/1.6 ui-monospace,Menlo,monospace;color:#e6ecff;margin:0}
+
+/* ===== el generador real ===== */
+.lab-tool{max-width:640px;margin:34px auto 0;background:linear-gradient(145deg,#f8f7ff,#fff);border:1px solid var(--line);border-radius:18px;padding:26px}
+.lab-tool textarea{width:100%;height:80px;border:1px solid #dce5f5;border-radius:10px;padding:12px;resize:none;outline:0;font-size:14px;font-family:inherit;margin-bottom:14px}
+.lab-result{display:none;white-space:pre-wrap;background:#0b1330;color:#e6ecff;border-radius:10px;padding:14px;font:12.5px/1.6 ui-monospace,Menlo,monospace;margin-bottom:14px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:13px 20px;border-radius:13px;font-weight:900;border:1px solid transparent;cursor:pointer;font-size:14px}
+.btn-primary{color:#fff;background:linear-gradient(100deg,var(--pb-purple),var(--pb-magenta),#08a8ff);box-shadow:0 9px 25px #8b39ff38}
+.wide-btn{width:100%}
+
+/* ===== cta final ===== */
+.final{padding:70px 0;background:linear-gradient(135deg,#07163f,#0d2d6c);color:#fff;text-align:center}
+.final h2{font-size:clamp(24px,3.4vw,36px);letter-spacing:-1px;margin-bottom:14px}
+.final p{color:#c8d6f2;max-width:560px;margin:0 auto 24px}
+
+/* ===== footer real ===== */
+footer{background:#06143d;color:var(--pb-text-secondary);padding:30px 0}
+.foot{display:flex;justify-content:space-between;gap:20px;align-items:center;font-size:12.5px;flex-wrap:wrap}
+.footlinks{display:flex;gap:16px;flex-wrap:wrap}
+.footlinks a{color:var(--pb-text-secondary)}
+.footlinks a:hover{color:#fff}
+
+@media(max-width:640px){ .container{width:min(1140px,calc(100% - 40px))} }
+</style>
+</head>
+<body>
+
+<div class="topbar"><div class="container nav">
+  <div class="logo"><svg width="22" height="22" viewBox="0 0 480 480" aria-hidden="true" style="vertical-align:-5px;margin-right:2px">
+      <defs>
+        <linearGradient id="navG1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#4ee6cb"/><stop offset="100%" stop-color="#1f9384"/></linearGradient>
+        <linearGradient id="navG2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#8b7fff"/><stop offset="100%" stop-color="#5b3df0"/></linearGradient>
+      </defs>
+      <g transform="rotate(45 240 240)">
+        <path d="M480 240a240 240 0 0 0-240 240 240 240 0 0 0 240-240Z" fill="url(#navG1)"/>
+        <path d="M240 0A240 240 0 0 0 0 240 240 240 0 0 0 240 0Z" fill="url(#navG1)" opacity="0.55"/>
+        <path d="M480 240A240 240 0 0 0 240 0a240 240 0 0 0 240 240Z" fill="url(#navG2)"/>
+        <path d="M240 480A240 240 0 0 0 0 240a240 240 0 0 0 240 240Z" fill="url(#navG2)" opacity="0.55"/>
+      </g>
+    </svg> PROMPT<span class="b">BOOST</span>.APP<span class="tagline">Ideas. Prompts. Mejores resultados.</span></div>
+  <div class="navlinks">
+    <a href="/">Inicio</a>
+    <a href="/prompts/">Categorías</a>
+    <a class="active" href="/prompt-lab/">Prompt Lab</a>
+    <a href="/guia-de-prompt-engineering/">Guías</a>
+    <a href="/recursos/">Recursos</a>
+  </div>
+  <div class="nav-right">
+    <a href="/super-ventas/" class="nav-superventas">
+      <span class="nav-superventas-title">🔥 SUPER VENTAS</span>
+      <span class="nav-superventas-sub">El pack de prompts que te ahorra horas de trabajo con ChatGPT</span>
+    </a>
+  </div>
+</div></div>
+
+<main>
+
+<section class="hero"><div class="container">
+  <span class="eyebrow">⚗️ Prompt Lab</span>
+  <h1>Tu punto de partida para crear prompts a medida.</h1>
+  <p class="hero-lede">Cuéntale qué quieres conseguir y construye una instrucción mucho más clara, completa y útil para trabajar con IA. <strong>Sin registro, sin coste.</strong></p>
+</div></section>
+
+<div class="compat">
+  <div class="container compat-inner">
+    <span class="compat-label">Funciona con:</span>
+    <span class="compat-brand"><span class="compat-dot">◎</span>ChatGPT</span>
+    <span class="compat-brand"><span class="compat-dot">✳</span>Claude</span>
+    <span class="compat-brand"><span class="compat-dot">✦</span>Gemini</span>
+    <span class="compat-brand"><span class="compat-dot">◉</span>Grok</span>
+  </div>
+</div>
+
+<section><div class="container center">
+  <span class="kicker">Cómo funciona</span>
+  <h2 class="section-title">De una idea a un prompt, en 3 pasos</h2>
+  <div class="steps3">
+    <div class="step3"><div class="n">01 — CUÉNTALE QUÉ NECESITAS</div><h3>Describe tu idea</h3><p>Explica con tus propias palabras lo que quieres conseguir. No hace falta que sepas cómo pedirlo bien.</p></div>
+    <div class="step3"><div class="n">02 — DEFINE EL RESULTADO</div><h3>Prompt Lab lo estructura</h3><p>Convierte tu idea en un prompt con objetivo, contexto y formato claros, listo para que la IA lo entienda mejor.</p></div>
+    <div class="step3"><div class="n">03 — COPIA Y UTILIZA</div><h3>Llévatelo donde quieras</h3><p>Obtén un prompt listo para copiar y usar en ChatGPT, Claude, Gemini, Grok u otras herramientas compatibles.</p></div>
+  </div>
+</div></section>
+
+<section class="soft" style="background:var(--soft)"><div class="container center">
+  <span class="kicker">Posibilidades</span>
+  <h2 class="section-title">¿Para qué puedes usarlo?</h2>
+  <p class="lead">Las mismas categorías que ya organizan la biblioteca de PromptBoost.</p>
+  <div class="uses-grid">
+    <a class="use-card" href="/categoria/escritura/"><div class="ic">✍️</div><b>Escritura</b></a>
+    <a class="use-card" href="/categoria/marketing/"><div class="ic">📣</div><b>Marketing</b></a>
+    <a class="use-card" href="/categoria/negocio/"><div class="ic">💼</div><b>Negocio</b></a>
+    <a class="use-card" href="/categoria/codigo/"><div class="ic">💻</div><b>Código</b></a>
+    <a class="use-card" href="/categoria/aprendizaje/"><div class="ic">🧠</div><b>Aprendizaje</b></a>
+    <a class="use-card" href="/categoria/decisiones/"><div class="ic">📊</div><b>Decisiones</b></a>
+    <a class="use-card" href="/categoria/productividad/"><div class="ic">⚡</div><b>Productividad</b></a>
+    <a class="use-card" href="/categoria/contrata-a-tu-experto/"><div class="ic">🎯</div><b>Contrata a tu experto</b></a>
+  </div>
+</div></section>
+
+<section><div class="container center">
+  <span class="kicker">Un ejemplo real</span>
+  <h2 class="section-title">De una idea a un prompt</h2>
+  <div class="example-wrap">
+    <div class="example-box example-in"><div class="tag">Tú escribes</div><p>Quiero lanzar una tienda online de camisetas</p></div>
+    <div class="example-arrow">↓</div>
+    <div class="example-box example-out"><div class="tag">Prompt Lab lo convierte en</div><pre>Actúa como un experto en el objetivo que quiero conseguir.
+
+OBJETIVO:
+Quiero lanzar una tienda online de camisetas
+
+Antes de responder, pregúntame lo que necesites saber. Después dame un plan estructurado, específico y accionable — nada de consejos genéricos.</pre></div>
+  </div>
+</div></section>
+
+<section class="soft" style="background:var(--soft)" id="crear"><div class="container center">
+  <span class="kicker">Pruébalo ahora</span>
+  <h2 class="section-title">Crea tu prompt</h2>
+  <p class="lead">Convierte tu idea en un prompt estructurado, listo para copiar y usar — gratis, sin registro.</p>
+  <div class="lab-tool">
+    <textarea id="goal" placeholder="Ejemplo: Quiero lanzar una tienda online de camisetas..."></textarea>
+    <div id="labResult" class="lab-result"></div>
+    <button class="btn btn-primary wide-btn" onclick="makePrompt()">✨ Generar mi prompt →</button>
+  </div>
+</div></section>
+
+<section class="final"><div class="container">
+  <h2>¿Tienes una idea? Conviértela en un buen prompt.</h2>
+  <p>No necesitas saber cómo escribir el prompt perfecto. Empieza con tu idea y deja que Prompt Lab te ayude a estructurarla.</p>
+  <a class="btn btn-primary" href="#crear">Crear mi prompt →</a>
+</div></section>
+
+</main>
+
+<footer><div class="container foot">
+  <div><b style="font-size:15px;color:#fff"><svg width="18" height="18" viewBox="0 0 480 480" aria-hidden="true" style="vertical-align:-3px;margin-right:4px">
+      <defs>
+        <linearGradient id="footG1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#4ee6cb"/><stop offset="100%" stop-color="#1f9384"/></linearGradient>
+        <linearGradient id="footG2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#8b7fff"/><stop offset="100%" stop-color="#5b3df0"/></linearGradient>
+      </defs>
+      <g transform="rotate(45 240 240)">
+        <path d="M480 240a240 240 0 0 0-240 240 240 240 0 0 0 240-240Z" fill="url(#footG1)"/>
+        <path d="M240 0A240 240 0 0 0 0 240 240 240 0 0 0 240 0Z" fill="url(#footG1)" opacity="0.55"/>
+        <path d="M480 240A240 240 0 0 0 240 0a240 240 0 0 0 240 240Z" fill="url(#footG2)"/>
+        <path d="M240 480A240 240 0 0 0 0 240a240 240 0 0 0 240 240Z" fill="url(#footG2)" opacity="0.55"/>
+      </g>
+    </svg>PROMPTBOOST.APP</b></div>
+  <div class="footlinks">
+    <a href="/prompts/">Biblioteca</a>
+    <a href="/glosario/">Glosario</a>
+    <a href="/recursos/">Recursos</a>
+    <a href="/guia-de-prompt-engineering/">Guía completa</a>
+  </div>
+  <div>© 2026 PromptBoost</div>
+</div></footer>
+
+<script>
+function makePrompt(){
+ const g=document.getElementById('goal').value.trim();
+ const box=document.getElementById('labResult');
+ if(!g){alert('Escribe primero qué quieres conseguir.');return}
+ box.style.display='block';
+ box.textContent=`Actúa como un experto en el objetivo que quiero conseguir.
+
+OBJETIVO:
+${g}
+
+Antes de responder, pregúntame lo que necesites saber. Después dame un plan estructurado, específico y accionable — nada de consejos genéricos.`;
+}
+</script>
+
+</body>
+</html>
