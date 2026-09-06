@@ -182,8 +182,19 @@ img{max-width:100%;display:block}
 /* Preview */
 .preview{padding-top:28px}
 .preview-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:27px}
-.preview-img{width:100%;height:220px;object-fit:cover;object-position:top;display:block;border-bottom:1px solid var(--line)}
-.preview-card{border:1px solid var(--line);border-radius:10px;background:#fff;box-shadow:0 10px 24px rgba(13,35,84,.07);overflow:hidden}
+.preview-img{width:100%;height:220px;object-fit:cover;object-position:top;display:block;border-bottom:1px solid var(--line);transition:transform .35s ease;cursor:zoom-in}
+.preview-card{border:1px solid var(--line);border-radius:10px;background:#fff;box-shadow:0 10px 24px rgba(13,35,84,.07);overflow:hidden;transition:box-shadow .25s ease,transform .25s ease}
+.preview-card:hover{box-shadow:0 18px 36px rgba(13,35,84,.16);transform:translateY(-3px)}
+.preview-card:hover .preview-img{transform:scale(1.08)}
+.preview-card{position:relative}
+.preview-zoom-hint{position:absolute;top:10px;right:10px;width:30px;height:30px;border-radius:50%;background:rgba(11,19,48,.55);color:#fff;display:flex;align-items:center;justify-content:center;font-size:14px;opacity:0;transition:opacity .25s ease;pointer-events:none;z-index:2}
+.preview-card:hover .preview-zoom-hint{opacity:1}
+.preview-lightbox{position:fixed;inset:0;background:rgba(4,8,24,.86);z-index:200;display:none;align-items:center;justify-content:center;padding:4vh 4vw;backdrop-filter:blur(3px)}
+.preview-lightbox.open{display:flex}
+.preview-lightbox img{max-width:min(880px,92vw);max-height:92vh;border-radius:10px;box-shadow:0 30px 70px rgba(0,0,0,.5)}
+.preview-lightbox-close{position:absolute;top:22px;right:26px;width:42px;height:42px;border-radius:50%;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.3);color:#fff;font-size:20px;display:flex;align-items:center;justify-content:center;cursor:pointer}
+.preview-lightbox-close:hover{background:rgba(255,255,255,.22)}
+@media(max-width:520px){.preview-img{height:150px}}
 .preview-paper{aspect-ratio:.70;padding:18px 16px;background:#fff}
 .preview-paper.cover-paper{background:linear-gradient(160deg,#06102f,#0a2a69 66%,#07173e);color:#fff;display:flex;flex-direction:column;justify-content:space-between}
 .cover-mini-logo{font-size:8px;font-weight:900;color:#fff;letter-spacing:.04em}
@@ -351,27 +362,33 @@ footer{background:#04112f;color:#a9b9d8;padding:27px 0}
       </div>
       <div class="preview-grid">
         <article class="preview-card">
-          <img class="preview-img" src="/super-ventas/previews/preview-1-portada.jpg" alt="Portada del Prompt Master Guide 2026">
-          <div class="preview-footer">Portada · SUPERPROMPTS</div>
+          <img class="preview-img" src="/super-ventas/previews/preview-1-portada.jpg" alt="Índice completo de las 24 categorías" onclick="openPreviewLightbox('/super-ventas/previews/preview-1-portada.jpg','Índice completo de las 24 categorías')">
+          <span class="preview-zoom-hint">🔍</span>
+          <div class="preview-footer">Índice · 24 categorías</div>
         </article>
         <article class="preview-card">
-          <img class="preview-img" src="/super-ventas/previews/preview-2-imagen.jpg" alt="Página real: categoría Imagen y creatividad">
+          <img class="preview-img" src="/super-ventas/previews/preview-2-imagen.jpg" alt="Página real: categoría Imagen y creatividad" onclick="openPreviewLightbox('/super-ventas/previews/preview-2-imagen.jpg','Página real: categoría Imagen y creatividad')">
+          <span class="preview-zoom-hint">🔍</span>
           <div class="preview-footer">1 · Imagen y creatividad</div>
         </article>
         <article class="preview-card">
-          <img class="preview-img" src="/super-ventas/previews/preview-3-investigacion.jpg" alt="Página real: categoría Investigación">
+          <img class="preview-img" src="/super-ventas/previews/preview-3-investigacion.jpg" alt="Página real: categoría Investigación" onclick="openPreviewLightbox('/super-ventas/previews/preview-3-investigacion.jpg','Página real: categoría Investigación')">
+          <span class="preview-zoom-hint">🔍</span>
           <div class="preview-footer">2 · Investigación</div>
         </article>
         <article class="preview-card">
-          <img class="preview-img" src="/super-ventas/previews/preview-4-escritura.jpg" alt="Página real: categoría Escritura">
+          <img class="preview-img" src="/super-ventas/previews/preview-4-escritura.jpg" alt="Página real: categoría Escritura" onclick="openPreviewLightbox('/super-ventas/previews/preview-4-escritura.jpg','Página real: categoría Escritura')">
+          <span class="preview-zoom-hint">🔍</span>
           <div class="preview-footer">4 · Escritura</div>
         </article>
         <article class="preview-card">
-          <img class="preview-img" src="/super-ventas/previews/preview-5-superprompts.jpg" alt="Página real: los 10 Superprompts">
+          <img class="preview-img" src="/super-ventas/previews/preview-5-superprompts.jpg" alt="Página real: los 10 Superprompts" onclick="openPreviewLightbox('/super-ventas/previews/preview-5-superprompts.jpg','Página real: los 10 Superprompts')">
+          <span class="preview-zoom-hint">🔍</span>
           <div class="preview-footer">Superprompts</div>
         </article>
         <article class="preview-card">
-          <img class="preview-img" src="/super-ventas/previews/preview-6-formula.jpg" alt="Página real: la Fórmula Maestra">
+          <img class="preview-img" src="/super-ventas/previews/preview-6-formula.jpg" alt="Página real: la Fórmula Maestra" onclick="openPreviewLightbox('/super-ventas/previews/preview-6-formula.jpg','Página real: la Fórmula Maestra')">
+          <span class="preview-zoom-hint">🔍</span>
           <div class="preview-footer">La Fórmula Maestra</div>
         </article>
       </div>
@@ -432,6 +449,23 @@ document.querySelectorAll('.buy-btn').forEach(btn=>{
     });
   }
 });
+
+function openPreviewLightbox(src, alt){
+  const lb = document.getElementById('previewLightbox');
+  document.getElementById('previewLightboxImg').src = src;
+  document.getElementById('previewLightboxImg').alt = alt;
+  lb.classList.add('open');
+}
+function closePreviewLightbox(){
+  document.getElementById('previewLightbox').classList.remove('open');
+}
+document.addEventListener('keydown', e => { if(e.key === 'Escape') closePreviewLightbox(); });
 </script>
+
+<div class="preview-lightbox" id="previewLightbox" onclick="if(event.target===this) closePreviewLightbox()">
+  <button class="preview-lightbox-close" onclick="closePreviewLightbox()" aria-label="Cerrar">✕</button>
+  <img id="previewLightboxImg" src="" alt="">
+</div>
+
 </body>
 </html>
