@@ -93,6 +93,8 @@ a{text-decoration:none;color:inherit}button,input,textarea,select{font:inherit}
 .hero-inner{min-height:440px;display:grid;grid-template-columns:minmax(430px,46%) minmax(0,54%);align-items:center;padding:28px 0 34px;gap:8px}
 .badge{display:inline-flex;background:linear-gradient(90deg,#7b27c8,#5420ae);border-radius:999px;padding:7px 14px;font-size:12px;font-weight:950}
 h1{font-size:clamp(38px,4.6vw,64px);line-height:.98;letter-spacing:-2.5px;margin:16px 0}
+.hero-checklist{list-style:none;display:flex;flex-direction:column;gap:9px;margin:0 0 22px;max-width:480px}
+.hero-checklist li{font-size:15.5px;font-weight:600;color:#e3ebff;line-height:1.4}
 .grad{color:#16d7f2}.hero p{font-size:16.5px;line-height:1.4;color:#f3f6ff;max-width:480px}
 .hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin:18px 0 8px}
 .hero-note{font-size:12px;color:#d8e3ff}
@@ -317,6 +319,13 @@ a:focus-visible, button:focus-visible, .btn:focus-visible, .search:focus-visible
   .nav-superventas-title{font-size:11px}
   .nav-superventas-sub{font-size:8.5px}
 }
+/* ===== Compatible con (misma barra que /super-ventas/) ===== */
+.compat{background:#f7f9fd;border-bottom:1px solid #edf1f8}
+.compat-inner{min-height:73px;display:flex;align-items:center;justify-content:center;gap:28px;flex-wrap:wrap}
+.compat-label{font-size:13px;color:#26447c;font-weight:600;padding-right:24px;border-right:1px solid #d9e0ee}
+.compat-brand{display:flex;align-items:center;gap:9px;font-weight:700;color:#14224a;font-size:16px}
+.compat-dot{width:29px;height:29px;border-radius:8px;display:grid;place-items:center;border:1px solid #d9e3f2;background:#fff;font-size:13px;font-weight:900}
+@media(max-width:720px){.compat-inner{gap:14px;padding:16px 0}.compat-label{border:0;padding:0 8px}.compat-brand{font-size:13px}.compat-dot{width:25px;height:25px}}
 </style></head>
 <body>
 
@@ -352,11 +361,17 @@ a:focus-visible, button:focus-visible, .btn:focus-visible, .search:focus-visible
   <div>
     <span class="badge">MÁS QUE PROMPTS, RESULTADOS REALES</span>
     <h1>No busques<br>el prompt.<br><span class="grad">Busca el resultado.</span></h1>
-    <p>La biblioteca de prompts de IA: <strong>46 prompts gratis</strong>, listos para copiar y usar en Claude, Gemini, ChatGPT y Grok. Organizados por lo que hacen: razonar mejor, escribir con un estilo concreto, hacer marketing y contenido, trabajar con código, tomar decisiones, ser más productivo, aprender más rápido, avanzar en tu carrera y tus finanzas, o convocar al experto exacto que necesitas ahora mismo.</p>
+    <ul class="hero-checklist">
+      <li>✓ Para escribir mejor</li>
+      <li>✓ Para trabajar más rápido</li>
+      <li>✓ Para razonar y tomar decisiones</li>
+      <li>✓ Para crear contenido que funciona</li>
+      <li>✓ Para programar, analizar y aprender</li>
+      <li>✓ Para cualquier IA, no solo ChatGPT</li>
+    </ul>
     <div class="hero-actions">
       <a class="btn btn-primary" href="/prompts/">🚀 Explora todos los prompts</a>
     </div>
-    <div class="hero-note">Gratis. Sin registro. Compatible con Claude, Gemini, ChatGPT y Grok. <a href="/claude-vs-chatgpt-vs-gemini-vs-grok/">¿Cuál elegir? →</a></div>
   </div>
   <div class="robot-stage">
     <div class="float f1">💡 Razonamiento</div>
@@ -368,6 +383,16 @@ a:focus-visible, button:focus-visible, .btn:focus-visible, .search:focus-visible
     <div class="metrics"><div class="metric"><b>46</b><span>prompts listos</span></div><div class="metric"><b>13</b><span>categorías</span></div><div class="metric"><b>∞</b><span>posibilidades</span></div></div>
   </div>
 </div></header>
+
+<div class="compat">
+  <div class="container compat-inner">
+    <span class="compat-label">Compatible con:</span>
+    <span class="compat-brand"><span class="compat-dot">◎</span>ChatGPT</span>
+    <span class="compat-brand"><span class="compat-dot">✳</span>Claude</span>
+    <span class="compat-brand"><span class="compat-dot">✦</span>Gemini</span>
+    <span class="compat-brand"><span class="compat-dot">◉</span>Grok</span>
+  </div>
+</div>
 
 <section class="steps"><div class="container">
   <div class="steps-bar">

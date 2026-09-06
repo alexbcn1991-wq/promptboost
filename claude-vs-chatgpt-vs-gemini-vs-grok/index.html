@@ -72,7 +72,7 @@ a{text-decoration:none;color:var(--pb-cyan)}
 .wrap{max-width:800px;margin:0 auto}
 
 .topbar{height:72px;background:#06163f;color:#fff;display:flex;align-items:center;position:sticky;top:0;z-index:50;border-bottom:1px solid var(--pb-border)}
-.nav{display:flex;align-items:center;justify-content:space-between;gap:24px;width:100%}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:24px}
 .logo{font-size:19px;font-weight:950;letter-spacing:-.5px;white-space:nowrap;display:flex;align-items:center;gap:6px}
 .logo .b{color:var(--pb-cyan)}
 .navlinks{display:flex;align-items:center;gap:24px;font-size:13px;color:#e4ebff}
@@ -154,12 +154,40 @@ footer{background:#06143d;color:var(--pb-text-secondary);padding:30px 0}
 .footlinks a:hover{color:#fff}
 
 @media(max-width:640px){ .container{width:min(1140px,calc(100% - 40px))} .model-cards{grid-template-columns:1fr} .quick-table{font-size:13px} }
+
+/* ===== HEADER MAESTRO (unificado en todo el sitio) ===== */
+.topbar{height:72px;background:#06163f;color:#fff;display:flex;align-items:center;position:sticky;top:0;z-index:50}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:24px}
+.logo{font-size:21px;font-weight:950;letter-spacing:-.6px;white-space:nowrap;color:#fff;display:block}
+.logo .b{color:#11d9ef}
+.tagline{display:block;color:#28d9ee;font-size:11px;font-weight:700;letter-spacing:.2px;margin-top:1px}
+.navlinks{display:flex;align-items:center;gap:26px;font-size:13px;color:#e4ebff}
+.navlinks a{color:#e4ebff;text-decoration:none}
+.navlinks a:hover{color:#fff}
+.navlinks a.active{color:#fff;border-bottom:2px solid #20d9ee;padding-bottom:8px}
+.nav-right{display:flex;align-items:center;gap:14px}
+.nav-superventas{display:inline-flex;flex-direction:column;align-items:flex-start;gap:2px;padding:8px 16px;border-radius:14px;color:#fff;text-decoration:none;background:linear-gradient(100deg,#733CFF,#FF19D4,#08a8ff);box-shadow:0 7px 20px rgba(115,60,255,.28);border:1px solid rgba(255,255,255,.16);transition:transform .2s ease,box-shadow .2s ease;max-width:280px}
+.nav-superventas:hover{transform:translateY(-1px);box-shadow:0 10px 25px rgba(115,60,255,.38)}
+.nav-superventas[aria-current="page"]{box-shadow:0 0 0 2px rgba(255,255,255,.55),0 10px 25px rgba(115,60,255,.38)}
+.nav-superventas-title{font-size:12.5px;font-weight:950;white-space:nowrap;line-height:1.2}
+.nav-superventas-sub{font-size:9.5px;font-weight:600;color:rgba(255,255,255,.88);line-height:1.25;white-space:normal}
+@media(max-width:900px){.navlinks{display:none}}
+@media(max-width:560px){
+  .topbar{height:auto;padding:12px 0}
+  .nav{flex-wrap:wrap;row-gap:10px}
+  .tagline{display:none}
+  .logo{font-size:16px}
+  .nav-right{gap:8px}
+  .nav-superventas{max-width:170px;padding:7px 11px}
+  .nav-superventas-title{font-size:11px}
+  .nav-superventas-sub{font-size:8.5px}
+}
 </style>
 </head>
 <body>
 
 <div class="topbar"><div class="container nav">
-  <div class="logo"><svg width="22" height="22" viewBox="0 0 480 480" aria-hidden="true">
+  <div class="logo"><svg width="22" height="22" viewBox="0 0 480 480" aria-hidden="true" style="vertical-align:-5px;margin-right:2px">
       <defs>
         <linearGradient id="navG1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#4ee6cb"/><stop offset="100%" stop-color="#1f9384"/></linearGradient>
         <linearGradient id="navG2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#8b7fff"/><stop offset="100%" stop-color="#5b3df0"/></linearGradient>
@@ -170,16 +198,19 @@ footer{background:#06143d;color:var(--pb-text-secondary);padding:30px 0}
         <path d="M480 240A240 240 0 0 0 240 0a240 240 0 0 0 240 240Z" fill="url(#navG2)"/>
         <path d="M240 480A240 240 0 0 0 0 240a240 240 0 0 0 240 240Z" fill="url(#navG2)" opacity="0.55"/>
       </g>
-    </svg> PROMPT<span class="b">BOOST</span>.APP</div>
+    </svg> PROMPT<span class="b">BOOST</span>.APP<span class="tagline">Ideas. Prompts. Mejores resultados.</span></div>
   <div class="navlinks">
     <a href="/">Inicio</a>
     <a href="/prompts/">Categorías</a>
-    <a href="/guia-de-prompt-engineering/" class="active">Guías</a>
+    <a href="/#lab">Prompt Lab</a>
+    <a class="active" href="/guia-de-prompt-engineering/">Guías</a>
     <a href="/recursos/">Recursos</a>
   </div>
   <div class="nav-right">
-    <a class="search-ic" href="/prompts/" aria-label="Buscar">🔍</a>
-    <a class="btn btn-primary" href="/prompts/">Empieza gratis →</a>
+    <a href="/super-ventas/" class="nav-superventas">
+      <span class="nav-superventas-title">🔥 SUPER VENTAS</span>
+      <span class="nav-superventas-sub">El pack de prompts que te ahorra horas de trabajo con ChatGPT</span>
+    </a>
   </div>
 </div></div>
 
