@@ -21,13 +21,7 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="shortcut icon" href="/favicon.ico">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-Q03596FGTP"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-Q03596FGTP');
-</script>
+<script src="/cookie-consent.js"></script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "¿Necesito saber programación para automatizar con IA?", "acceptedAnswer": {"@type": "Answer", "text": "No, para los ejemplos de esta página no. Herramientas como Zapier, Make o Notion están pensadas para conectar pasos sin escribir código; la IA entra como uno de esos pasos, recibiendo un prompt y devolviendo un resultado."}}, {"@type": "Question", "name": "¿PromptBoost tiene una integración directa con Zapier o Make?", "acceptedAnswer": {"@type": "Answer", "text": "No. PromptBoost es una biblioteca de prompts: te da el texto que le pides a la IA dentro de tu automatización, pero no se conecta directamente a esas herramientas ni las gestiona por ti."}}, {"@type": "Question", "name": "¿Cuándo NO merece la pena automatizar algo?", "acceptedAnswer": {"@type": "Answer", "text": "Cuando la tarea es puntual, cuando el criterio para decidir es demasiado ambiguo para explicárselo bien a una IA, o cuando el coste de construir y mantener la automatización supera el tiempo que realmente ahorra."}}, {"@type": "Question", "name": "¿La IA puede tomar decisiones dentro de una automatización sin supervisión?", "acceptedAnswer": {"@type": "Answer", "text": "Puede, pero conviene revisar los resultados especialmente al principio, sobre todo en decisiones con impacto real (por ejemplo, responder a un cliente o descartar un lead), para detectar errores antes de que se repitan a gran escala."}}]}</script>
 <style>
 :root{
@@ -130,6 +124,11 @@ li{font-size:14.5px;color:#333d57;margin-bottom:8px}
 .resource-url{font-size:12px;color:var(--pb-blue)}
 
 @media(max-width:640px){ .container{width:min(1140px,calc(100% - 40px))} }
+footer{background:#06143d;color:var(--pb-text-secondary);padding:30px 0}
+.foot{display:flex;justify-content:space-between;gap:20px;align-items:center;font-size:12.5px;flex-wrap:wrap}
+.footlinks{display:flex;gap:16px;flex-wrap:wrap}
+.footlinks a{color:var(--pb-text-secondary);text-decoration:none}
+.footlinks a:hover{color:#fff;text-decoration:none}
 </style>
 </head>
 <body>

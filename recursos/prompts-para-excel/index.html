@@ -21,13 +21,7 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="shortcut icon" href="/favicon.ico">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-Q03596FGTP"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-Q03596FGTP');
-</script>
+<script src="/cookie-consent.js"></script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "¿Puedo usar estos prompts en Excel y en Google Sheets a la vez?", "acceptedAnswer": {"@type": "Answer", "text": "Sí. El prompt no depende de la herramienta de hoja de cálculo que uses: se lo das a tu IA (Claude, ChatGPT, Gemini o Grok) describiendo tus datos, y la IA te devuelve la fórmula o los pasos adaptados a Excel o a Sheets, según se lo indiques."}}, {"@type": "Question", "name": "¿La IA puede leer directamente mi archivo de Excel?", "acceptedAnswer": {"@type": "Answer", "text": "Depende de la herramienta y el plan que uses. Algunas versiones de ChatGPT, Claude o Gemini permiten subir archivos directamente; si la tuya no, puedes copiar una muestra pequeña de tus datos (no la tabla entera) directamente en el chat."}}, {"@type": "Question", "name": "¿Es necesario saber programación o macros?", "acceptedAnswer": {"@type": "Answer", "text": "No. Los prompts de esta página están pensados para pedir fórmulas y pasos en lenguaje normal, sin necesidad de saber VBA, macros ni lenguajes de programación."}}, {"@type": "Question", "name": "¿Qué pasa si mis datos son sensibles o confidenciales?", "acceptedAnswer": {"@type": "Answer", "text": "No compartas datos personales, financieros sensibles o confidenciales de tu empresa con ninguna IA a menos que tengas la autorización correspondiente y conozcas la política de privacidad de la herramienta que uses."}}]}</script>
 <style>
 :root{
@@ -130,6 +124,11 @@ li{font-size:14.5px;color:#333d57;margin-bottom:8px}
 .resource-url{font-size:12px;color:var(--pb-blue)}
 
 @media(max-width:640px){ .container{width:min(1140px,calc(100% - 40px))} }
+footer{background:#06143d;color:var(--pb-text-secondary);padding:30px 0}
+.foot{display:flex;justify-content:space-between;gap:20px;align-items:center;font-size:12.5px;flex-wrap:wrap}
+.footlinks{display:flex;gap:16px;flex-wrap:wrap}
+.footlinks a{color:var(--pb-text-secondary);text-decoration:none}
+.footlinks a:hover{color:#fff;text-decoration:none}
 </style>
 </head>
 <body>
