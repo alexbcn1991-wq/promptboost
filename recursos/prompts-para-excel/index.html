@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prompts para Excel y Google Sheets: ejemplos prácticos con IA | PromptBoost</title>
+<meta name="description" content="10 prompts prácticos para usar IA en Excel y Google Sheets: fórmulas, análisis de datos, KPIs, dashboards y previsiones. Gratis, para ChatGPT, Claude, Gemini y Grok.">
+<link rel="canonical" href="https://promptboost.app/recursos/prompts-para-excel/">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://promptboost.app/recursos/prompts-para-excel/">
+<meta property="og:title" content="Prompts para Excel y Google Sheets: ejemplos prácticos con IA | PromptBoost">
+<meta property="og:description" content="10 prompts prácticos para usar IA en Excel y Google Sheets: fórmulas, análisis de datos, KPIs, dashboards y previsiones. Gratis, para ChatGPT, Claude, Gemini y Grok.">
+<meta property="og:image" content="https://promptboost.app/og-image.png">
+<meta property="og:locale" content="es_ES">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Prompts para Excel y Google Sheets: ejemplos prácticos con IA | PromptBoost">
+<meta name="twitter:description" content="10 prompts prácticos para usar IA en Excel y Google Sheets: fórmulas, análisis de datos, KPIs, dashboards y previsiones. Gratis, para ChatGPT, Claude, Gemini y Grok.">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="shortcut icon" href="/favicon.ico">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Q03596FGTP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-Q03596FGTP');
+</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "¿Puedo usar estos prompts en Excel y en Google Sheets a la vez?", "acceptedAnswer": {"@type": "Answer", "text": "Sí. El prompt no depende de la herramienta de hoja de cálculo que uses: se lo das a tu IA (Claude, ChatGPT, Gemini o Grok) describiendo tus datos, y la IA te devuelve la fórmula o los pasos adaptados a Excel o a Sheets, según se lo indiques."}}, {"@type": "Question", "name": "¿La IA puede leer directamente mi archivo de Excel?", "acceptedAnswer": {"@type": "Answer", "text": "Depende de la herramienta y el plan que uses. Algunas versiones de ChatGPT, Claude o Gemini permiten subir archivos directamente; si la tuya no, puedes copiar una muestra pequeña de tus datos (no la tabla entera) directamente en el chat."}}, {"@type": "Question", "name": "¿Es necesario saber programación o macros?", "acceptedAnswer": {"@type": "Answer", "text": "No. Los prompts de esta página están pensados para pedir fórmulas y pasos en lenguaje normal, sin necesidad de saber VBA, macros ni lenguajes de programación."}}, {"@type": "Question", "name": "¿Qué pasa si mis datos son sensibles o confidenciales?", "acceptedAnswer": {"@type": "Answer", "text": "No compartas datos personales, financieros sensibles o confidenciales de tu empresa con ninguna IA a menos que tengas la autorización correspondiente y conozcas la política de privacidad de la herramienta que uses."}}]}</script>
+<style>
+:root{
+  --pb-bg:#03091F; --pb-bg-secondary:#06133A; --pb-bg-surface:#081B4A;
+  --pb-blue:#1689FF; --pb-cyan:#11D9EF; --pb-purple:#733CFF; --pb-magenta:#FF19D4; --pb-green:#16C987;
+  --pb-text-secondary:#AAB9D8; --pb-border:rgba(255,255,255,.10);
+  --ink:#0b1330; --muted:#5d6d91; --line:#e2e8f5; --soft:#f5f8ff;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#fff;color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,sans-serif;line-height:1.65}
+a{color:var(--pb-blue);text-decoration:none}
+a:hover{text-decoration:underline}
+.container{width:min(1140px,calc(100% - 64px));margin:auto}
+
+.topbar{height:72px;background:#06163f;color:#fff;display:flex;align-items:center;position:sticky;top:0;z-index:50}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:24px}
+.logo{font-size:21px;font-weight:950;letter-spacing:-.6px;white-space:nowrap;color:#fff;display:block}
+.logo .b{color:#11d9ef}
+.tagline{display:block;color:#28d9ee;font-size:11px;font-weight:700;letter-spacing:.2px;margin-top:1px}
+.navlinks{display:flex;align-items:center;gap:26px;font-size:13px;color:#e4ebff}
+.navlinks a{color:#e4ebff;text-decoration:none}
+.navlinks a:hover{color:#fff;text-decoration:none}
+.navlinks a.active{color:#fff;border-bottom:2px solid #20d9ee;padding-bottom:8px}
+.nav-right{display:flex;align-items:center;gap:14px}
+.nav-superventas{display:inline-flex;flex-direction:column;align-items:flex-start;gap:2px;padding:8px 16px;border-radius:14px;color:#fff;text-decoration:none;background:linear-gradient(100deg,#733CFF,#FF19D4,#08a8ff);box-shadow:0 7px 20px rgba(115,60,255,.28);border:1px solid rgba(255,255,255,.16);max-width:280px}
+.nav-superventas-title{font-size:12.5px;font-weight:950;white-space:nowrap;line-height:1.2}
+.nav-superventas-sub{font-size:9.5px;font-weight:600;color:rgba(255,255,255,.88);line-height:1.25;white-space:normal}
+@media(max-width:900px){.navlinks{display:none}}
+@media(max-width:560px){
+  .topbar{height:auto;padding:12px 0}.nav{flex-wrap:wrap;row-gap:10px}.tagline{display:none}
+  .logo{font-size:16px}.nav-right{gap:8px}
+  .nav-superventas{max-width:170px;padding:7px 11px}.nav-superventas-title{font-size:11px}.nav-superventas-sub{font-size:8.5px}
+}
+a:focus-visible, button:focus-visible { outline: 2px solid var(--pb-blue); outline-offset: 2px; }
+
+main{background:#fff}
+.breadcrumb{font-size:12px;color:var(--muted);margin:22px 0 14px}
+.breadcrumb a{color:var(--muted)}
+.breadcrumb .sep{margin:0 6px}
+.breadcrumb .current{color:var(--ink);font-weight:600}
+.eyebrow{font-size:11px;font-weight:900;color:var(--pb-purple);letter-spacing:.08em;text-transform:uppercase}
+h1{font-size:clamp(28px,4vw,42px);letter-spacing:-1px;margin:10px 0 14px;color:var(--ink)}
+.lede{font-size:16px;color:#333d57;max-width:760px;margin-bottom:8px}
+.wrap{padding-bottom:70px}
+h2{font-size:22px;margin:38px 0 14px;color:var(--ink);letter-spacing:-.3px}
+h3{font-size:16px;margin:20px 0 8px;color:var(--ink)}
+p{font-size:14.5px;color:#333d57;margin-bottom:14px;max-width:780px}
+ul{margin:0 0 16px 20px}
+li{font-size:14.5px;color:#333d57;margin-bottom:8px}
+
+.prompt-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:20px 0 10px}
+.prompt-card{border:1px solid var(--line);border-radius:14px;padding:18px 20px;background:var(--soft)}
+.prompt-card .n{font-size:11px;font-weight:900;color:var(--pb-purple);margin-bottom:6px}
+.prompt-card h4{font-size:15px;margin-bottom:6px;color:var(--ink)}
+.prompt-card p{font-size:13px;color:var(--muted);margin-bottom:10px}
+.prompt-card code{display:block;background:#fff;border:1px solid var(--line);border-radius:8px;padding:10px 12px;font:12px/1.5 ui-monospace,Menlo,monospace;color:#1c2440;white-space:pre-wrap;margin-bottom:10px}
+.prompt-card a.pill{display:inline-block;font-size:12.5px;font-weight:800;color:var(--pb-blue)}
+@media(max-width:800px){.prompt-grid{grid-template-columns:1fr}}
+
+.linkrow{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0}
+.linkrow a{display:inline-flex;align-items:center;gap:6px;padding:9px 14px;border:1px solid var(--line);border-radius:100px;font-size:13px;font-weight:700;color:var(--ink);text-decoration:none;background:#fff}
+.linkrow a:hover{border-color:var(--pb-blue);color:var(--pb-blue)}
+
+.callout{background:var(--soft);border:1px solid var(--line);border-left:4px solid var(--pb-purple);border-radius:10px;padding:16px 20px;margin:20px 0}
+.callout p{margin:0;font-size:14px}
+
+.step-flow{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:24px 0;padding:20px;background:var(--pb-bg-secondary);border-radius:14px;color:#fff}
+.step-flow .box{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:10px;padding:10px 16px;font-size:13px;font-weight:700}
+.step-flow .ar{color:var(--pb-cyan);font-weight:900}
+
+.faq details{border-bottom:1px solid var(--line);padding:16px 0}
+.faq summary{cursor:pointer;font-weight:800;font-size:14.5px;color:var(--ink);list-style:none;display:flex;justify-content:space-between;gap:16px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary:after{content:"+";font-size:18px;color:var(--pb-purple)}
+.faq details[open] summary:after{content:"–"}
+.faq .a{padding-top:10px;font-size:14px;color:var(--muted)}
+
+.cta-box{background:linear-gradient(135deg,var(--pb-bg-secondary),#0b1c52);border-radius:16px;padding:28px 30px;margin:36px 0;color:#fff;text-align:center}
+.cta-box p{color:#dbe5ff;margin-bottom:16px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border-radius:12px;font-weight:900;font-size:14px;color:#fff;background:linear-gradient(100deg,var(--pb-purple),var(--pb-magenta),#08a8ff);text-decoration:none}
+
+.res-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:26px 0}
+.res-card{border:1px solid var(--line);border-radius:16px;padding:24px;background:#fff;box-shadow:0 8px 22px rgba(13,35,84,.06);text-decoration:none;display:block;transition:transform .2s ease,box-shadow .2s ease}
+.res-card:hover{transform:translateY(-3px);box-shadow:0 16px 32px rgba(13,35,84,.12);text-decoration:none}
+.res-card .ic{font-size:26px;margin-bottom:10px}
+.res-card h3{margin:0 0 8px;font-size:16.5px;color:var(--ink)}
+.res-card p{font-size:13px;color:var(--muted);margin:0}
+@media(max-width:900px){.res-grid{grid-template-columns:1fr}}
+
+.tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:20px 0}
+@media(max-width:700px){.tool-grid{grid-template-columns:1fr}}
+
+.resource-list{display:flex;flex-direction:column;gap:12px;margin-bottom:10px}
+.resource-item{display:block;border:1px solid var(--line);border-radius:12px;padding:14px 18px;text-decoration:none;color:inherit}
+.resource-item:hover{border-color:var(--pb-blue);text-decoration:none}
+.resource-top{display:flex;justify-content:space-between;gap:10px;margin-bottom:4px}
+.resource-name{font-weight:800;font-size:14.5px;color:var(--ink)}
+.resource-by{font-size:11.5px;color:var(--pb-purple);font-weight:700;white-space:nowrap}
+.resource-desc{font-size:13px;color:var(--muted);margin-bottom:4px}
+.resource-url{font-size:12px;color:var(--pb-blue)}
+
+@media(max-width:640px){ .container{width:min(1140px,calc(100% - 40px))} }
+</style>
+</head>
+<body>
+<div class="topbar"><div class="container nav">
+  <div class="logo"><svg width="22" height="22" viewBox="0 0 480 480" aria-hidden="true" style="vertical-align:-5px;margin-right:2px">
+      <defs>
+        <linearGradient id="navG1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#4ee6cb"/><stop offset="100%" stop-color="#1f9384"/></linearGradient>
+        <linearGradient id="navG2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#8b7fff"/><stop offset="100%" stop-color="#5b3df0"/></linearGradient>
+      </defs>
+      <g transform="rotate(45 240 240)">
+        <path d="M480 240a240 240 0 0 0-240 240 240 240 0 0 0 240-240Z" fill="url(#navG1)"/>
+        <path d="M240 0A240 240 0 0 0 0 240 240 240 0 0 0 240 0Z" fill="url(#navG1)" opacity="0.55"/>
+        <path d="M480 240A240 240 0 0 0 240 0a240 240 0 0 0 240 240Z" fill="url(#navG2)"/>
+        <path d="M240 480A240 240 0 0 0 0 240a240 240 0 0 0 240 240Z" fill="url(#navG2)" opacity="0.55"/>
+      </g>
+    </svg> PROMPT<span class="b">BOOST</span>.APP<span class="tagline">Ideas. Prompts. Mejores resultados.</span></div>
+  <div class="navlinks">
+    <a href="/">Inicio</a>
+    <a href="/prompts/">Categorías</a>
+    <a href="/prompt-lab/">Prompt Lab</a>
+    <a href="/guia-de-prompt-engineering/">Guías</a>
+    <a class="active" href="/recursos/">Recursos</a>
+  </div>
+  <div class="nav-right">
+    <a href="/super-ventas/" class="nav-superventas">
+      <span class="nav-superventas-title">🔥 SUPER VENTAS</span>
+      <span class="nav-superventas-sub">El pack de prompts que te ahorra horas de trabajo con ChatGPT</span>
+    </a>
+  </div>
+</div></div>
+<main><div class="container"><div class="wrap">
+  <div class="breadcrumb"><a href="/">Inicio</a> <span class="sep">/</span> <a href="/recursos/">Recursos</a> <span class="sep">/</span> <span class="current">Prompts para Excel</span></div>
+  <div class="eyebrow">Recursos prácticos</div>
+  <h1>Prompts para Excel y Google Sheets: ejemplos prácticos con IA</h1>
+  <p class="lede">10 formas concretas de usar IA para trabajar más rápido con hojas de cálculo: fórmulas, limpieza de datos, KPIs, dashboards y previsiones — sin necesidad de saber programación.</p>
+
+<h2>Qué puedes hacer con IA en Excel y Google Sheets</h2>
+<p>La IA no sustituye Excel, pero sí puede ahorrarte la parte más lenta: recordar la sintaxis exacta de una fórmula, encontrar por qué un dato no cuadra, o resumir qué está pasando en una tabla grande sin tener que revisarla fila a fila. Funciona igual en Excel que en Google Sheets, porque le describes tu situación a la IA en lenguaje normal — no dependes de la herramienta, sino de saber pedirlo bien.</p>
+
+<h2>10 prompts prácticos para Excel</h2>
+<p>Estas son 10 formas concretas de usar IA con hojas de cálculo. Descríbele a tu IA cuál de estas tareas necesitas, sustituyendo lo que esté entre corchetes por tu caso real:</p>
+
+<div class="prompt-grid">
+  <div class="prompt-card"><div class="n">01 · CREAR UNA FÓRMULA</div><h4>Cuando no recuerdas la sintaxis exacta</h4><code>Necesito una fórmula de Excel que haga [OBJETIVO]. Indica la fórmula, una explicación breve de cómo funciona, y un ejemplo con datos.</code></div>
+  <div class="prompt-card"><div class="n">02 · ANALIZAR UNA TABLA</div><h4>Cuando tienes datos pero no conclusiones</h4><code>Aquí tienes una muestra de mis datos: [DATOS]. Describe qué patrones, tendencias o relaciones observas, y termina con 2-3 conclusiones accionables.</code></div>
+  <div class="prompt-card"><div class="n">03 · LIMPIAR DATOS</div><h4>Antes de analizar nada</h4><code>Revisa esta muestra de datos: [DATOS]. Señala duplicados, valores ausentes, formatos inconsistentes, y qué reglas de limpieza aplicarías antes de analizarlos.</code></div>
+  <div class="prompt-card"><div class="n">04 · DETECTAR ANOMALÍAS</div><h4>Cuando algo no cuadra pero no sabes qué</h4><code>Encuentra valores anómalos o fuera de lo normal en estos datos: [DATOS]. Explica por qué cada uno podría ser relevante o un error.</code></div>
+  <div class="prompt-card"><div class="n">05 · CREAR KPIs</div><h4>Para saber qué medir</h4><code>Para [NEGOCIO/PROCESO], identifica los indicadores (KPI) más importantes a seguir. Para cada uno, indica cómo se calcula, con qué frecuencia revisarlo y qué valor sería una señal de alerta.</code></div>
+  <div class="prompt-card"><div class="n">06 · CREAR UN DASHBOARD</div><h4>Para ver el conjunto de un vistazo</h4><code>Diseña la estructura de un dashboard para [OBJETIVO]. Indica qué métricas incluir, cómo organizarlas visualmente, y qué debería destacar primero.</code></div>
+  <div class="prompt-card"><div class="n">07 · BUSCAR CORRELACIONES</div><h4>Con cautela, sin confundir causa y coincidencia</h4><code>Busca posibles correlaciones relevantes en estos datos: [DATOS]. Señala si podrían deberse a otra variable oculta, en vez de asumir causalidad.</code></div>
+  <div class="prompt-card"><div class="n">08 · HACER PREVISIONES</div><h4>Para estimar qué viene después</h4><code>Con estos datos históricos: [DATOS], construye una previsión razonable para [MÉTRICA]. Explica qué hipótesis asumes y qué limitaciones tiene la estimación.</code></div>
+  <div class="prompt-card"><div class="n">09 · COMPARAR ESCENARIOS</div><h4>Cuando dudas entre varias opciones</h4><code>Compara estas opciones: [A/B/C] según [CRITERIOS]. Pondera cada criterio según su importancia y recomienda una opción explicando por qué.</code></div>
+  <div class="prompt-card"><div class="n">10 · EXPLICAR UNA FÓRMULA COMPLEJA</div><h4>Cuando heredas una hoja que no entiendes</h4><code>Explica en lenguaje sencillo qué hace esta fórmula, paso a paso: [FÓRMULA].</code></div>
+</div>
+
+<h2>Cómo escribir buenos prompts para Excel</h2>
+<ul>
+  <li><strong>Da una muestra, no la tabla entera.</strong> Con 5-10 filas representativas suele bastar, y evitas compartir datos innecesarios.</li>
+  <li><strong>Indica qué quieres conseguir</strong>, no solo el tema: no es lo mismo "estos son mis gastos" que "quiero saber en qué categoría se me va más dinero".</li>
+  <li><strong>Especifica el formato de salida</strong>: ¿quieres una fórmula, una tabla, una lista de pasos? Pídelo explícitamente.</li>
+  <li><strong>Pide que te pregunte si falta información</strong>, en vez de que asuma cosas sobre tu hoja que no le has contado.</li>
+</ul>
+
+<h2>Errores que debes evitar al usar IA con hojas de cálculo</h2>
+<ul>
+  <li><strong>Pegar la hoja entera sin filtrar</strong>: además de innecesario, puede exceder el límite de contexto de la IA o incluir datos que no quieres compartir.</li>
+  <li><strong>No verificar el resultado</strong>: una fórmula generada por IA puede parecer correcta y no serlo en tu caso concreto — pruébala siempre antes de darla por buena.</li>
+  <li><strong>Pedir conclusiones sin dar contexto del negocio</strong>: la IA no sabe qué es "normal" para ti si no se lo explicas.</li>
+  <li><strong>Confundir correlación con causalidad</strong> al pedir análisis de relaciones entre variables.</li>
+</ul>
+
+<h2>Prompts de Excel disponibles en PromptBoost</h2>
+<p>Además de los prompts de esta página, la biblioteca gratuita de PromptBoost tiene un prompt dedicado y listo para copiar:</p>
+<div class="linkrow">
+  <a href="/p/experto-en-exceldatos/">📊 Experto en Excel/datos →</a>
+  <a href="/p/matriz-de-decision-ponderada/">⚖️ Matriz de decisión ponderada →</a>
+  <a href="/categoria/contrata-a-tu-experto/">Ver la categoría completa →</a>
+</div>
+
+<h2>¿ChatGPT, Claude o Gemini para trabajar con Excel?</h2>
+<p>Los prompts de esta página funcionan igual en los cuatro modelos compatibles con PromptBoost: ChatGPT, Claude, Gemini y Grok. La diferencia principal no está en el modelo, sino en si tu plan concreto permite subir archivos directamente o solo pegar texto — revisa las opciones de tu cuenta antes de decidir cuál usar para una tarea con archivos grandes.</p>
+
+<div class="callout"><p>💡 ¿Prefieres que la IA te construya el prompt en vez de escribirlo tú? Prueba <a href="/prompt-lab/">Prompt Lab</a>: describe qué necesitas hacer con tus datos y te devuelve un prompt estructurado y listo para copiar.</p></div>
+
+<h2>Preguntas frecuentes</h2>
+<div class="faq">
+<details><summary><span>¿Puedo usar estos prompts en Excel y en Google Sheets a la vez?</span></summary><div class="a">Sí. El prompt no depende de la herramienta de hoja de cálculo que uses: se lo das a tu IA (Claude, ChatGPT, Gemini o Grok) describiendo tus datos, y la IA te devuelve la fórmula o los pasos adaptados a Excel o a Sheets, según se lo indiques.</div></details>
+<details><summary><span>¿La IA puede leer directamente mi archivo de Excel?</span></summary><div class="a">Depende de la herramienta y el plan que uses. Algunas versiones de ChatGPT, Claude o Gemini permiten subir archivos directamente; si la tuya no, puedes copiar una muestra pequeña de tus datos (no la tabla entera) directamente en el chat.</div></details>
+<details><summary><span>¿Es necesario saber programación o macros?</span></summary><div class="a">No. Los prompts de esta página están pensados para pedir fórmulas y pasos en lenguaje normal, sin necesidad de saber VBA, macros ni lenguajes de programación.</div></details>
+<details><summary><span>¿Qué pasa si mis datos son sensibles o confidenciales?</span></summary><div class="a">No compartas datos personales, financieros sensibles o confidenciales de tu empresa con ninguna IA a menos que tengas la autorización correspondiente y conozcas la política de privacidad de la herramienta que uses.</div></details>
+
+</div>
+
+<div class="cta-box">
+  <p>¿Quieres más prompts listos para copiar, organizados por categoría?</p>
+  <a class="btn" href="/prompts/">Ver la biblioteca completa →</a>
+</div>
+
+</div></div></main>
+<footer><div class="container foot">
+  <div><b style="font-size:15px;color:#fff"><svg width="18" height="18" viewBox="0 0 480 480" aria-hidden="true" style="vertical-align:-3px;margin-right:4px">
+      <defs>
+        <linearGradient id="footG1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#4ee6cb"/><stop offset="100%" stop-color="#1f9384"/></linearGradient>
+        <linearGradient id="footG2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#8b7fff"/><stop offset="100%" stop-color="#5b3df0"/></linearGradient>
+      </defs>
+      <g transform="rotate(45 240 240)">
+        <path d="M480 240a240 240 0 0 0-240 240 240 240 0 0 0 240-240Z" fill="url(#footG1)"/>
+        <path d="M240 0A240 240 0 0 0 0 240 240 240 0 0 0 240 0Z" fill="url(#footG1)" opacity="0.55"/>
+        <path d="M480 240A240 240 0 0 0 240 0a240 240 0 0 0 240 240Z" fill="url(#footG2)"/>
+        <path d="M240 480A240 240 0 0 0 0 240a240 240 0 0 0 240 240Z" fill="url(#footG2)" opacity="0.55"/>
+      </g>
+    </svg>PROMPTBOOST.APP</b></div>
+  <div class="footlinks">
+    <a href="/prompts/">Biblioteca</a>
+    <a href="/glosario/">Glosario</a>
+    <a href="/recursos/">Recursos</a>
+    <a href="/guia-de-prompt-engineering/">Guía completa</a>
+    <a href="/aviso-legal/">Aviso legal</a>
+    <a href="/privacidad/">Privacidad</a>
+    <a href="/cookies/">Cookies</a>
+  </div>
+  <div>© 2026 PromptBoost</div>
+</div></footer>
+</body>
+</html>

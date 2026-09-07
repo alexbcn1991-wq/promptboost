@@ -124,6 +124,9 @@ h1{font-size:clamp(38px,4.6vw,64px);line-height:.98;letter-spacing:-2.5px;margin
 .three{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px}.featured h3{font-size:18px;margin:4px 0 10px}.featured .icon{font-size:22px}.prompt-preview{background:#f5f8ff;border:1px solid #e0e7f4;border-radius:10px;padding:11px;font:11.5px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace;color:#21345f}
 .two{display:flex;justify-content:center}
 .two-inner{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:760px;width:100%}
+.three-inner{grid-template-columns:1fr 1fr 1fr;max-width:1020px}
+@media(max-width:900px){.three-inner{grid-template-columns:1fr 1fr}}
+@media(max-width:640px){.three-inner{grid-template-columns:1fr}}
 .two-inner .panel{display:flex;flex-direction:column;min-height:230px}
 .two-inner .panel p{flex:1}
 .labbox-intro{background:linear-gradient(145deg,#f8f7ff,#fff);border:1px solid #e0e5f2;border-radius:14px;padding:16px}
@@ -414,9 +417,10 @@ a:focus-visible, button:focus-visible, .btn:focus-visible, .search:focus-visible
   </div>
 </div></section>
 
-<section class="section" id="recursos"><div class="container two"><div class="two-inner">
+<section class="section" id="recursos"><div class="container two"><div class="two-inner three-inner">
   <div class="panel featured"><div class="icon">☀️</div><h3>PROMPT DEL DÍA</h3><b>Negociador profesional</b><p class="prompt-preview">"Actúa como un negociador profesional con 15 años de experiencia... Antes de darme ningún consejo, pregúntame qué se está negociando, mi objetivo mínimo aceptable, y qué sé de la otra parte..."</p><a class="btn btn-primary wide-btn" href="/p/negociador-profesional/">Ver prompt completo →</a></div>
   <div class="panel labbox-intro"><div class="icon">⚗️</div><h3>PROMPT LAB <small style="background:#6b42ff;color:white;border-radius:999px;padding:4px 7px;font-size:9px">NUEVO</small></h3><b>Crea el prompt que necesitas.</b><p>Describe lo que quieres conseguir y Prompt Lab te ayuda a convertir tu idea en un prompt listo para usar.</p><a class="btn btn-primary wide-btn" href="/prompt-lab/">Crear mi prompt →</a></div>
+  <div class="panel labbox-intro"><div class="icon">🧭</div><h3>RECURSOS</h3><b>Resuelve tareas concretas con IA.</b><p>Guías prácticas, prompts y recursos para resolver tareas concretas con IA.</p><a class="btn btn-primary wide-btn" href="/recursos/">Ver recursos →</a></div>
 </div></div></section>
 
 <section class="section"><div class="container">
@@ -576,7 +580,7 @@ a:focus-visible, button:focus-visible, .btn:focus-visible, .search:focus-visible
 
 <section class="section"><div class="container" style="max-width:820px;margin:0 auto">
   <h2 class="section-title" style="text-align:center">Lo que la gente pregunta antes de empezar</h2>
-  <p class="section-sub-real" style="text-align:center;margin-left:auto;margin-right:auto">Si tienes alguna duda que no está aquí, revisa la biblioteca completa o el manual descargable.</p>
+  <p class="section-sub-real" style="text-align:center;margin-left:auto;margin-right:auto">Si tienes alguna duda que no está aquí, revisa la biblioteca completa o <a href="/super-ventas/">descubre SUPERPROMPTS</a>.</p>
   <div class="faq-list">
       <details class="faq-item reveal">
         <summary><span>¿PromptBoost es gratis de verdad?</span><span class="faq-icon"></span></summary>

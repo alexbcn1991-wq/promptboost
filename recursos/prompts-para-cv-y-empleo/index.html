@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prompts para CV y búsqueda de empleo con IA | PromptBoost</title>
+<meta name="description" content="Prompts reales y gratuitos para adaptar tu CV, prepararte para entrevistas y buscar trabajo con ayuda de ChatGPT, Claude, Gemini o Grok.">
+<link rel="canonical" href="https://promptboost.app/recursos/prompts-para-cv-y-empleo/">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://promptboost.app/recursos/prompts-para-cv-y-empleo/">
+<meta property="og:title" content="Prompts para CV y búsqueda de empleo con IA | PromptBoost">
+<meta property="og:description" content="Prompts reales y gratuitos para adaptar tu CV, prepararte para entrevistas y buscar trabajo con ayuda de ChatGPT, Claude, Gemini o Grok.">
+<meta property="og:image" content="https://promptboost.app/og-image.png">
+<meta property="og:locale" content="es_ES">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Prompts para CV y búsqueda de empleo con IA | PromptBoost">
+<meta name="twitter:description" content="Prompts reales y gratuitos para adaptar tu CV, prepararte para entrevistas y buscar trabajo con ayuda de ChatGPT, Claude, Gemini o Grok.">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="shortcut icon" href="/favicon.ico">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Q03596FGTP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-Q03596FGTP');
+</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "¿Puedo usar estos prompts en ChatGPT, Claude, Gemini o Grok?", "acceptedAnswer": {"@type": "Answer", "text": "Sí, los cuatro modelos entienden estos prompts igual de bien. La diferencia principal está en si tu plan permite subir tu CV como archivo o solo pegarlo como texto."}}, {"@type": "Question", "name": "¿Es seguro compartir mi CV con una IA?", "acceptedAnswer": {"@type": "Answer", "text": "Evita incluir datos que no aparecerían en un CV público (como tu DNI o dirección exacta) al pegarlo en un chat. El contenido normal de un CV (experiencia, formación, habilidades) no suele ser sensible, pero usa tu criterio."}}, {"@type": "Question", "name": "¿La IA puede saltarse los filtros ATS automáticamente?", "acceptedAnswer": {"@type": "Answer", "text": "No hay garantía de eso: un sistema ATS depende de cómo esté configurado en cada empresa. Lo que sí puede hacer la IA es ayudarte a incluir las palabras clave relevantes de la oferta y a estructurar el CV de forma clara, lo cual mejora tus opciones."}}, {"@type": "Question", "name": "¿Debo copiar la respuesta de la IA literalmente?", "acceptedAnswer": {"@type": "Answer", "text": "No. Úsala como borrador o guía, y revísala siempre para que la redacción suene a ti y refleje tu experiencia real con precisión."}}]}</script>
+<style>
+:root{
+  --pb-bg:#03091F; --pb-bg-secondary:#06133A; --pb-bg-surface:#081B4A;
+  --pb-blue:#1689FF; --pb-cyan:#11D9EF; --pb-purple:#733CFF; --pb-magenta:#FF19D4; --pb-green:#16C987;
+  --pb-text-secondary:#AAB9D8; --pb-border:rgba(255,255,255,.10);
+  --ink:#0b1330; --muted:#5d6d91; --line:#e2e8f5; --soft:#f5f8ff;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#fff;color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,sans-serif;line-height:1.65}
+a{color:var(--pb-blue);text-decoration:none}
+a:hover{text-decoration:underline}
+.container{width:min(1140px,calc(100% - 64px));margin:auto}
+
+.topbar{height:72px;background:#06163f;color:#fff;display:flex;align-items:center;position:sticky;top:0;z-index:50}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:24px}
+.logo{font-size:21px;font-weight:950;letter-spacing:-.6px;white-space:nowrap;color:#fff;display:block}
+.logo .b{color:#11d9ef}
+.tagline{display:block;color:#28d9ee;font-size:11px;font-weight:700;letter-spacing:.2px;margin-top:1px}
+.navlinks{display:flex;align-items:center;gap:26px;font-size:13px;color:#e4ebff}
+.navlinks a{color:#e4ebff;text-decoration:none}
+.navlinks a:hover{color:#fff;text-decoration:none}
+.navlinks a.active{color:#fff;border-bottom:2px solid #20d9ee;padding-bottom:8px}
+.nav-right{display:flex;align-items:center;gap:14px}
+.nav-superventas{display:inline-flex;flex-direction:column;align-items:flex-start;gap:2px;padding:8px 16px;border-radius:14px;color:#fff;text-decoration:none;background:linear-gradient(100deg,#733CFF,#FF19D4,#08a8ff);box-shadow:0 7px 20px rgba(115,60,255,.28);border:1px solid rgba(255,255,255,.16);max-width:280px}
+.nav-superventas-title{font-size:12.5px;font-weight:950;white-space:nowrap;line-height:1.2}
+.nav-superventas-sub{font-size:9.5px;font-weight:600;color:rgba(255,255,255,.88);line-height:1.25;white-space:normal}
+@media(max-width:900px){.navlinks{display:none}}
+@media(max-width:560px){
+  .topbar{height:auto;padding:12px 0}.nav{flex-wrap:wrap;row-gap:10px}.tagline{display:none}
+  .logo{font-size:16px}.nav-right{gap:8px}
+  .nav-superventas{max-width:170px;padding:7px 11px}.nav-superventas-title{font-size:11px}.nav-superventas-sub{font-size:8.5px}
+}
+a:focus-visible, button:focus-visible { outline: 2px solid var(--pb-blue); outline-offset: 2px; }
+
+main{background:#fff}
+.breadcrumb{font-size:12px;color:var(--muted);margin:22px 0 14px}
+.breadcrumb a{color:var(--muted)}
+.breadcrumb .sep{margin:0 6px}
+.breadcrumb .current{color:var(--ink);font-weight:600}
+.eyebrow{font-size:11px;font-weight:900;color:var(--pb-purple);letter-spacing:.08em;text-transform:uppercase}
+h1{font-size:clamp(28px,4vw,42px);letter-spacing:-1px;margin:10px 0 14px;color:var(--ink)}
+.lede{font-size:16px;color:#333d57;max-width:760px;margin-bottom:8px}
+.wrap{padding-bottom:70px}
+h2{font-size:22px;margin:38px 0 14px;color:var(--ink);letter-spacing:-.3px}
+h3{font-size:16px;margin:20px 0 8px;color:var(--ink)}
+p{font-size:14.5px;color:#333d57;margin-bottom:14px;max-width:780px}
+ul{margin:0 0 16px 20px}
+li{font-size:14.5px;color:#333d57;margin-bottom:8px}
+
+.prompt-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:20px 0 10px}
+.prompt-card{border:1px solid var(--line);border-radius:14px;padding:18px 20px;background:var(--soft)}
+.prompt-card .n{font-size:11px;font-weight:900;color:var(--pb-purple);margin-bottom:6px}
+.prompt-card h4{font-size:15px;margin-bottom:6px;color:var(--ink)}
+.prompt-card p{font-size:13px;color:var(--muted);margin-bottom:10px}
+.prompt-card code{display:block;background:#fff;border:1px solid var(--line);border-radius:8px;padding:10px 12px;font:12px/1.5 ui-monospace,Menlo,monospace;color:#1c2440;white-space:pre-wrap;margin-bottom:10px}
+.prompt-card a.pill{display:inline-block;font-size:12.5px;font-weight:800;color:var(--pb-blue)}
+@media(max-width:800px){.prompt-grid{grid-template-columns:1fr}}
+
+.linkrow{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0}
+.linkrow a{display:inline-flex;align-items:center;gap:6px;padding:9px 14px;border:1px solid var(--line);border-radius:100px;font-size:13px;font-weight:700;color:var(--ink);text-decoration:none;background:#fff}
+.linkrow a:hover{border-color:var(--pb-blue);color:var(--pb-blue)}
+
+.callout{background:var(--soft);border:1px solid var(--line);border-left:4px solid var(--pb-purple);border-radius:10px;padding:16px 20px;margin:20px 0}
+.callout p{margin:0;font-size:14px}
+
+.step-flow{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:24px 0;padding:20px;background:var(--pb-bg-secondary);border-radius:14px;color:#fff}
+.step-flow .box{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:10px;padding:10px 16px;font-size:13px;font-weight:700}
+.step-flow .ar{color:var(--pb-cyan);font-weight:900}
+
+.faq details{border-bottom:1px solid var(--line);padding:16px 0}
+.faq summary{cursor:pointer;font-weight:800;font-size:14.5px;color:var(--ink);list-style:none;display:flex;justify-content:space-between;gap:16px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary:after{content:"+";font-size:18px;color:var(--pb-purple)}
+.faq details[open] summary:after{content:"–"}
+.faq .a{padding-top:10px;font-size:14px;color:var(--muted)}
+
+.cta-box{background:linear-gradient(135deg,var(--pb-bg-secondary),#0b1c52);border-radius:16px;padding:28px 30px;margin:36px 0;color:#fff;text-align:center}
+.cta-box p{color:#dbe5ff;margin-bottom:16px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border-radius:12px;font-weight:900;font-size:14px;color:#fff;background:linear-gradient(100deg,var(--pb-purple),var(--pb-magenta),#08a8ff);text-decoration:none}
+
+.res-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:26px 0}
+.res-card{border:1px solid var(--line);border-radius:16px;padding:24px;background:#fff;box-shadow:0 8px 22px rgba(13,35,84,.06);text-decoration:none;display:block;transition:transform .2s ease,box-shadow .2s ease}
+.res-card:hover{transform:translateY(-3px);box-shadow:0 16px 32px rgba(13,35,84,.12);text-decoration:none}
+.res-card .ic{font-size:26px;margin-bottom:10px}
+.res-card h3{margin:0 0 8px;font-size:16.5px;color:var(--ink)}
+.res-card p{font-size:13px;color:var(--muted);margin:0}
+@media(max-width:900px){.res-grid{grid-template-columns:1fr}}
+
+.tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:20px 0}
+@media(max-width:700px){.tool-grid{grid-template-columns:1fr}}
+
+.resource-list{display:flex;flex-direction:column;gap:12px;margin-bottom:10px}
+.resource-item{display:block;border:1px solid var(--line);border-radius:12px;padding:14px 18px;text-decoration:none;color:inherit}
+.resource-item:hover{border-color:var(--pb-blue);text-decoration:none}
+.resource-top{display:flex;justify-content:space-between;gap:10px;margin-bottom:4px}
+.resource-name{font-weight:800;font-size:14.5px;color:var(--ink)}
+.resource-by{font-size:11.5px;color:var(--pb-purple);font-weight:700;white-space:nowrap}
+.resource-desc{font-size:13px;color:var(--muted);margin-bottom:4px}
+.resource-url{font-size:12px;color:var(--pb-blue)}
+
+@media(max-width:640px){ .container{width:min(1140px,calc(100% - 40px))} }
+</style>
+</head>
+<body>
+<div class="topbar"><div class="container nav">
+  <div class="logo"><svg width="22" height="22" viewBox="0 0 480 480" aria-hidden="true" style="vertical-align:-5px;margin-right:2px">
+      <defs>
+        <linearGradient id="navG1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#4ee6cb"/><stop offset="100%" stop-color="#1f9384"/></linearGradient>
+        <linearGradient id="navG2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#8b7fff"/><stop offset="100%" stop-color="#5b3df0"/></linearGradient>
+      </defs>
+      <g transform="rotate(45 240 240)">
+        <path d="M480 240a240 240 0 0 0-240 240 240 240 0 0 0 240-240Z" fill="url(#navG1)"/>
+        <path d="M240 0A240 240 0 0 0 0 240 240 240 0 0 0 240 0Z" fill="url(#navG1)" opacity="0.55"/>
+        <path d="M480 240A240 240 0 0 0 240 0a240 240 0 0 0 240 240Z" fill="url(#navG2)"/>
+        <path d="M240 480A240 240 0 0 0 0 240a240 240 0 0 0 240 240Z" fill="url(#navG2)" opacity="0.55"/>
+      </g>
+    </svg> PROMPT<span class="b">BOOST</span>.APP<span class="tagline">Ideas. Prompts. Mejores resultados.</span></div>
+  <div class="navlinks">
+    <a href="/">Inicio</a>
+    <a href="/prompts/">Categorías</a>
+    <a href="/prompt-lab/">Prompt Lab</a>
+    <a href="/guia-de-prompt-engineering/">Guías</a>
+    <a class="active" href="/recursos/">Recursos</a>
+  </div>
+  <div class="nav-right">
+    <a href="/super-ventas/" class="nav-superventas">
+      <span class="nav-superventas-title">🔥 SUPER VENTAS</span>
+      <span class="nav-superventas-sub">El pack de prompts que te ahorra horas de trabajo con ChatGPT</span>
+    </a>
+  </div>
+</div></div>
+<main><div class="container"><div class="wrap">
+  <div class="breadcrumb"><a href="/">Inicio</a> <span class="sep">/</span> <a href="/recursos/">Recursos</a> <span class="sep">/</span> <span class="current">Prompts para CV y empleo</span></div>
+  <div class="eyebrow">Recursos prácticos</div>
+  <h1>Prompts para CV y búsqueda de empleo con IA</h1>
+  <p class="lede">Adapta tu currículum a cada oferta, prepárate para la entrevista y analiza el puesto antes de presentarte — con prompts reales, gratuitos y listos para copiar.</p>
+
+<h2>Cómo utilizar la IA para buscar trabajo</h2>
+<p>Buscar trabajo implica repetir varias tareas una y otra vez: adaptar el CV a cada oferta, prepararte para entrevistas distintas, escribir cartas de presentación. La IA no consigue el trabajo por ti, pero sí puede ahorrarte tiempo en cada una de esas tareas repetitivas, siempre que le des tu situación real y no le pidas que invente experiencia que no tienes.</p>
+
+<h2>Prompts para mejorar tu CV</h2>
+<p>PromptBoost tiene un prompt real dedicado exactamente a esto:</p>
+<div class="prompt-grid">
+  <div class="prompt-card"><div class="n">ADAPTAR TU CV</div><h4>Adaptar tu currículum a una oferta concreta</h4><p>Reescribe tu experiencia destacando lo relevante para un puesto específico, en vez de un CV genérico para todo.</p><a class="pill" href="/p/adaptar-tu-curriculum-a-una-oferta-concreta/">Ver prompt completo →</a></div>
+  <div class="prompt-card"><div class="n">DESDE LA OTRA ORILLA</div><h4>Reclutador senior</h4><p>Mejora tu CV con razones claras, o te prepara las 3 preguntas más probables de tu próxima entrevista, viéndolo desde la perspectiva de quien contrata.</p><a class="pill" href="/p/reclutador-senior/">Ver prompt completo →</a></div>
+</div>
+
+<h2>Prompt para adaptar tu CV a una oferta</h2>
+<p>Este es el mismo prompt anterior, pensado específicamente para cuando ya tienes una oferta concreta delante y quieres que tu CV hable el mismo idioma que ese anuncio:</p>
+<div class="prompt-card" style="max-width:600px">
+<code>Reescribe mi experiencia destacando lo relevante para [PUESTO] en [EMPRESA/SECTOR], en vez de un CV genérico para todo.</code>
+<a class="pill" href="/p/adaptar-tu-curriculum-a-una-oferta-concreta/">Abrir el prompt completo →</a>
+</div>
+
+<h2>Prompt para preparar una entrevista</h2>
+<p>Practicar antes de la entrevista real reduce los nervios y te ayuda a detectar respuestas flojas antes de que las diga un entrevistador de verdad:</p>
+<div class="prompt-card" style="max-width:600px">
+<div class="n">SIMULACRO DE ENTREVISTA</div>
+<h4>Simulacro de entrevista de trabajo</h4>
+<p>Practica antes de la entrevista real con preguntas adaptadas al puesto y feedback honesto sobre tus respuestas.</p>
+<a class="pill" href="/p/simulacro-de-entrevista-de-trabajo/">Ver prompt completo →</a>
+</div>
+
+<h2>Prompt para practicar preguntas difíciles</h2>
+<p>El mismo prompt de simulacro de entrevista puede orientarse específicamente a las preguntas que más te cuesten responder — solo tienes que indicárselo al pedirle que empiece: dile qué tipo de pregunta te preocupa más (salario, motivos de cambio, debilidades) y que se centre ahí.</p>
+
+<h2>Prompt para analizar una oferta de empleo</h2>
+<p>Antes de adaptar tu CV, puede ayudarte entender bien qué está pidiendo realmente la oferta. El prompt de <a href="/p/reclutador-senior/">Reclutador senior</a> sirve también para esto: pégale el texto de la oferta y pídele que identifique qué requisitos son innegociables y cuáles son deseables, para saber en qué insistir en tu CV.</p>
+
+<h2>Prompt para mejorar tu perfil de LinkedIn</h2>
+<p>PromptBoost no tiene todavía un prompt específico solo para LinkedIn. Mientras tanto, puedes adaptar el mismo prompt de <a href="/p/adaptar-tu-curriculum-a-una-oferta-concreta/">Adaptar tu currículum</a>, indicándole que el formato de salida es un resumen de perfil de LinkedIn en vez de un CV — o describir lo que necesitas en <a href="/prompt-lab/">Prompt Lab</a> y dejar que te ayude a construir el prompt exacto.</p>
+
+<h2>Cómo usar IA sin inventar experiencia profesional</h2>
+<ul>
+  <li>Dale a la IA tu experiencia real y pídele que la <strong>reformule o priorice</strong>, no que añada logros o responsabilidades que no tuviste.</li>
+  <li>Si un prompt te devuelve una cifra o resultado concreto que no puedes justificar en una entrevista, no lo incluyas.</li>
+  <li>Usa la IA para <strong>encontrar mejores palabras</strong> para lo que ya hiciste, no para construir una versión ficticia de tu carrera.</li>
+</ul>
+
+<h2>Errores que debes evitar al usar IA para buscar trabajo</h2>
+<ul>
+  <li><strong>Enviar el mismo CV genérico</strong> generado una sola vez a todas las ofertas, en vez de adaptarlo a cada una.</li>
+  <li><strong>Copiar la respuesta de la IA sin revisarla</strong>: puede sonar artificial o no reflejar bien tu forma de hablar.</li>
+  <li><strong>No preparar ejemplos concretos</strong> después del simulacro de entrevista — practicar preguntas no sustituye tener anécdotas reales listas.</li>
+</ul>
+
+<h2>Prompts de empleo disponibles en PromptBoost</h2>
+<div class="linkrow">
+  <a href="/p/adaptar-tu-curriculum-a-una-oferta-concreta/">📄 Adaptar tu currículum →</a>
+  <a href="/p/simulacro-de-entrevista-de-trabajo/">🎤 Simulacro de entrevista →</a>
+  <a href="/p/reclutador-senior/">🧑‍💼 Reclutador senior →</a>
+  <a href="/p/mentor-de-carrera/">🧭 Mentor de carrera →</a>
+  <a href="/categoria/carrera/">Ver la categoría Carrera completa →</a>
+</div>
+
+<h2>Preguntas frecuentes</h2>
+<div class="faq">
+<details><summary><span>¿Puedo usar estos prompts en ChatGPT, Claude, Gemini o Grok?</span></summary><div class="a">Sí, los cuatro modelos entienden estos prompts igual de bien. La diferencia principal está en si tu plan permite subir tu CV como archivo o solo pegarlo como texto.</div></details>
+<details><summary><span>¿Es seguro compartir mi CV con una IA?</span></summary><div class="a">Evita incluir datos que no aparecerían en un CV público (como tu DNI o dirección exacta) al pegarlo en un chat. El contenido normal de un CV (experiencia, formación, habilidades) no suele ser sensible, pero usa tu criterio.</div></details>
+<details><summary><span>¿La IA puede saltarse los filtros ATS automáticamente?</span></summary><div class="a">No hay garantía de eso: un sistema ATS depende de cómo esté configurado en cada empresa. Lo que sí puede hacer la IA es ayudarte a incluir las palabras clave relevantes de la oferta y a estructurar el CV de forma clara, lo cual mejora tus opciones.</div></details>
+<details><summary><span>¿Debo copiar la respuesta de la IA literalmente?</span></summary><div class="a">No. Úsala como borrador o guía, y revísala siempre para que la redacción suene a ti y refleje tu experiencia real con precisión.</div></details>
+
+</div>
+
+<div class="cta-box">
+  <p>¿Quieres ver el resto de prompts de carrera y profesionales de la biblioteca?</p>
+  <a class="btn" href="/categoria/carrera/">Ver categoría Carrera →</a>
+</div>
+
+</div></div></main>
+<footer><div class="container foot">
+  <div><b style="font-size:15px;color:#fff"><svg width="18" height="18" viewBox="0 0 480 480" aria-hidden="true" style="vertical-align:-3px;margin-right:4px">
+      <defs>
+        <linearGradient id="footG1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#4ee6cb"/><stop offset="100%" stop-color="#1f9384"/></linearGradient>
+        <linearGradient id="footG2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#8b7fff"/><stop offset="100%" stop-color="#5b3df0"/></linearGradient>
+      </defs>
+      <g transform="rotate(45 240 240)">
+        <path d="M480 240a240 240 0 0 0-240 240 240 240 0 0 0 240-240Z" fill="url(#footG1)"/>
+        <path d="M240 0A240 240 0 0 0 0 240 240 240 0 0 0 240 0Z" fill="url(#footG1)" opacity="0.55"/>
+        <path d="M480 240A240 240 0 0 0 240 0a240 240 0 0 0 240 240Z" fill="url(#footG2)"/>
+        <path d="M240 480A240 240 0 0 0 0 240a240 240 0 0 0 240 240Z" fill="url(#footG2)" opacity="0.55"/>
+      </g>
+    </svg>PROMPTBOOST.APP</b></div>
+  <div class="footlinks">
+    <a href="/prompts/">Biblioteca</a>
+    <a href="/glosario/">Glosario</a>
+    <a href="/recursos/">Recursos</a>
+    <a href="/guia-de-prompt-engineering/">Guía completa</a>
+    <a href="/aviso-legal/">Aviso legal</a>
+    <a href="/privacidad/">Privacidad</a>
+    <a href="/cookies/">Cookies</a>
+  </div>
+  <div>© 2026 PromptBoost</div>
+</div></footer>
+</body>
+</html>

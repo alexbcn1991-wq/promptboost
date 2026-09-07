@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Automatización con IA: ideas y ejemplos prácticos | PromptBoost</title>
+<meta name="description" content="Cómo automatizar tareas repetitivas combinando prompts e IA: clasificar leads, resumir formularios, extraer datos de documentos, y más. Con ejemplos para Zapier, Make y Notion.">
+<link rel="canonical" href="https://promptboost.app/recursos/automatizacion-con-ia/">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://promptboost.app/recursos/automatizacion-con-ia/">
+<meta property="og:title" content="Automatización con IA: ideas y ejemplos prácticos | PromptBoost">
+<meta property="og:description" content="Cómo automatizar tareas repetitivas combinando prompts e IA: clasificar leads, resumir formularios, extraer datos de documentos, y más. Con ejemplos para Zapier, Make y Notion.">
+<meta property="og:image" content="https://promptboost.app/og-image.png">
+<meta property="og:locale" content="es_ES">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Automatización con IA: ideas y ejemplos prácticos | PromptBoost">
+<meta name="twitter:description" content="Cómo automatizar tareas repetitivas combinando prompts e IA: clasificar leads, resumir formularios, extraer datos de documentos, y más. Con ejemplos para Zapier, Make y Notion.">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="shortcut icon" href="/favicon.ico">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Q03596FGTP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-Q03596FGTP');
+</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "¿Necesito saber programación para automatizar con IA?", "acceptedAnswer": {"@type": "Answer", "text": "No, para los ejemplos de esta página no. Herramientas como Zapier, Make o Notion están pensadas para conectar pasos sin escribir código; la IA entra como uno de esos pasos, recibiendo un prompt y devolviendo un resultado."}}, {"@type": "Question", "name": "¿PromptBoost tiene una integración directa con Zapier o Make?", "acceptedAnswer": {"@type": "Answer", "text": "No. PromptBoost es una biblioteca de prompts: te da el texto que le pides a la IA dentro de tu automatización, pero no se conecta directamente a esas herramientas ni las gestiona por ti."}}, {"@type": "Question", "name": "¿Cuándo NO merece la pena automatizar algo?", "acceptedAnswer": {"@type": "Answer", "text": "Cuando la tarea es puntual, cuando el criterio para decidir es demasiado ambiguo para explicárselo bien a una IA, o cuando el coste de construir y mantener la automatización supera el tiempo que realmente ahorra."}}, {"@type": "Question", "name": "¿La IA puede tomar decisiones dentro de una automatización sin supervisión?", "acceptedAnswer": {"@type": "Answer", "text": "Puede, pero conviene revisar los resultados especialmente al principio, sobre todo en decisiones con impacto real (por ejemplo, responder a un cliente o descartar un lead), para detectar errores antes de que se repitan a gran escala."}}]}</script>
+<style>
+:root{
+  --pb-bg:#03091F; --pb-bg-secondary:#06133A; --pb-bg-surface:#081B4A;
+  --pb-blue:#1689FF; --pb-cyan:#11D9EF; --pb-purple:#733CFF; --pb-magenta:#FF19D4; --pb-green:#16C987;
+  --pb-text-secondary:#AAB9D8; --pb-border:rgba(255,255,255,.10);
+  --ink:#0b1330; --muted:#5d6d91; --line:#e2e8f5; --soft:#f5f8ff;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#fff;color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,sans-serif;line-height:1.65}
+a{color:var(--pb-blue);text-decoration:none}
+a:hover{text-decoration:underline}
+.container{width:min(1140px,calc(100% - 64px));margin:auto}
+
+.topbar{height:72px;background:#06163f;color:#fff;display:flex;align-items:center;position:sticky;top:0;z-index:50}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:24px}
+.logo{font-size:21px;font-weight:950;letter-spacing:-.6px;white-space:nowrap;color:#fff;display:block}
+.logo .b{color:#11d9ef}
+.tagline{display:block;color:#28d9ee;font-size:11px;font-weight:700;letter-spacing:.2px;margin-top:1px}
+.navlinks{display:flex;align-items:center;gap:26px;font-size:13px;color:#e4ebff}
+.navlinks a{color:#e4ebff;text-decoration:none}
+.navlinks a:hover{color:#fff;text-decoration:none}
+.navlinks a.active{color:#fff;border-bottom:2px solid #20d9ee;padding-bottom:8px}
+.nav-right{display:flex;align-items:center;gap:14px}
+.nav-superventas{display:inline-flex;flex-direction:column;align-items:flex-start;gap:2px;padding:8px 16px;border-radius:14px;color:#fff;text-decoration:none;background:linear-gradient(100deg,#733CFF,#FF19D4,#08a8ff);box-shadow:0 7px 20px rgba(115,60,255,.28);border:1px solid rgba(255,255,255,.16);max-width:280px}
+.nav-superventas-title{font-size:12.5px;font-weight:950;white-space:nowrap;line-height:1.2}
+.nav-superventas-sub{font-size:9.5px;font-weight:600;color:rgba(255,255,255,.88);line-height:1.25;white-space:normal}
+@media(max-width:900px){.navlinks{display:none}}
+@media(max-width:560px){
+  .topbar{height:auto;padding:12px 0}.nav{flex-wrap:wrap;row-gap:10px}.tagline{display:none}
+  .logo{font-size:16px}.nav-right{gap:8px}
+  .nav-superventas{max-width:170px;padding:7px 11px}.nav-superventas-title{font-size:11px}.nav-superventas-sub{font-size:8.5px}
+}
+a:focus-visible, button:focus-visible { outline: 2px solid var(--pb-blue); outline-offset: 2px; }
+
+main{background:#fff}
+.breadcrumb{font-size:12px;color:var(--muted);margin:22px 0 14px}
+.breadcrumb a{color:var(--muted)}
+.breadcrumb .sep{margin:0 6px}
+.breadcrumb .current{color:var(--ink);font-weight:600}
+.eyebrow{font-size:11px;font-weight:900;color:var(--pb-purple);letter-spacing:.08em;text-transform:uppercase}
+h1{font-size:clamp(28px,4vw,42px);letter-spacing:-1px;margin:10px 0 14px;color:var(--ink)}
+.lede{font-size:16px;color:#333d57;max-width:760px;margin-bottom:8px}
+.wrap{padding-bottom:70px}
+h2{font-size:22px;margin:38px 0 14px;color:var(--ink);letter-spacing:-.3px}
+h3{font-size:16px;margin:20px 0 8px;color:var(--ink)}
+p{font-size:14.5px;color:#333d57;margin-bottom:14px;max-width:780px}
+ul{margin:0 0 16px 20px}
+li{font-size:14.5px;color:#333d57;margin-bottom:8px}
+
+.prompt-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:20px 0 10px}
+.prompt-card{border:1px solid var(--line);border-radius:14px;padding:18px 20px;background:var(--soft)}
+.prompt-card .n{font-size:11px;font-weight:900;color:var(--pb-purple);margin-bottom:6px}
+.prompt-card h4{font-size:15px;margin-bottom:6px;color:var(--ink)}
+.prompt-card p{font-size:13px;color:var(--muted);margin-bottom:10px}
+.prompt-card code{display:block;background:#fff;border:1px solid var(--line);border-radius:8px;padding:10px 12px;font:12px/1.5 ui-monospace,Menlo,monospace;color:#1c2440;white-space:pre-wrap;margin-bottom:10px}
+.prompt-card a.pill{display:inline-block;font-size:12.5px;font-weight:800;color:var(--pb-blue)}
+@media(max-width:800px){.prompt-grid{grid-template-columns:1fr}}
+
+.linkrow{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0}
+.linkrow a{display:inline-flex;align-items:center;gap:6px;padding:9px 14px;border:1px solid var(--line);border-radius:100px;font-size:13px;font-weight:700;color:var(--ink);text-decoration:none;background:#fff}
+.linkrow a:hover{border-color:var(--pb-blue);color:var(--pb-blue)}
+
+.callout{background:var(--soft);border:1px solid var(--line);border-left:4px solid var(--pb-purple);border-radius:10px;padding:16px 20px;margin:20px 0}
+.callout p{margin:0;font-size:14px}
+
+.step-flow{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:24px 0;padding:20px;background:var(--pb-bg-secondary);border-radius:14px;color:#fff}
+.step-flow .box{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:10px;padding:10px 16px;font-size:13px;font-weight:700}
+.step-flow .ar{color:var(--pb-cyan);font-weight:900}
+
+.faq details{border-bottom:1px solid var(--line);padding:16px 0}
+.faq summary{cursor:pointer;font-weight:800;font-size:14.5px;color:var(--ink);list-style:none;display:flex;justify-content:space-between;gap:16px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary:after{content:"+";font-size:18px;color:var(--pb-purple)}
+.faq details[open] summary:after{content:"–"}
+.faq .a{padding-top:10px;font-size:14px;color:var(--muted)}
+
+.cta-box{background:linear-gradient(135deg,var(--pb-bg-secondary),#0b1c52);border-radius:16px;padding:28px 30px;margin:36px 0;color:#fff;text-align:center}
+.cta-box p{color:#dbe5ff;margin-bottom:16px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border-radius:12px;font-weight:900;font-size:14px;color:#fff;background:linear-gradient(100deg,var(--pb-purple),var(--pb-magenta),#08a8ff);text-decoration:none}
+
+.res-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:26px 0}
+.res-card{border:1px solid var(--line);border-radius:16px;padding:24px;background:#fff;box-shadow:0 8px 22px rgba(13,35,84,.06);text-decoration:none;display:block;transition:transform .2s ease,box-shadow .2s ease}
+.res-card:hover{transform:translateY(-3px);box-shadow:0 16px 32px rgba(13,35,84,.12);text-decoration:none}
+.res-card .ic{font-size:26px;margin-bottom:10px}
+.res-card h3{margin:0 0 8px;font-size:16.5px;color:var(--ink)}
+.res-card p{font-size:13px;color:var(--muted);margin:0}
+@media(max-width:900px){.res-grid{grid-template-columns:1fr}}
+
+.tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:20px 0}
+@media(max-width:700px){.tool-grid{grid-template-columns:1fr}}
+
+.resource-list{display:flex;flex-direction:column;gap:12px;margin-bottom:10px}
+.resource-item{display:block;border:1px solid var(--line);border-radius:12px;padding:14px 18px;text-decoration:none;color:inherit}
+.resource-item:hover{border-color:var(--pb-blue);text-decoration:none}
+.resource-top{display:flex;justify-content:space-between;gap:10px;margin-bottom:4px}
+.resource-name{font-weight:800;font-size:14.5px;color:var(--ink)}
+.resource-by{font-size:11.5px;color:var(--pb-purple);font-weight:700;white-space:nowrap}
+.resource-desc{font-size:13px;color:var(--muted);margin-bottom:4px}
+.resource-url{font-size:12px;color:var(--pb-blue)}
+
+@media(max-width:640px){ .container{width:min(1140px,calc(100% - 40px))} }
+</style>
+</head>
+<body>
+<div class="topbar"><div class="container nav">
+  <div class="logo"><svg width="22" height="22" viewBox="0 0 480 480" aria-hidden="true" style="vertical-align:-5px;margin-right:2px">
+      <defs>
+        <linearGradient id="navG1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#4ee6cb"/><stop offset="100%" stop-color="#1f9384"/></linearGradient>
+        <linearGradient id="navG2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#8b7fff"/><stop offset="100%" stop-color="#5b3df0"/></linearGradient>
+      </defs>
+      <g transform="rotate(45 240 240)">
+        <path d="M480 240a240 240 0 0 0-240 240 240 240 0 0 0 240-240Z" fill="url(#navG1)"/>
+        <path d="M240 0A240 240 0 0 0 0 240 240 240 0 0 0 240 0Z" fill="url(#navG1)" opacity="0.55"/>
+        <path d="M480 240A240 240 0 0 0 240 0a240 240 0 0 0 240 240Z" fill="url(#navG2)"/>
+        <path d="M240 480A240 240 0 0 0 0 240a240 240 0 0 0 240 240Z" fill="url(#navG2)" opacity="0.55"/>
+      </g>
+    </svg> PROMPT<span class="b">BOOST</span>.APP<span class="tagline">Ideas. Prompts. Mejores resultados.</span></div>
+  <div class="navlinks">
+    <a href="/">Inicio</a>
+    <a href="/prompts/">Categorías</a>
+    <a href="/prompt-lab/">Prompt Lab</a>
+    <a href="/guia-de-prompt-engineering/">Guías</a>
+    <a class="active" href="/recursos/">Recursos</a>
+  </div>
+  <div class="nav-right">
+    <a href="/super-ventas/" class="nav-superventas">
+      <span class="nav-superventas-title">🔥 SUPER VENTAS</span>
+      <span class="nav-superventas-sub">El pack de prompts que te ahorra horas de trabajo con ChatGPT</span>
+    </a>
+  </div>
+</div></div>
+<main><div class="container"><div class="wrap">
+  <div class="breadcrumb"><a href="/">Inicio</a> <span class="sep">/</span> <a href="/recursos/">Recursos</a> <span class="sep">/</span> <span class="current">Automatización con IA</span></div>
+  <div class="eyebrow">Recursos prácticos</div>
+  <h1>Automatización con IA: ideas y ejemplos prácticos</h1>
+  <p class="lede">Cómo combinar prompts e IA para automatizar tareas repetitivas — clasificar, resumir, extraer y generar contenido — sin necesidad de saber programación.</p>
+
+<h2>Qué tareas puedes automatizar con IA</h2>
+<p>No hace falta ser programador para automatizar tareas repetitivas con IA. La idea es sencilla: cada vez que una tarea consiste en "leer algo, entenderlo, y producir un resultado estructurado", ese es un buen candidato para que un prompt haga el trabajo dentro de una automatización, en vez de hacerlo tú a mano cada vez.</p>
+
+<h2>5 ejemplos de automatización con IA</h2>
+<div class="prompt-grid">
+  <div class="prompt-card"><div class="n">01</div><h4>Clasificar leads</h4><p>Un formulario de contacto entra, y la IA lee el mensaje y lo clasifica por urgencia, tipo de consulta o probabilidad de conversión, antes de que un humano lo revise.</p></div>
+  <div class="prompt-card"><div class="n">02</div><h4>Resumir formularios</h4><p>En vez de leer cada respuesta larga de un formulario, la IA la convierte en un resumen con los puntos clave y la acción sugerida.</p></div>
+  <div class="prompt-card"><div class="n">03</div><h4>Analizar emails</h4><p>La IA revisa el contenido de un email entrante y decide a qué categoría o responsable debería asignarse, o si necesita respuesta urgente.</p></div>
+  <div class="prompt-card"><div class="n">04</div><h4>Extraer información de documentos</h4><p>De un PDF, factura o contrato, la IA extrae los datos clave (fechas, importes, nombres) en un formato estructurado, listo para guardar en una hoja o base de datos.</p></div>
+  <div class="prompt-card"><div class="n">05</div><h4>Generar respuestas o contenido</h4><p>A partir de una plantilla y unos datos de entrada, la IA genera un primer borrador de respuesta o pieza de contenido, que luego se revisa antes de enviar.</p></div>
+</div>
+
+<h2>Cómo funciona una automatización con IA</h2>
+<p>El patrón se repite en casi todos los casos:</p>
+<div class="step-flow">
+  <div class="box">Entrada</div><span class="ar">→</span>
+  <div class="box">IA (prompt)</div><span class="ar">→</span>
+  <div class="box">Decisión / procesamiento</div><span class="ar">→</span>
+  <div class="box">Salida</div><span class="ar">→</span>
+  <div class="box">Herramienta destino</div>
+</div>
+<p>La IA ocupa el paso central: recibe una entrada (un email, un formulario, un documento), aplica un prompt bien definido, y entrega una salida estructurada que la siguiente herramienta pueda usar directamente.</p>
+
+<h2>Prompts útiles para automatizaciones</h2>
+<p>Dos prompts reales de la biblioteca de PromptBoost encajan directamente con este enfoque:</p>
+<div class="prompt-grid">
+  <div class="prompt-card"><div class="n">DECIDIR CUÁNDO ACTUAR</div><h4>Prompt de agente con herramientas</h4><p>Estructura para tareas donde la IA debe decidir cuándo y cómo usar herramientas disponibles, en vez de responder directo — la base de cualquier automatización con pasos condicionales.</p><a class="pill" href="/p/prompt-de-agente-con-herramientas/">Ver prompt completo →</a></div>
+  <div class="prompt-card"><div class="n">CONVERTIR TEXTO EN ACCIÓN</div><h4>Resumen de reunión en acta accionable</h4><p>Convierte notas o texto desordenado en una salida estructurada con responsables y fechas — el mismo principio que extraer datos de un formulario o documento.</p><a class="pill" href="/p/resumen-de-reunion-en-acta-accionable/">Ver prompt completo →</a></div>
+</div>
+
+<h2>IA + Zapier</h2>
+<p>Zapier permite conectar un disparador (por ejemplo, un nuevo email o una respuesta de formulario) con una acción, y en medio puedes insertar un paso de IA: le pasas el contenido de entrada como parte del prompt, y usas su respuesta para decidir el siguiente paso del flujo (etiquetar, reenviar, guardar).</p>
+
+<h2>IA + Make</h2>
+<p>Make funciona de forma similar a Zapier, con más control visual sobre el flujo de datos entre pasos. Es útil cuando necesitas que la IA tome una decisión que luego se ramifica en caminos distintos (por ejemplo, "si es una reclamación, ir por aquí; si es una consulta, por allí").</p>
+
+<h2>IA + Notion</h2>
+<p>Dentro de Notion, un prompt bien escrito puede convertir notas sueltas en una base de datos estructurada: por ejemplo, pasar de una reunión anotada de forma libre a una tabla con tareas, responsables y fechas, usando un prompt como el de <a href="/p/resumen-de-reunion-en-acta-accionable/">Resumen de reunión en acta accionable</a>.</p>
+
+<h2>IA + Google Sheets</h2>
+<p>Cuando la automatización termina en una hoja de cálculo, el resultado de la IA debe llegar ya estructurado (columnas claras, sin texto de más) para poder insertarse directamente en una fila. Si además necesitas trabajar los datos ya dentro de la hoja, tienes ejemplos específicos en <a href="/recursos/prompts-para-excel/">prompts para Excel y Google Sheets</a>.</p>
+
+<h2>Cuándo NO conviene automatizar</h2>
+<ul>
+  <li>Cuando la tarea ocurre muy pocas veces — el tiempo de configurar la automatización no compensa.</li>
+  <li>Cuando el criterio de decisión es difícil de poner por escrito de forma consistente.</li>
+  <li>Cuando un error de la IA en ese paso concreto tendría consecuencias serias sin que nadie lo revise a tiempo.</li>
+</ul>
+
+<h2>Errores habituales al automatizar con IA</h2>
+<ul>
+  <li><strong>No definir el formato de salida</strong>: si no le dices a la IA exactamente qué estructura necesitas, el resto del flujo puede romperse al recibir una respuesta inesperada.</li>
+  <li><strong>No revisar los primeros resultados</strong>: los errores se detectan mejor al principio, antes de que la automatización lleve semanas funcionando sola.</li>
+  <li><strong>Automatizar antes de hacerlo bien a mano</strong>: si el proceso manual no está claro, automatizarlo solo reproduce la confusión más rápido.</li>
+</ul>
+
+<h2>Herramientas y recursos relacionados</h2>
+<div class="linkrow">
+  <a href="/prompt-lab/">⚗️ Prompt Lab →</a>
+  <a href="/categoria/productividad/">📈 Categoría Productividad →</a>
+  <a href="/categoria/negocio/">💼 Categoría Negocio →</a>
+  <a href="/categoria/codigo/">💻 Categoría Código →</a>
+</div>
+
+<h2>Preguntas frecuentes</h2>
+<div class="faq">
+<details><summary><span>¿Necesito saber programación para automatizar con IA?</span></summary><div class="a">No, para los ejemplos de esta página no. Herramientas como Zapier, Make o Notion están pensadas para conectar pasos sin escribir código; la IA entra como uno de esos pasos, recibiendo un prompt y devolviendo un resultado.</div></details>
+<details><summary><span>¿PromptBoost tiene una integración directa con Zapier o Make?</span></summary><div class="a">No. PromptBoost es una biblioteca de prompts: te da el texto que le pides a la IA dentro de tu automatización, pero no se conecta directamente a esas herramientas ni las gestiona por ti.</div></details>
+<details><summary><span>¿Cuándo NO merece la pena automatizar algo?</span></summary><div class="a">Cuando la tarea es puntual, cuando el criterio para decidir es demasiado ambiguo para explicárselo bien a una IA, o cuando el coste de construir y mantener la automatización supera el tiempo que realmente ahorra.</div></details>
+<details><summary><span>¿La IA puede tomar decisiones dentro de una automatización sin supervisión?</span></summary><div class="a">Puede, pero conviene revisar los resultados especialmente al principio, sobre todo en decisiones con impacto real (por ejemplo, responder a un cliente o descartar un lead), para detectar errores antes de que se repitan a gran escala.</div></details>
+
+</div>
+
+<div class="cta-box">
+  <p>¿Tienes una idea de automatización pero no sabes cómo escribir el prompt?</p>
+  <a class="btn" href="/prompt-lab/">Crear mi prompt en Prompt Lab →</a>
+</div>
+
+</div></div></main>
+<footer><div class="container foot">
+  <div><b style="font-size:15px;color:#fff"><svg width="18" height="18" viewBox="0 0 480 480" aria-hidden="true" style="vertical-align:-3px;margin-right:4px">
+      <defs>
+        <linearGradient id="footG1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#4ee6cb"/><stop offset="100%" stop-color="#1f9384"/></linearGradient>
+        <linearGradient id="footG2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#8b7fff"/><stop offset="100%" stop-color="#5b3df0"/></linearGradient>
+      </defs>
+      <g transform="rotate(45 240 240)">
+        <path d="M480 240a240 240 0 0 0-240 240 240 240 0 0 0 240-240Z" fill="url(#footG1)"/>
+        <path d="M240 0A240 240 0 0 0 0 240 240 240 0 0 0 240 0Z" fill="url(#footG1)" opacity="0.55"/>
+        <path d="M480 240A240 240 0 0 0 240 0a240 240 0 0 0 240 240Z" fill="url(#footG2)"/>
+        <path d="M240 480A240 240 0 0 0 0 240a240 240 0 0 0 240 240Z" fill="url(#footG2)" opacity="0.55"/>
+      </g>
+    </svg>PROMPTBOOST.APP</b></div>
+  <div class="footlinks">
+    <a href="/prompts/">Biblioteca</a>
+    <a href="/glosario/">Glosario</a>
+    <a href="/recursos/">Recursos</a>
+    <a href="/guia-de-prompt-engineering/">Guía completa</a>
+    <a href="/aviso-legal/">Aviso legal</a>
+    <a href="/privacidad/">Privacidad</a>
+    <a href="/cookies/">Cookies</a>
+  </div>
+  <div>© 2026 PromptBoost</div>
+</div></footer>
+</body>
+</html>
