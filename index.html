@@ -430,14 +430,121 @@ a:focus-visible, button:focus-visible, .btn:focus-visible, .search:focus-visible
 
 <section class="section" id="comandos-atajos">
   <div class="container">
-    <div class="five-ai-visual" style="position:relative;width:100%;overflow:hidden;border-radius:24px;line-height:0;">
-      <img src="/comandos-atajos-5-ias.png" alt="Los 5 comandos y atajos más útiles y populares de ChatGPT, Claude, Gemini, Grok y Perplexity" width="2172" height="724" style="display:block;width:100%;height:auto;border-radius:24px;">
-      <a href="/recursos/" aria-label="Ver todos los comandos y atajos de ChatGPT" style="position:absolute;left:2.9%;top:77%;width:15.8%;height:8.8%;display:block;"></a>
-      <a href="/recursos/" aria-label="Ver todos los comandos y atajos de Claude" style="position:absolute;left:21.9%;top:77%;width:15.8%;height:8.8%;display:block;"></a>
-      <a href="/recursos/" aria-label="Ver todas las funciones de Gemini" style="position:absolute;left:40.8%;top:77%;width:15.8%;height:8.8%;display:block;"></a>
-      <a href="/recursos/" aria-label="Ver todos los comandos y atajos de Grok" style="position:absolute;left:59.8%;top:77%;width:15.8%;height:8.8%;display:block;"></a>
-      <a href="/recursos/" aria-label="Ver todas las funciones de Perplexity" style="position:absolute;left:78.8%;top:77%;width:15.8%;height:8.8%;display:block;"></a>
-      <a href="/recursos/" aria-label="Ver guía completa de cada herramienta" style="position:absolute;left:40.8%;top:89.5%;width:18.5%;height:7%;display:block;"></a>
+    <style>
+      .pb-ai-section{padding:10px 0 8px}
+      .pb-ai-head{display:flex;justify-content:space-between;gap:28px;align-items:flex-end;margin-bottom:28px}
+      .pb-ai-kicker{display:inline-flex;align-items:center;padding:7px 13px;border-radius:999px;background:#eeeaff;color:#6042ff;font-size:12px;font-weight:800;letter-spacing:.02em;margin-bottom:12px}
+      .pb-ai-title{margin:0;font-size:clamp(32px,4vw,52px);line-height:1.04;letter-spacing:-.035em}
+      .pb-ai-title .pb-grad{background:linear-gradient(90deg,#7b2cff,#d51bdb,#159dff);-webkit-background-clip:text;background-clip:text;color:transparent}
+      .pb-ai-sub{margin:10px 0 0;max-width:900px;color:#60709a;font-size:16px;line-height:1.55}
+      .pb-ai-callout{flex:0 0 auto;display:flex;align-items:center;gap:10px;padding:15px 19px;border-radius:16px;background:linear-gradient(110deg,#f4f0ff,#eefaff);color:#23458e;font-size:14px;font-weight:700;white-space:nowrap}
+      .pb-ai-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+      .pb-ai-card{display:flex;flex-direction:column;min-width:0;padding:20px 20px 18px;border:1px solid #e1e5f2;border-radius:20px;background:linear-gradient(180deg,#fff 0%,#fbfbff 100%);box-shadow:0 12px 30px rgba(61,54,125,.07)}
+      .pb-ai-brand{display:flex;align-items:center;gap:13px;margin-bottom:18px}
+      .pb-ai-logo{width:58px;height:58px;border-radius:16px;display:grid;place-items:center;font-size:29px;font-weight:900;flex:0 0 auto;box-shadow:0 6px 15px rgba(0,0,0,.08)}
+      .pb-ai-logo.chatgpt{background:#18b98a;color:#fff}
+      .pb-ai-logo.claude{background:#ee7655;color:#fff}
+      .pb-ai-logo.gemini{background:#fff;color:#4285f4;border:1px solid #edf0f7}
+      .pb-ai-logo.grok{background:#080808;color:#fff}
+      .pb-ai-name{font-size:21px;font-weight:850;line-height:1.1;color:#13224d}
+      .pb-ai-desc{font-size:12.5px;line-height:1.35;color:#66749a;margin-top:5px}
+      .pb-ai-list{display:grid;gap:7px;margin-bottom:18px}
+      .pb-ai-item{display:grid;grid-template-columns:30px minmax(0,1fr);align-items:center;gap:9px;min-height:40px;padding:5px 8px;border-radius:11px;background:linear-gradient(90deg,#f7f8fc,#fbfaff);font-size:12.5px}
+      .pb-ai-num{width:27px;height:27px;border-radius:50%;display:grid;place-items:center;font-weight:800;color:#17254c;background:#edf0fa}
+      .pb-ai-card:nth-child(1) .pb-ai-num{background:#e2f8f1}
+      .pb-ai-card:nth-child(2) .pb-ai-num{background:#fff0eb}
+      .pb-ai-card:nth-child(3) .pb-ai-num{background:#eef1ff}
+      .pb-ai-card:nth-child(4) .pb-ai-num{background:#e9e9e9}
+      .pb-ai-command{font-weight:800;color:#17254c;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+      .pb-ai-note{display:block;color:#7783a3;font-size:11.5px;text-align:right;margin-top:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+      .pb-ai-btn{margin-top:auto;display:flex;justify-content:center;align-items:center;min-height:47px;padding:11px 14px;border-radius:13px;background:linear-gradient(100deg,#7b32ff 0%,#d91bdc 52%,#159dff 100%);color:#fff!important;text-decoration:none;font-size:13.5px;font-weight:850;box-shadow:0 8px 18px rgba(126,52,255,.2)}
+      .pb-ai-guide{display:flex;justify-content:center;margin-top:23px}
+      .pb-ai-guide a{display:inline-flex;align-items:center;gap:8px;color:#234f9d;font-weight:750;text-decoration:none;font-size:14px}
+      @media (max-width:1050px){
+        .pb-ai-head{align-items:flex-start;flex-direction:column}
+        .pb-ai-callout{white-space:normal}
+        .pb-ai-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+      }
+      @media (max-width:640px){
+        .pb-ai-grid{grid-template-columns:1fr}
+        .pb-ai-card{padding:18px}
+        .pb-ai-title{font-size:34px}
+      }
+    </style>
+
+    <div class="pb-ai-section">
+      <div class="pb-ai-head">
+        <div>
+          <div class="pb-ai-kicker">⚡ COMANDOS Y ATAJOS</div>
+          <h2 class="pb-ai-title">Los 5 <span class="pb-grad">más útiles</span> de cada IA</h2>
+          <p class="pb-ai-sub">Descubre los comandos, funciones y atajos que realmente marcan la diferencia en ChatGPT, Claude, Gemini y Grok.</p>
+        </div>
+        <div class="pb-ai-callout">⚡ Ahorra tiempo. Haz más. Con la IA adecuada.</div>
+      </div>
+
+      <div class="pb-ai-grid">
+        <article class="pb-ai-card">
+          <div class="pb-ai-brand">
+            <div class="pb-ai-logo chatgpt">✳</div>
+            <div><div class="pb-ai-name">ChatGPT</div><div class="pb-ai-desc">Investiga, crea, analiza y mucho más.</div></div>
+          </div>
+          <div class="pb-ai-list">
+            <div class="pb-ai-item"><span class="pb-ai-num">1</span><span><b class="pb-ai-command">/search</b><small class="pb-ai-note">Busca en la web</small></span></div>
+            <div class="pb-ai-item"><span class="pb-ai-num">2</span><span><b class="pb-ai-command">/reason</b><small class="pb-ai-note">Razonamiento avanzado</small></span></div>
+            <div class="pb-ai-item"><span class="pb-ai-num">3</span><span><b class="pb-ai-command">/image</b><small class="pb-ai-note">Genera imágenes</small></span></div>
+            <div class="pb-ai-item"><span class="pb-ai-num">4</span><span><b class="pb-ai-command">Deep Research</b><small class="pb-ai-note">Investigación profunda</small></span></div>
+            <div class="pb-ai-item"><span class="pb-ai-num">5</span><span><b class="pb-ai-command">Projects</b><small class="pb-ai-note">Organiza tu trabajo</small></span></div>
+          </div>
+          <a class="pb-ai-btn" href="/recursos/">Ver todos los comandos →</a>
+        </article>
+
+        <article class="pb-ai-card">
+          <div class="pb-ai-brand">
+            <div class="pb-ai-logo claude">✳</div>
+            <div><div class="pb-ai-name">Claude</div><div class="pb-ai-desc">Piensa, planifica y trabaja mejor.</div></div>
+          </div>
+          <div class="pb-ai-list">
+            <div class="pb-ai-item"><span class="pb-ai-num">1</span><span><b class="pb-ai-command">/plan</b><small class="pb-ai-note">Crea un plan de trabajo</small></span></div>
+            <div class="pb-ai-item"><span class="pb-ai-num">2</span><span><b class="pb-ai-command">/compact</b><small class="pb-ai-note">Reduce el contexto</small></span></div>
+            <div class="pb-ai-item"><span class="pb-ai-num">3</span><span><b class="pb-ai-command">/model</b><small class="pb-ai-note">Cambia de modelo</small></span></div>
+            <div class="pb-ai-item"><span class="pb-ai-num">4</span><span><b class="pb-ai-command">/clear</b><small class="pb-ai-note">Limpia la conversación</small></span></div>
+            <div class="pb-ai-item"><span class="pb-ai-num">5</span><span><b class="pb-ai-command">/ultrareview</b><small class="pb-ai-note">Revisión en profundidad</small></span></div>
+          </div>
+          <a class="pb-ai-btn" href="/recursos/">Ver todos los comandos →</a>
+        </article>
+
+        <article class="pb-ai-card">
+          <div class="pb-ai-brand">
+            <div class="pb-ai-logo gemini">G</div>
+            <div><div class="pb-ai-name">Gemini</div><div class="pb-ai-desc">Conectado a tu mundo de Google.</div></div>
+          </div>
+          <div class="pb-ai-list">
+            <div class="pb-ai-item"><span class="pb-ai-num">1</span><span><b class="pb-ai-command">@Gmail</b><small class="pb-ai-note">Busca en tus correos</small></span></div>
+            <div class="pb-ai-item"><span class="pb-ai-num">2</span><span><b class="pb-ai-command">@Drive</b><small class="pb-ai-note">Trabaja con tus archivos</small></span></div>
+            <div class="pb-ai-item"><span class="pb-ai-num">3</span><span><b class="pb-ai-command">@Calendar</b><small class="pb-ai-note">Consulta tus eventos</small></span></div>
+            <div class="pb-ai-item"><span class="pb-ai-num">4</span><span><b class="pb-ai-command">Deep Research</b><small class="pb-ai-note">Investigación avanzada</small></span></div>
+            <div class="pb-ai-item"><span class="pb-ai-num">5</span><span><b class="pb-ai-command">Canvas</b><small class="pb-ai-note">Crea y edita contenido</small></span></div>
+          </div>
+          <a class="pb-ai-btn" href="/recursos/">Ver todas las funciones →</a>
+        </article>
+
+        <article class="pb-ai-card">
+          <div class="pb-ai-brand">
+            <div class="pb-ai-logo grok">𝕏</div>
+            <div><div class="pb-ai-name">Grok</div><div class="pb-ai-desc">Investigación, análisis y creatividad.</div></div>
+          </div>
+          <div class="pb-ai-list">
+            <div class="pb-ai-item"><span class="pb-ai-num">1</span><span><b class="pb-ai-command">/think</b><small class="pb-ai-note">Razonamiento profundo</small></span></div>
+            <div class="pb-ai-item"><span class="pb-ai-num">2</span><span><b class="pb-ai-command">/deepsearch</b><small class="pb-ai-note">Investigación avanzada</small></span></div>
+            <div class="pb-ai-item"><span class="pb-ai-num">3</span><span><b class="pb-ai-command">/code-review</b><small class="pb-ai-note">Revisa tu código</small></span></div>
+            <div class="pb-ai-item"><span class="pb-ai-num">4</span><span><b class="pb-ai-command">/goal</b><small class="pb-ai-note">Define un objetivo</small></span></div>
+            <div class="pb-ai-item"><span class="pb-ai-num">5</span><span><b class="pb-ai-command">/plan</b><small class="pb-ai-note">Crea un plan de trabajo</small></span></div>
+          </div>
+          <a class="pb-ai-btn" href="/recursos/">Ver todos los comandos →</a>
+        </article>
+      </div>
+
+      <div class="pb-ai-guide"><a href="/recursos/">📖 Ver guía completa de cada herramienta →</a></div>
     </div>
   </div>
 </section>
