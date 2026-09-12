@@ -220,6 +220,14 @@ footer{background:#06143d;color:var(--pb-text-secondary);padding:30px 0}
   .nav-superventas-title{font-size:11px}
   .nav-superventas-sub{font-size:8.5px}
 }
+footer{background:#06143d;color:#AAB9D8;padding:34px 0 24px}
+.foot-full{display:flex;flex-direction:column;gap:14px}
+.foot-full-top{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+.foot-full-top>div:last-child{font-size:11.5px;color:#8a94b8;letter-spacing:.04em}
+.foot-links-grid{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:12.5px}
+.foot-links-grid a{color:#AAB9D8;text-decoration:none}
+.foot-links-grid a:hover{color:#fff}
+.foot-copy{font-size:11.5px;color:#8a94b8;border-top:1px solid rgba(255,255,255,.08);padding-top:14px}
 </style>
 </head>
 <body>
@@ -321,26 +329,27 @@ Tarea: [tu petición concreta]</div>
   </div>
 </div></div></main>
 
-<footer><div class="container foot">
-  <div><b style="font-size:15px;color:#fff"><svg width="18" height="18" viewBox="0 0 480 480" aria-hidden="true" style="vertical-align:-3px;margin-right:4px">
+<footer><div class="container foot-full">
+  <div class="foot-full-top">
+    <div><b style="font-size:16px"><svg width="22" height="22" viewBox="0 0 480 480" aria-hidden="true" style="vertical-align:-5px;margin-right:2px">
       <defs>
-        <linearGradient id="footG1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#4ee6cb"/><stop offset="100%" stop-color="#1f9384"/></linearGradient>
-        <linearGradient id="footG2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#8b7fff"/><stop offset="100%" stop-color="#5b3df0"/></linearGradient>
+        <linearGradient id="navG1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#4ee6cb"/><stop offset="100%" stop-color="#1f9384"/></linearGradient>
+        <linearGradient id="navG2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#8b7fff"/><stop offset="100%" stop-color="#5b3df0"/></linearGradient>
       </defs>
       <g transform="rotate(45 240 240)">
-        <path d="M480 240a240 240 0 0 0-240 240 240 240 0 0 0 240-240Z" fill="url(#footG1)"/>
-        <path d="M240 0A240 240 0 0 0 0 240 240 240 0 0 0 240 0Z" fill="url(#footG1)" opacity="0.55"/>
-        <path d="M480 240A240 240 0 0 0 240 0a240 240 0 0 0 240 240Z" fill="url(#footG2)"/>
-        <path d="M240 480A240 240 0 0 0 0 240a240 240 0 0 0 240 240Z" fill="url(#footG2)" opacity="0.55"/>
+        <path d="M480 240a240 240 0 0 0-240 240 240 240 0 0 0 240-240Z" fill="url(#navG1)"/>
+        <path d="M240 0A240 240 0 0 0 0 240 240 240 0 0 0 240 0Z" fill="url(#navG1)" opacity="0.55"/>
+        <path d="M480 240A240 240 0 0 0 240 0a240 240 0 0 0 240 240Z" fill="url(#navG2)"/>
+        <path d="M240 480A240 240 0 0 0 0 240a240 240 0 0 0 240 240Z" fill="url(#navG2)" opacity="0.55"/>
       </g>
-    </svg>PROMPTBOOST.APP</b></div>
-  <div class="footlinks">
-    <a href="/prompts/">Biblioteca</a>
-    <a href="/glosario/">Glosario</a>
-    <a href="/recursos/">Recursos</a>
-    <a href="/guia-de-prompt-engineering/">Guía completa</a>
+    </svg>PROMPTBOOST.APP</b><div style="color:#25d9ef;margin-top:4px">Ideas. Prompts. Mejores resultados.</div></div>
+    <div>COPIA, ADAPTA, MEJORA</div>
   </div>
-  <div>© 2026 PromptBoost</div>
+  <div class="foot-links-grid">
+    <a href="/">Inicio</a><a href="/prompts/">Categorías</a><a href="/prompt-lab/">Prompt Lab</a><a href="/guia-de-prompt-engineering/">Guías</a><a href="/recursos/">Recursos</a>
+    <a href="/aviso-legal/">Aviso legal</a><a href="/privacidad/">Privacidad</a><a href="/cookies/">Cookies</a>
+  </div>
+  <div class="foot-copy">© 2026 PromptBoost. Todos los derechos reservados.</div>
 </div></footer>
 
 <script>
