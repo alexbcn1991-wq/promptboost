@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Comandos y atajos de ChatGPT, Claude, Gemini y Grok: guía completa | PromptBoost</title>
+<meta name="description" content="Guía completa de comandos, funciones y atajos de ChatGPT, Claude, Gemini y Grok: los 5 esenciales de cada uno, más las funciones avanzadas que merece la pena conocer.">
+<link rel="canonical" href="https://promptboost.app/recursos/comandos-y-atajos-de-ia/">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://promptboost.app/recursos/comandos-y-atajos-de-ia/">
+<meta property="og:title" content="Comandos y atajos de ChatGPT, Claude, Gemini y Grok: guía completa | PromptBoost">
+<meta property="og:description" content="Guía completa de comandos, funciones y atajos de ChatGPT, Claude, Gemini y Grok: los 5 esenciales de cada uno, más las funciones avanzadas que merece la pena conocer.">
+<meta property="og:image" content="https://promptboost.app/og-image.png">
+<meta property="og:locale" content="es_ES">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Comandos y atajos de ChatGPT, Claude, Gemini y Grok: guía completa | PromptBoost">
+<meta name="twitter:description" content="Guía completa de comandos, funciones y atajos de ChatGPT, Claude, Gemini y Grok: los 5 esenciales de cada uno, más las funciones avanzadas que merece la pena conocer.">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="shortcut icon" href="/favicon.ico">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<script src="/cookie-consent.js"></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "¿Estos comandos funcionan igual en el plan gratuito de cada herramienta?", "acceptedAnswer": {"@type": "Answer", "text": "No siempre. Algunas funciones (Deep Research avanzado, Big Brain Mode de Grok, límites de Canvas o Projects) están reservadas a planes de pago o tienen un uso limitado en el nivel gratuito. Los comandos básicos de barra sí suelen estar disponibles para todos."}}, {"@type": "Question", "name": "¿Por qué un comando que veo aquí no me aparece a mí?", "acceptedAnswer": {"@type": "Answer", "text": "La disponibilidad depende de tu región, tu plan, y de si la función está en fase de lanzamiento progresivo (\"rollout\"). Las cuatro herramientas despliegan funciones nuevas de forma escalonada, no para todos los usuarios a la vez."}}, {"@type": "Question", "name": "¿Puedo usar estos comandos combinados en el mismo prompt?", "acceptedAnswer": {"@type": "Answer", "text": "En general sí, pero cada modelo interpreta la combinación a su manera. Lo más fiable es probar un comando o función a la vez la primera vez, y combinarlos después de comprobar que cada uno funciona como esperas."}}, {"@type": "Question", "name": "¿Estos comandos cambian con el tiempo?", "acceptedAnswer": {"@type": "Answer", "text": "Sí, constantemente. Las cuatro herramientas actualizan sus funciones con frecuencia; algunos comandos de esta página podrían renombrarse, fusionarse con otra función o quedar obsoletos. Si algo no funciona como se describe aquí, es buena señal de que ha cambiado — revisa la documentación oficial de la herramienta."}}]}</script>
+<style>
+:root{
+  --pb-bg:#03091F; --pb-bg-secondary:#06133A; --pb-bg-surface:#081B4A;
+  --pb-blue:#1689FF; --pb-cyan:#11D9EF; --pb-purple:#733CFF; --pb-magenta:#FF19D4; --pb-green:#16C987;
+  --pb-text-secondary:#AAB9D8; --pb-border:rgba(255,255,255,.10);
+  --ink:#0b1330; --muted:#5d6d91; --line:#e2e8f5; --soft:#f5f8ff;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#fff;color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,sans-serif;line-height:1.65}
+a{color:var(--pb-blue);text-decoration:none}
+a:hover{text-decoration:underline}
+.container{width:min(1140px,calc(100% - 64px));margin:auto}
+
+.topbar{height:72px;background:#06163f;color:#fff;display:flex;align-items:center;position:sticky;top:0;z-index:50}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:24px}
+.logo{font-size:21px;font-weight:950;letter-spacing:-.6px;white-space:nowrap;color:#fff;display:block}
+.logo .b{color:#11d9ef}
+.tagline{display:block;color:#28d9ee;font-size:11px;font-weight:700;letter-spacing:.2px;margin-top:1px}
+.navlinks{display:flex;align-items:center;gap:26px;font-size:13px;color:#e4ebff}
+.navlinks a{color:#e4ebff;text-decoration:none}
+.navlinks a:hover{color:#fff;text-decoration:none}
+.navlinks a.active{color:#fff;border-bottom:2px solid #20d9ee;padding-bottom:8px}
+.nav-right{display:flex;align-items:center;gap:14px}
+.nav-superventas{display:inline-flex;flex-direction:column;align-items:flex-start;gap:2px;padding:8px 16px;border-radius:14px;color:#fff;text-decoration:none;background:linear-gradient(100deg,#733CFF,#FF19D4,#08a8ff);box-shadow:0 7px 20px rgba(115,60,255,.28);border:1px solid rgba(255,255,255,.16);max-width:280px}
+.nav-superventas-title{font-size:12.5px;font-weight:950;white-space:nowrap;line-height:1.2}
+.nav-superventas-sub{font-size:9.5px;font-weight:600;color:rgba(255,255,255,.88);line-height:1.25;white-space:normal}
+@media(max-width:900px){.navlinks{display:none}}
+@media(max-width:560px){
+  .topbar{height:auto;padding:12px 0}.nav{flex-wrap:wrap;row-gap:10px}.tagline{display:none}
+  .logo{font-size:16px}.nav-right{gap:8px}
+  .nav-superventas{max-width:170px;padding:7px 11px}.nav-superventas-title{font-size:11px}.nav-superventas-sub{font-size:8.5px}
+}
+a:focus-visible, button:focus-visible { outline: 2px solid var(--pb-blue); outline-offset: 2px; }
+
+main{background:#fff}
+.breadcrumb{font-size:12px;color:var(--muted);margin:22px 0 14px}
+.breadcrumb a{color:var(--muted)}
+.breadcrumb .sep{margin:0 6px}
+.breadcrumb .current{color:var(--ink);font-weight:600}
+.eyebrow{font-size:11px;font-weight:900;color:var(--pb-purple);letter-spacing:.08em;text-transform:uppercase}
+h1{font-size:clamp(28px,4vw,42px);letter-spacing:-1px;margin:10px 0 14px;color:var(--ink)}
+.lede{font-size:16px;color:#333d57;max-width:760px;margin-bottom:8px}
+.wrap{padding-bottom:70px}
+h2{font-size:22px;margin:38px 0 14px;color:var(--ink);letter-spacing:-.3px}
+h3{font-size:16px;margin:20px 0 8px;color:var(--ink)}
+p{font-size:14.5px;color:#333d57;margin-bottom:14px;max-width:780px}
+ul{margin:0 0 16px 20px}
+li{font-size:14.5px;color:#333d57;margin-bottom:8px}
+
+.prompt-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:20px 0 10px}
+.prompt-card{border:1px solid var(--line);border-radius:14px;padding:18px 20px;background:var(--soft)}
+.prompt-card .n{font-size:11px;font-weight:900;color:var(--pb-purple);margin-bottom:6px}
+.prompt-card h4{font-size:15px;margin-bottom:6px;color:var(--ink)}
+.prompt-card p{font-size:13px;color:var(--muted);margin-bottom:10px}
+.prompt-card code{display:block;background:#fff;border:1px solid var(--line);border-radius:8px;padding:10px 12px;font:12px/1.5 ui-monospace,Menlo,monospace;color:#1c2440;white-space:pre-wrap;margin-bottom:10px}
+.prompt-card a.pill{display:inline-block;font-size:12.5px;font-weight:800;color:var(--pb-blue)}
+@media(max-width:800px){.prompt-grid{grid-template-columns:1fr}}
+
+.linkrow{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0}
+.linkrow a{display:inline-flex;align-items:center;gap:6px;padding:9px 14px;border:1px solid var(--line);border-radius:100px;font-size:13px;font-weight:700;color:var(--ink);text-decoration:none;background:#fff}
+.linkrow a:hover{border-color:var(--pb-blue);color:var(--pb-blue)}
+
+.callout{background:var(--soft);border:1px solid var(--line);border-left:4px solid var(--pb-purple);border-radius:10px;padding:16px 20px;margin:20px 0}
+.callout p{margin:0;font-size:14px}
+
+.step-flow{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:24px 0;padding:20px;background:var(--pb-bg-secondary);border-radius:14px;color:#fff}
+.step-flow .box{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:10px;padding:10px 16px;font-size:13px;font-weight:700}
+.step-flow .ar{color:var(--pb-cyan);font-weight:900}
+
+.faq details{border-bottom:1px solid var(--line);padding:16px 0}
+.faq summary{cursor:pointer;font-weight:800;font-size:14.5px;color:var(--ink);list-style:none;display:flex;justify-content:space-between;gap:16px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary:after{content:"+";font-size:18px;color:var(--pb-purple)}
+.faq details[open] summary:after{content:"–"}
+.faq .a{padding-top:10px;font-size:14px;color:var(--muted)}
+
+.cta-box{background:linear-gradient(135deg,var(--pb-bg-secondary),#0b1c52);border-radius:16px;padding:28px 30px;margin:36px 0;color:#fff;text-align:center}
+.cta-box p{color:#dbe5ff;margin-bottom:16px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border-radius:12px;font-weight:900;font-size:14px;color:#fff;background:linear-gradient(100deg,var(--pb-purple),var(--pb-magenta),#08a8ff);text-decoration:none}
+
+.res-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:26px 0}
+.res-card{border:1px solid var(--line);border-radius:16px;padding:24px;background:#fff;box-shadow:0 8px 22px rgba(13,35,84,.06);text-decoration:none;display:block;transition:transform .2s ease,box-shadow .2s ease}
+.res-card:hover{transform:translateY(-3px);box-shadow:0 16px 32px rgba(13,35,84,.12);text-decoration:none}
+.res-card .ic{font-size:26px;margin-bottom:10px}
+.res-card h3{margin:0 0 8px;font-size:16.5px;color:var(--ink)}
+.res-card p{font-size:13px;color:var(--muted);margin:0}
+@media(max-width:900px){.res-grid{grid-template-columns:1fr}}
+
+.tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:20px 0}
+@media(max-width:700px){.tool-grid{grid-template-columns:1fr}}
+
+.resource-list{display:flex;flex-direction:column;gap:12px;margin-bottom:10px}
+.resource-item{display:block;border:1px solid var(--line);border-radius:12px;padding:14px 18px;text-decoration:none;color:inherit}
+.resource-item:hover{border-color:var(--pb-blue);text-decoration:none}
+.resource-top{display:flex;justify-content:space-between;gap:10px;margin-bottom:4px}
+.resource-name{font-weight:800;font-size:14.5px;color:var(--ink)}
+.resource-by{font-size:11.5px;color:var(--pb-purple);font-weight:700;white-space:nowrap}
+.resource-desc{font-size:13px;color:var(--muted);margin-bottom:4px}
+.resource-url{font-size:12px;color:var(--pb-blue)}
+
+footer{background:#06143d;color:var(--pb-text-secondary);padding:30px 0}
+.foot{display:flex;justify-content:space-between;gap:20px;align-items:center;font-size:12.5px;flex-wrap:wrap}
+.footlinks{display:flex;gap:16px;flex-wrap:wrap}
+.footlinks a{color:var(--pb-text-secondary);text-decoration:none}
+.footlinks a:hover{color:#fff;text-decoration:none}
+@media(max-width:640px){ .container{width:min(1140px,calc(100% - 40px))} }
+
+.tool-block{border-top:1px solid var(--line);padding-top:32px;margin-top:32px}
+.tool-block:first-of-type{border-top:0;margin-top:8px}
+.tool-block h2{margin-top:0}
+.tool-block .tag{color:var(--muted);font-size:14px;margin:-8px 0 18px}
+.sub{font-size:14px;color:var(--pb-purple);text-transform:uppercase;letter-spacing:.04em;font-weight:900;margin:22px 0 10px}
+.cmd-list{display:flex;flex-direction:column;gap:10px;max-width:520px}
+.cmd-row{display:flex;align-items:baseline;gap:10px;font-size:13.5px}
+.cmd-n{width:18px;height:18px;border-radius:5px;background:var(--soft);display:inline-grid;place-items:center;font-size:10px;font-weight:800;color:var(--muted);flex-shrink:0}
+.cmd-code{font-weight:800;color:var(--ink);white-space:nowrap;min-width:120px}
+.cmd-desc{color:var(--muted)}
+.extra-list{margin:0 0 0 20px;max-width:720px}
+.extra-list li{font-size:13.5px;color:#333d57;margin-bottom:10px}
+
+.menu-toggle{display:none;flex-direction:column;justify-content:center;gap:5px;width:34px;height:34px;background:transparent;border:1px solid rgba(255,255,255,.25);border-radius:8px;cursor:pointer;padding:0;order:2}
+.menu-toggle span{display:block;width:18px;height:2px;background:#fff;margin:0 auto;border-radius:2px;transition:transform .2s ease,opacity .2s ease}
+.menu-toggle[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.menu-toggle[aria-expanded="true"] span:nth-child(2){opacity:0}
+.menu-toggle[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.mobile-menu{display:none;flex-direction:column;background:#06163f;border-top:1px solid rgba(255,255,255,.1);padding:8px 0}
+.mobile-menu a{color:#e4ebff;text-decoration:none;font-size:14px;font-weight:600;padding:13px 24px}
+.mobile-menu a.active{color:#fff;background:rgba(255,255,255,.06)}
+.mobile-menu.open{display:flex}
+@media(max-width:900px){
+  .menu-toggle{display:flex}
+  .nav-right{order:3}
+}
+</style>
+</head>
+<body>
+<div class="topbar"><div class="container nav">
+  <div class="logo"><svg width="22" height="22" viewBox="0 0 480 480" aria-hidden="true" style="vertical-align:-5px;margin-right:2px">
+      <defs>
+        <linearGradient id="navG1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#4ee6cb"/><stop offset="100%" stop-color="#1f9384"/></linearGradient>
+        <linearGradient id="navG2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#8b7fff"/><stop offset="100%" stop-color="#5b3df0"/></linearGradient>
+      </defs>
+      <g transform="rotate(45 240 240)">
+        <path d="M480 240a240 240 0 0 0-240 240 240 240 0 0 0 240-240Z" fill="url(#navG1)"/>
+        <path d="M240 0A240 240 0 0 0 0 240 240 240 0 0 0 240 0Z" fill="url(#navG1)" opacity="0.55"/>
+        <path d="M480 240A240 240 0 0 0 240 0a240 240 0 0 0 240 240Z" fill="url(#navG2)"/>
+        <path d="M240 480A240 240 0 0 0 0 240a240 240 0 0 0 240 240Z" fill="url(#navG2)" opacity="0.55"/>
+      </g>
+    </svg> PROMPT<span class="b">BOOST</span>.APP<span class="tagline">Ideas. Prompts. Mejores resultados.</span></div>
+  <div class="navlinks">
+    <a href="/">Inicio</a>
+    <a href="/prompts/">Categorías</a>
+    <a href="/prompt-lab/">Prompt Lab</a>
+    <a href="/guia-de-prompt-engineering/">Guías</a>
+    <a class="active" href="/recursos/">Recursos</a>
+  </div>
+  <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobileMenu">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="nav-right">
+    <a href="/super-ventas/" class="nav-superventas">
+      <span class="nav-superventas-title">🔥 SUPER VENTAS</span>
+      <span class="nav-superventas-sub">El pack de prompts que te ahorra horas de trabajo con ChatGPT</span>
+    </a>
+  </div>
+</div></div>
+<div class="mobile-menu" id="mobileMenu">
+    <a href="/">Inicio</a>
+    <a href="/prompts/">Categorías</a>
+    <a href="/prompt-lab/">Prompt Lab</a>
+    <a href="/guia-de-prompt-engineering/">Guías</a>
+    <a class="active" href="/recursos/">Recursos</a>
+  </div>
+<main><div class="container"><div class="wrap">
+  <div class="breadcrumb"><a href="/">Inicio</a> <span class="sep">/</span> <a href="/recursos/">Recursos</a> <span class="sep">/</span> <span class="current">Comandos y atajos de IA</span></div>
+  <div class="eyebrow">Recursos prácticos</div>
+  <h1>Comandos y atajos de ChatGPT, Claude, Gemini y Grok</h1>
+  <p class="lede">Los 5 comandos más útiles de cada herramienta, más las funciones avanzadas que la mayoría no conoce — para dejar de escribir en modo básico y aprovechar lo que cada IA ya te ofrece.</p>
+
+<div class="callout" style="margin-bottom:8px">
+  <p>💡 Esta guía recoge funciones documentadas públicamente por cada herramienta. La disponibilidad exacta puede variar según tu plan, tu región y el ritmo de lanzamiento de cada empresa — verifica siempre en la documentación oficial si algo no coincide con lo que ves en tu cuenta.</p>
+</div>
+
+
+    <div class="tool-block">
+      <h2>ChatGPT</h2>
+      <p class="tag">Investiga, crea, analiza y mucho más.</p>
+      <h3 class="sub">Los 5 esenciales</h3>
+      <div class="cmd-list"><div class="cmd-row"><span class="cmd-n">1</span><span class="cmd-code">/search</span><span class="cmd-desc">Busca en la web</span></div><div class="cmd-row"><span class="cmd-n">2</span><span class="cmd-code">/reason</span><span class="cmd-desc">Razonamiento avanzado</span></div><div class="cmd-row"><span class="cmd-n">3</span><span class="cmd-code">/image</span><span class="cmd-desc">Genera imágenes</span></div><div class="cmd-row"><span class="cmd-n">4</span><span class="cmd-code">Deep Research</span><span class="cmd-desc">Investigación profunda</span></div><div class="cmd-row"><span class="cmd-n">5</span><span class="cmd-code">Projects</span><span class="cmd-desc">Organiza tu trabajo</span></div></div>
+      <h3 class="sub">Más funciones que merece la pena conocer</h3>
+      <ul class="extra-list"><li><strong>Canvas</strong> — espacio de trabajo paralelo para escribir o revisar código junto a la conversación.</li><li><strong>Custom GPTs</strong> — versiones personalizadas de ChatGPT con instrucciones y archivos propios, para tareas que repites a menudo.</li><li><strong>Memoria</strong> — ChatGPT recuerda datos relevantes de conversaciones anteriores para no repetírselos cada vez.</li><li><strong>Modo voz</strong> — conversación por voz en tiempo real, útil para practicar o para manos libres.</li><li><strong>Code Interpreter / análisis de datos</strong> — ejecuta código real para analizar archivos, generar gráficos o hacer cálculos verificables.</li></ul>
+    </div>
+
+
+    <div class="tool-block">
+      <h2>Claude</h2>
+      <p class="tag">Piensa, planifica y trabaja mejor.</p>
+      <h3 class="sub">Los 5 esenciales</h3>
+      <div class="cmd-list"><div class="cmd-row"><span class="cmd-n">1</span><span class="cmd-code">/plan</span><span class="cmd-desc">Crea un plan de trabajo</span></div><div class="cmd-row"><span class="cmd-n">2</span><span class="cmd-code">/compact</span><span class="cmd-desc">Reduce el contexto</span></div><div class="cmd-row"><span class="cmd-n">3</span><span class="cmd-code">/model</span><span class="cmd-desc">Cambia de modelo</span></div><div class="cmd-row"><span class="cmd-n">4</span><span class="cmd-code">/clear</span><span class="cmd-desc">Limpia la conversación</span></div><div class="cmd-row"><span class="cmd-n">5</span><span class="cmd-code">/ultrareview</span><span class="cmd-desc">Revisión en profundidad</span></div></div>
+      <h3 class="sub">Más funciones que merece la pena conocer</h3>
+      <ul class="extra-list"><li><strong>Projects</strong> — un contenedor con instrucciones y documentos propios que hereda cada conversación dentro de él.</li><li><strong>Artifacts</strong> — Claude genera código, documentos o páginas interactivas en un panel aparte, que puedes previsualizar y editar.</li><li><strong>Pensamiento extendido</strong> — Claude expone su razonamiento paso a paso antes de responder, útil en tareas complejas.</li><li><strong>Conectores (Google Drive, Gmail y más)</strong> — Claude puede trabajar directamente con tus archivos y correo a través de conectores MCP.</li><li><strong>Claude Code</strong> — agente que trabaja en tu terminal, lee tu proyecto real y edita archivos directamente.</li></ul>
+    </div>
+
+
+    <div class="tool-block">
+      <h2>Gemini</h2>
+      <p class="tag">Conectado a tu mundo de Google.</p>
+      <h3 class="sub">Los 5 esenciales</h3>
+      <div class="cmd-list"><div class="cmd-row"><span class="cmd-n">1</span><span class="cmd-code">@Gmail</span><span class="cmd-desc">Busca en tus correos</span></div><div class="cmd-row"><span class="cmd-n">2</span><span class="cmd-code">@Drive</span><span class="cmd-desc">Trabaja con tus archivos</span></div><div class="cmd-row"><span class="cmd-n">3</span><span class="cmd-code">@Calendar</span><span class="cmd-desc">Consulta tus eventos</span></div><div class="cmd-row"><span class="cmd-n">4</span><span class="cmd-code">Deep Research</span><span class="cmd-desc">Investigación avanzada</span></div><div class="cmd-row"><span class="cmd-n">5</span><span class="cmd-code">Canvas</span><span class="cmd-desc">Crea y edita contenido</span></div></div>
+      <h3 class="sub">Más funciones que merece la pena conocer</h3>
+      <ul class="extra-list"><li><strong>Gems</strong> — versiones personalizadas de Gemini configuradas para una tarea o flujo de trabajo concreto.</li><li><strong>Aprendizaje guiado</strong> — convierte a Gemini en tutor: hace preguntas y comprueba que entiendes, en vez de solo responder.</li><li><strong>Gemini Live</strong> — conversación por voz en tiempo real, con posibilidad de compartir pantalla o cámara.</li><li><strong>Generación de imágenes y vídeo</strong> — crea imágenes y vídeo corto directamente desde el chat.</li><li><strong>Integración con NotebookLM</strong> — conecta tus propias fuentes y notas para hacer preguntas con citas exactas.</li></ul>
+    </div>
+
+
+    <div class="tool-block">
+      <h2>Grok</h2>
+      <p class="tag">Investigación, análisis y creatividad.</p>
+      <h3 class="sub">Los 5 esenciales</h3>
+      <div class="cmd-list"><div class="cmd-row"><span class="cmd-n">1</span><span class="cmd-code">/think</span><span class="cmd-desc">Razonamiento profundo</span></div><div class="cmd-row"><span class="cmd-n">2</span><span class="cmd-code">/deepsearch</span><span class="cmd-desc">Investigación avanzada</span></div><div class="cmd-row"><span class="cmd-n">3</span><span class="cmd-code">/code-review</span><span class="cmd-desc">Revisa tu código</span></div><div class="cmd-row"><span class="cmd-n">4</span><span class="cmd-code">/goal</span><span class="cmd-desc">Define un objetivo</span></div><div class="cmd-row"><span class="cmd-n">5</span><span class="cmd-code">/plan</span><span class="cmd-desc">Crea un plan de trabajo</span></div></div>
+      <h3 class="sub">Más funciones que merece la pena conocer</h3>
+      <ul class="extra-list"><li><strong>Grok Imagine</strong> — genera imágenes y vídeo corto, con soporte de audio nativo en el modo vídeo.</li><li><strong>Big Brain Mode</strong> — modo de razonamiento reforzado para tareas complejas, en los planes de pago.</li><li><strong>Modo voz</strong> — conversación de voz en tiempo real, con modo cámara para analizar lo que ves.</li><li><strong>Datos en tiempo real de X</strong> — Grok puede analizar tendencias y conversación pública de X al momento.</li><li><strong>Multi-agente</strong> — varias instancias de Grok pueden debatir una misma pregunta desde ángulos distintos antes de responder.</li></ul>
+    </div>
+
+
+<h2>Preguntas frecuentes</h2>
+<div class="faq">
+<details><summary><span>¿Estos comandos funcionan igual en el plan gratuito de cada herramienta?</span></summary><div class="a">No siempre. Algunas funciones (Deep Research avanzado, Big Brain Mode de Grok, límites de Canvas o Projects) están reservadas a planes de pago o tienen un uso limitado en el nivel gratuito. Los comandos básicos de barra sí suelen estar disponibles para todos.</div></details>
+<details><summary><span>¿Por qué un comando que veo aquí no me aparece a mí?</span></summary><div class="a">La disponibilidad depende de tu región, tu plan, y de si la función está en fase de lanzamiento progresivo ("rollout"). Las cuatro herramientas despliegan funciones nuevas de forma escalonada, no para todos los usuarios a la vez.</div></details>
+<details><summary><span>¿Puedo usar estos comandos combinados en el mismo prompt?</span></summary><div class="a">En general sí, pero cada modelo interpreta la combinación a su manera. Lo más fiable es probar un comando o función a la vez la primera vez, y combinarlos después de comprobar que cada uno funciona como esperas.</div></details>
+<details><summary><span>¿Estos comandos cambian con el tiempo?</span></summary><div class="a">Sí, constantemente. Las cuatro herramientas actualizan sus funciones con frecuencia; algunos comandos de esta página podrían renombrarse, fusionarse con otra función o quedar obsoletos. Si algo no funciona como se describe aquí, es buena señal de que ha cambiado — revisa la documentación oficial de la herramienta.</div></details>
+
+</div>
+
+<div class="cta-box">
+  <p>¿Quieres convertir estas funciones en un prompt real, listo para usar?</p>
+  <a class="btn" href="/prompt-lab/">Crear mi prompt en Prompt Lab →</a>
+</div>
+
+</div></div></main>
+<footer><div class="container foot">
+  <div><b style="font-size:15px;color:#fff"><svg width="18" height="18" viewBox="0 0 480 480" aria-hidden="true" style="vertical-align:-3px;margin-right:4px">
+      <defs>
+        <linearGradient id="footG1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#4ee6cb"/><stop offset="100%" stop-color="#1f9384"/></linearGradient>
+        <linearGradient id="footG2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#8b7fff"/><stop offset="100%" stop-color="#5b3df0"/></linearGradient>
+      </defs>
+      <g transform="rotate(45 240 240)">
+        <path d="M480 240a240 240 0 0 0-240 240 240 240 0 0 0 240-240Z" fill="url(#footG1)"/>
+        <path d="M240 0A240 240 0 0 0 0 240 240 240 0 0 0 240 0Z" fill="url(#footG1)" opacity="0.55"/>
+        <path d="M480 240A240 240 0 0 0 240 0a240 240 0 0 0 240 240Z" fill="url(#footG2)"/>
+        <path d="M240 480A240 240 0 0 0 0 240a240 240 0 0 0 240 240Z" fill="url(#footG2)" opacity="0.55"/>
+      </g>
+    </svg>PROMPTBOOST.APP</b></div>
+  <div class="footlinks">
+    <a href="/prompts/">Biblioteca</a>
+    <a href="/glosario/">Glosario</a>
+    <a href="/recursos/">Recursos</a>
+    <a href="/guia-de-prompt-engineering/">Guía completa</a>
+    <a href="/aviso-legal/">Aviso legal</a>
+    <a href="/privacidad/">Privacidad</a>
+    <a href="/cookies/">Cookies</a>
+  </div>
+  <div>© 2026 PromptBoost</div>
+</div></footer>
+  <script src="/mobile-menu.js"></script>
+</body>
+</html>

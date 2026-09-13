@@ -160,6 +160,10 @@ footer{background:#06143d;color:var(--pb-text-secondary);padding:30px 0}
 .res-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:26px 0 40px}
 .res-grid.four{grid-template-columns:repeat(4,1fr)}
 @media(max-width:1000px){.res-grid.four{grid-template-columns:1fr 1fr}}
+.res-grid.five{grid-template-columns:repeat(5,1fr)}
+@media(max-width:1150px){.res-grid.five{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:700px){.res-grid.five{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.res-grid.five{grid-template-columns:1fr}}
 .res-card{border:1px solid var(--pb-border,#e2e8f5);border-radius:16px;padding:24px;background:#fff;box-shadow:0 8px 22px rgba(13,35,84,.06);text-decoration:none;display:block;color:inherit;transition:transform .2s ease,box-shadow .2s ease}
 .res-card:hover{transform:translateY(-3px);box-shadow:0 16px 32px rgba(13,35,84,.12);text-decoration:none}
 .res-card .ic{font-size:26px;margin-bottom:10px}
@@ -249,7 +253,7 @@ footer{background:#06143d;color:#AAB9D8;padding:34px 0 24px}
   </div>
 
   <h2>Recursos prácticos</h2>
-  <div class="res-grid four">
+  <div class="res-grid five">
     <a class="res-card" href="/recursos/prompts-para-excel/">
       <div class="ic">📊</div>
       <h3>Prompts para Excel y Google Sheets</h3>
@@ -269,6 +273,11 @@ footer{background:#06143d;color:#AAB9D8;padding:34px 0 24px}
       <div class="ic">🎨</div>
       <h3>Prompts para imágenes y arte</h3>
       <p>Fotos de producto, ilustraciones, logos y posts para redes con ChatGPT, Gemini o Grok.</p>
+    </a>
+    <a class="res-card" href="/recursos/comandos-y-atajos-de-ia/">
+      <div class="ic">⌨️</div>
+      <h3>Comandos y atajos de IA</h3>
+      <p>Los 5 esenciales y las funciones avanzadas de ChatGPT, Claude, Gemini y Grok.</p>
     </a>
   </div>
 
