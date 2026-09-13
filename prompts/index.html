@@ -1158,6 +1158,15 @@ window.addEventListener('scroll', () => {
 backToTop.addEventListener('click', () => {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 });
+(function(){
+  function adjustForCookieBanner(){
+    const banner = document.getElementById('pb-cookie-banner');
+    backToTop.style.bottom = banner ? (banner.offsetHeight + 16) + 'px' : '';
+  }
+  adjustForCookieBanner();
+  window.addEventListener('resize', adjustForCookieBanner);
+  new MutationObserver(adjustForCookieBanner).observe(document.body, { childList: true });
+})();
 
 /* ============ render filters + búsqueda (datos sin cambios) ============ */
 const categoryColors = {

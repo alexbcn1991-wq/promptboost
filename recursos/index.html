@@ -170,6 +170,13 @@ footer{background:#06143d;color:var(--pb-text-secondary);padding:30px 0}
 .res-card h3{margin:0 0 8px;font-size:16.5px;color:var(--pb-ink,#0b1330)}
 .res-card p{margin:0;font-size:13px;color:var(--pb-muted,#5d6d91)}
 @media(max-width:900px){.res-grid{grid-template-columns:1fr}}
+.res-grid-h{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin:26px 0 40px}
+.res-card-h{display:flex;align-items:flex-start;gap:16px;border:1px solid var(--pb-border,#e2e8f5);border-radius:16px;padding:20px;background:#fff;box-shadow:0 8px 22px rgba(13,35,84,.06);text-decoration:none;color:inherit;transition:transform .2s ease,box-shadow .2s ease}
+.res-card-h:hover{transform:translateY(-3px);box-shadow:0 16px 32px rgba(13,35,84,.12);text-decoration:none}
+.res-card-h .ic-h{flex-shrink:0;width:48px;height:48px;border-radius:12px;background:var(--pb-soft,#f5f8ff);display:grid;place-items:center;font-size:22px}
+.res-card-h h3{margin:0 0 6px;font-size:15.5px;color:var(--pb-ink,#0b1330);line-height:1.3}
+.res-card-h p{margin:0;font-size:13px;color:var(--pb-muted,#5d6d91);line-height:1.5}
+@media(max-width:900px){.res-grid-h{grid-template-columns:1fr}}
 .tool-grid{display:grid;grid-template-columns:1fr;max-width:380px;gap:16px;margin:20px 0 40px}
 .section-divider{font-size:11px;font-weight:900;color:var(--pb-purple,#733CFF);letter-spacing:.08em;text-transform:uppercase;margin-top:8px}
 footer{background:#06143d;color:#AAB9D8;padding:34px 0 24px}
@@ -196,6 +203,16 @@ footer{background:#06143d;color:#AAB9D8;padding:34px 0 24px}
 }
 .callout{background:var(--soft,#f5f8ff);border:1px solid var(--line,#e2e8f5);border-left:4px solid var(--pb-purple,#733CFF);border-radius:10px;padding:16px 20px}
 .callout p{margin:0;font-size:14px;color:#333d57;max-width:none}
+
+.back-to-top{
+  position:fixed;right:28px;bottom:28px;z-index:90;width:46px;height:46px;border-radius:50%;
+  background:#06163f;border:1px solid #dbe4f6;color:#fff;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;opacity:0;transform:translateY(12px);pointer-events:none;
+  transition:opacity .3s ease,transform .3s ease;box-shadow:0 8px 24px rgba(0,0,0,.2);
+}
+.back-to-top.show{opacity:1;transform:translateY(0);pointer-events:auto}
+.back-to-top:hover{background:#11D9EF;color:#06133b}
+@media(max-width:640px){.back-to-top{right:20px;bottom:20px;width:42px;height:42px}}
 </style>
 </head>
 <body>
@@ -252,31 +269,31 @@ footer{background:#06143d;color:#AAB9D8;padding:34px 0 24px}
   </div>
 
   <h2>Recursos prácticos</h2>
-  <div class="res-grid five">
-    <a class="res-card" href="/recursos/prompts-para-excel/">
-      <div class="ic">📊</div>
-      <h3>Prompts para Excel y Google Sheets</h3>
-      <p>Fórmulas, análisis de datos, KPIs, dashboards y previsiones, sin necesidad de saber programación.</p>
+  <div class="res-grid-h">
+    <a class="res-card-h" href="/recursos/prompts-para-excel/">
+      <div class="ic-h">📊</div>
+      <div><h3>Prompts para Excel y Google Sheets</h3>
+      <p>Fórmulas, análisis de datos, KPIs, dashboards y previsiones, sin necesidad de saber programación.</p></div>
     </a>
-    <a class="res-card" href="/recursos/prompts-para-cv-y-empleo/">
-      <div class="ic">📄</div>
-      <h3>Prompts para CV y búsqueda de empleo</h3>
-      <p>Adapta tu currículum a cada oferta, prepárate para la entrevista y analiza el puesto antes de presentarte.</p>
+    <a class="res-card-h" href="/recursos/prompts-para-cv-y-empleo/">
+      <div class="ic-h">📄</div>
+      <div><h3>Prompts para CV y búsqueda de empleo</h3>
+      <p>Adapta tu currículum a cada oferta, prepárate para la entrevista y analiza el puesto antes de presentarte.</p></div>
     </a>
-    <a class="res-card" href="/recursos/automatizacion-con-ia/">
-      <div class="ic">⚙️</div>
-      <h3>Automatización con IA</h3>
-      <p>Ideas y ejemplos para automatizar tareas repetitivas combinando prompts con Zapier, Make o Notion.</p>
+    <a class="res-card-h" href="/recursos/automatizacion-con-ia/">
+      <div class="ic-h">⚙️</div>
+      <div><h3>Automatización con IA</h3>
+      <p>Ideas y ejemplos para automatizar tareas repetitivas combinando prompts con Zapier, Make o Notion.</p></div>
     </a>
-    <a class="res-card" href="/recursos/prompts-para-imagenes-y-arte/">
-      <div class="ic">🎨</div>
-      <h3>Prompts para imágenes y arte</h3>
-      <p>Fotos de producto, ilustraciones, logos y posts para redes con ChatGPT, Gemini o Grok.</p>
+    <a class="res-card-h" href="/recursos/prompts-para-imagenes-y-arte/">
+      <div class="ic-h">🎨</div>
+      <div><h3>Prompts para imágenes y arte</h3>
+      <p>Fotos de producto, ilustraciones, logos y posts para redes con ChatGPT, Gemini o Grok.</p></div>
     </a>
-    <a class="res-card" href="/recursos/comandos-y-atajos-de-ia/">
-      <div class="ic">⌨️</div>
-      <h3>Comandos y atajos de IA</h3>
-      <p>Los 5 esenciales y las funciones avanzadas de ChatGPT, Claude, Gemini y Grok.</p>
+    <a class="res-card-h" href="/recursos/comandos-y-atajos-de-ia/">
+      <div class="ic-h">⌨️</div>
+      <div><h3>Comandos y atajos de IA</h3>
+      <p>Los 5 esenciales y las funciones avanzadas de ChatGPT, Claude, Gemini y Grok.</p></div>
     </a>
   </div>
 
@@ -373,5 +390,10 @@ footer{background:#06143d;color:#AAB9D8;padding:34px 0 24px}
 </div></footer>
 
   <script src="/mobile-menu.js"></script>
+
+<button class="back-to-top" id="backToTop" type="button" aria-label="Volver arriba">
+  <svg viewBox="0 0 20 20" width="18" height="18"><path d="M10 15V5M10 5L5 10M10 5L15 10" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</button>
+<script src="/back-to-top.js"></script>
 </body>
 </html>
