@@ -363,6 +363,36 @@ a:focus-visible, button:focus-visible, .btn:focus-visible, .search:focus-visible
   .menu-toggle{display:flex}
   .nav-right{order:3}
 }
+
+/* ===== Comandos y atajos ===== */
+#comandos-atajos .container{width:min(1180px,calc(100% - 64px))}
+.ca-eyebrow{display:inline-block;font-size:11px;font-weight:900;color:#733CFF;letter-spacing:.08em;text-transform:uppercase;background:#efe9ff;padding:6px 14px;border-radius:100px;margin-bottom:14px}
+.ca-head-row{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;margin-bottom:30px}
+#comandos-atajos h2{font-size:clamp(24px,3vw,34px);letter-spacing:-1px;line-height:1.15;color:#0b1330}
+.ca-grad{background:linear-gradient(90deg,#733CFF,#FF19D4);-webkit-background-clip:text;background-clip:text;color:transparent}
+.ca-lead{font-size:14.5px;color:#5d6d91;max-width:640px;margin-top:8px}
+.ca-tip{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;font-weight:700;color:#0b1330;background:#fff;border:1px solid #e6e9f5;padding:10px 18px;border-radius:100px;white-space:nowrap;box-shadow:0 2px 8px rgba(20,30,80,.05)}
+.ca-tools-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.ca-tool-card{background:#fff;border:1px solid #e6e9f5;border-radius:16px;padding:22px;box-shadow:0 4px 16px rgba(20,30,80,.05)}
+.ca-tool-head{display:flex;align-items:center;gap:11px;margin-bottom:18px}
+.ca-tool-ic{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;font-size:19px;flex-shrink:0;font-weight:900}
+.ca-tool-name{font-size:15.5px;font-weight:800;color:#0b1330}
+.ca-tool-tag{font-size:11.5px;color:#5d6d91}
+.ca-cmd-list{display:flex;flex-direction:column;gap:11px;margin-bottom:18px}
+.ca-cmd-row{display:flex;align-items:baseline;gap:9px;font-size:12px;flex-wrap:wrap}
+.ca-cmd-n{width:16px;height:16px;border-radius:5px;background:#f7f8fd;display:inline-grid;place-items:center;font-size:9.5px;font-weight:800;color:#5d6d91;flex-shrink:0;align-self:center}
+.ca-cmd-code{font-weight:800;color:#0b1330;white-space:nowrap}
+.ca-cmd-desc{color:#5d6d91}
+.ca-tool-btn{display:flex;align-items:center;justify-content:center;gap:6px;width:100%;padding:12px;border-radius:11px;font-size:12.5px;font-weight:800;color:#fff;text-decoration:none;background:linear-gradient(100deg,#733CFF,#FF19D4,#1689FF);box-shadow:0 8px 18px rgba(115,60,255,.25)}
+.ca-tool-btn:hover{opacity:.94}
+.ca-ic-chatgpt{background:#e8f8f2;color:#10a37f}
+.ca-ic-claude{background:#f3ded4;color:#d97a58}
+.ca-ic-gemini{background:#eef1fb;color:#4285f4}
+.ca-ic-grok{background:#0b0d14;color:#fff}
+.ca-bottom-link{display:inline-flex;align-items:center;gap:7px;margin-top:22px;font-size:12.5px;font-weight:700;color:#1689FF;text-decoration:none}
+.ca-bottom-link:hover{text-decoration:underline}
+@media(max-width:1100px){.ca-tools-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.ca-tools-grid{grid-template-columns:1fr}.ca-head-row{align-items:flex-start}.ca-tip{white-space:normal;text-align:left}}
 </style></head>
 <body>
 
@@ -452,11 +482,82 @@ a:focus-visible, button:focus-visible, .btn:focus-visible, .search:focus-visible
   </div>
 </div></section>
 
-<section class="section" id="recursos"><div class="container two"><div class="two-inner three-inner">
-  <div class="panel featured"><div class="icon">☀️</div><h3>PROMPT DEL DÍA</h3><b>Negociador profesional</b><p class="prompt-preview">"Actúa como un negociador profesional con 15 años de experiencia... Antes de darme ningún consejo, pregúntame qué se está negociando, mi objetivo mínimo aceptable, y qué sé de la otra parte..."</p><a class="btn btn-primary wide-btn" href="/p/negociador-profesional/">Ver prompt completo →</a></div>
-  <div class="panel labbox-intro"><div class="icon">⚗️</div><h3>PROMPT LAB <small style="background:#6b42ff;color:white;border-radius:999px;padding:4px 7px;font-size:9px">NUEVO</small></h3><b>Crea el prompt que necesitas.</b><p>Describe lo que quieres conseguir y Prompt Lab te ayuda a convertir tu idea en un prompt listo para usar.</p><a class="btn btn-primary wide-btn" href="/prompt-lab/">Crear mi prompt →</a></div>
-  <div class="panel labbox-intro"><div class="icon">🧭</div><h3>RECURSOS</h3><b>Resuelve tareas concretas con IA.</b><p>Guías prácticas, prompts y recursos para resolver tareas concretas con IA.</p><a class="btn btn-primary wide-btn" href="/recursos/">Ver recursos →</a></div>
-</div></div></section>
+<section class="section" id="comandos-atajos" style="background:#f7f8fd"><div class="container">
+  <div class="ca-head-row">
+    <div>
+      <span class="ca-eyebrow">Comandos y atajos</span>
+      <h2>Los 5 <span class="ca-grad">más útiles</span> de cada IA</h2>
+      <p class="ca-lead">Descubre los comandos, funciones y atajos que realmente marcan la diferencia en ChatGPT, Claude, Gemini y Grok.</p>
+    </div>
+    <div class="ca-tip">⚡ Ahorra tiempo. Haz más. Con la IA adecuada.</div>
+  </div>
+
+  <div class="ca-tools-grid">
+
+    <div class="ca-tool-card">
+      <div class="ca-tool-head">
+        <div class="ca-tool-ic ca-ic-chatgpt">◎</div>
+        <div><div class="ca-tool-name">ChatGPT</div><div class="ca-tool-tag">Investiga, crea, analiza y mucho más.</div></div>
+      </div>
+      <div class="ca-cmd-list">
+        <div class="ca-cmd-row"><span class="ca-cmd-n">1</span><span class="ca-cmd-code">/search</span><span class="ca-cmd-desc">Busca en la web</span></div>
+        <div class="ca-cmd-row"><span class="ca-cmd-n">2</span><span class="ca-cmd-code">/reason</span><span class="ca-cmd-desc">Razonamiento avanzado</span></div>
+        <div class="ca-cmd-row"><span class="ca-cmd-n">3</span><span class="ca-cmd-code">/image</span><span class="ca-cmd-desc">Genera imágenes</span></div>
+        <div class="ca-cmd-row"><span class="ca-cmd-n">4</span><span class="ca-cmd-code">Deep Research</span><span class="ca-cmd-desc">Investigación profunda</span></div>
+        <div class="ca-cmd-row"><span class="ca-cmd-n">5</span><span class="ca-cmd-code">Projects</span><span class="ca-cmd-desc">Organiza tu trabajo</span></div>
+      </div>
+      <a class="ca-tool-btn" href="/recursos/comandos-y-atajos-de-ia/">Ver todos los comandos →</a>
+    </div>
+
+    <div class="ca-tool-card">
+      <div class="ca-tool-head">
+        <div class="ca-tool-ic ca-ic-claude">✳</div>
+        <div><div class="ca-tool-name">Claude</div><div class="ca-tool-tag">Piensa, planifica y trabaja mejor.</div></div>
+      </div>
+      <div class="ca-cmd-list">
+        <div class="ca-cmd-row"><span class="ca-cmd-n">1</span><span class="ca-cmd-code">/plan</span><span class="ca-cmd-desc">Crea un plan de trabajo</span></div>
+        <div class="ca-cmd-row"><span class="ca-cmd-n">2</span><span class="ca-cmd-code">/compact</span><span class="ca-cmd-desc">Reduce el contexto</span></div>
+        <div class="ca-cmd-row"><span class="ca-cmd-n">3</span><span class="ca-cmd-code">/model</span><span class="ca-cmd-desc">Cambia de modelo</span></div>
+        <div class="ca-cmd-row"><span class="ca-cmd-n">4</span><span class="ca-cmd-code">/clear</span><span class="ca-cmd-desc">Limpia la conversación</span></div>
+        <div class="ca-cmd-row"><span class="ca-cmd-n">5</span><span class="ca-cmd-code">/ultrareview</span><span class="ca-cmd-desc">Revisión en profundidad</span></div>
+      </div>
+      <a class="ca-tool-btn" href="/recursos/comandos-y-atajos-de-ia/">Ver todos los comandos →</a>
+    </div>
+
+    <div class="ca-tool-card">
+      <div class="ca-tool-head">
+        <div class="ca-tool-ic ca-ic-gemini">✦</div>
+        <div><div class="ca-tool-name">Gemini</div><div class="ca-tool-tag">Conectado a tu mundo de Google.</div></div>
+      </div>
+      <div class="ca-cmd-list">
+        <div class="ca-cmd-row"><span class="ca-cmd-n">1</span><span class="ca-cmd-code">@Gmail</span><span class="ca-cmd-desc">Busca en tus correos</span></div>
+        <div class="ca-cmd-row"><span class="ca-cmd-n">2</span><span class="ca-cmd-code">@Drive</span><span class="ca-cmd-desc">Trabaja con tus archivos</span></div>
+        <div class="ca-cmd-row"><span class="ca-cmd-n">3</span><span class="ca-cmd-code">@Calendar</span><span class="ca-cmd-desc">Consulta tus eventos</span></div>
+        <div class="ca-cmd-row"><span class="ca-cmd-n">4</span><span class="ca-cmd-code">Deep Research</span><span class="ca-cmd-desc">Investigación avanzada</span></div>
+        <div class="ca-cmd-row"><span class="ca-cmd-n">5</span><span class="ca-cmd-code">Canvas</span><span class="ca-cmd-desc">Crea y edita contenido</span></div>
+      </div>
+      <a class="ca-tool-btn" href="/recursos/comandos-y-atajos-de-ia/">Ver todas las funciones →</a>
+    </div>
+
+    <div class="ca-tool-card">
+      <div class="ca-tool-head">
+        <div class="ca-tool-ic ca-ic-grok">✕</div>
+        <div><div class="ca-tool-name">Grok</div><div class="ca-tool-tag">Investigación, análisis y creatividad.</div></div>
+      </div>
+      <div class="ca-cmd-list">
+        <div class="ca-cmd-row"><span class="ca-cmd-n">1</span><span class="ca-cmd-code">/think</span><span class="ca-cmd-desc">Razonamiento profundo</span></div>
+        <div class="ca-cmd-row"><span class="ca-cmd-n">2</span><span class="ca-cmd-code">/deepsearch</span><span class="ca-cmd-desc">Investigación avanzada</span></div>
+        <div class="ca-cmd-row"><span class="ca-cmd-n">3</span><span class="ca-cmd-code">/code-review</span><span class="ca-cmd-desc">Revisa tu código</span></div>
+        <div class="ca-cmd-row"><span class="ca-cmd-n">4</span><span class="ca-cmd-code">/goal</span><span class="ca-cmd-desc">Define un objetivo</span></div>
+        <div class="ca-cmd-row"><span class="ca-cmd-n">5</span><span class="ca-cmd-code">/plan</span><span class="ca-cmd-desc">Crea un plan de trabajo</span></div>
+      </div>
+      <a class="ca-tool-btn" href="/recursos/comandos-y-atajos-de-ia/">Ver todos los comandos →</a>
+    </div>
+
+  </div>
+
+  <a class="ca-bottom-link" href="/recursos/comandos-y-atajos-de-ia/">📖 Ver guía completa de cada herramienta →</a>
+</div></section>
 
 <section class="section"><div class="container">
   <h2 class="section-title">Empieza por aquí</h2>
