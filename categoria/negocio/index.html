@@ -186,6 +186,20 @@ footer{background:#06143d;color:#AAB9D8;padding:34px 0 24px}
 .foot-links-grid a{color:#AAB9D8;text-decoration:none}
 .foot-links-grid a:hover{color:#fff}
 .foot-copy{font-size:11.5px;color:#8a94b8;border-top:1px solid rgba(255,255,255,.08);padding-top:14px}
+
+.menu-toggle{display:none;flex-direction:column;justify-content:center;gap:5px;width:34px;height:34px;background:transparent;border:1px solid rgba(255,255,255,.25);border-radius:8px;cursor:pointer;padding:0;order:2}
+.menu-toggle span{display:block;width:18px;height:2px;background:#fff;margin:0 auto;border-radius:2px;transition:transform .2s ease,opacity .2s ease}
+.menu-toggle[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.menu-toggle[aria-expanded="true"] span:nth-child(2){opacity:0}
+.menu-toggle[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.mobile-menu{display:none;flex-direction:column;background:#06163f;border-top:1px solid rgba(255,255,255,.1);padding:8px 0}
+.mobile-menu a{color:#e4ebff;text-decoration:none;font-size:14px;font-weight:600;padding:13px 24px}
+.mobile-menu a.active{color:#fff;background:rgba(255,255,255,.06)}
+.mobile-menu.open{display:flex}
+@media(max-width:900px){
+  .menu-toggle{display:flex}
+  .nav-right{order:3}
+}
 </style>
 </head>
 <body>
@@ -210,6 +224,9 @@ footer{background:#06143d;color:#AAB9D8;padding:34px 0 24px}
     <a href="/guia-de-prompt-engineering/">Guías</a>
     <a href="/recursos/">Recursos</a>
   </div>
+  <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobileMenu">
+    <span></span><span></span><span></span>
+  </button>
   <div class="nav-right">
     <a href="/super-ventas/" class="nav-superventas">
       <span class="nav-superventas-title">🔥 SUPER VENTAS</span>
@@ -217,6 +234,13 @@ footer{background:#06143d;color:#AAB9D8;padding:34px 0 24px}
     </a>
   </div>
 </div></div>
+<div class="mobile-menu" id="mobileMenu">
+    <a href="/">Inicio</a>
+    <a class="active" href="/prompts/">Categorías</a>
+    <a href="/prompt-lab/">Prompt Lab</a>
+    <a href="/guia-de-prompt-engineering/">Guías</a>
+    <a href="/recursos/">Recursos</a>
+  </div>
 
 <main><div class="container">
   <div class="breadcrumb">
@@ -286,5 +310,6 @@ footer{background:#06143d;color:#AAB9D8;padding:34px 0 24px}
   <div class="foot-copy">© 2026 PromptBoost. Todos los derechos reservados.</div>
 </div></footer>
 
+  <script src="/mobile-menu.js"></script>
 </body>
 </html>

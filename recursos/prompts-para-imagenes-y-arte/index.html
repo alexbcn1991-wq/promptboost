@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prompts para crear imágenes y arte con IA: ejemplos prácticos | PromptBoost</title>
+<meta name="description" content="10 prompts prácticos para generar imágenes y arte con ChatGPT, Gemini o Grok: fotos de producto, ilustraciones, logos, posts para redes y más.">
+<link rel="canonical" href="https://promptboost.app/recursos/prompts-para-imagenes-y-arte/">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://promptboost.app/recursos/prompts-para-imagenes-y-arte/">
+<meta property="og:title" content="Prompts para crear imágenes y arte con IA: ejemplos prácticos | PromptBoost">
+<meta property="og:description" content="10 prompts prácticos para generar imágenes y arte con ChatGPT, Gemini o Grok: fotos de producto, ilustraciones, logos, posts para redes y más.">
+<meta property="og:image" content="https://promptboost.app/og-image.png">
+<meta property="og:locale" content="es_ES">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Prompts para crear imágenes y arte con IA: ejemplos prácticos | PromptBoost">
+<meta name="twitter:description" content="10 prompts prácticos para generar imágenes y arte con ChatGPT, Gemini o Grok: fotos de producto, ilustraciones, logos, posts para redes y más.">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="shortcut icon" href="/favicon.ico">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<script src="/cookie-consent.js"></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "¿Estos prompts funcionan en ChatGPT, Gemini o Grok?", "acceptedAnswer": {"@type": "Answer", "text": "Sí, los tres generan imágenes de forma nativa (DALL-E en ChatGPT, Imagen en Gemini, Grok Imagine con el modelo Aurora), y la estructura de estos prompts funciona en cualquiera. Lo que cambia es cómo interpreta cada uno el estilo por defecto — lee la comparativa más abajo antes de elegir."}}, {"@type": "Question", "name": "¿Y Claude? ¿Puedo usar estos prompts ahí?", "acceptedAnswer": {"@type": "Answer", "text": "Claude no genera fotos ni ilustraciones como una herramienta de imágenes dedicada — así lo confirma la propia documentación de Anthropic. Donde Claude sí ayuda es en la fase anterior: perfeccionar el prompt o definir el brief visual. Para la imagen final, llévalo ya pulido a ChatGPT, Gemini o Grok."}}, {"@type": "Question", "name": "¿Por qué mi imagen no se parece al prompt que escribí?", "acceptedAnswer": {"@type": "Answer", "text": "En ChatGPT, por defecto el propio modelo reescribe y amplía tu prompt antes de enviarlo a DALL-E — si quieres que use tus palabras exactas, añade \"no reescribas mi prompt\". En Gemini y Grok, prueba a cambiar un solo elemento cada vez (estilo, iluminación o composición) en vez de reescribirlo todo de golpe."}}, {"@type": "Question", "name": "¿Puedo editar una imagen que ya generé, sin volver a describirla entera?", "acceptedAnswer": {"@type": "Answer", "text": "Sí, y es una de las formas más eficientes de trabajar: en ChatGPT y Gemini puedes pedir cambios puntuales en lenguaje normal (\"pon el cielo más dramático\", \"cambia la camisa a azul\") sobre la imagen ya generada. Gemini además permite subir una foto tuya y editarla de forma precisa manteniendo el resto intacto."}}, {"@type": "Question", "name": "¿Puedo pedir que no aparezca algo en la imagen?", "acceptedAnswer": {"@type": "Answer", "text": "Sí, indícalo de forma explícita y en positivo cuando puedas (\"piel lisa\" en vez de \"sin granos\") — los modelos de imagen suelen responder mejor a instrucciones afirmativas que a negaciones."}}]}</script>
+<style>
+:root{
+  --pb-bg:#03091F; --pb-bg-secondary:#06133A; --pb-bg-surface:#081B4A;
+  --pb-blue:#1689FF; --pb-cyan:#11D9EF; --pb-purple:#733CFF; --pb-magenta:#FF19D4; --pb-green:#16C987;
+  --pb-text-secondary:#AAB9D8; --pb-border:rgba(255,255,255,.10);
+  --ink:#0b1330; --muted:#5d6d91; --line:#e2e8f5; --soft:#f5f8ff;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#fff;color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,sans-serif;line-height:1.65}
+a{color:var(--pb-blue);text-decoration:none}
+a:hover{text-decoration:underline}
+.container{width:min(1140px,calc(100% - 64px));margin:auto}
+
+.topbar{height:72px;background:#06163f;color:#fff;display:flex;align-items:center;position:sticky;top:0;z-index:50}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:24px}
+.logo{font-size:21px;font-weight:950;letter-spacing:-.6px;white-space:nowrap;color:#fff;display:block}
+.logo .b{color:#11d9ef}
+.tagline{display:block;color:#28d9ee;font-size:11px;font-weight:700;letter-spacing:.2px;margin-top:1px}
+.navlinks{display:flex;align-items:center;gap:26px;font-size:13px;color:#e4ebff}
+.navlinks a{color:#e4ebff;text-decoration:none}
+.navlinks a:hover{color:#fff;text-decoration:none}
+.navlinks a.active{color:#fff;border-bottom:2px solid #20d9ee;padding-bottom:8px}
+.nav-right{display:flex;align-items:center;gap:14px}
+.nav-superventas{display:inline-flex;flex-direction:column;align-items:flex-start;gap:2px;padding:8px 16px;border-radius:14px;color:#fff;text-decoration:none;background:linear-gradient(100deg,#733CFF,#FF19D4,#08a8ff);box-shadow:0 7px 20px rgba(115,60,255,.28);border:1px solid rgba(255,255,255,.16);max-width:280px}
+.nav-superventas-title{font-size:12.5px;font-weight:950;white-space:nowrap;line-height:1.2}
+.nav-superventas-sub{font-size:9.5px;font-weight:600;color:rgba(255,255,255,.88);line-height:1.25;white-space:normal}
+@media(max-width:900px){.navlinks{display:none}}
+@media(max-width:560px){
+  .topbar{height:auto;padding:12px 0}.nav{flex-wrap:wrap;row-gap:10px}.tagline{display:none}
+  .logo{font-size:16px}.nav-right{gap:8px}
+  .nav-superventas{max-width:170px;padding:7px 11px}.nav-superventas-title{font-size:11px}.nav-superventas-sub{font-size:8.5px}
+}
+a:focus-visible, button:focus-visible { outline: 2px solid var(--pb-blue); outline-offset: 2px; }
+
+main{background:#fff}
+.breadcrumb{font-size:12px;color:var(--muted);margin:22px 0 14px}
+.breadcrumb a{color:var(--muted)}
+.breadcrumb .sep{margin:0 6px}
+.breadcrumb .current{color:var(--ink);font-weight:600}
+.eyebrow{font-size:11px;font-weight:900;color:var(--pb-purple);letter-spacing:.08em;text-transform:uppercase}
+h1{font-size:clamp(28px,4vw,42px);letter-spacing:-1px;margin:10px 0 14px;color:var(--ink)}
+.lede{font-size:16px;color:#333d57;max-width:760px;margin-bottom:8px}
+.wrap{padding-bottom:70px}
+h2{font-size:22px;margin:38px 0 14px;color:var(--ink);letter-spacing:-.3px}
+h3{font-size:16px;margin:20px 0 8px;color:var(--ink)}
+p{font-size:14.5px;color:#333d57;margin-bottom:14px;max-width:780px}
+ul{margin:0 0 16px 20px}
+li{font-size:14.5px;color:#333d57;margin-bottom:8px}
+
+.prompt-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:20px 0 10px}
+.prompt-card{border:1px solid var(--line);border-radius:14px;padding:18px 20px;background:var(--soft)}
+.prompt-card .n{font-size:11px;font-weight:900;color:var(--pb-purple);margin-bottom:6px}
+.prompt-card h4{font-size:15px;margin-bottom:6px;color:var(--ink)}
+.prompt-card p{font-size:13px;color:var(--muted);margin-bottom:10px}
+.prompt-card code{display:block;background:#fff;border:1px solid var(--line);border-radius:8px;padding:10px 12px;font:12px/1.5 ui-monospace,Menlo,monospace;color:#1c2440;white-space:pre-wrap;margin-bottom:10px}
+.prompt-card a.pill{display:inline-block;font-size:12.5px;font-weight:800;color:var(--pb-blue)}
+@media(max-width:800px){.prompt-grid{grid-template-columns:1fr}}
+
+.linkrow{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0}
+.linkrow a{display:inline-flex;align-items:center;gap:6px;padding:9px 14px;border:1px solid var(--line);border-radius:100px;font-size:13px;font-weight:700;color:var(--ink);text-decoration:none;background:#fff}
+.linkrow a:hover{border-color:var(--pb-blue);color:var(--pb-blue)}
+
+.callout{background:var(--soft);border:1px solid var(--line);border-left:4px solid var(--pb-purple);border-radius:10px;padding:16px 20px;margin:20px 0}
+.callout p{margin:0;font-size:14px}
+
+.step-flow{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:24px 0;padding:20px;background:var(--pb-bg-secondary);border-radius:14px;color:#fff}
+.step-flow .box{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:10px;padding:10px 16px;font-size:13px;font-weight:700}
+.step-flow .ar{color:var(--pb-cyan);font-weight:900}
+
+.faq details{border-bottom:1px solid var(--line);padding:16px 0}
+.faq summary{cursor:pointer;font-weight:800;font-size:14.5px;color:var(--ink);list-style:none;display:flex;justify-content:space-between;gap:16px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary:after{content:"+";font-size:18px;color:var(--pb-purple)}
+.faq details[open] summary:after{content:"–"}
+.faq .a{padding-top:10px;font-size:14px;color:var(--muted)}
+
+.cta-box{background:linear-gradient(135deg,var(--pb-bg-secondary),#0b1c52);border-radius:16px;padding:28px 30px;margin:36px 0;color:#fff;text-align:center}
+.cta-box p{color:#dbe5ff;margin-bottom:16px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border-radius:12px;font-weight:900;font-size:14px;color:#fff;background:linear-gradient(100deg,var(--pb-purple),var(--pb-magenta),#08a8ff);text-decoration:none}
+
+.res-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:26px 0}
+.res-card{border:1px solid var(--line);border-radius:16px;padding:24px;background:#fff;box-shadow:0 8px 22px rgba(13,35,84,.06);text-decoration:none;display:block;transition:transform .2s ease,box-shadow .2s ease}
+.res-card:hover{transform:translateY(-3px);box-shadow:0 16px 32px rgba(13,35,84,.12);text-decoration:none}
+.res-card .ic{font-size:26px;margin-bottom:10px}
+.res-card h3{margin:0 0 8px;font-size:16.5px;color:var(--ink)}
+.res-card p{font-size:13px;color:var(--muted);margin:0}
+@media(max-width:900px){.res-grid{grid-template-columns:1fr}}
+
+.tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:20px 0}
+@media(max-width:700px){.tool-grid{grid-template-columns:1fr}}
+
+.resource-list{display:flex;flex-direction:column;gap:12px;margin-bottom:10px}
+.resource-item{display:block;border:1px solid var(--line);border-radius:12px;padding:14px 18px;text-decoration:none;color:inherit}
+.resource-item:hover{border-color:var(--pb-blue);text-decoration:none}
+.resource-top{display:flex;justify-content:space-between;gap:10px;margin-bottom:4px}
+.resource-name{font-weight:800;font-size:14.5px;color:var(--ink)}
+.resource-by{font-size:11.5px;color:var(--pb-purple);font-weight:700;white-space:nowrap}
+.resource-desc{font-size:13px;color:var(--muted);margin-bottom:4px}
+.resource-url{font-size:12px;color:var(--pb-blue)}
+
+footer{background:#06143d;color:var(--pb-text-secondary);padding:30px 0}
+.foot{display:flex;justify-content:space-between;gap:20px;align-items:center;font-size:12.5px;flex-wrap:wrap}
+.footlinks{display:flex;gap:16px;flex-wrap:wrap}
+.footlinks a{color:var(--pb-text-secondary);text-decoration:none}
+.footlinks a:hover{color:#fff;text-decoration:none}
+@media(max-width:640px){ .container{width:min(1140px,calc(100% - 40px))} }
+
+.menu-toggle{display:none;flex-direction:column;justify-content:center;gap:5px;width:34px;height:34px;background:transparent;border:1px solid rgba(255,255,255,.25);border-radius:8px;cursor:pointer;padding:0;order:2}
+.menu-toggle span{display:block;width:18px;height:2px;background:#fff;margin:0 auto;border-radius:2px;transition:transform .2s ease,opacity .2s ease}
+.menu-toggle[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.menu-toggle[aria-expanded="true"] span:nth-child(2){opacity:0}
+.menu-toggle[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.mobile-menu{display:none;flex-direction:column;background:#06163f;border-top:1px solid rgba(255,255,255,.1);padding:8px 0}
+.mobile-menu a{color:#e4ebff;text-decoration:none;font-size:14px;font-weight:600;padding:13px 24px}
+.mobile-menu a.active{color:#fff;background:rgba(255,255,255,.06)}
+.mobile-menu.open{display:flex}
+@media(max-width:900px){
+  .menu-toggle{display:flex}
+  .nav-right{order:3}
+}
+</style>
+</head>
+<body>
+<div class="topbar"><div class="container nav">
+  <div class="logo"><svg width="22" height="22" viewBox="0 0 480 480" aria-hidden="true" style="vertical-align:-5px;margin-right:2px">
+      <defs>
+        <linearGradient id="navG1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#4ee6cb"/><stop offset="100%" stop-color="#1f9384"/></linearGradient>
+        <linearGradient id="navG2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#8b7fff"/><stop offset="100%" stop-color="#5b3df0"/></linearGradient>
+      </defs>
+      <g transform="rotate(45 240 240)">
+        <path d="M480 240a240 240 0 0 0-240 240 240 240 0 0 0 240-240Z" fill="url(#navG1)"/>
+        <path d="M240 0A240 240 0 0 0 0 240 240 240 0 0 0 240 0Z" fill="url(#navG1)" opacity="0.55"/>
+        <path d="M480 240A240 240 0 0 0 240 0a240 240 0 0 0 240 240Z" fill="url(#navG2)"/>
+        <path d="M240 480A240 240 0 0 0 0 240a240 240 0 0 0 240 240Z" fill="url(#navG2)" opacity="0.55"/>
+      </g>
+    </svg> PROMPT<span class="b">BOOST</span>.APP<span class="tagline">Ideas. Prompts. Mejores resultados.</span></div>
+  <div class="navlinks">
+    <a href="/">Inicio</a>
+    <a href="/prompts/">Categorías</a>
+    <a href="/prompt-lab/">Prompt Lab</a>
+    <a href="/guia-de-prompt-engineering/">Guías</a>
+    <a class="active" href="/recursos/">Recursos</a>
+  </div>
+  <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobileMenu">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="nav-right">
+    <a href="/super-ventas/" class="nav-superventas">
+      <span class="nav-superventas-title">🔥 SUPER VENTAS</span>
+      <span class="nav-superventas-sub">El pack de prompts que te ahorra horas de trabajo con ChatGPT</span>
+    </a>
+  </div>
+</div></div>
+<div class="mobile-menu" id="mobileMenu">
+    <a href="/">Inicio</a>
+    <a href="/prompts/">Categorías</a>
+    <a href="/prompt-lab/">Prompt Lab</a>
+    <a href="/guia-de-prompt-engineering/">Guías</a>
+    <a class="active" href="/recursos/">Recursos</a>
+  </div>
+<main><div class="container"><div class="wrap">
+  <div class="breadcrumb"><a href="/">Inicio</a> <span class="sep">/</span> <a href="/recursos/">Recursos</a> <span class="sep">/</span> <span class="current">Prompts para imágenes y arte</span></div>
+  <div class="eyebrow">Recursos prácticos</div>
+  <h1>Prompts para crear imágenes y arte con IA: ejemplos prácticos</h1>
+  <p class="lede">10 formas concretas de generar imágenes con IA — fotos de producto, ilustraciones, logos, posts para redes — con la estructura exacta que necesita cada prompt para funcionar bien.</p>
+
+<h2>Qué puedes conseguir con IA en imágenes y arte</h2>
+<p>Un buen prompt de imagen no es una frase suelta ("un gato bonito"): es una descripción con sujeto, estilo, composición e iluminación, en ese orden de detalle. Con esa estructura puedes conseguir desde una foto de producto lista para una tienda online hasta una ilustración de personaje coherente para un cómic — sin saber nada de diseño ni de la herramienta concreta que uses.</p>
+
+<h2>10 prompts prácticos para imágenes y arte</h2>
+<p>Copia cualquiera de estos en ChatGPT, Gemini o Grok, sustituyendo lo que esté entre corchetes por tu caso real:</p>
+
+<div class="prompt-grid">
+  <div class="prompt-card"><div class="n">01 · FOTO DE PRODUCTO</div><h4>Para tienda online o catálogo</h4><code>Genera una fotografía de producto de [PRODUCTO], fondo neutro, iluminación de estudio suave, composición centrada, estilo publicitario profesional.</code></div>
+  <div class="prompt-card"><div class="n">02 · ILUSTRACIÓN DE PERSONAJE</div><h4>Para cómic, juego o mascota de marca</h4><code>Diseña un personaje de [DESCRIPCIÓN], estilo [ESTILO: ilustración plana / anime / realista], expresión [EMOCIÓN], pose de cuerpo entero, fondo simple.</code></div>
+  <div class="prompt-card"><div class="n">03 · LOGO O ICONO</div><h4>Concepto inicial, no arte final</h4><code>Propón un concepto de logo minimalista para una marca de [SECTOR] llamada [NOMBRE], solo icono, sin texto, estilo geométrico, fondo blanco.</code></div>
+  <div class="prompt-card"><div class="n">04 · POST PARA REDES</div><h4>Imagen lista para Instagram o LinkedIn</h4><code>Crea una imagen cuadrada para redes sociales sobre [TEMA], estilo [ESTILO], colores [PALETA], con espacio libre para añadir texto encima.</code></div>
+  <div class="prompt-card"><div class="n">05 · TRANSFORMAR ESTILO</div><h4>La misma escena, otro acabado</h4><code>Recrea [ESCENA/DESCRIPCIÓN] en estilo [acuarela / pixel art / fotorrealista / cómic], manteniendo la composición y los elementos principales.</code></div>
+  <div class="prompt-card"><div class="n">06 · IMAGEN DE PORTADA</div><h4>Para un artículo, vídeo o presentación</h4><code>Diseña una imagen de portada para un contenido sobre [TEMA], estilo llamativo pero profesional, con una zona despejada para el título.</code></div>
+  <div class="prompt-card"><div class="n">07 · ESCENA O FONDO</div><h4>Para componer con tu producto después</h4><code>Genera un fondo/escena de [LUGAR/AMBIENTE], sin sujetos ni objetos en primer plano, luz de [HORA EXACTA, ej. "7pm de octubre"], estilo fotorrealista.</code></div>
+  <div class="prompt-card"><div class="n">08 · EDITAR UNA FOTO SUBIDA</div><h4>Cambia solo una cosa, mantén el resto</h4><code>Edita esta foto: [CAMBIO CONCRETO — fondo, prenda, iluminación]. Mantén el resto de la imagen exactamente igual: encuadre, proporciones y el resto de elementos sin tocar.</code></div>
+  <div class="prompt-card"><div class="n">09 · MOCKUP DE INTERFAZ</div><h4>Para presentar una idea de app o web</h4><code>Crea el mockup visual de una pantalla de app para [FUNCIÓN], estilo limpio tipo app moderna, mostrando [ELEMENTOS CLAVE] en la pantalla.</code></div>
+  <div class="prompt-card"><div class="n">10 · REFINAR SIN REPETIR TODO</div><h4>Edición conversacional sobre lo ya generado</h4><code>De la imagen anterior, cambia solo [UN ELEMENTO: la iluminación / el color de X / el ángulo], sin modificar el resto de la composición.</code></div>
+</div>
+
+<h2>Cómo escribir buenos prompts de imagen</h2>
+<ul>
+  <li><strong>Describe en este orden:</strong> sujeto → estilo → composición → iluminación → detalles. El orden ayuda a que el generador priorice bien.</li>
+  <li><strong>Usa la edición conversacional en vez de reescribir todo.</strong> Tanto ChatGPT como Gemini permiten pedir cambios puntuales sobre una imagen ya generada ("más dramático", "cambia el color a azul") — es más rápido y preciso que empezar de cero cada vez.</li>
+  <li><strong>Sé exacto con la luz</strong>: mejor "luz de las 7pm en octubre" que "atardecer" — cuanto más concreta la hora, más control tienes sobre el resultado.</li>
+  <li><strong>En ChatGPT, si quieres tu prompt literal</strong>, añade "no reescribas mi prompt": por defecto, el modelo lo amplía automáticamente antes de generar la imagen.</li>
+  <li><strong>En Grok Imagine, si buscas foto realista</strong>, dilo de forma explícita ("fotorrealista, no ilustración") — el modelo tiende a derivar hacia un acabado más estilizado o tipo anime si no se lo indicas.</li>
+</ul>
+
+<h2>Errores que debes evitar</h2>
+<ul>
+  <li><strong>Prompts demasiado abstractos</strong> ("algo bonito y moderno") — el generador rellena los huecos por ti, casi nunca como esperabas.</li>
+  <li><strong>Reescribir todo el prompt para un cambio pequeño</strong>: si solo quieres ajustar un detalle, pide la edición puntual en vez de generar la imagen entera de nuevo — obtienes más consistencia.</li>
+  <li><strong>Usar el mismo prompt en varias herramientas esperando el mismo resultado:</strong> cada generador tiene su propio estilo por defecto, incluso con la misma descripción.</li>
+  <li><strong>No revisar derechos de uso:</strong> antes de usar una imagen generada con fines comerciales, revisa los términos de la herramienta que has usado.</li>
+</ul>
+
+<h2>¿ChatGPT, Gemini o Grok para generar imágenes?</h2>
+<p>Los tres funcionan con los prompts de esta página, pero cada uno tiene un punto fuerte distinto. <strong>ChatGPT (DALL-E)</strong> destaca en instrucciones detalladas, texto dentro de la imagen (lo hace mejor que la mayoría, aunque no perfecto) y edición conversacional turno a turno. <strong>Gemini (Imagen)</strong> es la mejor opción cuando quieres editar una foto que ya tienes — cambios precisos y localizados manteniendo el resto igual. <strong>Grok Imagine</strong> (modelo Aurora) es rápido y muy bueno en fotorrealismo si se lo pides de forma explícita, aunque por defecto tiende a un acabado más estilizado. Claude queda fuera de esta comparación porque no genera imágenes — es la mejor opción, eso sí, para ayudarte a pulir el prompt antes de llevarlo a cualquiera de los tres.</p>
+
+<div class="callout"><p>💡 ¿No sabes cómo describir la imagen que tienes en la cabeza? Cuéntaselo a <a href="/prompt-lab/">Prompt Lab</a> en lenguaje normal y te ayuda a convertirlo en un prompt estructurado, listo para pegar en tu generador de imágenes favorito.</p></div>
+
+<h2>Preguntas frecuentes</h2>
+<div class="faq">
+<details><summary><span>¿Estos prompts funcionan en ChatGPT, Gemini o Grok?</span></summary><div class="a">Sí, los tres generan imágenes de forma nativa (DALL-E en ChatGPT, Imagen en Gemini, Grok Imagine con el modelo Aurora), y la estructura de estos prompts funciona en cualquiera. Lo que cambia es cómo interpreta cada uno el estilo por defecto — lee la comparativa más abajo antes de elegir.</div></details>
+<details><summary><span>¿Y Claude? ¿Puedo usar estos prompts ahí?</span></summary><div class="a">Claude no genera fotos ni ilustraciones como una herramienta de imágenes dedicada — así lo confirma la propia documentación de Anthropic. Donde Claude sí ayuda es en la fase anterior: perfeccionar el prompt o definir el brief visual. Para la imagen final, llévalo ya pulido a ChatGPT, Gemini o Grok.</div></details>
+<details><summary><span>¿Por qué mi imagen no se parece al prompt que escribí?</span></summary><div class="a">En ChatGPT, por defecto el propio modelo reescribe y amplía tu prompt antes de enviarlo a DALL-E — si quieres que use tus palabras exactas, añade "no reescribas mi prompt". En Gemini y Grok, prueba a cambiar un solo elemento cada vez (estilo, iluminación o composición) en vez de reescribirlo todo de golpe.</div></details>
+<details><summary><span>¿Puedo editar una imagen que ya generé, sin volver a describirla entera?</span></summary><div class="a">Sí, y es una de las formas más eficientes de trabajar: en ChatGPT y Gemini puedes pedir cambios puntuales en lenguaje normal ("pon el cielo más dramático", "cambia la camisa a azul") sobre la imagen ya generada. Gemini además permite subir una foto tuya y editarla de forma precisa manteniendo el resto intacto.</div></details>
+<details><summary><span>¿Puedo pedir que no aparezca algo en la imagen?</span></summary><div class="a">Sí, indícalo de forma explícita y en positivo cuando puedas ("piel lisa" en vez de "sin granos") — los modelos de imagen suelen responder mejor a instrucciones afirmativas que a negaciones.</div></details>
+
+</div>
+
+<div class="cta-box">
+  <p>¿Buscas prompts de texto en vez de imagen? La biblioteca gratuita tiene 46, organizados por categoría.</p>
+  <a class="btn" href="/prompts/">Ver la biblioteca completa →</a>
+</div>
+
+</div></div></main>
+<footer><div class="container foot">
+  <div><b style="font-size:15px;color:#fff"><svg width="18" height="18" viewBox="0 0 480 480" aria-hidden="true" style="vertical-align:-3px;margin-right:4px">
+      <defs>
+        <linearGradient id="footG1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#4ee6cb"/><stop offset="100%" stop-color="#1f9384"/></linearGradient>
+        <linearGradient id="footG2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#8b7fff"/><stop offset="100%" stop-color="#5b3df0"/></linearGradient>
+      </defs>
+      <g transform="rotate(45 240 240)">
+        <path d="M480 240a240 240 0 0 0-240 240 240 240 0 0 0 240-240Z" fill="url(#footG1)"/>
+        <path d="M240 0A240 240 0 0 0 0 240 240 240 0 0 0 240 0Z" fill="url(#footG1)" opacity="0.55"/>
+        <path d="M480 240A240 240 0 0 0 240 0a240 240 0 0 0 240 240Z" fill="url(#footG2)"/>
+        <path d="M240 480A240 240 0 0 0 0 240a240 240 0 0 0 240 240Z" fill="url(#footG2)" opacity="0.55"/>
+      </g>
+    </svg>PROMPTBOOST.APP</b></div>
+  <div class="footlinks">
+    <a href="/prompts/">Biblioteca</a>
+    <a href="/glosario/">Glosario</a>
+    <a href="/recursos/">Recursos</a>
+    <a href="/guia-de-prompt-engineering/">Guía completa</a>
+    <a href="/aviso-legal/">Aviso legal</a>
+    <a href="/privacidad/">Privacidad</a>
+    <a href="/cookies/">Cookies</a>
+  </div>
+  <div>© 2026 PromptBoost</div>
+</div></footer>
+  <script src="/mobile-menu.js"></script>
+</body>
+</html>
